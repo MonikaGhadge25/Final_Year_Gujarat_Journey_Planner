@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Hotel API Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .result { background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 10px 0; }
+        .hotel-item { border: 1px solid #ddd; padding: 10px; margin: 10px 0; border-radius: 5px; }
+        .error { color: red; }
+        .success { color: green; }
+    </style>
+</head>
+<body>
+    <h1>Quick Hotel API Test</h1>
+    <button onclick="testAPI()">Test Hotel API</button>
+    <button onclick="clearResults()">Clear</button>
+    
+    <div id="results"></div>
+
+<script>
+async function testAPI() {
+    const resultsDiv = document.getElementById('results');
+    resultsDiv.innerHTML = '<div class="result">Testing hotel API...</div>';
+    
+    try {
+        // Try the main hotel API
+        const response = await fetch('http://localhost:8000/api/hotels');
+        
+        if (!response.ok) {
+            throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+        }
+        
+        const data = await response.json();
+        
+        resultsDiv.innerHTML = `
+            <div class="result success">
+                <h2>✅ API Response Received!</h2>
+                <p><strong>Response Type:</strong> ${Array.isArray(data) ? 'Array' : 'Object'}</p>
+                <p><strong>Hotels Count:</strong> ${Array.isArray(data) ? data.length : (data.hotels ? data.hotels.length : 'Unknown')}</p>
+            </div>
+            
+            <div class="result">
+                <h3>Raw API Response (first 500 chars):</h3>
+                <pre>${JSON.stringify(data, null, 2).substring(0, 500)}...</pre>
+            </div>
+        `;
+        
+        // Extract hotels array
+        let hotels = [];
+        if (Array.isArray(data)) {
+            hotels = data;
+        } else if (data.hotels) {
+            hotels = data.hotels;
+        } else if (data.data) {
+            hotels = data.data;
+        }
+        
+        // Show first few hotels with field analysis
+        if (hotels.length > 0) {
+            let hotelDetails = '<div class="result"><h3>Hotel Field Analysis:</h3>';
+            
+            hotels.slice(0, 3).forEach((hotel, index) => {
+                const fields = Object.keys(hotel);
+                
+                // Try to extract values using our logic
+                const name = hotel.name || hotel.hotelName || hotel.title || 'N/A';
+                const price = hotel.price || hotel.pricePerNight || hotel.cost || 'N/A';
+                const location = (hotel.location && typeof hotel.location === 'object') 
+                    ? (hotel.location.district || hotel.location.city || JSON.stringify(hotel.location))
+                    : (hotel.location || hotel.district || hotel.city || hotel.address || 'N/A');
+                
+                hotelDetails += `
+                    <div class="hotel-item">
+                        <h4>Hotel ${index + 1}</h4>
+                        <p><strong>Available Fields:</strong> ${fields.join(', ')}</p>
+                        <p><strong>Extracted Name:</strong> ${name}</p>
+                        <p><strong>Extracted Price:</strong> ${price}</p>
+                        <p><strong>Extracted Location:</strong> ${location}</p>
+                        <p><strong>Raw Object:</strong></p>
+                        <pre style="font-size: 12px; max-height: 150px; overflow: auto;">${JSON.stringify(hotel, null, 2)}</pre>
+                    </div>
+                `;
+            });
+            
+            hotelDetails += '</div>';
+            resultsDiv.innerHTML += hotelDetails;
+        }
+        
+    } catch (error) {
+        resultsDiv.innerHTML = `
+            <div class="result error">
+                <h2>❌ API Test Failed</h2>
+                <p><strong>Error:</strong> ${error.message}</p>
+                <p><strong>Suggestion:</strong> Make sure your backend server is running on localhost:8000</p>
+            </div>
+        `;
+        
+        console.error('Hotel API test error:', error);
+    }
+}
+
+function clearResults() {
+    document.getElementById('results').innerHTML = '';
+}
+
+// Auto-run test on page load
+window.onload = () => {
+    testAPI();
+};
+</script>
+
+</body>
+</html>

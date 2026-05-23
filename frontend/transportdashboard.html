@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Transport Dashboard</title>
+<style>
+body { font-family: Arial, sans-serif; margin:0; background:#f8f9fa; color:#333; }
+header { background:#0077b6; color:#fff; padding:12px 20px; display:flex; justify-content:space-between; align-items:center; }
+.header-actions { display: flex; align-items: center; gap: 15px; }
+.logout-btn { background:#dc3545; color:#fff; border:none; padding:8px 16px; border-radius:4px; cursor:pointer; font-weight:bold; }
+.logout-btn:hover { background:#c82333; }
+nav { background:#f2f2f2; padding:10px; display:flex; gap:20px; }
+nav a { text-decoration:none; color:#333; font-weight:bold; cursor:pointer; }
+nav a.active { color:#0077b6; }
+main { padding:20px; }
+section { display:none; }
+section.active { display:block; }
+h2 { margin-bottom:10px; border-bottom:2px solid #0077b6; display:inline-block; padding-bottom:4px; }
+
+/* Summary cards */
+.summary-cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:15px; margin-bottom:30px; }
+.summary-card { background:#fff; border-radius:8px; padding:15px; box-shadow:0 2px 6px rgba(0,0,0,0.1); text-align:center; cursor:pointer; transition:transform 0.2s, box-shadow 0.2s; }
+.summary-card:hover { transform:translateY(-2px); box-shadow:0 4px 12px rgba(0,0,0,0.15); }
+.summary-card.active { border:2px solid #0077b6; background:#f0f8ff; }
+.summary-card h3 { margin:0; font-size:16px; color:#0077b6; }
+.summary-card .small { font-size:13px; margin-top:5px; color:#555; }
+
+/* Table */
+.table-container { margin-bottom:40px; }
+table { width:100%; border-collapse:collapse; margin-top:10px; background:#fff; border-radius:6px; overflow:hidden; }
+th, td { border:1px solid #ccc; padding:8px; text-align:left; font-size:13px; }
+th { background:#f9f9f9; }
+.status-free { color:green; font-weight:bold; }
+.status-booked { color:red; font-weight:bold; }
+
+/* Buttons */
+.btn { padding:6px 12px; border:none; border-radius:4px; font-weight:bold; cursor:pointer; margin-right:6px; font-size:13px; }
+.accept { background:#28a745; color:#fff; }
+.cancel { background:#dc3545; color:#fff; }
+
+/* Modal */
+.modal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); justify-content:center; align-items:center; }
+.modal-content { background:#fff; padding:20px; border-radius:6px; width:420px; max-height:80vh; overflow:auto; }
+.modal-content h3 { margin-top:0; margin-bottom:15px; color:#0077b6; }
+.modal-content label { display:block; margin-top:10px; font-weight:bold; }
+.modal-content input, .modal-content select { width:100%; padding:6px; margin-top:4px; border:1px solid #ccc; border-radius:4px; font-size:13px; }
+.modal-actions { margin-top:15px; text-align:right; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Transport Dashboard</h1>
+  <div class="header-actions">
+    <span id="welcomeUser">Welcome, Transport Manager</span>
+    <button onclick="logout()" class="logout-btn">Logout</button>
+  </div>
+</header>
+
+<nav>
+  <a data-sec="transport" class="active">Transport Details</a>
+  <a data-sec="bookings">Booking Requests</a>
+</nav>
+
+<main>
+  <!-- Transport Section -->
+  <section id="transport" class="active">
+    <h2>Vehicle Summary by Seating Capacity</h2>
+    <div class="summary-cards" id="summaryCards"></div>
+    <div id="seatingCapacityTables"></div>
+  </section>
+
+  <!-- Booking Section -->
+  <section id="bookings">
+    <h2>Booking Requests</h2>
+    <table id="bookingTable">
+      <tr>
+        <th>ID</th>
+        <th>User Name</th>
+        <th>Total Members</th>
+        <th>From Date</th>
+        <th>To Date</th>
+        <th>From Location</th>
+        <th>To Location</th>
+        <th>Car Type</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+      <tbody id="bookingTableBody">
+        <!-- Booking requests will be populated here -->
+      </tbody>
+    </table>
+  </section>
+</main>
+
+<!-- Accept Modal with Form -->
+<div class="modal" id="modal">
+  <div class="modal-content">
+    <h3>Assign Car & Driver</h3>
+    <form id="assignForm">
+      <label>Select Car & Driver</label>
+      <select id="driverSelect" required></select>
+
+      <label>Car Name</label>
+      <input type="text" id="carName" readonly>
+
+      <label>Car Number</label>
+      <input type="text" id="carNo" readonly>
+
+      <label>Driver Name</label>
+      <input type="text" id="driverName" readonly>
+
+      <label>Driver Phone</label>
+      <input type="text" id="driverPhone" readonly>
+
+      <label>Location</label>
+      <input type="text" id="carLocation" readonly>
+
+      <div class="modal-actions">
+        <button type="submit" class="btn accept">Save</button>
+        <button type="button" class="btn cancel" onclick="closeModal()">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+// Authentication Check
+function checkAuthentication() {
+  const userInfo = localStorage.getItem('user');
+  const userRole = localStorage.getItem('userRole');
+  
+  if (!userInfo || userRole !== 'transport') {
+    alert('❌ Access denied. Please login as transport manager.');
+    window.location.href = 'sign in.html';
+    return false;
+  }
+  
+  try {
+    const user = JSON.parse(userInfo);
+    document.getElementById('welcomeUser').textContent = `Welcome, ${user.fullName || 'Transport Manager'}`;
+    console.log('✅ Transport manager authenticated:', user.fullName);
+    return true;
+  } catch (e) {
+    console.error('Error parsing user info:', e);
+    window.location.href = 'sign in.html';
+    return false;
+  }
+}
+
+// Logout Function
+function logout() {
+  if (confirm('Are you sure you want to logout?')) {
+    // Clear all authentication data
+    localStorage.removeItem('authToken');
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    localStorage.removeItem('userRole');
+    localStorage.removeItem('userEmail');
+    localStorage.removeItem('userId');
+    
+    console.log('🔒 Transport manager logged out');
+    alert('✅ You have been logged out successfully.');
+    window.location.href = 'sign in.html';
+  }
+}
+
+// Car & Driver Data (will be loaded from API)
+let cars = [];
+const API_BASE_URL = 'http://localhost:8000/api'; // Adjust port as needed
+
+// Seating Capacities - will be populated from database
+let seatingCapacities = [];
+let selectedSeatingCapacity = null;
+let vehiclesBySeatingCapacity = {};
+
+// Summary by Seating Capacity
+function populateSummary(){
+  let container=document.getElementById("summaryCards");
+  container.innerHTML="";
+  
+  seatingCapacities.forEach(capacity=>{
+    let capacityCars = vehiclesBySeatingCapacity[capacity] || [];
+    let total = capacityCars.reduce((sum,c)=>sum+(c.drivers?.length || 1),0);
+    let free=0, booked=0;
+    
+    capacityCars.forEach(car=>{
+      (car.drivers || [{bookedDates: []}]).forEach(driver=>{
+        if(driver.bookedDates?.length === 0) free++; else booked++;
+      });
+    });
+    
+    const displayName = capacity <= 12 ? `${capacity}-Seater` : 
+                       capacity <= 20 ? `${capacity}-Seater (Van)` : 
+                       `${capacity}+ Seater (Bus)`;
+    
+    container.innerHTML+=`
+      <div class="summary-card" onclick="selectSeatingCapacity(${capacity})" data-seating="${capacity}">
+        <h3>${displayName}</h3>
+        <div class="small">Vehicles: ${capacityCars.length}</div>
+        <div class="small">Total Drivers: ${total}</div>
+        <div class="small">Free: ${free}, Booked: ${booked}</div>
+      </div>`;
+  });
+}
+
+// Detailed Tables by Seating Capacity
+function populateSeatingCapacityTables(filterCapacity = null){
+  let container=document.getElementById("seatingCapacityTables");
+  container.innerHTML="";
+  
+  let capacitiesToShow = filterCapacity ? [filterCapacity] : seatingCapacities;
+  
+  capacitiesToShow.forEach(capacity=>{
+    let capacityCars = vehiclesBySeatingCapacity[capacity] || [];
+    if(capacityCars.length > 0){
+      const displayName = capacity <= 12 ? `${capacity}-Seater` : 
+                         capacity <= 20 ? `${capacity}-Seater (Van)` : 
+                         `${capacity}+ Seater (Bus)`;
+      
+      let html=`<div class="table-container">
+        <h2>${displayName} Vehicles</h2>
+        <table>
+          <tr>
+            <th>Car Name</th><th>Seating</th><th>Type</th><th>Fuel</th><th>AC</th><th>Price</th><th>Location</th>
+            <th>Driver</th><th>Phone</th><th>Email</th><th>Car No.</th><th>Status</th>
+          </tr>`;
+      
+      capacityCars.forEach(car=>{
+        const drivers = car.drivers || [{
+          name: 'Available Driver',
+          phone: '9876543210',
+          email: 'driver@gmail.com',
+          vehicleNumber: car.vehicleNumber || 'GJ01XX0001',
+          bookedDates: []
+        }];
+        
+        drivers.forEach(driver=>{
+          let status = (driver.bookedDates?.length === 0) ? "Free" : "Booked";
+          html+=`<tr>
+            <td>${car.carName}</td>
+            <td>${car.seating_capacity}</td>
+            <td>${car.car_type || 'Standard'}</td>
+            <td>${car.fuel}</td>
+            <td>${car.ac ? "AC" : "Non-AC"}</td>
+            <td>${car.price}</td>
+            <td>${car.location}</td>
+            <td>${driver.name}</td>
+            <td>${driver.phone}</td>
+            <td>${driver.email}</td>
+            <td>${driver.vehicleNumber}</td>
+            <td class="${status==="Free"?"status-free":"status-booked"}">${status}</td>
+          </tr>`;
+        });
+      });
+      html+=`</table></div>`;
+      container.innerHTML+=html;
+    } else if(filterCapacity) {
+      const displayName = filterCapacity <= 12 ? `${filterCapacity}-Seater` : 
+                         filterCapacity <= 20 ? `${filterCapacity}-Seater (Van)` : 
+                         `${filterCapacity}+ Seater (Bus)`;
+      container.innerHTML=`<div class="table-container">
+        <h2>${displayName}</h2>
+        <p style="text-align:center; color:#666; padding:20px;">No ${displayName} vehicles available</p>
+      </div>`;
+    }
+  });
+}
+
+// Seating Capacity Selection Function
+function selectSeatingCapacity(capacity) {
+  // Update selected seating capacity
+  selectedSeatingCapacity = selectedSeatingCapacity === capacity ? null : capacity;
+  
+  // Update active state of cards
+  document.querySelectorAll('.summary-card').forEach(card => {
+    card.classList.remove('active');
+  });
+  
+  if(selectedSeatingCapacity) {
+    document.querySelector(`[data-seating="${selectedSeatingCapacity}"]`).classList.add('active');
+    populateSeatingCapacityTables(selectedSeatingCapacity);
+  } else {
+    populateSeatingCapacityTables(); // Show all tables
+  }
+}
+
+// Load data from API and initialize
+async function loadTransportData() {
+  try {
+    console.log('🔄 Loading transport data from API...');
+    console.log('🌐 API URL:', `${API_BASE_URL}/transportdashboard/vehicles`);
+    
+    const response = await fetch(`${API_BASE_URL}/transportdashboard/vehicles`);
+    console.log('📡 Response status:', response.status, response.statusText);
+    
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error('❌ API Error Response:', errorText);
+      throw new Error(`HTTP error! status: ${response.status} - ${errorText}`);
+    }
+    
+    const rawData = await response.json();
+    console.log('📦 Raw transport dashboard data from API:', rawData);
+    
+    // Transform the vehicle data and group by seating capacity
+    if (rawData.success && Array.isArray(rawData.vehicles) && rawData.vehicles.length > 0) {
+      // Reset data structures
+      vehiclesBySeatingCapacity = {};
+      seatingCapacities = [];
+      cars = [];
+      
+      // Process each vehicle
+      rawData.vehicles.forEach(vehicle => {
+        const capacity = vehicle.seating || vehicle.seating_capacity || 4;
+        const transformedVehicle = {
+          _id: vehicle._id,
+          carName: vehicle.carName || `${vehicle.type || 'Standard'} Vehicle`,
+          seating_capacity: capacity,
+          car_type: vehicle.type || 'sedan',
+          fuel: vehicle.fuel || 'Petrol',
+          ac: vehicle.ac || false,
+          price: vehicle.price || '₹12/km',
+          location: vehicle.location || 'Unknown',
+          drivers: vehicle.drivers || [{
+            name: 'Available Driver',
+            phone: '9876543210',
+            email: 'driver@gmail.com',
+            vehicleNumber: 'GJ01XX0001',
+            bookedDates: []
+          }],
+          available: vehicle.available !== false
+        };
+        
+        // Group by seating capacity
+        if (!vehiclesBySeatingCapacity[capacity]) {
+          vehiclesBySeatingCapacity[capacity] = [];
+          seatingCapacities.push(capacity);
+        }
+        
+        vehiclesBySeatingCapacity[capacity].push(transformedVehicle);
+        cars.push(transformedVehicle); // Keep for backward compatibility
+      });
+      
+      // Sort seating capacities
+      seatingCapacities.sort((a, b) => a - b);
+      
+      console.log('✅ Transport dashboard data loaded:', rawData.vehicles.length, 'total vehicles');
+      console.log('🚗 Vehicles grouped by seating capacity:', vehiclesBySeatingCapacity);
+      console.log('📊 Seating capacities available:', seatingCapacities);
+      
+      // Initialize dashboard
+      populateSummary();
+      populateSeatingCapacityTables();
+    } else {
+      console.log('⚠️ No transport data found in API response');
+      throw new Error('No transport data available');
+    }
+    
+  } catch (error) {
+    console.error('❌ Error loading transport data:', error);
+    console.error('🔍 Full error details:', error.stack);
+    
+    // Show user-friendly error message
+    document.getElementById('summaryCards').innerHTML = `
+      <div style="grid-column: 1/-1; text-align: center; padding: 20px; background: #f8d7da; border: 1px solid #f5c6cb; border-radius: 5px; color: #721c24;">
+        <h3>⚠️ Error Loading Transport Data</h3>
+        <p><strong>Error:</strong> ${error.message}</p>
+        <p>Please check:</p>
+        <ul style="text-align: left; display: inline-block;">
+          <li>Backend server is running on port 5000</li>
+          <li>Transport data exists in database</li>
+          <li>API endpoint /api/transportdashboard/vehicles is accessible</li>
+        </ul>
+        <button onclick="loadTransportData()" style="background: #007bff; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; margin-top: 10px;">🔄 Retry</button>
+      </div>
+    `;
+    
+    // Fallback to static data for demo purposes
+    console.log('⚠️ Using fallback static data for demonstration');
+    cars = [
+      { 
+        carName: "Toyota Etios", 
+        fuel: "Petrol", 
+        ac: true, 
+        price: "₹12/km", 
+        location: "Ahmedabad",
+        seating_capacity: 4,
+        car_type: "sedan",
+        drivers: [{ 
+          name: "Ramesh Patel", 
+          phone: "9876543210", 
+          email: "ramesh@example.com", 
+          vehicleNumber: "GJ01AB1234", 
+          bookedDates: [] 
+        }]
+      },
+      { 
+        carName: "Hyundai i20", 
+        fuel: "CNG", 
+        ac: false, 
+        price: "₹10/km", 
+        location: "Surat",
+        seating_capacity: 4,
+        car_type: "hatchback",
+        drivers: [{ 
+          name: "Anil Desai", 
+          phone: "9876500022", 
+          email: "anil@example.com", 
+          vehicleNumber: "GJ01EF9012", 
+          bookedDates: [{from: "2025-06-20", to: "2025-06-25"}] 
+        }]
+      },
+      {
+        carName: "Mahindra Scorpio",
+        fuel: "Diesel",
+        ac: true,
+        price: "₹15/km",
+        location: "Vadodara",
+        seating_capacity: 7,
+        car_type: "suv",
+        drivers: [{
+          name: "Kiran Shah",
+          phone: "9876543333",
+          email: "kiran@example.com",
+          vehicleNumber: "GJ05CD5678",
+          bookedDates: []
+        }]
+      }
+    ];
+    
+    // Group fallback data by seating capacity
+    vehiclesBySeatingCapacity = {};
+    seatingCapacities = [];
+    
+    cars.forEach(car => {
+      const capacity = car.seating_capacity;
+      if (!vehiclesBySeatingCapacity[capacity]) {
+        vehiclesBySeatingCapacity[capacity] = [];
+        seatingCapacities.push(capacity);
+      }
+      vehiclesBySeatingCapacity[capacity].push(car);
+    });
+    
+    seatingCapacities.sort((a, b) => a - b);
+    
+    console.log('📝 Using fallback cars grouped by seating capacity:', vehiclesBySeatingCapacity);
+    populateSummary();
+    populateSeatingCapacityTables();
+  }
+}
+
+// Booking requests management
+let bookingRequests = [];
+
+// Helper function to convert localStorage transport bookings to dashboard format
+function getLocalStorageTransportBookings() {
+  const localBookings = [];
+  try {
+    const transportBookingData = localStorage.getItem('transportBookingDetails');
+    if (transportBookingData) {
+      const transportBooking = JSON.parse(transportBookingData);
+      console.log('📦 Found local transport booking:', transportBooking);
+      const bookingId = 'BK' + Math.random().toString(36).substr(2, 9).toUpperCase();
+      const dashboardBooking = {
+        id: bookingId,
+        userName: 'Unknown Customer',
+        totalMembers: parseInt(transportBooking.totalTravelers) || 1,
+        fromDate: transportBooking.fromDate || 'TBD',
+        toDate: transportBooking.toDate || 'TBD',
+        fromLocation: transportBooking.fromLocation || 'TBD',
+        toLocation: transportBooking.toLocation || 'TBD',
+        carType: transportBooking.transportType || determineVehicleType(parseInt(transportBooking.totalTravelers) || 1),
+        status: 'Pending',
+        isLocalStorage: true,
+        fullBooking: transportBooking
+      };
+      localBookings.push(dashboardBooking);
+      console.log('✅ Converted localStorage booking to dashboard format:', dashboardBooking);
+    }
+  } catch (error) {
+    console.error('❌ Error processing localStorage transport bookings:', error);
+  }
+  return localBookings;
+}
+
+// Load booking requests from API
+async function loadBookingRequests() {
+  try {
+    console.log('📦 Loading booking requests from API...');
+    
+    // Get auth token (optional)
+    const authToken = localStorage.getItem('authToken') || localStorage.getItem('token');
+
+    let allBookings = [];
+
+    // Always try the transport dashboard booking requests endpoint (public in current backend)
+    let response = await fetch(`${API_BASE_URL}/transportdashboard/booking-requests`);
+
+    // If that fails, try general booking data as fallback
+    if (!response.ok) {
+      console.log('⚠️ Transport dashboard API not available, falling back to general bookings');
+      response = await fetch(`${API_BASE_URL}/bookingformsdata`, {
+        headers: authToken ? {
+          'Authorization': `Bearer ${authToken}`,
+          'Content-Type': 'application/json'
+        } : {}
+      });
+    }
+
+    if (!response.ok) {
+      throw new Error(`API Error: ${response.status}`);
+    }
+
+    const data = await response.json();
+    console.log('📋 Raw booking data (primary):', data);
+    
+    // Extract bookings array from response
+    if (data.success && Array.isArray(data.requests)) {
+      allBookings = data.requests; // Transport dashboard API format
+      console.log('🚚 Using transport dashboard booking requests');
+    } else if (Array.isArray(data)) {
+      allBookings = data;
+    } else if (data.bookings && Array.isArray(data.bookings)) {
+      allBookings = data.bookings;
+    } else if (data.success && Array.isArray(data.data)) {
+      allBookings = data.data;
+    }
+
+    // If primary returns zero, attempt secondary source even if primary was OK
+    if (allBookings.length === 0) {
+      console.log('ℹ️ No bookings from primary source, attempting secondary source /bookingformsdata');
+      const secondary = await fetch(`${API_BASE_URL}/bookingformsdata`, {
+        headers: authToken ? {
+          'Authorization': `Bearer ${authToken}`,
+          'Content-Type': 'application/json'
+        } : {}
+      });
+      if (secondary.ok) {
+        const sdata = await secondary.json();
+        console.log('📋 Raw booking data (secondary):', sdata);
+        if (Array.isArray(sdata)) {
+          allBookings = sdata;
+        } else if (sdata.bookings && Array.isArray(sdata.bookings)) {
+          allBookings = sdata.bookings;
+        } else if (sdata.success && Array.isArray(sdata.data)) {
+          allBookings = sdata.data;
+        }
+      } else {
+        console.log('⚠️ Secondary source also unavailable:', secondary.status);
+      }
+    }
+
+    // Filter bookings that need transport (pending transport confirmation)
+    const transportBookings = allBookings.filter(booking => {
+      return (
+        booking.status === 'pending' || 
+        booking.status === 'agent_confirmed' || 
+        booking.status === 'hotel_confirmed' ||
+        (!booking.transportConfirmed && booking.status !== 'cancelled')
+      );
+    });
+    console.log('🚐 Transport bookings found (after filter):', transportBookings.length);
+    
+    // Transform API bookings to match our table format
+    const apiTransformed = transportBookings.map(booking => ({
+      id: booking.bookingId || booking._id,
+      userName: booking.customer?.name || booking.user?.fullName || booking.tourist?.name || 'Unknown Customer',
+      totalMembers: booking.tourist?.totalTravellers || booking.tripDetails?.travelers || 1,
+      fromDate: booking.transport?.fromDate || booking.tripDetails?.startDate || (booking.hotel?.fromDate ? new Date(booking.hotel.fromDate).toLocaleDateString() : 'TBD'),
+      toDate: booking.transport?.toDate || booking.tripDetails?.endDate || (booking.hotel?.toDate ? new Date(booking.hotel.toDate).toLocaleDateString() : 'TBD'),
+      fromLocation: booking.transport?.pickupLocation || booking.hotel?.address || (Array.isArray(booking.tripDetails?.places) ? booking.tripDetails.places[0] : (booking.touristPlaces?.[0] || 'TBD')),
+      toLocation: Array.isArray(booking.tripDetails?.places) ? booking.tripDetails.places.join(', ') : (booking.touristPlaces ? booking.touristPlaces.join(', ') : 'TBD'),
+      carType: determineVehicleType(booking.tourist?.totalTravellers || booking.tripDetails?.travelers || 1),
+      status: booking.transportConfirmed ? 'Confirmed' : 'Pending',
+      fullBooking: booking // Store full booking data for later use
+    }));
+
+    // Merge with localStorage bookings
+    const localBookings = getLocalStorageTransportBookings();
+    bookingRequests = [...localBookings, ...apiTransformed];
+    
+    populateBookingRequests();
+    console.log('✅ Booking requests loaded successfully (api + local):', bookingRequests.length);
+    
+  } catch (error) {
+    console.error('❌ Error loading booking requests:', error);
+    
+    // Fallback data if API fails, still include localStorage bookings
+    console.log('⚠️ Using fallback booking data plus any localStorage bookings');
+    const localBookings = getLocalStorageTransportBookings();
+    bookingRequests = [
+      ...localBookings,
+      {
+        id: 'BK001',
+        userName: 'Aarya Patel',
+        totalMembers: 3,
+        fromDate: '2025-06-22',
+        toDate: '2025-06-24',
+        fromLocation: 'Ahmedabad',
+        toLocation: 'Surat',
+        carType: '4-Seater',
+        status: 'Pending'
+      },
+      {
+        id: 'BK002',
+        userName: 'Rahul Mehta',
+        totalMembers: 6,
+        fromDate: '2025-06-23',
+        toDate: '2025-06-25',
+        fromLocation: 'Ahmedabad',
+        toLocation: 'Vadodara',
+        carType: '7-Seater',
+        status: 'Pending'
+      }
+    ];
+    populateBookingRequests();
+  }
+}
+
+// Helper function to determine vehicle type based on travelers
+function determineVehicleType(totalTravellers) {
+  if (totalTravellers <= 3) return '4-Seater';
+  if (totalTravellers <= 4) return '4-Seater';
+  if (totalTravellers <= 5) return '5-Seater';
+  if (totalTravellers <= 6) return '6-Seater';
+  if (totalTravellers <= 7) return '7-Seater';
+  if (totalTravellers <= 12) return 'Van';
+  return 'Tempo';
+}
+
+// Populate booking requests table
+function populateBookingRequests() {
+  const tbody = document.getElementById('bookingTableBody');
+  tbody.innerHTML = '';
+  
+  if (bookingRequests.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="10" style="text-align:center; color:#666; padding:20px;">No booking requests found</td></tr>';
+    return;
+  }
+  
+  bookingRequests.forEach(booking => {
+    const row = document.createElement('tr');
+    
+    // Check if booking is still pending to show buttons
+    const actionButtons = booking.status === 'Pending' ? 
+      `<button class="btn accept" onclick="openModal(this)">Accept</button>
+       <button class="btn cancel" onclick="updateStatus(this,'Cancelled')">Cancel</button>` :
+      `<span style="color: #666; font-style: italic;">${booking.status}</span>`;
+    
+    row.innerHTML = `
+      <td>${booking.id}</td>
+      <td>${booking.userName}</td>
+      <td>${booking.totalMembers}</td>
+      <td>${booking.fromDate}</td>
+      <td>${booking.toDate}</td>
+      <td>${booking.fromLocation}</td>
+      <td>${booking.toLocation}</td>
+      <td>${booking.carType}</td>
+      <td>${booking.status}</td>
+      <td>${actionButtons}</td>
+    `;
+    tbody.appendChild(row);
+  });
+  
+  console.log('✅ Booking requests populated:', bookingRequests.length, 'requests');
+}
+
+// Refresh booking requests periodically
+function startBookingRefresh() {
+  // Refresh every 30 seconds
+  setInterval(() => {
+    loadBookingRequests();
+  }, 30000);
+}
+
+// Debug function to test API
+window.debugTransportAPI = async function() {
+  console.log('🔧 === TRANSPORT API DEBUG ===');
+  console.log('🌐 API Base URL:', API_BASE_URL);
+  
+  try {
+    // Test basic API connectivity
+    console.log('📡 Testing API connectivity...');
+    const testResponse = await fetch(`${API_BASE_URL}/transportdashboard/car-types`);
+    console.log('📋 Response status:', testResponse.status);
+    console.log('📊 Response headers:', Object.fromEntries(testResponse.headers.entries()));
+    
+    if (!testResponse.ok) {
+      const errorText = await testResponse.text();
+      console.error('❌ API Error:', errorText);
+      return;
+    }
+    
+    const data = await testResponse.json();
+    console.log('📦 Raw API Response:', data);
+    console.log('📦 Data type:', typeof data);
+    console.log('📦 Is array:', Array.isArray(data));
+    console.log('📦 Data length:', data.length);
+    
+    if (Array.isArray(data) && data.length > 0) {
+      console.log('🚗 Sample transport item:', data[0]);
+      console.log('🔍 Sample transport structure:');
+      Object.keys(data[0]).forEach(key => {
+        console.log(`  - ${key}:`, typeof data[0][key], data[0][key]);
+      });
+    }
+    
+  } catch (error) {
+    console.error('❌ Debug API test failed:', error);
+  }
+  console.log('🔧 === END DEBUG ===');
+};
+
+// Init - Check authentication first
+if (checkAuthentication()) {
+  loadTransportData();
+  loadBookingRequests();
+  startBookingRefresh();
+  
+  // Add debug button to header for testing
+  setTimeout(() => {
+    const headerActions = document.querySelector('.header-actions');
+    if (headerActions) {
+      headerActions.insertAdjacentHTML('beforeend', `
+        <button onclick="debugTransportAPI()" style="background: #28a745; color: white; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-size: 12px; margin-left: 10px;">
+          🔧 Debug API
+        </button>
+      `);
+    }
+  }, 1000);
+}
+
+let currentRow=null;
+let selectedDriver=null;
+
+function openModal(button){
+  currentRow=button.closest("tr");
+  let carType=currentRow.cells[7].innerText;
+  let from=currentRow.cells[3].innerText;
+  let to=currentRow.cells[4].innerText;
+  
+  console.log(`🚗 Opening modal for ${carType} booking from ${from} to ${to}`);
+  
+  let select=document.getElementById("driverSelect");
+  select.innerHTML="<option value=''>Loading available cars & drivers...</option>";
+  
+  // Filter cars by the requested type
+  function vehicleMatchesType(car, t) {
+    if (!car) return false;
+    const tLower = (t || '').toLowerCase();
+    const carTypeLower = (car.car_type || '').toLowerCase();
+    const seats = parseInt(car.seating_capacity, 10) || 0;
+
+    if (tLower === 'van') return carTypeLower === 'van' || (seats > 7 && seats <= 12);
+    if (tLower === 'tempo') return carTypeLower === 'tempo' || seats > 12;
+
+    const match = tLower.match(/^(\d+)-seater$/);
+    if (match) {
+      const n = parseInt(match[1], 10);
+      return seats === n;
+    }
+    // fallback: compare normalized type strings
+    return carTypeLower === tLower;
+  }
+  let carGroup=cars.filter(c=>vehicleMatchesType(c, carType));
+  
+  console.log(`Found ${carGroup.length} cars matching type ${carType}`);
+  
+  select.innerHTML=""; // Clear loading message
+  let availableCount = 0;
+  
+  carGroup.forEach(car=>{
+    car.drivers.forEach(d=>{
+      if(isAvailable(d,from,to)){
+        select.innerHTML+=`<option value="${car.carName}|${d.name}|${d.vehicleNumber}|${d.phone}|${car.location}">
+          ${car.carName} - ${d.name} (${d.vehicleNumber}) - ${car.location}
+        </option>`;
+        availableCount++;
+      }
+    });
+  });
+  
+  if(availableCount === 0) {
+    select.innerHTML="<option disabled>No drivers available for these dates</option>";
+    console.log(`⚠️ No available drivers for ${carType} from ${from} to ${to}`);
+  } else {
+    console.log(`✅ Found ${availableCount} available drivers for ${carType}`);
+  }
+
+  updateFormFields();
+  document.getElementById("modal").style.display="flex";
+}
+
+// Update form fields on change
+document.getElementById("driverSelect").addEventListener("change", updateFormFields);
+
+function updateFormFields(){
+  let val=document.getElementById("driverSelect").value;
+  if(!val) return;
+  let [carName, driverName, carNo, driverPhone, location]=val.split("|");
+  document.getElementById("carName").value=carName;
+  document.getElementById("driverName").value=driverName;
+  document.getElementById("carNo").value=carNo;
+  document.getElementById("driverPhone").value=driverPhone;
+  document.getElementById("carLocation").value=location;
+  selectedDriver=driverName;
+}
+
+function isAvailable(driver, from, to){
+  return driver.bookedDates.every(d=> new Date(to)<new Date(d.from) || new Date(from)>new Date(d.to));
+}
+
+function closeModal(){ document.getElementById("modal").style.display="none"; }
+
+// Save form
+document.getElementById("assignForm").onsubmit=async function(e){
+  e.preventDefault();
+  if(!selectedDriver){ alert("No driver selected!"); return; }
+  
+  // Get booking details
+  const bookingId = currentRow.cells[0].innerText;
+  const carType = currentRow.cells[7].innerText;
+  const fromDate = currentRow.cells[3].innerText;
+  const toDate = currentRow.cells[4].innerText;
+
+  // Extract selected assignment from dropdown
+  const selectedOption = document.getElementById("driverSelect").value;
+  if(!selectedOption){ alert("Please select a car & driver"); return; }
+  const [carName, driverName, vehicleNumber, driverPhone, location] = selectedOption.split("|");
+
+  // Persist acceptance to backend
+  try {
+    const authToken = localStorage.getItem('authToken') || localStorage.getItem('token');
+    const resp = await fetch(`${API_BASE_URL}/transportdashboard/booking-request/${bookingId}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...(authToken ? { 'Authorization': `Bearer ${authToken}` } : {})
+      },
+      body: JSON.stringify({
+        action: 'accept',
+        assignment: {
+          vehicleType: carType,
+          vehicleName: carName,
+          vehicleNumber: vehicleNumber,
+          driverName: driverName,
+          driverPhone: driverPhone,
+          pickupLocation: location,
+          pricePerKm: undefined,
+          features: undefined
+        },
+        notes: `Assigned ${driverName} (${vehicleNumber}) for ${fromDate} to ${toDate}`
+      })
+    });
+
+    if (!resp.ok) {
+      const txt = await resp.text();
+      console.error('❌ Backend accept failed:', txt);
+      alert(`Failed to accept booking. Server responded ${resp.status}`);
+      return;
+    }
+
+    const result = await resp.json();
+    console.log('✅ Backend accept success:', result);
+
+    // Update front-end state
+    const acceptedStatus = `Accepted ✅ (${driverName})`;
+    currentRow.cells[8].innerText = acceptedStatus;
+    currentRow.cells[9].innerHTML = `<span style=\"color: #28a745; font-weight: bold;\">${acceptedStatus}</span>`;
+
+    // Update cars array availability
+    cars.forEach(car => {
+      if(car.carName === carName) {
+        car.drivers = car.drivers || [];
+        car.drivers.forEach(driver => {
+          if(driver.name === driverName && driver.vehicleNumber === vehicleNumber) {
+            driver.bookedDates = driver.bookedDates || [];
+            driver.bookedDates.push({ from: fromDate, to: toDate, bookingId: bookingId });
+          }
+        });
+      }
+    });
+
+    // Update in-memory booking list and remove from requests on next refresh
+    const booking = bookingRequests.find(b => b.id == bookingId);
+    if (booking) {
+      booking.status = 'Confirmed';
+      booking.assignedDriver = driverName;
+      booking.transportConfirmed = true;
+    }
+
+    // Remove localStorage temp if present
+    localStorage.removeItem('transportBookingDetails');
+
+    closeModal();
+
+    // Refresh UI now to reflect persistence and avoid reverting on interval refresh
+    await loadBookingRequests();
+    populateSummary();
+    populateSeatingCapacityTables();
+
+    alert(`Booking accepted and driver assigned!\n\nDriver: ${driverName}\nBooking ID: ${bookingId}`);
+  } catch (err) {
+    console.error('❌ Error persisting acceptance:', err);
+    alert('Error: Could not save acceptance. Check console for details.');
+  }
+};
+
+function updateStatus(button, status){
+  let row = button.closest("tr");
+  let bookingId = row.cells[0].innerText;
+  
+  // Update the status in the table
+  row.cells[8].innerText = status;
+  
+  // Update booking in our array
+  let booking = bookingRequests.find(b => b.id == bookingId);
+  if(booking) {
+    booking.status = status;
+    
+    // If it's a localStorage booking, remove the data when cancelled/completed
+    if(booking.isLocalStorage && status === 'Cancelled') {
+      console.log('📋 Removing localStorage transport booking data for cancelled booking');
+      localStorage.removeItem('transportBookingDetails');
+    }
+  }
+  
+  // Replace buttons with status text
+  row.cells[9].innerHTML = `<span style="color: #666; font-style: italic;">${status}</span>`;
+  
+  console.log(`📋 Booking ${bookingId} status updated to: ${status}`);
+  
+  // Show confirmation message
+  if(status === 'Cancelled') {
+    // alert(`Booking ${bookingId} has been cancelled.`);
+  }
+}
+
+// Tab switching
+document.querySelectorAll("nav a").forEach(link=>{
+  link.onclick=()=>{
+    document.querySelectorAll("nav a").forEach(a=>a.classList.remove("active"));
+    link.classList.add("active");
+    document.querySelectorAll("main section").forEach(sec=>sec.classList.remove("active"));
+    document.getElementById(link.dataset.sec).classList.add("active");
+  };
+});
+</script>
+</body>
+</html>

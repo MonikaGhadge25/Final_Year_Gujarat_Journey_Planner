@@ -1,0 +1,24 @@
+[{
+  "_id": {
+    "$oid": "68be6f8bea4a6c97628a372b"
+  },
+  "name": "Rohan Patel",
+  "rating": 5,
+  "description": "Great experience, the hotels were fantastic and our agent took care of every detail."
+},
+{
+  "_id": {
+    "$oid": "68be71e7ea4a6c97628a372c"
+  },
+  "name": "Priya Sharma",
+  "rating": 5,
+  "description": "Amazing trip, well managed! Everything was perfectly organized. Highly recommended!"
+},
+{
+  "_id": {
+    "$oid": "68be736aea4a6c97628a372d"
+  },
+  "name": "Anita Desai",
+  "rating": 4,
+  "description": "Memorable journey with my family. Very professional service and great support team."
+}]

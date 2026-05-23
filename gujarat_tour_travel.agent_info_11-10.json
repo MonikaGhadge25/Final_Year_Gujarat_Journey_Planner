@@ -1,0 +1,2982 @@
+[{
+  "_id": {
+    "$oid": "6850490eb552626f66c3b1a8"
+  },
+  "name": "Rakesh Mehta",
+  "district": "Ahmedabad",
+  "experience": 1,
+  "age": 25,
+  "language": [
+    "Kannda",
+    "Hindi",
+    "Gujarati",
+    "English",
+    "Assamese"
+  ],
+  "fees": "₹500",
+  "rating": 3.9,
+  "mobile_no": {
+    "$numberLong": "9876517220"
+  },
+  "gender": "Male"
+},
+{
+  "_id": {
+    "$oid": "68504cf9b552626f66c3b1a9"
+  },
+  "name": "Rahul Patel",
+  "district": "Ahmedabad",
+  "experience": 2,
+  "age": 30,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English",
+    "Odia"
+  ],
+  "fees": "₹400",
+  "rating": 4.2,
+  "mobile_no": {
+    "$numberLong": "8352225466"
+  },
+  "gender": "Male"
+},
+{
+  "_id": {
+    "$oid": "68504d2fb552626f66c3b1aa"
+  },
+  "name": "Soniya Mali",
+  "district": "Ahmedabad",
+  "experience": 5,
+  "age": 31,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹400",
+  "rating": 4,
+  "mobile_no": {
+    "$numberLong": "8985859685"
+  },
+  "gender": "Female"
+},
+{
+  "_id": {
+    "$oid": "68504d6fb552626f66c3b1ab"
+  },
+  "name": "Prathvi Sharma",
+  "district": "Amreli",
+  "experience": 3,
+  "age": 35,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English",
+    "Odia"
+  ],
+  "fees": "₹500",
+  "rating": 4.4,
+  "mobile_no": {
+    "$numberLong": "9876529211"
+  },
+  "gender": "Female"
+},
+{
+  "_id": {
+    "$oid": "6850d874c427b5cf671e74be"
+  },
+  "name": "Parth Goswami",
+  "district": "Amreli",
+  "experience": 4,
+  "age": 33,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹600",
+  "rating": 3.3,
+  "mobile_no": {
+    "$numberLong": "8245569685"
+  },
+  "gender": "Male"
+},
+{
+  "_id": {
+    "$oid": "6850d8b3c427b5cf671e74bf"
+  },
+  "name": "Nirav Shah",
+  "district": "Anand",
+  "experience": 8,
+  "age": 36,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹200",
+  "rating": 3.9,
+  "mobile_no": {
+    "$numberLong": "9876544549"
+  },
+  "gender": "Male"
+},
+{
+  "_id": {
+    "$oid": "6850d8f4c427b5cf671e74c0"
+  },
+  "name": "Jinal Shah",
+  "district": "Anand",
+  "experience": 9,
+  "age": 40,
+  "language": [
+    "Hindi",
+    "Gujarati"
+  ],
+  "fees": "₹300",
+  "rating": 4.1,
+  "mobile_no": {
+    "$numberLong": "7855669944"
+  },
+  "gender": "Female"
+},
+{
+  "_id": {
+    "$oid": "6850d966c427b5cf671e74c1"
+  },
+  "name": "Karina Rathod",
+  "district": "Aravalli",
+  "experience": 10,
+  "age": 42,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English",
+    "Konkani"
+  ],
+  "fees": "₹500",
+  "rating": 4.2,
+  "mobile_no": {
+    "$numberLong": "9876523418"
+  },
+  "gender": "Female"
+},
+{
+  "_id": {
+    "$oid": "6850d9adc427b5cf671e74c2"
+  },
+  "name": "Manish Rathod",
+  "district": "Aravalli",
+  "experience": 2,
+  "age": 49,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹300",
+  "rating": 4.3,
+  "mobile_no": {
+    "$numberLong": "7856939512"
+  },
+  "gender": "Male"
+},
+{
+  "_id": {
+    "$oid": "6850da46c427b5cf671e74c3"
+  },
+  "name": "Rita Patel",
+  "district": "Banaskantha",
+  "experience": 7,
+  "age": 33,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹600",
+  "rating": 4.6,
+  "mobile_no": {
+    "$numberLong": "9876591837"
+  },
+  "gender": "Female"
+},
+{
+  "_id": {
+    "$oid": "6850da86c427b5cf671e74c4"
+  },
+  "name": "Siya Thakor",
+  "district": "Banaskantha",
+  "experience": 4,
+  "age": 42,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹500",
+  "rating": 4.8,
+  "mobile_no": {
+    "$numberLong": "7558586965"
+  },
+  "gender": "Female"
+},
+{
+  "_id": {
+    "$oid": "6850dad8c427b5cf671e74c5"
+  },
+  "name": "Nimisha Desai",
+  "district": "Bharuch",
+  "experience": 3,
+  "age": 36,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹600",
+  "rating": 3.7,
+  "mobile_no": {
+    "$numberLong": "9876586837"
+  },
+  "gender": "Female"
+},
+{
+  "_id": {
+    "$oid": "6850db18c427b5cf671e74c6"
+  },
+  "name": "Pramukh Parekh",
+  "district": "Bharuch",
+  "experience": 8,
+  "age": 36,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹640",
+  "rating": 4.4,
+  "mobile_no": {
+    "$numberLong": "7558669555"
+  },
+  "gender": "Male"
+},
+{
+  "_id": {
+    "$oid": "6850db74c427b5cf671e74c7"
+  },
+  "name": "Sanjay Chauhan",
+  "district": "Bhavnagar",
+  "experience": 9,
+  "age": 39,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English",
+    "Assamese"
+  ],
+  "fees": "₹500",
+  "rating": 4.9,
+  "mobile_no": {
+    "$numberLong": "9876549594"
+  },
+  "gender": "Male"
+},
+{
+  "_id": {
+    "$oid": "6850dbb3c427b5cf671e74c8"
+  },
+  "name": "Sharma Shah",
+  "district": "Bhavnagar",
+  "experience": 4,
+  "age": 40,
+  "language": [
+    "Hindi",
+    "Gujarati"
+  ],
+  "fees": "₹600",
+  "rating": 3.9,
+  "mobile_no": {
+    "$numberLong": "7888087000"
+  },
+  "gender": "Male"
+},
+{
+  "_id": {
+    "$oid": "6850dc27c427b5cf671e74c9"
+  },
+  "name": "Arjun Gandhi",
+  "district": "Botad",
+  "experience": 7,
+  "age": 39,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English",
+    "Konkani"
+  ],
+  "fees": "₹400",
+  "rating": 4.8,
+  "mobile_no": {
+    "$numberLong": "9876592917"
+  },
+  "gender": "Male"
+},
+{
+  "_id": {
+    "$oid": "6850dc61c427b5cf671e74ca"
+  },
+  "name": "Neha Soni",
+  "district": "Botad",
+  "experience": 2,
+  "age": 30,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹200",
+  "rating": 4,
+  "mobile_no": {
+    "$numberLong": "7585954565"
+  },
+  "gender": "Female"
+},
+{
+  "_id": {
+    "$oid": "6850dcb5c427b5cf671e74cb"
+  },
+  "name": "Yogesh Solanki",
+  "district": "Chhota Udaipur",
+  "experience": 8,
+  "age": 38,
+  "language": [
+    "Rajasthani",
+    "Hindi",
+    "Gujarati",
+    "English",
+    "Assamese"
+  ],
+  "fees": "₹300",
+  "rating": 4.3,
+  "mobile_no": {
+    "$numberLong": "9876571245"
+  },
+  "gender": "Male"
+},
+{
+  "_id": {
+    "$oid": "6850dcffc427b5cf671e74cc"
+  },
+  "name": "Het Shah",
+  "district": "Chhota Udaipur",
+  "experience": 0,
+  "age": 25,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹500",
+  "rating": 3.8,
+  "mobile_no": {
+    "$numberLong": "7856949494"
+  },
+  "gender": "Male"
+},
+{
+  "_id": {
+    "$oid": "6850dd8dc427b5cf671e74cd"
+  },
+  "name": "Nirali khan",
+  "district": "Dahod",
+  "experience": 1,
+  "age": 40,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "Konkani"
+  ],
+  "fees": "₹400",
+  "rating": 3.9,
+  "mobile_no": {
+    "$numberLong": "9876552687"
+  },
+  "gender": "Female"
+},
+{
+  "_id": {
+    "$oid": "6850de2ec427b5cf671e74ce"
+  },
+  "name": "Ramesh Parmar",
+  "district": "Dahod",
+  "experience": 3,
+  "age": 39,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹600",
+  "rating": 3.7,
+  "mobile_no": {
+    "$numberLong": "8565659545"
+  },
+  "gender": "Male"
+},
+{
+  "_id": {
+    "$oid": "6850de75c427b5cf671e74cf"
+  },
+  "name": "Sohil Kansara",
+  "district": "Dang",
+  "experience": 6,
+  "age": 36,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹200",
+  "rating": 4,
+  "mobile_no": {
+    "$numberLong": "9876574375"
+  },
+  "gender": "Female"
+},
+{
+  "_id": {
+    "$oid": "6850dec3c427b5cf671e74d0"
+  },
+  "name": "Kishan Chaudhary",
+  "district": "Dang",
+  "experience": 9,
+  "age": 39,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹300",
+  "rating": 4.1,
+  "mobile_no": {
+    "$numberLong": "7158694236"
+  },
+  "gender": "Male"
+},
+{
+  "_id": {
+    "$oid": "6850df15c427b5cf671e74d1"
+  },
+  "name": "Aarav Dave",
+  "district": "Devbhoomi Dwarka",
+  "experience": 5,
+  "age": 40,
+  "language": [
+    "Hindi",
+    "Punjabi",
+    "Gujarati",
+    "Rajasthani"
+  ],
+  "fees": "₹300",
+  "rating": 4.7,
+  "mobile_no": {
+    "$numberLong": "9876578096"
+  },
+  "gender": "Male"
+},
+{
+  "_id": {
+    "$oid": "6850df59c427b5cf671e74d2"
+  },
+  "name": "Anjali Joshi",
+  "district": "Devbhoomi Dwarka",
+  "experience": 7,
+  "age": 36,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹500",
+  "rating": 4.2,
+  "mobile_no": {
+    "$numberLong": "9865327415"
+  },
+  "gender": "Female"
+},
+{
+  "_id": {
+    "$oid": "6850dfe4c427b5cf671e74d3"
+  },
+  "name": "Aarti Trivedi",
+  "district": "Gandhinagar",
+  "experience": 9,
+  "age": 40,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English",
+    "Malayalam",
+    "Odia"
+  ],
+  "fees": "₹600",
+  "rating": 3.7,
+  "mobile_no": {
+    "$numberLong": "9876556342"
+  },
+  "gender": "Female"
+},
+{
+  "_id": {
+    "$oid": "6850e02dc427b5cf671e74d4"
+  },
+  "name": "Champaklal Mistri",
+  "district": "Gandhinagar",
+  "experience": 4,
+  "age": 36,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹400",
+  "rating": 4.5,
+  "mobile_no": {
+    "$numberLong": "7894561230"
+  },
+  "gender": "Male"
+},
+{
+  "_id": {
+    "$oid": "6850e088c427b5cf671e74d5"
+  },
+  "name": "Meera Thakkar",
+  "district": "Girsomnath",
+  "experience": 7,
+  "age": 43,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English",
+    "Tamil"
+  ],
+  "fees": "₹500",
+  "rating": 4.4,
+  "mobile_no": {
+    "$numberLong": "9876530638"
+  },
+  "gender": "Female"
+},
+{
+  "_id": {
+    "$oid": "6850e0c1c427b5cf671e74d6"
+  },
+  "name": "Shivani Sojitra",
+  "district": "Girsomnath",
+  "experience": 3,
+  "age": 33,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹600",
+  "rating": 4.6,
+  "mobile_no": {
+    "$numberLong": "9080704563"
+  },
+  "gender": "Female"
+},
+{
+  "_id": {
+    "$oid": "6850e104c427b5cf671e74d7"
+  },
+  "name": "Pritesh Gohil",
+  "district": "Jamnagar",
+  "experience": 2,
+  "age": 29,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English",
+    "Urdu"
+  ],
+  "fees": "₹500",
+  "rating": 4,
+  "mobile_no": {
+    "$numberLong": "9876579966"
+  },
+  "gender": "Male"
+},
+{
+  "_id": {
+    "$oid": "6850e14fc427b5cf671e74d8"
+  },
+  "name": "Dipali Shah",
+  "district": "Jamnagar",
+  "experience": 5,
+  "age": 30,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹600",
+  "rating": 4.2,
+  "mobile_no": {
+    "$numberLong": "6958476362"
+  },
+  "gender": "Female"
+},
+{
+  "_id": {
+    "$oid": "6850e352c427b5cf671e74d9"
+  },
+  "name": "Kiran Solanki",
+  "district": "Junagadh",
+  "experience": 2,
+  "age": 29,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "Odia",
+    "Assamese"
+  ],
+  "fees": "₹500",
+  "rating": 4.5,
+  "mobile_no": {
+    "$numberLong": "9876570004"
+  },
+  "gender": "Female"
+},
+{
+  "_id": {
+    "$oid": "6850e47fc427b5cf671e74da"
+  },
+  "name": "Narendra Jadav",
+  "district": "Junagadh",
+  "experience": 7,
+  "age": 36,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹500",
+  "rating": 4.3,
+  "mobile_no": {
+    "$numberLong": "6353602666"
+  },
+  "gender": "Male"
+},
+{
+  "_id": {
+    "$oid": "6850e4e5c427b5cf671e74db"
+  },
+  "name": "Jigisha Vyas",
+  "district": "Kheda",
+  "experience": 9,
+  "age": 39,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹400",
+  "rating": 4.1,
+  "mobile_no": {
+    "$numberLong": "9876558707"
+  },
+  "gender": "Female"
+},
+{
+  "_id": {
+    "$oid": "6850e526c427b5cf671e74dc"
+  },
+  "name": "Mira Mane",
+  "district": "Kheda",
+  "experience": 3,
+  "age": 33,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹600",
+  "rating": 4.2,
+  "mobile_no": {
+    "$numberLong": "8899665533"
+  },
+  "gender": "Female"
+},
+{
+  "_id": {
+    "$oid": "6850e58ec427b5cf671e74dd"
+  },
+  "name": "Vishva Parmar",
+  "district": "Kutch",
+  "experience": 5,
+  "age": 40,
+  "language": [
+    "Hindi",
+    "Marathi",
+    "Gujarati",
+    "Konkani"
+  ],
+  "fees": "₹500",
+  "rating": 4,
+  "mobile_no": {
+    "$numberLong": "9876537060"
+  },
+  "gender": "Female"
+},
+{
+  "_id": {
+    "$oid": "6850e5d6c427b5cf671e74de"
+  },
+  "name": "Jethalal Gada",
+  "district": "Kutch",
+  "experience": 8,
+  "age": 41,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹500",
+  "rating": 4.4,
+  "mobile_no": {
+    "$numberLong": "9685968596"
+  },
+  "gender": "Male"
+},
+{
+  "_id": {
+    "$oid": "6850e6f2c427b5cf671e74df"
+  },
+  "name": "Ranveer Parekh",
+  "district": "Kutch",
+  "experience": 2,
+  "age": 29,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹500",
+  "rating": 3.6,
+  "mobile_no": {
+    "$numberLong": "9635356935"
+  },
+  "gender": "Male"
+},
+{
+  "_id": {
+    "$oid": "6850ea0fc427b5cf671e74e0"
+  },
+  "name": "Hemant Darji",
+  "district": "Kutch",
+  "experience": 5,
+  "age": 38,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹500",
+  "rating": 3.8,
+  "mobile_no": {
+    "$numberLong": "9866553314"
+  },
+  "gender": "Male"
+},
+{
+  "_id": {
+    "$oid": "6850ea53c427b5cf671e74e1"
+  },
+  "name": "Pranav Pandiya",
+  "district": "Kutch",
+  "experience": 7,
+  "age": 37,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹500",
+  "rating": 3.9,
+  "mobile_no": {
+    "$numberLong": "9988656566"
+  },
+  "gender": "Male"
+},
+{
+  "_id": {
+    "$oid": "6850eb0cc427b5cf671e74e2"
+  },
+  "name": "Dipiksha Panchal",
+  "district": "Mahisagar",
+  "experience": 4,
+  "age": 30,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English",
+    "Tamil",
+    "Punjabi"
+  ],
+  "fees": "₹400",
+  "rating": 4,
+  "mobile_no": {
+    "$numberLong": "9876571028"
+  },
+  "gender": "Female"
+},
+{
+  "_id": {
+    "$oid": "6850ed54c427b5cf671e74e3"
+  },
+  "name": "Dipen Panchal",
+  "district": "Mahisagar",
+  "experience": 2,
+  "age": 33,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹600",
+  "rating": 3.9,
+  "mobile_no": {
+    "$numberLong": "9655336458"
+  },
+  "gender": "Male"
+},
+{
+  "_id": {
+    "$oid": "6850eed5c427b5cf671e74e4"
+  },
+  "name": "Ravi Thakkar",
+  "district": "Mehsana",
+  "experience": 4,
+  "age": 39,
+  "language": [
+    "Hindi",
+    "Gujarati"
+  ],
+  "fees": "₹400",
+  "rating": 4.5,
+  "mobile_no": {
+    "$numberLong": "9876542544"
+  },
+  "gender": "Male"
+},
+{
+  "_id": {
+    "$oid": "6850ef3cc427b5cf671e74e5"
+  },
+  "name": "Sahil Jadav",
+  "district": "Mehsana",
+  "experience": 5,
+  "age": 35,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹500",
+  "rating": 3.9,
+  "mobile_no": {
+    "$numberLong": "6969585844"
+  },
+  "gender": "Male"
+},
+{
+  "_id": {
+    "$oid": "6850ef84c427b5cf671e74e6"
+  },
+  "name": "Twinkle Rana",
+  "district": "Morbi",
+  "experience": 6,
+  "age": 39,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹600",
+  "rating": 4.9,
+  "mobile_no": {
+    "$numberLong": "9876534029"
+  },
+  "gender": "Female"
+},
+{
+  "_id": {
+    "$oid": "6850efc4c427b5cf671e74e7"
+  },
+  "name": "Nayan Darji",
+  "district": "Morbi",
+  "experience": 4,
+  "age": 36,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹200",
+  "rating": 4.8,
+  "mobile_no": {
+    "$numberLong": "6969558877"
+  },
+  "gender": "Male"
+},
+{
+  "_id": {
+    "$oid": "6850f028c427b5cf671e74e8"
+  },
+  "name": "Chirag Sharma",
+  "district": "Narmada",
+  "experience": 3,
+  "age": 33,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "Marathi"
+  ],
+  "fees": "₹400",
+  "rating": 4.4,
+  "mobile_no": {
+    "$numberLong": "9876511736"
+  },
+  "gender": "Female"
+},
+{
+  "_id": {
+    "$oid": "6850f075c427b5cf671e74e9"
+  },
+  "name": "Bhavesh Rana",
+  "district": "Narmada",
+  "experience": 6,
+  "age": 38,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹500",
+  "rating": 4.6,
+  "mobile_no": {
+    "$numberLong": "9685958699"
+  },
+  "gender": "Male"
+},
+{
+  "_id": {
+    "$oid": "6850f0d3c427b5cf671e74ea"
+  },
+  "name": "Amita Patel",
+  "district": "Navsari",
+  "experience": 2,
+  "age": 40,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "Telugu"
+  ],
+  "fees": "₹600",
+  "rating": 4.2,
+  "mobile_no": {
+    "$numberLong": "9876531096"
+  },
+  "gender": "Female"
+},
+{
+  "_id": {
+    "$oid": "6850f10fc427b5cf671e74eb"
+  },
+  "name": "Mahesh Bhatt",
+  "district": "Navsari",
+  "experience": 4,
+  "age": 33,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹500",
+  "rating": 4.6,
+  "mobile_no": {
+    "$numberLong": "9966558868"
+  },
+  "gender": "Male"
+},
+{
+  "_id": {
+    "$oid": "6850f17dc427b5cf671e74ec"
+  },
+  "name": "Parth Shah",
+  "district": "Panchmahal",
+  "experience": 6,
+  "age": 40,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹400",
+  "rating": 3.7,
+  "mobile_no": {
+    "$numberLong": "9876586904"
+  },
+  "gender": "Male"
+},
+{
+  "_id": {
+    "$oid": "6850f1b4c427b5cf671e74ed"
+  },
+  "name": "Jubal Maru",
+  "district": "Panchmahal",
+  "experience": 1,
+  "age": 31,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹500",
+  "rating": 3.9,
+  "mobile_no": {
+    "$numberLong": "9685959595"
+  },
+  "gender": "Male"
+},
+{
+  "_id": {
+    "$oid": "6850f20dc427b5cf671e74ee"
+  },
+  "name": "Komal Vyas",
+  "district": "Patan",
+  "experience": 5,
+  "age": 35,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "Rajasthani"
+  ],
+  "fees": "₹600",
+  "rating": 4.5,
+  "mobile_no": {
+    "$numberLong": "9876512251"
+  },
+  "gender": "Female"
+},
+{
+  "_id": {
+    "$oid": "6850f247c427b5cf671e74ef"
+  },
+  "name": "Kailash Parekh",
+  "district": "Patan",
+  "experience": 5,
+  "age": 36,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹400",
+  "rating": 4.4,
+  "mobile_no": {
+    "$numberLong": "9104419077"
+  },
+  "gender": "Male"
+},
+{
+  "_id": {
+    "$oid": "6850f287c427b5cf671e74f0"
+  },
+  "name": "Darshan Modi",
+  "district": "Porbandar",
+  "experience": 6,
+  "age": 35,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English",
+    "Punjabi"
+  ],
+  "fees": "₹500",
+  "rating": 4.2,
+  "mobile_no": {
+    "$numberLong": "9876556898"
+  },
+  "gender": "Male"
+},
+{
+  "_id": {
+    "$oid": "6850f2bac427b5cf671e74f1"
+  },
+  "name": "Dhiraj Patel",
+  "district": "Porbandar",
+  "experience": 6,
+  "age": 36,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹600",
+  "rating": 4.2,
+  "mobile_no": {
+    "$numberLong": "9869695989"
+  },
+  "gender": "Male"
+},
+{
+  "_id": {
+    "$oid": "6850f300c427b5cf671e74f2"
+  },
+  "name": "Hiral Ganchi",
+  "district": "Rajkot",
+  "experience": 8,
+  "age": 44,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "Kannada"
+  ],
+  "fees": "₹500",
+  "rating": 4.2,
+  "mobile_no": {
+    "$numberLong": "9876522738"
+  },
+  "gender": "Male"
+},
+{
+  "_id": {
+    "$oid": "6850f336c427b5cf671e74f3"
+  },
+  "name": "Jatin Purani",
+  "district": "Rajkot",
+  "experience": 3,
+  "age": 33,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹600",
+  "rating": 4.2,
+  "mobile_no": {
+    "$numberLong": "9696965555"
+  },
+  "gender": "Male"
+},
+{
+  "_id": {
+    "$oid": "6850f37cc427b5cf671e74f4"
+  },
+  "name": "Mitali Dave",
+  "district": "Sabarkantha",
+  "experience": 3,
+  "age": 32,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "Punjabi",
+    "Rajasthani"
+  ],
+  "fees": "₹400",
+  "rating": 3.8,
+  "mobile_no": {
+    "$numberLong": "9876566592"
+  },
+  "gender": "Female"
+},
+{
+  "_id": {
+    "$oid": "6850f3c2c427b5cf671e74f5"
+  },
+  "name": "Mitesh Parmar",
+  "district": "Sabarkantha",
+  "experience": 4,
+  "age": 35,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹500",
+  "rating": 4.2,
+  "mobile_no": {
+    "$numberLong": "9635585845"
+  },
+  "gender": "Male"
+},
+{
+  "_id": {
+    "$oid": "6850f3f3c427b5cf671e74f6"
+  },
+  "name": "Keshav Jadav",
+  "district": "Surat",
+  "experience": 5,
+  "age": 36,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹600",
+  "rating": 3.8,
+  "mobile_no": {
+    "$numberLong": "9876514560"
+  },
+  "gender": "Male"
+},
+{
+  "_id": {
+    "$oid": "6850f42fc427b5cf671e74f7"
+  },
+  "name": "Dhiren Purohit",
+  "district": "Surat",
+  "experience": 7,
+  "age": 36,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹400",
+  "rating": 4.6,
+  "mobile_no": {
+    "$numberLong": "9685969633"
+  },
+  "gender": "Male"
+},
+{
+  "_id": {
+    "$oid": "6850f474c427b5cf671e74f8"
+  },
+  "name": "Suresh Chauhan",
+  "district": "Surendranagar",
+  "experience": 4,
+  "age": 30,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English",
+    "Marathi",
+    "Kannada"
+  ],
+  "fees": "₹500",
+  "rating": 4.4,
+  "mobile_no": {
+    "$numberLong": "9876596351"
+  },
+  "gender": "Male"
+},
+{
+  "_id": {
+    "$oid": "6850f4b3c427b5cf671e74f9"
+  },
+  "name": "Pratham Patel",
+  "district": "Surendranagar",
+  "experience": 7,
+  "age": 36,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹400",
+  "rating": 4.2,
+  "mobile_no": {
+    "$numberLong": "9603350401"
+  },
+  "gender": "Male"
+},
+{
+  "_id": {
+    "$oid": "6850f4f5c427b5cf671e74fa"
+  },
+  "name": "Nirav Jadeja",
+  "district": "Tapi",
+  "experience": 2,
+  "age": 32,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹600",
+  "rating": 4,
+  "mobile_no": {
+    "$numberLong": "9876599972"
+  },
+  "gender": "Male"
+},
+{
+  "_id": {
+    "$oid": "6850f51ec427b5cf671e74fb"
+  },
+  "name": "Nisha Bhagat",
+  "district": "Tapi",
+  "experience": 7,
+  "age": 39,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹400",
+  "rating": 4.3,
+  "mobile_no": {
+    "$numberLong": "9866303010"
+  },
+  "gender": "Female"
+},
+{
+  "_id": {
+    "$oid": "6850f555c427b5cf671e74fc"
+  },
+  "name": "Nilesh Puri",
+  "district": "Vadodara",
+  "experience": 9,
+  "age": 44,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹500",
+  "rating": 4.1,
+  "mobile_no": {
+    "$numberLong": "9876542904"
+  },
+  "gender": "Female"
+},
+{
+  "_id": {
+    "$oid": "6850f584c427b5cf671e74fd"
+  },
+  "name": "Nilesh Patel",
+  "district": "Vadodara",
+  "experience": 4,
+  "age": 34,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹500",
+  "rating": 3.9,
+  "mobile_no": {
+    "$numberLong": "7885541223"
+  },
+  "gender": "Male"
+},
+{
+  "_id": {
+    "$oid": "6850f5c2c427b5cf671e74fe"
+  },
+  "name": "Ronak Shah",
+  "district": "Valsad",
+  "experience": 1,
+  "age": 30,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English",
+    "Telugu",
+    "kannada"
+  ],
+  "fees": "₹600",
+  "rating": 4.5,
+  "mobile_no": {
+    "$numberLong": "9876580689"
+  },
+  "gender": "Male"
+},
+{
+  "_id": {
+    "$oid": "6850f5efc427b5cf671e74ff"
+  },
+  "name": "Mayank Damodar",
+  "district": "Valsad",
+  "experience": 11,
+  "age": 44,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹200",
+  "rating": 3.8,
+  "mobile_no": {
+    "$numberLong": "9224252630"
+  },
+  "gender": "Male"
+},
+{
+  "_id": {
+    "$oid": "68b6a00910bf38cf7c54d3e3"
+  },
+  "name": "Rakesh Mehta",
+  "district": "Ahmedabad",
+  "experience": 1,
+  "age": 25,
+  "language": [
+    "Kannda",
+    "Hindi",
+    "Gujarati",
+    "English",
+    "Assamese"
+  ],
+  "fees": "₹500",
+  "rating": 3.9,
+  "mobile_no": {
+    "$numberLong": "9876517220"
+  },
+  "gender": "Male",
+  "username": "rakesh@25",
+  "password": "Rakesh_123"
+},
+{
+  "_id": {
+    "$oid": "68b6a03d10bf38cf7c54d3e4"
+  },
+  "name": "Rahul Patel",
+  "district": "Ahmedabad",
+  "experience": 2,
+  "age": 30,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English",
+    "Odia"
+  ],
+  "fees": "₹400",
+  "rating": 4.2,
+  "mobile_no": {
+    "$numberLong": "8352225466"
+  },
+  "gender": "Male",
+  "username": "rahul@30",
+  "password": "Rahul_123"
+},
+{
+  "_id": {
+    "$oid": "68b6a06910bf38cf7c54d3e5"
+  },
+  "name": "Soniya Mali",
+  "district": "Ahmedabad",
+  "experience": 5,
+  "age": 31,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹400",
+  "rating": 4,
+  "mobile_no": {
+    "$numberLong": "8985859685"
+  },
+  "gender": "Female",
+  "username": "soniya@31",
+  "password": "Soniya_456"
+},
+{
+  "_id": {
+    "$oid": "68b6a08d10bf38cf7c54d3e6"
+  },
+  "name": "Prathvi Sharma",
+  "district": "Amreli",
+  "experience": 3,
+  "age": 35,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English",
+    "Odia"
+  ],
+  "fees": "₹500",
+  "rating": 4.4,
+  "mobile_no": {
+    "$numberLong": "9876529211"
+  },
+  "gender": "Female",
+  "username": "prathvi@35",
+  "password": "Prathvi_#35"
+},
+{
+  "_id": {
+    "$oid": "68b6a0b210bf38cf7c54d3e7"
+  },
+  "name": "Parth Goswami",
+  "district": "Amreli",
+  "experience": 4,
+  "age": 33,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹600",
+  "rating": 3.3,
+  "mobile_no": {
+    "$numberLong": "8245569685"
+  },
+  "gender": "Male",
+  "username": "parth@33",
+  "password": "Parth@_33"
+},
+{
+  "_id": {
+    "$oid": "68b6a0d910bf38cf7c54d3e8"
+  },
+  "name": "Nirav Shah",
+  "district": "Anand",
+  "experience": 8,
+  "age": 36,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹200",
+  "rating": 3.9,
+  "mobile_no": {
+    "$numberLong": "9876544549"
+  },
+  "gender": "Male",
+  "username": "nirav@36",
+  "password": "Nirav#_08"
+},
+{
+  "_id": {
+    "$oid": "68b6a11010bf38cf7c54d3e9"
+  },
+  "name": "Jinal Shah",
+  "district": "Anand",
+  "experience": 9,
+  "age": 40,
+  "language": [
+    "Hindi",
+    "Gujarati"
+  ],
+  "fees": "₹300",
+  "rating": 4.1,
+  "mobile_no": {
+    "$numberLong": "7855669944"
+  },
+  "gender": "Female",
+  "username": "jinal@40",
+  "password": "Jinu@&09"
+},
+{
+  "_id": {
+    "$oid": "68b6a13e10bf38cf7c54d3ea"
+  },
+  "name": "Karina Rathod",
+  "district": "Aravalli",
+  "experience": 10,
+  "age": 42,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English",
+    "Konkani"
+  ],
+  "fees": "₹500",
+  "rating": 4.2,
+  "mobile_no": {
+    "$numberLong": "9876523418"
+  },
+  "gender": "Female",
+  "username": "karina@10",
+  "password": "Karina$@42"
+},
+{
+  "_id": {
+    "$oid": "68b6a16c10bf38cf7c54d3eb"
+  },
+  "name": "Manish Rathod",
+  "district": "Aravalli",
+  "experience": 2,
+  "age": 49,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹300",
+  "rating": 4.3,
+  "mobile_no": {
+    "$numberLong": "7856939512"
+  },
+  "gender": "Male",
+  "username": "manish@49",
+  "password": "Mani@_02"
+},
+{
+  "_id": {
+    "$oid": "68b6a18d10bf38cf7c54d3ec"
+  },
+  "name": "Rita Patel",
+  "district": "Banaskantha",
+  "experience": 7,
+  "age": 33,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹600",
+  "rating": 4.6,
+  "mobile_no": {
+    "$numberLong": "9876591837"
+  },
+  "gender": "Female",
+  "username": "rita@33",
+  "password": "rita_07"
+},
+{
+  "_id": {
+    "$oid": "68b6a1b210bf38cf7c54d3ed"
+  },
+  "name": "Siya Thakor",
+  "district": "Banaskantha",
+  "experience": 4,
+  "age": 42,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹500",
+  "rating": 4.8,
+  "mobile_no": {
+    "$numberLong": "7558586965"
+  },
+  "gender": "Female",
+  "username": "siya@42",
+  "password": "Siya_$04"
+},
+{
+  "_id": {
+    "$oid": "68b6a1d910bf38cf7c54d3ee"
+  },
+  "name": "Nimisha Desai",
+  "district": "Bharuch",
+  "experience": 3,
+  "age": 36,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹600",
+  "rating": 3.7,
+  "mobile_no": {
+    "$numberLong": "9876586837"
+  },
+  "gender": "Female",
+  "username": "nimisha@36",
+  "password": "Nimi@_03"
+},
+{
+  "_id": {
+    "$oid": "68b6a20210bf38cf7c54d3ef"
+  },
+  "name": "Pramukh Parekh",
+  "district": "Bharuch",
+  "experience": 8,
+  "age": 36,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹640",
+  "rating": 4.4,
+  "mobile_no": {
+    "$numberLong": "7558669555"
+  },
+  "gender": "Male",
+  "username": "pramukh@36",
+  "password": "Pramukh_08"
+},
+{
+  "_id": {
+    "$oid": "68b6a23010bf38cf7c54d3f0"
+  },
+  "name": "Sanjay Chauhan",
+  "district": "Bhavnagar",
+  "experience": 9,
+  "age": 39,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English",
+    "Assamese"
+  ],
+  "fees": "₹500",
+  "rating": 4.9,
+  "mobile_no": {
+    "$numberLong": "9876549594"
+  },
+  "gender": "Male",
+  "username": "sanjay@39",
+  "password": "Sanjay_09#"
+},
+{
+  "_id": {
+    "$oid": "68b6a27610bf38cf7c54d3f1"
+  },
+  "name": "Sharma Shah",
+  "district": "Bhavnagar",
+  "experience": 4,
+  "age": 40,
+  "language": [
+    "Hindi",
+    "Gujarati"
+  ],
+  "fees": "₹600",
+  "rating": 3.9,
+  "mobile_no": {
+    "$numberLong": "7888087000"
+  },
+  "gender": "Male",
+  "username": "sharma@40",
+  "password": "Sharma_#04"
+},
+{
+  "_id": {
+    "$oid": "68b6a29f10bf38cf7c54d3f2"
+  },
+  "name": "Arjun Gandhi",
+  "district": "Botad",
+  "experience": 7,
+  "age": 39,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English",
+    "Konkani"
+  ],
+  "fees": "₹400",
+  "rating": 4.8,
+  "mobile_no": {
+    "$numberLong": "9876592917"
+  },
+  "gender": "Male",
+  "username": "arjun@39",
+  "password": "Arjun_07"
+},
+{
+  "_id": {
+    "$oid": "68b6a2c210bf38cf7c54d3f3"
+  },
+  "name": "Neha Soni",
+  "district": "Botad",
+  "experience": 2,
+  "age": 30,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹200",
+  "rating": 4,
+  "mobile_no": {
+    "$numberLong": "7585954565"
+  },
+  "gender": "Female",
+  "username": "neha@30",
+  "password": "Neha@_02"
+},
+{
+  "_id": {
+    "$oid": "68b6a2ec10bf38cf7c54d3f4"
+  },
+  "name": "Yogesh Solanki",
+  "district": "Chhota Udaipur",
+  "experience": 8,
+  "age": 38,
+  "language": [
+    "Rajasthani",
+    "Hindi",
+    "Gujarati",
+    "English",
+    "Assamese"
+  ],
+  "fees": "₹300",
+  "rating": 4.3,
+  "mobile_no": {
+    "$numberLong": "9876571245"
+  },
+  "gender": "Male",
+  "username": "yogesh@38",
+  "password": "Yoge08@sh"
+},
+{
+  "_id": {
+    "$oid": "68b6a31010bf38cf7c54d3f5"
+  },
+  "name": "Het Shah",
+  "district": "Chhota Udaipur",
+  "experience": 0,
+  "age": 25,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹500",
+  "rating": 3.8,
+  "mobile_no": {
+    "$numberLong": "7856949494"
+  },
+  "gender": "Male",
+  "username": "het@25",
+  "password": "het#_@01"
+},
+{
+  "_id": {
+    "$oid": "68b6a33510bf38cf7c54d3f6"
+  },
+  "name": "Nirali khan",
+  "district": "Dahod",
+  "experience": 1,
+  "age": 40,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "Konkani"
+  ],
+  "fees": "₹400",
+  "rating": 3.9,
+  "mobile_no": {
+    "$numberLong": "9876552687"
+  },
+  "gender": "Female",
+  "username": "nirali@40",
+  "password": "Nirali_@11"
+},
+{
+  "_id": {
+    "$oid": "68b6a36610bf38cf7c54d3f7"
+  },
+  "name": "Ramesh Parmar",
+  "district": "Dahod",
+  "experience": 3,
+  "age": 39,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹600",
+  "rating": 3.7,
+  "mobile_no": {
+    "$numberLong": "8565659545"
+  },
+  "gender": "Male",
+  "username": "ramesh@39",
+  "password": "RamePa@03"
+},
+{
+  "_id": {
+    "$oid": "68b6a39810bf38cf7c54d3f8"
+  },
+  "name": "Sohil Kansara",
+  "district": "Dang",
+  "experience": 6,
+  "age": 36,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹200",
+  "rating": 4,
+  "mobile_no": {
+    "$numberLong": "9876574375"
+  },
+  "gender": "Female",
+  "username": "sohil@36",
+  "password": "Sohil@_06"
+},
+{
+  "_id": {
+    "$oid": "68b6a41310bf38cf7c54d3f9"
+  },
+  "name": "Kishan Chaudhary",
+  "district": "Dang",
+  "experience": 9,
+  "age": 39,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹300",
+  "rating": 4.1,
+  "mobile_no": {
+    "$numberLong": "7158694236"
+  },
+  "gender": "Male",
+  "username": "kishan@39",
+  "password": "Kishan_#09"
+},
+{
+  "_id": {
+    "$oid": "68b6a44410bf38cf7c54d3fa"
+  },
+  "name": "Aarav Dave",
+  "district": "Devbhoomi Dwarka",
+  "experience": 5,
+  "age": 40,
+  "language": [
+    "Hindi",
+    "Punjabi",
+    "Gujarati",
+    "Rajasthani"
+  ],
+  "fees": "₹300",
+  "rating": 4.7,
+  "mobile_no": {
+    "$numberLong": "9876578096"
+  },
+  "gender": "Male",
+  "username": "aarav@05",
+  "password": "Aarav@_05"
+},
+{
+  "_id": {
+    "$oid": "68b6a47e10bf38cf7c54d3fb"
+  },
+  "name": "Anjali Joshi",
+  "district": "Devbhoomi Dwarka",
+  "experience": 7,
+  "age": 36,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹500",
+  "rating": 4.2,
+  "mobile_no": {
+    "$numberLong": "9865327415"
+  },
+  "gender": "Female",
+  "username": "anjali@36",
+  "password": "Anjali_$07"
+},
+{
+  "_id": {
+    "$oid": "68b6a4a610bf38cf7c54d3fc"
+  },
+  "name": "Aarti Trivedi",
+  "district": "Gandhinagar",
+  "experience": 9,
+  "age": 40,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English",
+    "Malayalam",
+    "Odia"
+  ],
+  "fees": "₹600",
+  "rating": 3.7,
+  "mobile_no": {
+    "$numberLong": "9876556342"
+  },
+  "gender": "Female",
+  "username": "aarti@40",
+  "password": "Aarti&@09"
+},
+{
+  "_id": {
+    "$oid": "68b6a4d010bf38cf7c54d3fd"
+  },
+  "name": "Champaklal Mistri",
+  "district": "Gandhinagar",
+  "experience": 4,
+  "age": 36,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹400",
+  "rating": 4.5,
+  "mobile_no": {
+    "$numberLong": "7894561230"
+  },
+  "gender": "Male",
+  "username": "mistri@36",
+  "password": "Champaklal@04M"
+},
+{
+  "_id": {
+    "$oid": "68b6a4fa10bf38cf7c54d3fe"
+  },
+  "name": "Meera Thakkar",
+  "district": "Girsomnath",
+  "experience": 7,
+  "age": 43,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English",
+    "Tamil"
+  ],
+  "fees": "₹500",
+  "rating": 4.4,
+  "mobile_no": {
+    "$numberLong": "9876530638"
+  },
+  "gender": "Female",
+  "username": "meera@43",
+  "password": "Meeru@_07"
+},
+{
+  "_id": {
+    "$oid": "68b6a52d10bf38cf7c54d3ff"
+  },
+  "name": "Shivani Sojitra",
+  "district": "Girsomnath",
+  "experience": 3,
+  "age": 33,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹600",
+  "rating": 4.6,
+  "mobile_no": {
+    "$numberLong": "9080704563"
+  },
+  "gender": "Female",
+  "username": "shivani@33",
+  "password": "Shiv@_03"
+},
+{
+  "_id": {
+    "$oid": "68b6a55710bf38cf7c54d400"
+  },
+  "name": "Pritesh Gohil",
+  "district": "Jamnagar",
+  "experience": 2,
+  "age": 29,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English",
+    "Urdu"
+  ],
+  "fees": "₹500",
+  "rating": 4,
+  "mobile_no": {
+    "$numberLong": "9876579966"
+  },
+  "gender": "Male",
+  "username": "pritesh@29",
+  "password": "Prit_$02"
+},
+{
+  "_id": {
+    "$oid": "68b6a57a10bf38cf7c54d401"
+  },
+  "name": "Dipali Shah",
+  "district": "Jamnagar",
+  "experience": 5,
+  "age": 30,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹600",
+  "rating": 4.2,
+  "mobile_no": {
+    "$numberLong": "6958476362"
+  },
+  "gender": "Female",
+  "username": "depali@30",
+  "password": "Dipu@_05"
+},
+{
+  "_id": {
+    "$oid": "68b6a5c810bf38cf7c54d402"
+  },
+  "name": "Kiran Solanki",
+  "district": "Junagadh",
+  "experience": 2,
+  "age": 29,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "Odia",
+    "Assamese"
+  ],
+  "fees": "₹500",
+  "rating": 4.5,
+  "mobile_no": {
+    "$numberLong": "9876570004"
+  },
+  "gender": "Female",
+  "username": "kiran@29",
+  "password": "Kiran02@So"
+},
+{
+  "_id": {
+    "$oid": "68b6a60210bf38cf7c54d403"
+  },
+  "name": "Narendra Jadav",
+  "district": "Junagadh",
+  "experience": 7,
+  "age": 36,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹500",
+  "rating": 4.3,
+  "mobile_no": {
+    "$numberLong": "6353602666"
+  },
+  "gender": "Male",
+  "username": "narendra@36",
+  "password": "Naren@dra07"
+},
+{
+  "_id": {
+    "$oid": "68b6a62d10bf38cf7c54d404"
+  },
+  "name": "Jigisha Vyas",
+  "district": "Kheda",
+  "experience": 9,
+  "age": 39,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹400",
+  "rating": 4.1,
+  "mobile_no": {
+    "$numberLong": "9876558707"
+  },
+  "gender": "Female",
+  "username": "jigisha@39",
+  "password": "Jigu09@"
+},
+{
+  "_id": {
+    "$oid": "68b6a64d10bf38cf7c54d405"
+  },
+  "name": "Mira Mane",
+  "district": "Kheda",
+  "experience": 3,
+  "age": 33,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹600",
+  "rating": 4.2,
+  "mobile_no": {
+    "$numberLong": "8899665533"
+  },
+  "gender": "Female",
+  "username": "mira@33",
+  "password": "Mira_03"
+},
+{
+  "_id": {
+    "$oid": "68b6a67910bf38cf7c54d406"
+  },
+  "name": "Vishva Parmar",
+  "district": "Kutch",
+  "experience": 5,
+  "age": 40,
+  "language": [
+    "Hindi",
+    "Marathi",
+    "Gujarati",
+    "Konkani"
+  ],
+  "fees": "₹500",
+  "rating": 4,
+  "mobile_no": {
+    "$numberLong": "9876537060"
+  },
+  "gender": "Female",
+  "username": "vishva@40",
+  "password": "Vishva@$05"
+},
+{
+  "_id": {
+    "$oid": "68b6a6ac10bf38cf7c54d407"
+  },
+  "name": "Jethalal Gada",
+  "district": "Kutch",
+  "experience": 8,
+  "age": 41,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹500",
+  "rating": 4.4,
+  "mobile_no": {
+    "$numberLong": "9685968596"
+  },
+  "gender": "Male",
+  "username": "jethalal@41",
+  "password": "Jetha08Lal"
+},
+{
+  "_id": {
+    "$oid": "68b6a6ed10bf38cf7c54d408"
+  },
+  "name": "Ranveer Parekh",
+  "district": "Kutch",
+  "experience": 2,
+  "age": 29,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹500",
+  "rating": 3.6,
+  "mobile_no": {
+    "$numberLong": "9635356935"
+  },
+  "gender": "Male",
+  "username": "ranveer@29",
+  "password": "Ran02_veer"
+},
+{
+  "_id": {
+    "$oid": "68b6a72610bf38cf7c54d409"
+  },
+  "name": "Hemant Darji",
+  "district": "Kutch",
+  "experience": 5,
+  "age": 38,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹500",
+  "rating": 3.8,
+  "mobile_no": {
+    "$numberLong": "9866553314"
+  },
+  "gender": "Male",
+  "username": "hemant@38",
+  "password": "Hemant@_05"
+},
+{
+  "_id": {
+    "$oid": "68b6a74e10bf38cf7c54d40a"
+  },
+  "name": "Pranav Pandiya",
+  "district": "Kutch",
+  "experience": 7,
+  "age": 37,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹500",
+  "rating": 3.9,
+  "mobile_no": {
+    "$numberLong": "9988656566"
+  },
+  "gender": "Male",
+  "username": "pranav@37",
+  "password": "Pranav_#07"
+},
+{
+  "_id": {
+    "$oid": "68b6a78010bf38cf7c54d40b"
+  },
+  "name": "Dipiksha Panchal",
+  "district": "Mahisagar",
+  "experience": 4,
+  "age": 30,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English",
+    "Tamil",
+    "Punjabi"
+  ],
+  "fees": "₹400",
+  "rating": 4,
+  "mobile_no": {
+    "$numberLong": "9876571028"
+  },
+  "gender": "Female",
+  "username": "dipiksha@30",
+  "password": "Dipik_04"
+},
+{
+  "_id": {
+    "$oid": "68b6a7aa10bf38cf7c54d40c"
+  },
+  "name": "Dipen Panchal",
+  "district": "Mahisagar",
+  "experience": 2,
+  "age": 33,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹600",
+  "rating": 3.9,
+  "mobile_no": {
+    "$numberLong": "9655336458"
+  },
+  "gender": "Male",
+  "username": "dipan@33",
+  "password": "Dipan_#02"
+},
+{
+  "_id": {
+    "$oid": "68b6a7d610bf38cf7c54d40d"
+  },
+  "name": "Ravi Thakkar",
+  "district": "Mehsana",
+  "experience": 4,
+  "age": 39,
+  "language": [
+    "Hindi",
+    "Gujarati"
+  ],
+  "fees": "₹400",
+  "rating": 4.5,
+  "mobile_no": {
+    "$numberLong": "9876542544"
+  },
+  "gender": "Male",
+  "username": "ravi@39",
+  "password": "Ravi04_Tha"
+},
+{
+  "_id": {
+    "$oid": "68b6a81510bf38cf7c54d40e"
+  },
+  "name": "Sahil Jadav",
+  "district": "Mehsana",
+  "experience": 5,
+  "age": 35,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹500",
+  "rating": 3.9,
+  "mobile_no": {
+    "$numberLong": "6969585844"
+  },
+  "gender": "Male",
+  "username": "Sahil@35",
+  "password": "Sahil_05"
+},
+{
+  "_id": {
+    "$oid": "68b6a84610bf38cf7c54d40f"
+  },
+  "name": "Twinkle Rana",
+  "district": "Morbi",
+  "experience": 6,
+  "age": 39,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹600",
+  "rating": 4.9,
+  "mobile_no": {
+    "$numberLong": "9876534029"
+  },
+  "gender": "Female",
+  "username": "twinkle@39",
+  "password": "Twinkle@06"
+},
+{
+  "_id": {
+    "$oid": "68b6a87010bf38cf7c54d410"
+  },
+  "name": "Nayan Darji",
+  "district": "Morbi",
+  "experience": 4,
+  "age": 36,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹200",
+  "rating": 4.8,
+  "mobile_no": {
+    "$numberLong": "6969558877"
+  },
+  "gender": "Male",
+  "username": "nayan@36",
+  "password": "Nayan_@04"
+},
+{
+  "_id": {
+    "$oid": "68b6a89310bf38cf7c54d411"
+  },
+  "name": "Chirag Sharma",
+  "district": "Narmada",
+  "experience": 3,
+  "age": 33,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "Marathi"
+  ],
+  "fees": "₹400",
+  "rating": 4.4,
+  "mobile_no": {
+    "$numberLong": "9876511736"
+  },
+  "gender": "Female",
+  "username": "chirag@33",
+  "password": "Chirag_331"
+},
+{
+  "_id": {
+    "$oid": "68b6a8c510bf38cf7c54d412"
+  },
+  "name": "Bhavesh Rana",
+  "district": "Narmada",
+  "experience": 6,
+  "age": 38,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹500",
+  "rating": 4.6,
+  "mobile_no": {
+    "$numberLong": "9685958699"
+  },
+  "gender": "Male",
+  "username": "Bhavesh@38",
+  "password": "Bhav06@Rana"
+},
+{
+  "_id": {
+    "$oid": "68b6a8f110bf38cf7c54d413"
+  },
+  "name": "Amita Patel",
+  "district": "Navsari",
+  "experience": 2,
+  "age": 40,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "Telugu"
+  ],
+  "fees": "₹600",
+  "rating": 4.2,
+  "mobile_no": {
+    "$numberLong": "9876531096"
+  },
+  "gender": "Female",
+  "username": "amita@40",
+  "password": "Amit02_Patel"
+},
+{
+  "_id": {
+    "$oid": "68b6a92f10bf38cf7c54d414"
+  },
+  "name": "Mahesh Bhatt",
+  "district": "Navsari",
+  "experience": 4,
+  "age": 33,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹500",
+  "rating": 4.6,
+  "mobile_no": {
+    "$numberLong": "9966558868"
+  },
+  "gender": "Male",
+  "username": "Mahesh@33",
+  "password": "Mahesh_044"
+},
+{
+  "_id": {
+    "$oid": "68b6a96010bf38cf7c54d415"
+  },
+  "name": "Parth Shah",
+  "district": "Panchmahal",
+  "experience": 6,
+  "age": 40,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹400",
+  "rating": 3.7,
+  "mobile_no": {
+    "$numberLong": "9876586904"
+  },
+  "gender": "Male",
+  "username": "ParthShah@40",
+  "password": "Shah_parth06"
+},
+{
+  "_id": {
+    "$oid": "68b6a99310bf38cf7c54d416"
+  },
+  "name": "Jubal Maru",
+  "district": "Panchmahal",
+  "experience": 1,
+  "age": 31,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹500",
+  "rating": 3.9,
+  "mobile_no": {
+    "$numberLong": "9685959595"
+  },
+  "gender": "Male",
+  "username": "Maru@31",
+  "password": "Jubal_Maru01"
+},
+{
+  "_id": {
+    "$oid": "68b6a9b710bf38cf7c54d417"
+  },
+  "name": "Komal Vyas",
+  "district": "Patan",
+  "experience": 5,
+  "age": 35,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "Rajasthani"
+  ],
+  "fees": "₹600",
+  "rating": 4.5,
+  "mobile_no": {
+    "$numberLong": "9876512251"
+  },
+  "gender": "Female",
+  "username": "komal@35",
+  "password": "Komal05@"
+},
+{
+  "_id": {
+    "$oid": "68b6a9dd10bf38cf7c54d418"
+  },
+  "name": "Kailash Parekh",
+  "district": "Patan",
+  "experience": 5,
+  "age": 36,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹400",
+  "rating": 4.4,
+  "mobile_no": {
+    "$numberLong": "9104419077"
+  },
+  "gender": "Male",
+  "username": "parekh@36",
+  "password": "kailash@_05"
+},
+{
+  "_id": {
+    "$oid": "68b6aa0410bf38cf7c54d419"
+  },
+  "name": "Darshan Modi",
+  "district": "Porbandar",
+  "experience": 6,
+  "age": 35,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English",
+    "Punjabi"
+  ],
+  "fees": "₹500",
+  "rating": 4.2,
+  "mobile_no": {
+    "$numberLong": "9876556898"
+  },
+  "gender": "Male",
+  "username": "ModiDarshan@35",
+  "password": "Darshan@_066"
+},
+{
+  "_id": {
+    "$oid": "68b6aa3510bf38cf7c54d41a"
+  },
+  "name": "Dhiraj Patel",
+  "district": "Porbandar",
+  "experience": 6,
+  "age": 36,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹600",
+  "rating": 4.2,
+  "mobile_no": {
+    "$numberLong": "9869695989"
+  },
+  "gender": "Male",
+  "username": "dirajPatel@36",
+  "password": "Dhiraj_#06"
+},
+{
+  "_id": {
+    "$oid": "68b6aa5210bf38cf7c54d41b"
+  },
+  "name": "Hiral Ganchi",
+  "district": "Rajkot",
+  "experience": 8,
+  "age": 44,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "Kannada"
+  ],
+  "fees": "₹500",
+  "rating": 4.2,
+  "mobile_no": {
+    "$numberLong": "9876522738"
+  },
+  "gender": "Male",
+  "username": "hiral@44",
+  "password": "Hiral_@88"
+},
+{
+  "_id": {
+    "$oid": "68b6aa7910bf38cf7c54d41c"
+  },
+  "name": "Jatin Purani",
+  "district": "Rajkot",
+  "experience": 3,
+  "age": 33,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹600",
+  "rating": 4.2,
+  "mobile_no": {
+    "$numberLong": "9696965555"
+  },
+  "gender": "Male",
+  "username": "jatin@333",
+  "password": "jatinPur@_03"
+},
+{
+  "_id": {
+    "$oid": "68b6aaae10bf38cf7c54d41d"
+  },
+  "name": "Mitali Dave",
+  "district": "Sabarkantha",
+  "experience": 3,
+  "age": 32,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "Punjabi",
+    "Rajasthani"
+  ],
+  "fees": "₹400",
+  "rating": 3.8,
+  "mobile_no": {
+    "$numberLong": "9876566592"
+  },
+  "gender": "Female",
+  "username": "mitalii@322",
+  "password": "MitaliDave@_33"
+},
+{
+  "_id": {
+    "$oid": "68b6aaeb10bf38cf7c54d41e"
+  },
+  "name": "Mitesh Parmar",
+  "district": "Sabarkantha",
+  "experience": 4,
+  "age": 35,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹500",
+  "rating": 4.2,
+  "mobile_no": {
+    "$numberLong": "9635585845"
+  },
+  "gender": "Male",
+  "username": "Mitesh@3355",
+  "password": "Mitesh@_04"
+},
+{
+  "_id": {
+    "$oid": "68b6ab1d10bf38cf7c54d41f"
+  },
+  "name": "Keshav Jadav",
+  "district": "Surat",
+  "experience": 5,
+  "age": 36,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹600",
+  "rating": 3.8,
+  "mobile_no": {
+    "$numberLong": "9876514560"
+  },
+  "gender": "Male",
+  "username": "keshav@663",
+  "password": "Keshav_Jadhav55"
+},
+{
+  "_id": {
+    "$oid": "68b6ab4a10bf38cf7c54d420"
+  },
+  "name": "Dhiren Purohit",
+  "district": "Surat",
+  "experience": 7,
+  "age": 36,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹400",
+  "rating": 4.6,
+  "mobile_no": {
+    "$numberLong": "9685969633"
+  },
+  "gender": "Male",
+  "username": "dhirann@336",
+  "password": "Dhiran@777"
+},
+{
+  "_id": {
+    "$oid": "68b6ab6d10bf38cf7c54d421"
+  },
+  "name": "Suresh Chauhan",
+  "district": "Surendranagar",
+  "experience": 4,
+  "age": 30,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English",
+    "Marathi",
+    "Kannada"
+  ],
+  "fees": "₹500",
+  "rating": 4.4,
+  "mobile_no": {
+    "$numberLong": "9876596351"
+  },
+  "gender": "Male",
+  "username": "Sureshh@300",
+  "password": "Suresh@_444"
+},
+{
+  "_id": {
+    "$oid": "68b6ab9b10bf38cf7c54d422"
+  },
+  "name": "Pratham Patel",
+  "district": "Surendranagar",
+  "experience": 7,
+  "age": 36,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹400",
+  "rating": 4.2,
+  "mobile_no": {
+    "$numberLong": "9603350401"
+  },
+  "gender": "Male",
+  "username": "pratham@366",
+  "password": "Prathamm_77"
+},
+{
+  "_id": {
+    "$oid": "68b6abd310bf38cf7c54d423"
+  },
+  "name": "Nirav Jadeja",
+  "district": "Tapi",
+  "experience": 2,
+  "age": 32,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹600",
+  "rating": 4,
+  "mobile_no": {
+    "$numberLong": "9876599972"
+  },
+  "gender": "Male",
+  "username": "jadeja@223",
+  "password": "NiravJadeja_022"
+},
+{
+  "_id": {
+    "$oid": "68b6abfe10bf38cf7c54d424"
+  },
+  "name": "Nisha Bhagat",
+  "district": "Tapi",
+  "experience": 7,
+  "age": 39,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹400",
+  "rating": 4.3,
+  "mobile_no": {
+    "$numberLong": "9866303010"
+  },
+  "gender": "Female",
+  "username": "Nisha@3399",
+  "password": "Nishuu@_007"
+},
+{
+  "_id": {
+    "$oid": "68b6ac2310bf38cf7c54d425"
+  },
+  "name": "Nilesh Puri",
+  "district": "Vadodara",
+  "experience": 9,
+  "age": 44,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹500",
+  "rating": 4.1,
+  "mobile_no": {
+    "$numberLong": "9876542904"
+  },
+  "gender": "Female",
+  "username": "nileshPuri@444",
+  "password": "Nilesh_999"
+},
+{
+  "_id": {
+    "$oid": "68b6ac5d10bf38cf7c54d426"
+  },
+  "name": "Nilesh Patel",
+  "district": "Vadodara",
+  "experience": 4,
+  "age": 34,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹500",
+  "rating": 3.9,
+  "mobile_no": {
+    "$numberLong": "7885541223"
+  },
+  "gender": "Male",
+  "username": "PatelNilesh@34",
+  "password": "Patel_0444"
+},
+{
+  "_id": {
+    "$oid": "68b6ac8410bf38cf7c54d427"
+  },
+  "name": "Ronak Shah",
+  "district": "Valsad",
+  "experience": 1,
+  "age": 30,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English",
+    "Telugu",
+    "kannada"
+  ],
+  "fees": "₹600",
+  "rating": 4.5,
+  "mobile_no": {
+    "$numberLong": "9876580689"
+  },
+  "gender": "Male",
+  "username": "ronak@30",
+  "password": "Ronak#_11"
+},
+{
+  "_id": {
+    "$oid": "68b6acc410bf38cf7c54d428"
+  },
+  "name": "Mayank Damodar",
+  "district": "Valsad",
+  "experience": 11,
+  "age": 44,
+  "language": [
+    "Hindi",
+    "Gujarati",
+    "English"
+  ],
+  "fees": "₹200",
+  "rating": 3.8,
+  "mobile_no": {
+    "$numberLong": "9224252630"
+  },
+  "gender": "Male",
+  "username": "Mayank@0404",
+  "password": "Mayank@dam_11"
+}]

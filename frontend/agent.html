@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>GJP - Guide</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+  
+  <style>
+    /* Star Rating Styling */
+    .agent-rating {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      margin-top: 5px;
+      direction: ltr; /* Force left-to-right */
+      text-align: left;
+    }
+    
+    .agent-rating i {
+      font-size: 16px;
+      margin-right: 2px;
+    }
+    
+    .star-rating {
+      display: inline-flex;
+      align-items: center;
+      gap: 1px;
+      direction: ltr; /* Force left-to-right */
+      flex-direction: row; /* Ensure left-to-right order */
+    }
+    
+    .star-rating i {
+      order: initial; /* Reset any order changes */
+    }
+    
+    .rating-number {
+      margin-left: 8px;
+      font-size: 14px;
+      color: #666;
+      font-weight: 500;
+    }
+    
+    /* Agent card enhancements */
+    .agent-back p {
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+    
+    .agent-back strong {
+      color: #333;
+      font-weight: 600;
+    }
+    
+    /* Override any RTL or flex reverse that might affect stars */
+    .agent-back .agent-rating * {
+      direction: ltr !important;
+      unicode-bidi: normal !important;
+    }
+    
+    .agent-rating .star-rating {
+      writing-mode: horizontal-tb !important;
+      direction: ltr !important;
+      display: inline !important;
+    }
+  </style>
+</head>
+
+<body class="blog-page">
+  <!-- Header -->
+  <header id="header" class="header d-flex align-items-center sticky-top">
+    <div class="container position-relative d-flex align-items-center">
+      <a href="home.html" class="logo d-flex align-items-center me-auto">
+        <h1 class="sitename">Gujarat Journey Planner</h1>
+      </a>
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="home.html">Home</a></li>
+          <li><a href="places.html">Places</a></li>
+          <li class="dropdown"><a href="services.html"><span>Services</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="hotel.html">Hotels</a></li>
+              <li><a href="transport.html">Transport</a></li>
+              <li><a href="agent.html" class="active">Guide</a></li>
+            </ul>
+          </li>
+          <li><a href="packages.html">Packages</a></li>
+          <li><a href="book.html">Book</a></li>
+          <li><a href="about-us.html">About</a></li>
+          <li><a href="sign in.html">Sign In</a></li>
+          <!-- <li><a href="profile.html">Profile</a></li> -->
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="main">
+    <div class="page-title accent-background">
+      <div class="container d-lg-flex justify-content-between align-items-center">
+        <h1 class="mb-2 mb-lg-0">Guide</h1>
+        <nav class="breadcrumbs">
+          <ol>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="book.html">Book</a></li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+
+    <div id="title" class="container section-title" data-aos="fade-up">
+      <h2>Guide</h2>
+    </div>
+  </main>
+
+  <!-- Dynamic Agent Section -->
+  <div class="agent-section">
+    <div id="agentContainer" class="agent-row">
+      <!-- Dynamic agent cards will load here -->
+    </div>
+
+    <!-- Agent Card HTML Template -->
+    <template id="agentCardTemplate">
+      <div class="agent-column">
+        <div class="agent-card">
+          <div class="agent-front">
+            <img class="agent-image" src="" alt="Agent" />
+            <h2 class="agent-name"></h2>
+            <h3 class="agent-location"></h3>
+          </div>
+          <div class="agent-back">
+            <p><strong>Experience:</strong> <span class="agent-experience"></span></p>
+            <p><strong>Age:</strong> <span class="agent-age"></span></p>
+            <p><strong>Gender:</strong> <span class="agent-gender"></span></p>
+            <p><strong>Languages:</strong> <span class="agent-languages"></span></p>
+            <p><strong>Fees:</strong> <span class="agent-fees"></span></p>
+            <p><strong>Rating:</strong> <span class="agent-rating"></span></p>
+            <button class="book-btn-agent">Book Now</button>
+          </div>
+        </div>
+      </div>
+    </template>
+  </div>
+
+  <footer id="footer" class="footer dark-background">
+
+    <div class="container footer-top"home>
+      <div class="row gy-4">
+        <div class="col-lg-4 col-md-6 footer-about">
+          <a href="home.html" class="logo d-flex align-items-center">
+            <span id="foot-site-name" class="sitename">Gujarat Journey Planner</span>
+          </a>
+          <div class="footer-contact pt-3">
+            <!-- <p>A108 Adam Street</p>
+            <p>New York, NY 535022</p> -->
+            <p class="mt-3"><strong>Address:</strong> <span>Gujarat, India</span></p>
+            <p><strong>Email:</strong> <span>gujaratjourneyplanner.gmail.com</span></p>
+          </div>
+          <!-- <div class="social-links d-flex mt-4">
+            <a href=""><i class="bi bi-twitter-x"></i></a>
+            <a href=""><i class="bi bi-facebook"></i></a>
+            <a href=""><i class="bi bi-instagram"></i></a>
+            <a href=""><i class="bi bi-linkedin"></i></a>
+          </div> -->
+        </div>
+
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>Useful Links</h4>
+          <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="places.html"> Tourist Places</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="book.html">Book a Tour</a></li>
+            <li><a href="sign in.html">Sign In</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>Our Services</h4>
+          <ul>
+            <li><a href="hotel.html">Hotel Booking</a></li>
+            <li><a href="agent.html">Guide Booking</a></li>
+            <li><a href="transport.html">Transport Booking</a></li>
+            <li><a href="packages.html">Custom Tour Packages</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-4 col-md-12 footer-user-review">
+  <h4>Give Us a Rating</h4>
+  <form action="forms/review.php" method="post" class="review-form">
+    <input type="text" name="name" placeholder="Your Name" required>
+
+    <div class="star-rating">
+      <input type="radio" id="star5" name="rating" value="5"><label for="star5" title="5 stars">★</label>
+      <input type="radio" id="star4" name="rating" value="4"><label for="star4" title="4 stars">★</label>
+      <input type="radio" id="star3" name="rating" value="3"><label for="star3" title="3 stars">★</label>
+      <input type="radio" id="star2" name="rating" value="2"><label for="star2" title="2 stars">★</label>
+      <input type="radio" id="star1" name="rating" value="1"><label for="star1" title="1 star">★</label>
+    </div>
+
+    <textarea name="review" placeholder="Write your review..." required></textarea>
+
+    <input type="submit" value="Submit Review">
+  </form>
+</div>
+
+      </div>
+    </div>
+
+    <div class="container copyright text-center mt-4">
+      <p>© <span>2025</span> <strong class="px-1 sitename">Gujarat Journey Planner</strong> <span></span></p>
+      <div class="credits">
+        Designed & Develped as a <a href="">B.Tech Project</a> for <a href="">Academic Purpose
+      </div>
+    </div>
+
+  </footer>
+
+  <!-- Scroll Top & Preloader -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/isotope-layout@3.0.6/dist/isotope.pkgd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/waypoints@4.0.1/lib/noframework.waypoints.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="assets/js/api-config.js"></script>
+  <script src="assets/js/main.js"></script>
+  <!-- Authentication Utils -->
+  <script src="assets/js/auth-utils.js"></script>
+
+  <!-- Dynamic Agent Script -->
+  <script>
+    let currentPage = 1;
+    const limit = 8;
+    let loading = false;
+    let totalPages = 1;
+    const agentContainer = document.getElementById('agentContainer');
+
+    // Function to generate star rating HTML (Left-to-Right order)
+    function generateStarRating(rating) {
+      const fullStars = Math.floor(rating);
+      const hasHalfStar = rating % 1 >= 0.5;
+      const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+      
+      let starsArray = [];
+      
+      // Add full stars first (left side)
+      for (let i = 0; i < fullStars; i++) {
+        starsArray.push('<i class="bi bi-star-fill" style="color: #ffc107; display: inline-block;"></i>');
+      }
+      
+      // Add half star if needed (middle)
+      if (hasHalfStar) {
+        starsArray.push('<i class="bi bi-star-half" style="color: #ffc107; display: inline-block;"></i>');
+      }
+      
+      // Add empty stars last (right side)
+      for (let i = 0; i < emptyStars; i++) {
+        starsArray.push('<i class="bi bi-star" style="color: #ddd; display: inline-block;"></i>');
+      }
+      
+      // Join array to ensure proper order
+      return starsArray.join('');
+    }
+
+    function createAgentCard(agent) {
+      const template = document.getElementById('agentCardTemplate');
+      const clone = template.content.cloneNode(true);
+
+      // Use the same image for all agents
+      const imageUrl = 'assets/img/WhatsApp Image 2025-09-08 at 10.52.19_ec08975e.jpg';
+      const location = agent.district || agent.location || agent.city || 'Gujarat';
+      const rating = parseFloat(agent.rating) || 0; // Use actual rating from database, default to 0
+      console.log(`Agent ${agent.name}: Rating from DB = ${agent.rating}, Parsed = ${rating}`);
+      const starHtml = generateStarRating(rating);
+
+      const escapedId = agent._id || `agent_${Date.now()}`;
+      const agentName = agent.name || 'Unknown Agent';
+
+      clone.querySelector('.agent-image').src = imageUrl;
+      clone.querySelector('.agent-image').alt = `Agent ${agentName}`;
+      clone.querySelector('.agent-name').textContent = agentName;
+      clone.querySelector('.agent-location').textContent = location;
+      clone.querySelector('.agent-experience').textContent = agent.experience ? `${agent.experience} years` : 'Not specified';
+      clone.querySelector('.agent-age').textContent = agent.age || 'Not specified';
+      clone.querySelector('.agent-gender').textContent = agent.gender || 'Not specified';
+      clone.querySelector('.agent-languages').textContent = agent.language || agent.languages || 'Not specified';
+      clone.querySelector('.agent-fees').textContent = agent.fees || agent.hourlyRate || 'Contact for pricing';
+      const ratingDisplay = rating > 0 
+        ? `<span class="star-rating">${starHtml}</span> <span class="rating-number">(${rating.toFixed(1)})</span>`
+        : '<span style="color: #999; font-style: italic;">No ratings yet</span>';
+      clone.querySelector('.agent-rating').innerHTML = ratingDisplay;
+
+      clone.querySelector('.book-btn-agent').addEventListener('click', () => {
+        window.location.href = `book.html?agentId=${encodeURIComponent(escapedId)}&agentName=${encodeURIComponent(agentName)}`;
+      });
+
+      return clone;
+    }
+
+    async function loadAgents(reset = false) {
+      if (loading || (currentPage > totalPages && !reset)) return;
+      loading = true;
+
+      if (reset) {
+        agentContainer.innerHTML = '<div style="text-align: center; padding: 20px;">Loading agents...</div>';
+        currentPage = 1;
+      }
+
+      try {
+        const query = new URLSearchParams({ page: currentPage, limit });
+        const res = await fetch(`http://localhost:8000/api/agents/search?${query.toString()}`);
+        const data = await res.json();
+
+        totalPages = data.totalPages || 1;
+
+        if (reset) {
+          agentContainer.innerHTML = '';
+        }
+
+        if (data.agents && data.agents.length > 0) {
+          data.agents.forEach(agent => {
+            agentContainer.appendChild(createAgentCard(agent));
+          });
+          currentPage++;
+        } else if (reset) {
+          agentContainer.innerHTML = '<div style="text-align: center; padding: 20px;">No agents found.</div>';
+        }
+
+      } catch (err) {
+        console.error('Error loading agents:', err);
+        if (reset) {
+          agentContainer.innerHTML = '<div style="text-align: center; padding: 20px; color: red;">Failed to load agents.</div>';
+        }
+      } finally {
+        loading = false;
+      }
+    }
+
+    function closeAgentOverlay() {
+      const overlay = document.getElementById("agentOverlayContainer");
+      overlay.style.display = "none";
+      document.getElementById("agentIframe").src = "";
+    }
+
+    // Infinite scroll
+    let scrollTimeout;
+    window.addEventListener('scroll', () => {
+      if (scrollTimeout) clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 300) {
+          loadAgents();
+        }
+      }, 200);
+    });
+
+    // Initial Load
+    document.addEventListener('DOMContentLoaded', async () => {
+      await loadAgents(true);
+      if (document.body.offsetHeight <= window.innerHeight) {
+        loadAgents();
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Hotel Image Debug Tool</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f5f5f5;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .test-section {
+      margin: 30px 0;
+      padding: 20px;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+    }
+    .hotel-card-debug {
+      display: flex;
+      border: 2px solid #000;
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      margin: 20px 0;
+      box-shadow: 0 4px 12px rgba(27, 189, 54, 0.15);
+    }
+    .hotel-img-debug {
+      width: 280px;
+      height: 200px;
+      object-fit: cover;
+      border-right: 2px solid #000;
+    }
+    .hotel-info-debug {
+      flex: 1;
+      padding: 20px;
+    }
+    .debug-log {
+      background: #f8f9fa;
+      border: 1px solid #ddd;
+      padding: 15px;
+      margin: 10px 0;
+      border-radius: 4px;
+      font-family: 'Courier New', monospace;
+      font-size: 12px;
+      max-height: 200px;
+      overflow-y: auto;
+    }
+    .status {
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 4px;
+      font-weight: bold;
+    }
+    .success { background: #d4edda; color: #155724; }
+    .error { background: #f8d7da; color: #721c24; }
+    .warning { background: #fff3cd; color: #856404; }
+    .info { background: #d1ecf1; color: #0c5460; }
+    button {
+      background: #1bbd36;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+      margin: 10px 5px 10px 0;
+    }
+    button:hover {
+      background: #15992b;
+    }
+    .image-preview {
+      max-width: 200px;
+      max-height: 150px;
+      border: 1px solid #ddd;
+      margin: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🏨 Hotel Image Debug Tool</h1>
+    <p>This tool helps diagnose issues with hotel image loading on your booking page.</p>
+
+    <div class="test-section">
+      <h2>Step 1: Backend Connectivity Test</h2>
+      <button onclick="testBackendConnection()">Test Backend Connection</button>
+      <div id="connectionResults"></div>
+    </div>
+
+    <div class="test-section">
+      <h2>Step 2: API Response Analysis</h2>
+      <button onclick="analyzeApiResponse()">Analyze Hotel API Response</button>
+      <div id="apiResults"></div>
+      <div class="debug-log" id="apiDebugLog"></div>
+    </div>
+
+    <div class="test-section">
+      <h2>Step 3: Image Processing Test</h2>
+      <button onclick="testImageProcessing()">Test Image Processing</button>
+      <div id="imageResults"></div>
+    </div>
+
+    <div class="test-section">
+      <h2>Step 4: Live Hotel Cards Test</h2>
+      <button onclick="createTestCards()">Create Test Hotel Cards</button>
+      <div id="hotelCards"></div>
+    </div>
+
+    <div class="test-section">
+      <h2>Debug Log</h2>
+      <button onclick="clearLog()">Clear Log</button>
+      <div class="debug-log" id="debugLog"></div>
+    </div>
+  </div>
+
+  <script>
+    const debugLog = document.getElementById('debugLog');
+    
+    function log(message, type = 'info') {
+      const timestamp = new Date().toLocaleTimeString();
+      const logEntry = `[${timestamp}] ${message}`;
+      console.log(logEntry);
+      
+      const logDiv = document.createElement('div');
+      logDiv.textContent = logEntry;
+      logDiv.style.color = type === 'error' ? 'red' : type === 'warning' ? 'orange' : 'black';
+      debugLog.appendChild(logDiv);
+      debugLog.scrollTop = debugLog.scrollHeight;
+    }
+
+    function clearLog() {
+      debugLog.innerHTML = '';
+    }
+
+    async function testBackendConnection() {
+      const results = document.getElementById('connectionResults');
+      results.innerHTML = '<div class="info">Testing backend connection...</div>';
+      
+      try {
+        log('Testing backend connection...');
+        const response = await fetch('http://localhost:8000/health');
+        
+        if (response.ok) {
+          const data = await response.json();
+          results.innerHTML = '<div class="success">✅ Backend is running and accessible!</div>';
+          log('Backend connection successful', 'success');
+        } else {
+          throw new Error(`HTTP ${response.status}`);
+        }
+      } catch (error) {
+        results.innerHTML = `<div class="error">❌ Backend connection failed: ${error.message}</div>`;
+        log(`Backend connection failed: ${error.message}`, 'error');
+      }
+    }
+
+    async function analyzeApiResponse() {
+      const results = document.getElementById('apiResults');
+      const apiLog = document.getElementById('apiDebugLog');
+      
+      results.innerHTML = '<div class="info">Fetching and analyzing hotel data...</div>';
+      apiLog.innerHTML = '';
+      
+      try {
+        log('Fetching hotel data from API...');
+        const response = await fetch('http://localhost:8000/api/hotels/search?limit=3');
+        
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}`);
+        }
+
+        const data = await response.json();
+        log(`API returned ${data.hotels?.length || 0} hotels`);
+        
+        apiLog.innerHTML = `<strong>Raw API Response (first 2000 chars):</strong>\n${JSON.stringify(data, null, 2).substring(0, 2000)}...`;
+
+        if (data.hotels && data.hotels.length > 0) {
+          const hotel = data.hotels[0];
+          const hasImage = !!hotel.image;
+          const imageType = typeof hotel.image;
+          
+          results.innerHTML = `
+            <div class="success">✅ API is working!</div>
+            <div class="info">Hotels found: ${data.hotels.length}</div>
+            <div class="info">First hotel name: ${hotel.hotel_details?.hotel_name || 'Unknown'}</div>
+            <div class="info">Has image: ${hasImage ? 'Yes' : 'No'}</div>
+            <div class="info">Image type: ${imageType}</div>
+            ${hasImage ? `<div class="info">Image structure: ${JSON.stringify(Object.keys(hotel.image))}</div>` : ''}
+          `;
+          
+          log(`First hotel: ${hotel.hotel_details?.hotel_name}, has image: ${hasImage}`);
+          
+          if (hasImage) {
+            log(`Image type: ${imageType}, structure: ${JSON.stringify(Object.keys(hotel.image))}`);
+          }
+        } else {
+          results.innerHTML = '<div class="warning">⚠️ No hotels found in API response</div>';
+          log('No hotels found in API response', 'warning');
+        }
+      } catch (error) {
+        results.innerHTML = `<div class="error">❌ API analysis failed: ${error.message}</div>`;
+        log(`API analysis failed: ${error.message}`, 'error');
+      }
+    }
+
+    async function testImageProcessing() {
+      const results = document.getElementById('imageResults');
+      results.innerHTML = '<div class="info">Testing image processing...</div>';
+      
+      try {
+        log('Testing image processing logic...');
+        const response = await fetch('http://localhost:8000/api/hotels/search?limit=3');
+        const data = await response.json();
+        
+        if (!data.hotels || data.hotels.length === 0) {
+          results.innerHTML = '<div class="error">❌ No hotels available for image testing</div>';
+          return;
+        }
+
+        const hotel = data.hotels[0];
+        let imageUrl = 'https://via.placeholder.com/400x250?text=No+Image';
+        let imageInfo = 'No image processing needed (using placeholder)';
+        
+        if (hotel.image) {
+          log('Processing hotel image data...');
+          
+          if (typeof hotel.image === 'string' && hotel.image.startsWith('data:')) {
+            imageUrl = hotel.image;
+            imageInfo = 'Found data URL image - using directly';
+            log('Using data URL image directly');
+          } else if (hotel.image.$binary && hotel.image.$binary.base64) {
+            imageUrl = `data:image/jpeg;base64,${hotel.image.$binary.base64}`;
+            imageInfo = 'Found $binary.base64 - converted to data URL';
+            log('Converting $binary.base64 to data URL');
+          } else if (hotel.image.base64) {
+            imageUrl = `data:image/jpeg;base64,${hotel.image.base64}`;
+            imageInfo = 'Found base64 - converted to data URL';
+            log('Converting base64 to data URL');
+          } else {
+            imageInfo = `Unknown image format: ${JSON.stringify(hotel.image)}`;
+            log(`Unknown image format: ${JSON.stringify(hotel.image)}`, 'warning');
+          }
+        }
+
+        const testImg = new Image();
+        testImg.onload = function() {
+          log('Test image loaded successfully');
+          results.innerHTML = `
+            <div class="success">✅ Image processing successful!</div>
+            <div class="info">${imageInfo}</div>
+            <div class="info">Generated URL length: ${imageUrl.length} characters</div>
+            <div class="info">Image dimensions: ${this.width}x${this.height}</div>
+            <img src="${imageUrl}" class="image-preview" alt="Test image" />
+          `;
+        };
+        
+        testImg.onerror = function() {
+          log('Test image failed to load', 'error');
+          results.innerHTML = `
+            <div class="error">❌ Image failed to load</div>
+            <div class="info">${imageInfo}</div>
+            <div class="info">URL: ${imageUrl.substring(0, 100)}...</div>
+          `;
+        };
+        
+        testImg.src = imageUrl;
+        
+      } catch (error) {
+        results.innerHTML = `<div class="error">❌ Image processing test failed: ${error.message}</div>`;
+        log(`Image processing test failed: ${error.message}`, 'error');
+      }
+    }
+
+    async function createTestCards() {
+      const results = document.getElementById('hotelCards');
+      results.innerHTML = '<div class="info">Creating test hotel cards...</div>';
+      
+      try {
+        log('Creating test hotel cards...');
+        const response = await fetch('http://localhost:8000/api/hotels/search?limit=3');
+        const data = await response.json();
+        
+        if (!data.hotels || data.hotels.length === 0) {
+          results.innerHTML = '<div class="error">❌ No hotels available for card testing</div>';
+          return;
+        }
+
+        results.innerHTML = '';
+        
+        data.hotels.forEach((hotel, index) => {
+          const hotelName = hotel.hotel_details?.hotel_name || `Hotel ${index + 1}`;
+          const rating = hotel.hotel_details?.rating || 3;
+          const location = hotel.hotel_details?.location?.district || 'Gujarat';
+          
+          // Process image
+          let imageUrl = 'https://via.placeholder.com/280x200?text=No+Image';
+          if (hotel.image) {
+            if (typeof hotel.image === 'string' && hotel.image.startsWith('data:')) {
+              imageUrl = hotel.image;
+            } else if (hotel.image.$binary && hotel.image.$binary.base64) {
+              imageUrl = `data:image/jpeg;base64,${hotel.image.$binary.base64}`;
+            } else if (hotel.image.base64) {
+              imageUrl = `data:image/jpeg;base64,${hotel.image.base64}`;
+            }
+          }
+
+          const cardDiv = document.createElement('div');
+          cardDiv.className = 'hotel-card-debug';
+          cardDiv.innerHTML = `
+            <img class="hotel-img-debug" src="${imageUrl}" alt="${hotelName}" 
+                 onload="log('Card image loaded: ${hotelName}')" 
+                 onerror="log('Card image failed: ${hotelName}', 'error')" />
+            <div class="hotel-info-debug">
+              <h3>${hotelName}</h3>
+              <p><strong>Rating:</strong> ${'★'.repeat(rating)}</p>
+              <p><strong>Location:</strong> ${location}</p>
+              <p><strong>Image URL:</strong> ${imageUrl.substring(0, 50)}...</p>
+              <button onclick="window.location.href='hoteldetail.html?id=${hotel._id}'">View Details</button>
+            </div>
+          `;
+          
+          results.appendChild(cardDiv);
+          log(`Created card for: ${hotelName}`);
+        });
+        
+      } catch (error) {
+        results.innerHTML = `<div class="error">❌ Failed to create test cards: ${error.message}</div>`;
+        log(`Failed to create test cards: ${error.message}`, 'error');
+      }
+    }
+
+    // Initialize
+    window.addEventListener('DOMContentLoaded', () => {
+      log('Hotel Image Debug Tool initialized');
+      log('Click the buttons above to run diagnostics');
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Debug Hotel API</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f5f5f5;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+    }
+    .hotel-item {
+      border: 1px solid #ddd;
+      margin: 20px 0;
+      padding: 20px;
+      border-radius: 8px;
+    }
+    .hotel-image {
+      max-width: 300px;
+      height: 200px;
+      object-fit: cover;
+      border: 2px solid #000;
+      margin: 10px 0;
+    }
+    .debug-info {
+      background: #f0f0f0;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 4px;
+      font-family: monospace;
+      font-size: 12px;
+      white-space: pre-wrap;
+    }
+    .error {
+      color: red;
+      font-weight: bold;
+    }
+    .success {
+      color: green;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Hotel API Debug Tool</h1>
+    <button id="loadHotels">Load Hotels</button>
+    <div id="results"></div>
+  </div>
+
+  <script>
+    document.getElementById('loadHotels').addEventListener('click', async () => {
+      const results = document.getElementById('results');
+      results.innerHTML = '<p>Loading...</p>';
+
+      try {
+        console.log('Fetching hotels...');
+        const response = await fetch('http://localhost:8000/api/hotels/search?limit=3');
+        
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        console.log('API Response:', data);
+
+        results.innerHTML = '';
+
+        if (!data.hotels || data.hotels.length === 0) {
+          results.innerHTML = '<p class="error">No hotels found in response</p>';
+          return;
+        }
+
+        data.hotels.forEach((hotel, index) => {
+          const hotelDiv = document.createElement('div');
+          hotelDiv.className = 'hotel-item';
+
+          // Get hotel name
+          const hotelName = hotel.hotel_details?.hotel_name || hotel.name || `Hotel ${index + 1}`;
+          
+          // Debug image data structure
+          let imageInfo = 'No image data found';
+          let imageUrl = 'https://via.placeholder.com/300x200?text=No+Image';
+          let hasValidImage = false;
+
+          if (hotel.image) {
+            console.log(`Hotel ${index + 1} image data:`, hotel.image);
+            
+            if (typeof hotel.image === 'string' && hotel.image.startsWith('data:')) {
+              imageUrl = hotel.image;
+              imageInfo = 'Found data URL image';
+              hasValidImage = true;
+            } else if (hotel.image.$binary && hotel.image.$binary.base64) {
+              imageUrl = `data:image/jpeg;base64,${hotel.image.$binary.base64}`;
+              imageInfo = 'Found $binary.base64 image';
+              hasValidImage = true;
+            } else if (hotel.image.base64) {
+              imageUrl = `data:image/jpeg;base64,${hotel.image.base64}`;
+              imageInfo = 'Found base64 image';
+              hasValidImage = true;
+            } else {
+              imageInfo = `Unknown image format: ${JSON.stringify(hotel.image, null, 2)}`;
+            }
+          }
+
+          hotelDiv.innerHTML = `
+            <h2>${hotelName}</h2>
+            <div class="debug-info">Image Info: <span class="${hasValidImage ? 'success' : 'error'}">${imageInfo}</span></div>
+            <img class="hotel-image" src="${imageUrl}" alt="${hotelName}" 
+                 onload="console.log('Image loaded successfully for ${hotelName}')"
+                 onerror="console.error('Image failed to load for ${hotelName}', this.src)" />
+            <div class="debug-info">Hotel Data Structure:
+${JSON.stringify({
+  _id: hotel._id,
+  hotel_details: hotel.hotel_details,
+  hasImage: !!hotel.image,
+  imageType: typeof hotel.image,
+  imageStructure: hotel.image ? Object.keys(hotel.image) : 'No image'
+}, null, 2)}</div>
+          `;
+
+          results.appendChild(hotelDiv);
+        });
+
+      } catch (error) {
+        console.error('Error loading hotels:', error);
+        results.innerHTML = `<p class="error">Error: ${error.message}</p>`;
+      }
+    });
+  </script>
+</body>
+</html>

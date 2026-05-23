@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - Gujarat Travel</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .main-content {
+            display: flex;
+            min-height: 600px;
+        }
+
+        .sidebar {
+            width: 300px;
+            background: #f8f9fa;
+            padding: 30px;
+            border-right: 1px solid #e9ecef;
+        }
+
+        .profile-card {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .profile-avatar {
+            width: 80px;
+            height: 80px;
+            background: #667eea;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-size: 2em;
+            color: white;
+        }
+
+        .profile-info p {
+            margin: 8px 0;
+            color: #666;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-number {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+
+        .content-area {
+            flex: 1;
+            padding: 30px;
+        }
+
+        .booking-card {
+            border: 1px solid #e9ecef;
+            border-radius: 10px;
+            padding: 25px;
+            margin: 15px 0;
+            background: #f8f9fa;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .booking-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: #667eea;
+        }
+
+        .booking-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .booking-id {
+            background: #667eea;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.85em;
+            font-weight: bold;
+        }
+
+        .booking-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .detail-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .detail-label {
+            font-size: 0.85em;
+            color: #666;
+            margin-bottom: 3px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .detail-value {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .progress-container {
+            margin: 20px 0;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .progress-steps {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            margin: 20px 0;
+        }
+
+        .progress-steps::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: 20px;
+            height: 2px;
+            background: #e9ecef;
+            z-index: 1;
+        }
+
+        .progress-step {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .step-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 8px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            background: #e9ecef;
+            color: #6c757d;
+        }
+
+        .step-icon.completed {
+            background: #28a745;
+            color: white;
+        }
+
+        .step-text {
+            font-size: 0.8em;
+            color: #666;
+            max-width: 80px;
+        }
+
+        .booking-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-pay {
+            background: #28a745;
+            color: white;
+        }
+
+        .btn-pay:hover {
+            background: #218838;
+            transform: translateY(-1px);
+        }
+
+        .btn-cancel {
+            background: #dc3545;
+            color: white;
+        }
+
+        .btn-cancel:hover {
+            background: #c82333;
+        }
+
+        .btn-details {
+            background: #007bff;
+            color: white;
+        }
+
+        .btn-logout {
+            background: #6c757d;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .status-badge {
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .status-pending {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .status-confirmed {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status-cancelled {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .no-bookings {
+            text-align: center;
+            padding: 50px;
+            color: #666;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 50px;
+            color: #666;
+        }
+
+        .error-message {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏛️ PROFILE</h1>
+            <p>Manage your tour bookings and profile information</p>
+        </div>
+
+        <div class="main-content">
+            <div class="sidebar">
+                <div class="profile-card">
+                    <div class="profile-avatar">
+                        👤
+                    </div>
+                    <div class="profile-info">
+                        <h3 id="userName">Loading...</h3>
+                        <p id="userEmail">Loading...</p>
+                        <p id="userPhone">Loading...</p>
+                        <p id="userAge">Loading...</p>
+                    </div>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number" id="totalBookings">0</div>
+                        <div class="stat-label">Total Bookings</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="upcomingBookings">0</div>
+                        <div class="stat-label">Upcoming</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="completedBookings">0</div>
+                        <div class="stat-label">Completed</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="cancelledBookings">0</div>
+                        <div class="stat-label">Cancelled</div>
+                    </div>
+                </div>
+
+                <button onclick="logout()" class="btn-logout">
+                    🚪 Logout
+                </button>
+            </div>
+
+            <div class="content-area">
+                <h2>📋 Tour Booking History</h2>
+                
+                <div id="bookingsContainer" class="loading">
+                    <p>🔄 Loading your bookings...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Check authentication on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            checkAuthAndLoadProfile();
+        });
+
+        function checkAuthAndLoadProfile() {
+            const token = localStorage.getItem('authToken');
+            const userInfo = localStorage.getItem('userInfo');
+            
+            if (!token || !userInfo) {
+                // No authentication found
+                document.getElementById('bookingsContainer').innerHTML = `
+                    <div class="error-message">
+                        <h3>🔒 Authentication Required</h3>
+                        <p>Please login first to view your profile and bookings.</p>
+                        <a href="login.html" class="btn btn-pay">Go to Login</a>
+                    </div>
+                `;
+                return;
+            }
+            
+            // Load profile data
+            loadUserProfile();
+        }
+
+        async function loadUserProfile() {
+            const token = localStorage.getItem('authToken');
+            
+            try {
+                const response = await fetch('/api/profile/', {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+                
+                if (response.status === 401) {
+                    // Token expired
+                    localStorage.removeItem('authToken');
+                    localStorage.removeItem('userInfo');
+                    
+                    document.getElementById('bookingsContainer').innerHTML = `
+                        <div class="error-message">
+                            <h3>🔓 Session Expired</h3>
+                            <p>Your session has expired. Please login again.</p>
+                            <a href="login.html" class="btn btn-pay">Login Again</a>
+                        </div>
+                    `;
+                    return;
+                }
+                
+                const profileData = await response.json();
+                
+                if (response.ok) {
+                    displayProfileData(profileData);
+                } else {
+                    throw new Error(profileData.message || 'Failed to load profile');
+                }
+                
+            } catch (error) {
+                console.error('Error loading profile:', error);
+                document.getElementById('bookingsContainer').innerHTML = `
+                    <div class="error-message">
+                        <h3>❌ Error Loading Profile</h3>
+                        <p>${error.message}</p>
+                        <button onclick="loadUserProfile()" class="btn btn-details">Try Again</button>
+                    </div>
+                `;
+            }
+        }
+
+        function displayProfileData(profileData) {
+            // Update user information
+            document.getElementById('userName').textContent = profileData.name;
+            document.getElementById('userEmail').textContent = profileData.email;
+            document.getElementById('userPhone').textContent = profileData.phone;
+            document.getElementById('userAge').textContent = profileData.age + ' years';
+            
+            // Update statistics
+            if (profileData.stats) {
+                document.getElementById('totalBookings').textContent = profileData.stats.totalBookings;
+                document.getElementById('upcomingBookings').textContent = profileData.stats.upcoming;
+                document.getElementById('completedBookings').textContent = profileData.stats.completed;
+                document.getElementById('cancelledBookings').textContent = profileData.stats.cancelled;
+            }
+            
+            // Display bookings
+            const bookingsContainer = document.getElementById('bookingsContainer');
+            
+            if (profileData.tours && profileData.tours.length > 0) {
+                bookingsContainer.innerHTML = '';
+                
+                profileData.tours.forEach(booking => {
+                    const bookingCard = createBookingCard(booking);
+                    bookingsContainer.appendChild(bookingCard);
+                });
+            } else {
+                bookingsContainer.innerHTML = `
+                    <div class="no-bookings">
+                        <h3>📝 No Bookings Yet</h3>
+                        <p>You haven't made any bookings yet.</p>
+                        <a href="places.html" class="btn btn-pay">Explore Tours</a>
+                    </div>
+                `;
+            }
+        }
+
+        function createBookingCard(booking) {
+            const card = document.createElement('div');
+            card.className = 'booking-card';
+            
+            const statusClass = booking.status.toLowerCase().replace(/\s+/g, '-');
+            
+            card.innerHTML = `
+                <div class="booking-header">
+                    <h3>${booking.tourName}</h3>
+                    <span class="booking-id">${booking.bookingId}</span>
+                </div>
+                
+                <div class="booking-details">
+                    <div class="detail-item">
+                        <div class="detail-label">Status</div>
+                        <div class="detail-value">
+                            <span class="status-badge status-${statusClass}">${booking.status}</span>
+                        </div>
+                    </div>
+                    
+                    <div class="detail-item">
+                        <div class="detail-label">Places</div>
+                        <div class="detail-value">${booking.touristPlaces.join(', ')}</div>
+                    </div>
+                    
+                    <div class="detail-item">
+                        <div class="detail-label">Travelers</div>
+                        <div class="detail-value">${booking.travelers} person(s)</div>
+                    </div>
+                    
+                    <div class="detail-item">
+                        <div class="detail-label">Total Amount</div>
+                        <div class="detail-value">₹${booking.totalAmount}</div>
+                    </div>
+                    
+                    <div class="detail-item">
+                        <div class="detail-label">Check-in</div>
+                        <div class="detail-value">${new Date(booking.checkIn).toDateString()}</div>
+                    </div>
+                    
+                    <div class="detail-item">
+                        <div class="detail-label">Check-out</div>
+                        <div class="detail-value">${new Date(booking.checkOut).toDateString()}</div>
+                    </div>
+                    
+                    <div class="detail-item">
+                        <div class="detail-label">Hotel</div>
+                        <div class="detail-value">${booking.hotel.name || 'To be assigned'}</div>
+                    </div>
+                    
+                    <div class="detail-item">
+                        <div class="detail-label">Agent</div>
+                        <div class="detail-value">${booking.agent.name || 'To be assigned'}</div>
+                    </div>
+                </div>
+                
+                <div class="progress-container">
+                    <h4>📊 Booking Progress</h4>
+                    <div class="progress-steps">
+                        <div class="progress-step">
+                            <div class="step-icon ${booking.progress.submitted ? 'completed' : ''}">
+                                ${booking.progress.submitted ? '✓' : '1'}
+                            </div>
+                            <div class="step-text">Submitted</div>
+                        </div>
+                        
+                        <div class="progress-step">
+                            <div class="step-icon ${booking.progress.agentConfirmed ? 'completed' : ''}">
+                                ${booking.progress.agentConfirmed ? '✓' : '2'}
+                            </div>
+                            <div class="step-text">Agent Confirmed</div>
+                        </div>
+                        
+                        <div class="progress-step">
+                            <div class="step-icon ${booking.progress.hotelConfirmed ? 'completed' : ''}">
+                                ${booking.progress.hotelConfirmed ? '✓' : '3'}
+                            </div>
+                            <div class="step-text">Hotel Confirmed</div>
+                        </div>
+                        
+                        <div class="progress-step">
+                            <div class="step-icon ${booking.progress.paymentCompleted ? 'completed' : ''}">
+                                ${booking.progress.paymentCompleted ? '✓' : '4'}
+                            </div>
+                            <div class="step-text">Payment</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="booking-actions">
+                    ${booking.actions.includes('pay') ? `
+                        <button class="btn btn-pay" onclick="processPayment('${booking.bookingId}')">
+                            💳 Pay Now (₹${booking.totalAmount})
+                        </button>
+                    ` : ''}
+                    
+                    ${booking.actions.includes('cancel') ? `
+                        <button class="btn btn-cancel" onclick="cancelBooking('${booking.bookingId}')">
+                            ❌ Cancel Booking
+                        </button>
+                    ` : ''}
+                    
+                    ${booking.actions.includes('view_details') ? `
+                        <button class="btn btn-details" onclick="viewTripDetails('${booking.bookingId}')">
+                            📋 View Trip Details
+                        </button>
+                    ` : ''}
+                </div>
+                
+                ${booking.specialRequests ? `
+                    <div class="special-requests" style="margin-top: 15px; padding: 10px; background: #e7f3ff; border-radius: 5px;">
+                        <strong>📝 Special Requests:</strong><br>
+                        ${booking.specialRequests}
+                    </div>
+                ` : ''}
+            `;
+            
+            return card;
+        }
+
+        // Payment processing
+        async function processPayment(bookingId) {
+            const token = localStorage.getItem('authToken');
+            
+            const paymentMethod = prompt('Select payment method:\\n1. UPI\\n2. Credit Card\\n3. Debit Card\\n\\nEnter 1, 2, or 3:');
+            const methods = {'1': 'UPI', '2': 'Credit Card', '3': 'Debit Card'};
+            const selectedMethod = methods[paymentMethod];
+            
+            if (!selectedMethod) {
+                console.error('Invalid payment method selected.');
+                return;
+            }
+            
+            const paymentData = { paymentMethod: selectedMethod };
+            
+            if (selectedMethod === 'UPI') {
+                paymentData.upiId = prompt('Enter UPI ID:');
+                if (!paymentData.upiId) return;
+            }
+            
+            try {
+                const response = await fetch(`/api/payment/${bookingId}/process`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: JSON.stringify(paymentData)
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    console.log(`🎉 Payment successful!\\nTransaction ID: ${result.transactionId}\\nAmount: ₹${result.amount}`);
+                    loadUserProfile(); // Refresh profile
+                } else {
+                    console.error('❌ Payment failed: ' + result.message);
+                }
+            } catch (error) {
+                console.error('Payment error:', error);
+                console.error('❌ Payment failed. Please try again.');
+            }
+        }
+
+        // Cancel booking
+        async function cancelBooking(bookingId) {
+            if (!confirm('Are you sure you want to cancel this booking?')) {
+                return;
+            }
+            
+            console.log('🚧 Booking cancellation feature will be implemented soon.');
+            // You can implement this later by adding a cancellation endpoint
+        }
+
+        // View trip details
+        function viewTripDetails(bookingId) {
+            console.log(`📋 Trip details for booking ${bookingId} will be shown in a detailed view.`);
+            // You can implement this to show a modal or navigate to a details page
+        }
+
+        // Logout function
+        function logout() {
+            if (confirm('Are you sure you want to logout?')) {
+                localStorage.removeItem('authToken');
+                localStorage.removeItem('userInfo');
+                console.log('👋 Logged out successfully!');
+                window.location.href = 'login.html';
+            }
+        }
+    </script>
+</body>
+</html>

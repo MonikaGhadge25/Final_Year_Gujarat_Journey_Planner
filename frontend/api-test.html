@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>API Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .test-result { margin: 20px 0; padding: 15px; border: 1px solid #ddd; }
+        .success { background-color: #d4edda; border-color: #c3e6cb; }
+        .error { background-color: #f8d7da; border-color: #f5c6cb; }
+        button { padding: 10px 15px; margin: 5px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>API Test Page</h1>
+    
+    <button onclick="testPlacesAPI()">Test Places API</button>
+    <button onclick="testHotelsAPI()">Test Hotels API</button>
+    <button onclick="testBoth()">Test Both APIs</button>
+    
+    <div id="placesResult" class="test-result">Places API: Not tested</div>
+    <div id="hotelsResult" class="test-result">Hotels API: Not tested</div>
+    
+    <script>
+        async function testPlacesAPI() {
+            const resultDiv = document.getElementById('placesResult');
+            resultDiv.innerHTML = 'Testing Places API...';
+            resultDiv.className = 'test-result';
+            
+            try {
+                const response = await fetch('http://localhost:8000/api/places/search?page=1&limit=3');
+                const data = await response.json();
+                
+                if (response.ok && data.places && data.places.length > 0) {
+                    resultDiv.innerHTML = `✅ Places API: Success! Found ${data.places.length} places. First place: ${data.places[0].name}`;
+                    resultDiv.className = 'test-result success';
+                } else {
+                    resultDiv.innerHTML = `⚠️ Places API: Response OK but no places found. Status: ${response.status}`;
+                    resultDiv.className = 'test-result error';
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `❌ Places API: Error - ${error.message}`;
+                resultDiv.className = 'test-result error';
+            }
+        }
+        
+        async function testHotelsAPI() {
+            const resultDiv = document.getElementById('hotelsResult');
+            resultDiv.innerHTML = 'Testing Hotels API...';
+            resultDiv.className = 'test-result';
+            
+            try {
+                const response = await fetch('http://localhost:8000/api/hotels/search?page=1&limit=3');
+                const data = await response.json();
+                
+                if (response.ok && data.hotels && data.hotels.length > 0) {
+                    const hotelName = data.hotels[0].hotel_details?.hotel_name || data.hotels[0].name || 'Unknown';
+                    resultDiv.innerHTML = `✅ Hotels API: Success! Found ${data.hotels.length} hotels. First hotel: ${hotelName}`;
+                    resultDiv.className = 'test-result success';
+                } else {
+                    resultDiv.innerHTML = `⚠️ Hotels API: Response OK but no hotels found. Status: ${response.status}`;
+                    resultDiv.className = 'test-result error';
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `❌ Hotels API: Error - ${error.message}`;
+                resultDiv.className = 'test-result error';
+            }
+        }
+        
+        async function testBoth() {
+            await testPlacesAPI();
+            await testHotelsAPI();
+        }
+        
+        // Auto-test on page load
+        window.onload = () => {
+            setTimeout(testBoth, 1000);
+        };
+    </script>
+</body>
+</html>

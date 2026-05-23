@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>GJP</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+
+</head>
+
+<body class="index-page">
+
+  <header id="header" class="header d-flex align-items-center sticky-top">
+    <div class="container position-relative d-flex align-items-center">
+
+      <a href="home.html" class="logo d-flex align-items-center me-auto">
+        <h1 class="sitename">Gujarat Journey Planner</h1><span></span>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="home.html" class="active">Home</a></li>
+          <li><a href="places.html">Places</a></li>
+          <li class="dropdown"><a href="services.html"><span>Services</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="hotel.html">Hotels</a></li>
+              <li><a href="transport.html">Transport</a></li>
+              <li><a href="agent.html">Guide</a></li>
+            </ul>
+          </li>
+          <li><a href="packages.html">Packages</a></li>
+          <li><a href="book.html">Book</a></li>
+          <li><a href="about-us.html">About</a></li>
+          <li><a href="sign in.html">Sign In</a></li>
+ 
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero section dark-background">
+
+      <div id="hero-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
+
+        <div class="carousel-item active">
+          <img src="assets/img/hero-carousel/final_1.png" alt="">
+          <div class="container">
+            <h2>Travel Together, Discover Gujarat</h2>
+            <p>From the white sands of Rann of Kutch to the wildlife of Gir, explore Gujarat’s beauty with friends and family.</p>
+            <a href="places.html" class="btn-get-started">Explore Places</a>
+          </div>
+        </div><!-- End Carousel Item -->
+
+        <div class="carousel-item">
+          <img src="assets/img/hero-carousel/final_2.png" alt="">
+          <div class="container">
+            <h2>Plan Smarter, Book Faster</h2>
+            <p>Hotels, agents, and transport – everything you need in one simple platform. Travel planning made easy for everyone.</p>
+            <a href="services.html" class="btn-get-started">Book Services</a>
+          </div>
+        </div><!-- End Carousel Item -->
+
+        <div class="carousel-item">
+          <img src="assets/img/hero-carousel/final_3.png" alt="">
+          <div class="container">
+            <h2>Your Journey Starts Here</h2>
+            <p>Hassle-free bookings, happy memories, and adventures that bring people together. Let’s make your Gujarat trip unforgettable.</p>
+            <a href="book.html" class="btn-get-started">Book Now</a>
+          </div>
+        </div><!-- End Carousel Item -->
+
+        <a class="carousel-control-prev" href="#hero-carousel" role="button" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
+        </a>
+
+        <a class="carousel-control-next" href="#hero-carousel" role="button" data-bs-slide="next">
+          <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
+        </a>
+
+        <ol class="carousel-indicators"></ol>
+
+      </div>
+
+    </section><!-- /Hero Section -->
+
+</main>
+<!-- Top Places -->
+<section class="gujarat-section">
+
+  <!-- Section Title -->
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Top Places in Gujarat</h2>
+    <p>Discover the must-visit gems of Gujarat, from heritage sites to natural wonders</p>
+  </div>
+
+  <!-- Left Info Panel -->
+  <div class="gujarat-intro">
+    <h2>Discover the <span class="highlight">Must-Visit Gems</span> of Gujarat</h2>
+    <p>
+      Gujarat offers an unparalleled blend of history, nature, and culture. From majestic forts and UNESCO World Heritage Sites to tranquil hill stations and vibrant wildlife sanctuaries — experience the very best this vibrant state has to offer.
+    </p>
+    <p>
+      Explore stunning stepwells, breathtaking coastlines, rich tribal heritage, and serene lakes — perfect for every traveler’s journey. Let Gujarat captivate your senses!
+    </p>
+    <a href="book.html" class="explore-btn" style="display:inline-block; text-decoration:none;">Explore More</a>
+  </div>
+
+  <!-- Auto-sliding Cards Section -->
+  <div class="gujarat-slider">
+    <div class="slider-track">
+
+      <!-- Tourist Place Cards -->
+      <div class="slider-card">
+        <img src="assets/img/single-page/kankaria-lake.jpg" alt="Kankaria Lake" />
+        <h3>Kankaria Lake</h3>
+        <span class="location">Ahmedabad</span>
+        <p>Popular lakefront park featuring a zoo, toy train, water rides, and vibrant food stalls.</p>
+      </div>
+
+      <div class="slider-card">
+        <img src="assets/img/single-page/Gir-National-Park.jpeg" alt="Gir National Park" />
+        <h3>Gir National Park</h3>
+        <span class="location">Saurashtra</span>
+        <p>Asia’s only home of the Asiatic lion and an unmissable wildlife sanctuary.</p>
+      </div>
+
+      <div class="slider-card">
+        <img src="assets/img/single-page/Statue of Unity.jpg" alt="Statue of Unity" />
+        <h3>Statue of Unity</h3>
+        <span class="location">Narmada</span>
+        <p>World’s tallest statue honoring Sardar Vallabhbhai Patel with breathtaking views.</p>
+      </div>
+
+      <div class="slider-card">
+        <img src="assets/img/single-page/rani-ki-vav.jpeg" alt="Rani ki Vav" />
+        <h3>Rani ki Vav</h3>
+        <span class="location">Patan</span>
+        <p>UNESCO World Heritage stepwell showcasing exquisite carvings and architecture.</p>
+      </div>
+
+      <div class="slider-card">
+        <img src="assets/img/single-page/Saputara Hill Station.jpg" alt="Saputara Hill Station" />
+        <h3>Saputara</h3>
+        <span class="location">Dang</span>
+        <p>Serene hill station known for its cool climate, boating, and tribal culture.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- End Top places -->
+
+<!-- start why choose us -->
+<section class="whychoose-section">
+
+  <!-- Section Title -->
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Why Choose Us</h2>
+    <p>Discover why travelers trust Gujarat Journey Planner for unforgettable experiences</p>
+  </div>
+
+  <div class="whychoose-container">
+    <!-- <h2 class="whychoose-title">Why Choose Gujarat Journey Planner?</h2> -->
+    <div class="whychoose-grid">
+
+      <div class="whychoose-card" onclick="window.location.href='hotel.html'">
+        <img src="https://cdn-icons-png.flaticon.com/512/2620/2620982.png" alt="Verified Hotels" class="whychoose-icon">
+        <h3 class="whychoose-heading">Verified Hotels</h3>
+        <p class="whychoose-text">We list only quality-verified hotels ensuring cleanliness, comfort, and hospitality.</p>
+      </div>
+
+      <div class="whychoose-card" onclick="window.location.href='agent.html'">
+        <img src="https://cdn-icons-png.flaticon.com/512/201/201623.png" alt="Local Agents" class="whychoose-icon">
+        <h3 class="whychoose-heading">Local Guide</h3>
+        <p class="whychoose-text">Connect with experienced travel agents who truly know Gujarat and its gems.</p>
+      </div>
+
+      <div class="whychoose-card" onclick="window.location.href='transport.html'">
+        <img src="https://cdn-icons-png.flaticon.com/512/854/854894.png" alt="Transport" class="whychoose-icon">
+        <h3 class="whychoose-heading">Reliable Transport</h3>
+        <p class="whychoose-text">Travel safe and easy with trusted, local transportation services.</p>
+      </div>
+
+      <div class="whychoose-card" onclick="window.location.href='book.html'">
+        <img src="https://cdn-icons-png.flaticon.com/512/1034/1034155.png" alt="Booking Simplicity" class="whychoose-icon">
+        <h3 class="whychoose-heading">Easy Booking</h3>
+        <p class="whychoose-text">Plan your complete journey with our step-by-step smooth booking process.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- End why choose us -->
+
+<!-- Explore by Category -->
+<section id="portfolio" class="portfolio section">
+
+  <!-- Section Title -->
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Explore by Category</h2>
+    <p>Select the type of experience you want to explore in Gujarat</p>
+  </div>
+
+  <div class="container">
+    <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
+
+      <!-- Filter Buttons -->
+      <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
+        <li data-filter="*" class="filter-active">All</li>
+        <li data-filter=".filter-temples">Temples</li>
+        <li data-filter=".filter-nature">Nature</li>
+        <li data-filter=".filter-historical">Historical</li>
+        <li data-filter=".filter-beaches">Beaches</li>
+      </ul>
+
+      <!-- Grid: 9 Images -->
+      <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
+
+        <!-- Temples -->
+        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-temples">
+          <div class="portfolio-wrap">
+            <img src="assets/img/temple1.jpg" class="img-fluid" alt="Dwarka Temple">
+            <div class="portfolio-info">
+              <h4>Dwarka Temple</h4>
+              <p>Char Dham Pilgrimage Site</p>
+              <a href="#" class="details-link">View Details</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-temples">
+          <div class="portfolio-wrap">
+            <img src="assets/img/temple2.jpg" class="img-fluid" alt="Somnath Temple">
+            <div class="portfolio-info">
+              <h4>Somnath Temple</h4>
+              <p>Spiritual Destination by the Sea</p>
+              <a href="#" class="details-link">View Details</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Nature -->
+        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-nature">
+          <div class="portfolio-wrap">
+            <img src="assets/img/nature1.jpg" class="img-fluid" alt="Saputara Hills">
+            <div class="portfolio-info">
+              <h4>Saputara Hills</h4>
+              <p>Gujarat’s Only Hill Station</p>
+              <a href="#" class="details-link">View Details</a>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-nature">
+          <div class="portfolio-wrap">
+            <img src="assets/img/nature2.jpg" class="img-fluid" alt="Gir National Park">
+            <div class="portfolio-info">
+              <h4>Gir National Park</h4>
+              <p>Wildlife & Asiatic Lions</p>
+              <a href="#" class="details-link">View Details</a>
+            </div>
+          </div>
+        </div> -->
+
+        <!-- Historical -->
+        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-historical">
+          <div class="portfolio-wrap">
+            <img src="assets/img/historical1.jpg" class="img-fluid" alt="Rani ki Vav">
+            <div class="portfolio-info">
+              <h4>Rani ki Vav</h4>
+              <p>UNESCO World Heritage Stepwell</p>
+              <a href="#" class="details-link">View Details</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-historical">
+          <div class="portfolio-wrap">
+            <img src="assets/img/historical2.jpg" class="img-fluid" alt="Champaner Fort">
+            <div class="portfolio-info">
+              <h4>Champaner Fort</h4>
+              <p>Historic City near Pavagadh</p>
+              <a href="#" class="details-link">View Details</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Beaches -->
+        <!-- <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-beaches">
+          <div class="portfolio-wrap">
+            <img src="assets/img/beach1.jpg" class="img-fluid" alt="Mandvi Beach">
+            <div class="portfolio-info">
+              <h4>Mandvi Beach</h4>
+              <p>Golden Sand & Camel Rides</p>
+              <a href="#" class="details-link">View Details</a>
+            </div>
+          </div>
+        </div> -->
+        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-beaches">
+          <div class="portfolio-wrap">
+            <img src="assets/img/beach2.jpg" class="img-fluid" alt="Diu Island">
+            <div class="portfolio-info">
+              <h4>Diu Island</h4>
+              <p>Portuguese Charm by the Sea</p>
+              <a href="#" class="details-link">View Details</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Extra Image (All Category) -->
+        <!-- <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-historical">
+          <div class="portfolio-wrap">
+            <img src="assets/img/historical3.jpg" class="img-fluid" alt="Laxmi Vilas Palace">
+            <div class="portfolio-info">
+              <h4>Laxmi Vilas Palace</h4>
+              <p>Royal Residence of Vadodara</p>
+              <a href="#" class="details-link">View Details</a>
+            </div>
+          </div>
+        </div> -->
+
+      </div><!-- End Grid -->
+
+    </div><!-- End Isotope -->
+  </div>
+</section>
+
+<!-- End explore by category -->
+
+<!-- tour packages start -->
+
+<!-- tour packages end -->
+
+<!-- Top-rated Hotels-agent start -->
+<section id="gjp-testimonials-1" class="gjp-testimonials">
+
+  <!-- Section Title -->
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Traveler Reviews</h2>
+    <p>Hear what our happy travelers say about their journeys</p>
+  </div>
+
+  <div class="gjp-container">
+
+    <div class="gjp-testimonial-carousel" data-aos="fade-up" data-aos-delay="100">
+      
+      <!-- Testimonial 1 -->
+      <div class="gjp-testimonial-card active">
+        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Priya">
+        <h4>Priya Sharma</h4>
+        <span class="gjp-stars">⭐⭐⭐⭐⭐</span>
+        <p>“Amazing trip, well managed! Everything was perfectly organized. Highly recommended!”</p>
+      </div>
+
+      <!-- Testimonial 2 -->
+      <div class="gjp-testimonial-card">
+        <img src="https://randomuser.me/api/portraits/men/51.jpg" alt="Rohan">
+        <h4>Rohan Patel</h4>
+        <span class="gjp-stars">⭐⭐⭐⭐⭐</span>
+        <p>“Great experience, the hotels were fantastic and our agent took care of every detail.”</p>
+      </div>
+
+      <!-- Testimonial 3 -->
+      <div class="gjp-testimonial-card">
+        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Anita">
+        <h4>Anita Desai</h4>
+        <span class="gjp-stars">⭐⭐⭐⭐</span>
+        <p>“Memorable journey with my family. Very professional service and great support team.”</p>
+      </div>
+    </div>
+
+    <!-- Carousel Dots -->
+    <div class="gjp-carousel-dots" data-aos="fade-up" data-aos-delay="200">
+      <span class="gjp-dot active" aria-label="slide 1"></span>
+      <span class="gjp-dot" aria-label="slide 2"></span>
+      <span class="gjp-dot" aria-label="slide 3"></span>
+    </div>
+
+  </div>
+</section>
+
+<!-- Top-rated Hotels-agent end -->
+
+<!-- call to action start  -->
+<!-- 🌟 CTA Banner with Background Image -->
+<!-- Section Title -->
+<div class="container section-title" data-aos="fade-up">
+  <h2>Plan Your Journey</h2>
+  <p>Get started with our tour booking, hotels, and travel services</p>
+</div>
+
+<!-- CTA Section -->
+<section class="cta-section-new">
+  <div class="cta-card-new">
+    <div class="cta-image-new">
+      <img src="assets/img/2.jpg" alt="Explore Gujarat">
+      <div class="cta-shape"></div>
+    </div>
+    <div class="cta-content-new">
+      <h2>Ready to Explore Gujarat?</h2>
+      <p>Unforgettable tours, trusted hotels & agents — just one click away.</p>
+      <a href="book.html" class="cta-btn-new">Start Planning</a>
+    </div>
+  </div>
+</section>
+
+<!-- call to action end  -->
+  <footer id="footer" class="footer dark-background">
+
+    <div class="container footer-top">
+      <div class="row gy-4">
+        <div class="col-lg-4 col-md-6 footer-about">
+          <a href="home.html" class="logo d-flex align-items-center">
+            <span id="foot-site-name" class="sitename">Gujarat Journey Planner</span>
+          </a>
+          <div class="footer-contact pt-3">
+            <!-- <p>A108 Adam Street</p>
+            <p>New York, NY 535022</p> -->
+            <p class="mt-3"><strong>Address:</strong> <span>Gujarat, India</span></p>
+            <p><strong>Email:</strong> <span>gujaratjourneyplanner.gmail.com</span></p>
+          </div>
+          <!-- <div class="social-links d-flex mt-4">
+            <a href=""><i class="bi bi-twitter-x"></i></a>
+            <a href=""><i class="bi bi-facebook"></i></a>
+            <a href=""><i class="bi bi-instagram"></i></a>
+            <a href=""><i class="bi bi-linkedin"></i></a>
+          </div> -->
+        </div>
+
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>Useful Links</h4>
+          <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="places.html"> Tourist Places</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="book.html">Book a Tour</a></li>
+            <li><a href="sign in.html">Sign In</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>Our Services</h4>
+          <ul>
+            <li><a href="hotel.html">Hotel Booking</a></li>
+            <li><a href="agent.html">Guide Booking</a></li>
+            <li><a href="transport.html">Transport Booking</a></li>
+            <li><a href="packages.html">Custom Tour Packages</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-4 col-md-12 footer-user-review">
+  <h4>Give Us a Rating</h4>
+  <form id="reviewForm" action="forms/review.php" method="post" class="review-form">
+    <input type="text" name="name" id="reviewName" placeholder="Your Name" required>
+
+    <div class="star-rating">
+      <input type="radio" id="star5" name="rating" value="5"><label for="star5" title="5 stars">★</label>
+      <input type="radio" id="star4" name="rating" value="4"><label for="star4" title="4 stars">★</label>
+      <input type="radio" id="star3" name="rating" value="3"><label for="star3" title="3 stars">★</label>
+      <input type="radio" id="star2" name="rating" value="2"><label for="star2" title="2 stars">★</label>
+      <input type="radio" id="star1" name="rating" value="1"><label for="star1" title="1 star">★</label>
+    </div>
+
+    <textarea name="review" id="reviewText" placeholder="Write your review..." required></textarea>
+
+    <input type="submit" value="Submit Review" id="submitBtn">
+  </form>
+  <div id="reviewMessage" class="review-message" style="display: none; margin-top: 10px; padding: 10px; border-radius: 5px;"></div>
+</div>
+
+      </div>
+    </div>
+
+    <div class="container copyright text-center mt-4">
+      <p>© <span>2025</span> <strong class="px-1 sitename">Gujarat Journey Planner</strong> <span></span></p>
+      <div class="credits">
+        Designed & Develped as a <a href="">B.Tech Project</a> for <a href="">Academic Purpose
+      </div>
+    </div>
+
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/isotope-layout@3.0.6/dist/isotope.pkgd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/waypoints@4.0.1/lib/noframework.waypoints.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <!-- Main JS File -->
+  <script src="assets/js/api-config.js"></script>
+  <script src="assets/js/main.js"></script>
+  
+  <!-- Authentication Utils -->
+  <script src="assets/js/auth-utils.js"></script>
+  <script>
+    // Initialize auth for dynamic header updates
+    document.addEventListener('DOMContentLoaded', () => {
+      AuthUtils.init();
+    });
+  </script>
+  <script>
+   const sliderTrack = document.querySelector('.slider-track');
+
+   // Duplicate cards for infinite loop
+   sliderTrack.innerHTML += sliderTrack.innerHTML;
+
+   let position = 0;
+   const speed = 0.5; // Adjust scroll speed
+
+   function slide() {
+     position -= speed;
+     if (Math.abs(position) >= sliderTrack.scrollWidth / 2) {
+       position = 0;
+     }
+     sliderTrack.style.transform = `translateX(${position}px)`;
+     requestAnimationFrame(slide);
+   }
+   slide();
+</script>
+  <script src="https://cdn.jsdelivr.net/npm/isotope-layout@3.0.6/dist/isotope.pkgd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const iso = new Isotope('.isotope-container', {
+      itemSelector: '.isotope-item',
+      layoutMode: 'masonry'
+    });
+
+    document.querySelectorAll('.portfolio-filters li').forEach(filterBtn => {
+      filterBtn.addEventListener('click', function () {
+        document.querySelector('.filter-active').classList.remove('filter-active');
+        this.classList.add('filter-active');
+        iso.arrange({ filter: this.getAttribute('data-filter') });
+      });
+    });
+
+    GLightbox({ selector: '.glightbox' });
+  });
+</script>
+
+<script>
+(function () {
+  function initTestimonials(sectionId, intervalMs = 4000) {
+    const section = document.getElementById(sectionId);
+    if (!section) return;
+
+    const cards = section.querySelectorAll(".gjp-testimonial-card");
+    const dots  = section.querySelectorAll(".gjp-dot");
+    if (!cards.length) return;
+
+    let index = 0, timer;
+
+    function show(i){
+      cards.forEach((c, k) => {
+        c.classList.toggle("active", k === i);
+        if (dots[k]) dots[k].classList.toggle("active", k === i);
+      });
+    }
+
+    function start(){
+      stop();
+      timer = setInterval(() => {
+        index = (index + 1) % cards.length;
+        show(index);
+      }, intervalMs);
+    }
+
+    function stop(){ if (timer) clearInterval(timer); }
+
+    // Dots click
+    dots.forEach((dot, i) => {
+      dot.addEventListener("click", () => {
+        index = i; show(index); start();
+      });
+    });
+
+    // Pause on hover / tab hidden
+    section.addEventListener("mouseenter", stop);
+    section.addEventListener("mouseleave", start);
+    document.addEventListener("visibilitychange", () => {
+      document.hidden ? stop() : start();
+    });
+
+    // Kick off
+    show(index);
+    start();
+  }
+
+  // Ensure DOM is ready
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", () => initTestimonials("gjp-testimonials-1"));
+  } else {
+    initTestimonials("gjp-testimonials-1");
+  }
+})();
+</script>
+
+<!-- Review System JavaScript -->
+<script>
+// Global variables for review system
+let reviewCarouselIndex = 0;
+let reviewCarouselTimer;
+const API_BASE_URL = 'http://localhost:8000/api';
+
+// Function to generate stars display
+function generateStars(rating) {
+  return '★'.repeat(rating) + '☆'.repeat(5 - rating);
+}
+
+// Function to get random user avatar
+function getRandomAvatar(name) {
+  const gender = Math.random() > 0.5 ? 'women' : 'men';
+  const id = Math.floor(Math.random() * 99) + 1;
+  return `https://randomuser.me/api/portraits/${gender}/${id}.jpg`;
+}
+
+// Function to load reviews from API
+async function loadReviews() {
+  try {
+    const response = await fetch(`${API_BASE_URL}/reviews?limit=10`);
+    const data = await response.json();
+    
+    if (data.success && data.data.length > 0) {
+      updateTestimonialsSection(data.data);
+    }
+  } catch (error) {
+    console.error('Error loading reviews:', error);
+  }
+}
+
+// Function to update the testimonials section with real reviews
+function updateTestimonialsSection(reviews) {
+  const carousel = document.querySelector('.gjp-testimonial-carousel');
+  const dotsContainer = document.querySelector('.gjp-carousel-dots');
+  
+  if (!carousel || !dotsContainer) return;
+  
+  // Clear existing content
+  carousel.innerHTML = '';
+  dotsContainer.innerHTML = '';
+  
+  // Add reviews to carousel
+  reviews.forEach((review, index) => {
+    const card = document.createElement('div');
+    card.className = `gjp-testimonial-card ${index === 0 ? 'active' : ''}`;
+    
+    card.innerHTML = `
+      <img src="${getRandomAvatar(review.name)}" alt="${review.name}">
+      <h4>${review.name}</h4>
+      <span class="gjp-stars">${generateStars(review.rating)}</span>
+      <p>"${review.review}"</p>
+    `;
+    
+    carousel.appendChild(card);
+    
+    // Add corresponding dot
+    const dot = document.createElement('span');
+    dot.className = `gjp-dot ${index === 0 ? 'active' : ''}`;
+    dot.setAttribute('aria-label', `slide ${index + 1}`);
+    dotsContainer.appendChild(dot);
+  });
+  
+  // Reinitialize testimonials carousel with new content
+  if (reviews.length > 1) {
+    initTestimonials('gjp-testimonials-1');
+  }
+}
+
+// Function to show message
+function showMessage(message, isSuccess) {
+  const messageDiv = document.getElementById('reviewMessage');
+  messageDiv.textContent = message;
+  messageDiv.style.display = 'block';
+  messageDiv.style.backgroundColor = isSuccess ? '#d4edda' : '#f8d7da';
+  messageDiv.style.color = isSuccess ? '#155724' : '#721c24';
+  messageDiv.style.border = `1px solid ${isSuccess ? '#c3e6cb' : '#f5c6cb'}`;
+  
+  // Hide message after 5 seconds
+  setTimeout(() => {
+    messageDiv.style.display = 'none';
+  }, 5000);
+}
+
+// Function to reset form
+function resetForm() {
+  document.getElementById('reviewForm').reset();
+  document.getElementById('submitBtn').value = 'Submit Review';
+  document.getElementById('submitBtn').disabled = false;
+}
+
+// Function to handle form submission
+async function handleReviewSubmission(event) {
+  event.preventDefault();
+  
+  const form = event.target;
+  const formData = new FormData(form);
+  const submitBtn = document.getElementById('submitBtn');
+  
+  // Disable submit button and show loading
+  submitBtn.disabled = true;
+  submitBtn.value = 'Submitting...';
+  
+  try {
+    const response = await fetch(form.action, {
+      method: 'POST',
+      body: formData
+    });
+    
+    const result = await response.json();
+    
+    if (result.success) {
+      showMessage(result.message, true);
+      resetForm();
+      // Reload reviews to show the new one
+      setTimeout(() => {
+        loadReviews();
+      }, 1000);
+    } else {
+      showMessage(result.message, false);
+      submitBtn.disabled = false;
+      submitBtn.value = 'Submit Review';
+    }
+  } catch (error) {
+    console.error('Error submitting review:', error);
+    showMessage('Failed to submit review. Please try again.', false);
+    submitBtn.disabled = false;
+    submitBtn.value = 'Submit Review';
+  }
+}
+
+// Initialize review system when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+  // Attach form submission handler
+  const reviewForm = document.getElementById('reviewForm');
+  if (reviewForm) {
+    reviewForm.addEventListener('submit', handleReviewSubmission);
+  }
+  
+  // Load initial reviews
+  loadReviews();
+});
+</script>
+
+</body>
+
+</html>

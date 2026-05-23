@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>GJP - Profile</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Raleway:wght@400;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+</head>
+
+<body class="blog-page">
+
+  <!-- Header -->
+  <header id="header" class="header d-flex align-items-center sticky-top">
+    <div class="container position-relative d-flex align-items-center">
+
+      <a href="home.html" class="logo d-flex align-items-center me-auto">
+        <h1 class="sitename">Gujarat Journey Planner</h1><span></span>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="home.html">Home</a></li>
+          <li><a href="places.html">Places</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="packages.html">Packages</a></li>   
+          <li><a href="book.html">Book</a></li>
+          <li><a href="about-us.html">About</a></li>
+
+          <!-- <li><a href="sign in.html">Sign In</a></li> -->
+          <!-- <li><a href="profile.html" class="active">Profile</a></li> -->
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+    </div>
+  </header>
+  <!-- End Header -->
+
+  <main class="main">
+
+    <!-- Page Title -->
+    <div class="page-title accent-background">
+      <div class="container d-lg-flex justify-content-between align-items-center">
+        <h1 class="mb-2 mb-lg-0">User Profile</h1>
+        <nav class="breadcrumbs">
+          <ol>
+            <li><a href="home.html">Home</a></li>
+            <!-- <li><a href="profile.html">Profile</a></li> -->
+          </ol>
+        </nav>
+      </div>
+    </div>
+    <!-- End Page Title -->
+<div id="title" class="container section-title" data-aos="fade-up">
+      <h2>Profile</h2>
+    </div>
+
+    <!-- Profile Section -->
+<section id="profile-sec" class="my-5">
+    <div class="container">
+      <div class="row">
+        <!-- Sidebar -->
+        <div class="col-lg-4 mb-4">
+          <section class="dashboard-sidebar">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtbEsykx-0fhTred6UwHDYtMFd2UgTJCG4gaklT1dx4suRO4_n5LJr4Gg28kquSX5fpNo&usqp=CAU"
+              alt="User" class="dashboard-profile-pic mb-3">
+            <h4>Jyoti</h4>
+            <p class="text-secondary mb-1">+91 7493658737</p>
+            <p class="text-muted">Delhi, NCR</p>
+
+            <div class="dashboard-menu mt-4">
+              <a href="#" class="active" onclick="showSection(event,'profile')"><i class="fa fa-user me-2"></i> Profile
+                Details</a>
+              <a href="#" onclick="showSection(event,'tours')"><i class="fa fa-suitcase me-2"></i> Tour Booking
+                History</a>
+              <a href="#" onclick="logout()"><i class="fa fa-sign-out-alt me-2"></i> Logout</a>
+            </div>
+          </section>
+        </div>
+
+        <!-- Main Content -->
+        <div class="col-lg-8">
+        <!-- Profile Section -->
+        <section id="profile" class="dashboard-section active">
+          <h4>Profile Details</h4>
+          <div id="profileContent">
+            <!-- Profile details will be loaded dynamically -->
+          </div>
+        </section>
+
+          <!-- Tour Booking History -->
+          <section id="tours" class="dashboard-section">
+            <h4 class="mb-4">Tour Booking History</h4>
+
+            <!-- Tour 1 -->
+            <div class="dashboard-tour-card">
+              <div class="dashboard-tour-header">
+                <h5><i class="fa fa-map-marker-alt text-success me-2"></i> Rann of Kutch Tour</h5>
+                <span class="dashboard-badge success">Completed</span>
+              </div>
+              <div class="dashboard-tour-info mt-3">
+                <p><strong>Booking ID:</strong> #T001</p>
+                <p><strong>Date:</strong> 12 Aug 2025 - 15 Aug 2025</p>
+                <p><strong>Travelers:</strong> 2 Adults, 1 Child</p>
+                <p><strong>Total Amount:</strong> ₹15,500</p>
+              </div>
+
+              <div class="dashboard-subdetails">
+                <h6><i class="fa fa-hotel me-2"></i> Hotel Details</h6>
+                <p><strong>Hotel:</strong> The Grand Ahmedabad</p>
+                <p><strong>Check-in:</strong> 12 Aug | <strong>Check-out:</strong> 15 Aug</p>
+                <p><strong>Room:</strong> Deluxe Suite (2A, 1C)</p>
+              </div>
+
+              <div class="dashboard-subdetails">
+                <h6><i class="fa fa-user-tie me-2"></i> Agent Details</h6>
+                <p><strong>Name:</strong> Ravi Sharma (AG001)</p>
+                <p><strong>Contact:</strong> +91 9876543210</p>
+                <p><strong>Email:</strong> ravi@travelagent.com</p>
+              </div>
+            </div>
+
+            <!-- Tour 2 -->
+            <div class="dashboard-tour-card">
+              <div class="dashboard-tour-header">
+                <h5><i class="fa fa-map-marker-alt text-success me-2"></i> Somnath & Dwarka Tour</h5>
+                <span class="dashboard-badge warning">Upcoming</span>
+              </div>
+              <div class="dashboard-tour-info mt-3">
+                <p><strong>Booking ID:</strong> #T002</p>
+                <p><strong>Date:</strong> 25 Aug 2025 - 28 Aug 2025</p>
+                <p><strong>Travelers:</strong> 4 Adults</p>
+                <p><strong>Total Amount:</strong> ₹22,000</p>
+              </div>
+
+              <div class="dashboard-subdetails">
+                <h6><i class="fa fa-hotel me-2"></i> Hotel Details</h6>
+                <p><strong>Hotel:</strong> Somnath Beach Resort</p>
+                <p><strong>Check-in:</strong> 25 Aug | <strong>Check-out:</strong> 28 Aug</p>
+                <p><strong>Room:</strong> Family Room (4 Adults)</p>
+              </div>
+
+              <div class="dashboard-subdetails">
+                <h6><i class="fa fa-user-tie me-2"></i> Agent Details</h6>
+                <p><strong>Name:</strong> Neha Patel (AG002)</p>
+                <p><strong>Contact:</strong> +91 9988776655</p>
+                <p><strong>Email:</strong> neha@travelagent.com</p>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </section>    
+    <!-- End Profile Section -->
+
+  </main>
+
+  <!-- Footer  -->
+   <footer id="footer" class="footer dark-background">
+
+    <div class="container footer-top"home>
+      <div class="row gy-4">
+        <div class="col-lg-4 col-md-6 footer-about">
+          <a href="home.html" class="logo d-flex align-items-center">
+            <span id="foot-site-name" class="sitename">Gujarat Journey Planner</span>
+          </a>
+          <div class="footer-contact pt-3">
+            <!-- <p>A108 Adam Street</p>
+            <p>New York, NY 535022</p> -->
+            <p class="mt-3"><strong>Address:</strong> <span>Gujarat, India</span></p>
+            <p><strong>Email:</strong> <span>gujaratjourneyplanner.gmail.com</span></p>
+          </div>
+          <!-- <div class="social-links d-flex mt-4">
+            <a href=""><i class="bi bi-twitter-x"></i></a>
+            <a href=""><i class="bi bi-facebook"></i></a>
+            <a href=""><i class="bi bi-instagram"></i></a>
+            <a href=""><i class="bi bi-linkedin"></i></a>
+          </div> -->
+        </div>
+
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>Useful Links</h4>
+          <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="places.html"> Tourist Places</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="book.html">Book a Tour</a></li>
+            <li><a href="sign in.html">Sign In</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>Our Services</h4>
+          <ul>
+            <li><a href="#">Hotel Booking</a></li>
+            <li><a href="#">Local Agent Booking</a></li>
+            <li><a href="#">Transport Booking</a></li>
+            <li><a href="#">Custom Tour Packages</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-4 col-md-12 footer-newsletter">
+          <h4>Our Newsletter</h4>
+          <p>Subscribe to our newsletter and receive the latest news about our products and services!</p>
+          <form action="forms/newsletter.php" method="post" class="php-email-form">
+            <div class="newsletter-form"><input type="email" name="email"><input type="submit" value="Subscribe"></div>
+            <div class="loading">Loading</div>
+            <div class="error-message"></div>
+            <div class="sent-message">Your subscription request has been sent. Thank you!</div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="container copyright text-center mt-4">
+      <p>© <span>2025</span> <strong class="px-1 sitename">Gujarat Journey Planner</strong> <span></span></p>
+      <div class="credits">
+        Designed & Develped as a <a href="">B.Tech Project</a> for <a href="">Academic Purpose
+      </div>
+    </div>
+
+  </footer>
+<!-- End Footer  -->
+  <!-- End Footer -->
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/isotope-layout@3.0.6/dist/isotope.pkgd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/waypoints@4.0.1/lib/noframework.waypoints.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <!-- Main JS File -->
+  <script src="assets/js/api-config.js"></script>
+  <script src="assets/js/main.js"></script>
+  <!-- Authentication Utils -->
+  <script src="assets/js/auth-utils.js"></script>
+  <script>
+    function showSection(event, section) {
+      document.querySelectorAll('.dashboard-section').forEach(div => div.classList.remove('active'));
+      document.getElementById(section).classList.add('active');
+
+      document.querySelectorAll('.dashboard-menu a').forEach(item => item.classList.remove('active'));
+      event.target.classList.add('active');
+    }
+  </script>
+
+  <script>
+document.addEventListener("DOMContentLoaded", async () => {
+  try {
+    console.log('Profile page loading...');
+
+    // ✅ If hotel manager lands here by mistake, redirect them to their dashboard
+    const userRole = localStorage.getItem('userRole');
+    if (userRole === 'hotel') {
+      window.location.href = 'hoteldashboard.html';
+      return;
+    }
+
+    // Check for authentication token
+    const authToken = localStorage.getItem("authToken");
+    const regularToken = localStorage.getItem("token");
+    const token = authToken || regularToken;
+    
+    console.log('Auth tokens found:', {
+      authToken: authToken ? 'Yes' : 'No',
+      regularToken: regularToken ? 'Yes' : 'No',
+      usingToken: token ? 'Yes' : 'No'
+    });
+    
+    if (!token) {
+      throw new Error("No authentication token found. Please login again.");
+    }
+    
+    console.log('Fetching profile data from API...');
+    const response = await fetch("http://localhost:8000/api/profile", {
+      headers: {
+        "Authorization": `Bearer ${token}`
+      },
+      cache: "no-store"
+    });
+    
+    console.log('API response status:', response.status, response.statusText);
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error('API Error Response:', errorText);
+      if (response.status === 401) {
+        throw new Error("Authentication failed. Please login again.");
+      }
+      throw new Error(`Failed to load profile data: ${response.status} ${response.statusText}`);
+    }
+
+    const data = await response.json();
+    console.log('Profile data received:', data);
+
+    // --- Sidebar ---
+    document.querySelector(".dashboard-profile-pic").src = "assets/img/default-user.png"; // fallback profile image
+    document.querySelector(".dashboard-sidebar h4").textContent = data.name;
+    document.querySelector(".dashboard-sidebar p.text-secondary").textContent = data.phone;
+    document.querySelector(".dashboard-sidebar p.text-muted").textContent = data.location;
+
+    // --- Profile Section ---
+    document.querySelector("#profile").innerHTML = `
+      <h4>Profile Details</h4>
+      <p><strong>Name:</strong> ${data.name}</p>
+      <p><strong>Email:</strong> ${data.email}</p>
+      <p><strong>Phone:</strong> ${data.phone}</p>
+      <p><strong>Location:</strong> ${data.location}</p>
+    `;
+
+    // --- Tours Section (ProfileBooking records) ---
+    const toursSection = document.querySelector("#tours");
+    toursSection.innerHTML = "<h4 class='mb-4'>Tour Booking History</h4>";
+
+    if (data.tours && data.tours.length > 0) {
+      data.tours.forEach(tour => {
+        // Format dates
+        const checkInDate = tour.hotel?.checkIn ? new Date(tour.hotel.checkIn).toLocaleDateString() : '-';
+        const checkOutDate = tour.hotel?.checkOut ? new Date(tour.hotel.checkOut).toLocaleDateString() : '-';
+        
+        // Generate action buttons based on booking status
+        let actionButtons = '';
+        
+        // Don't show any action buttons for cancelled bookings
+        const isCancelled = tour.status === 'cancelled' || tour.status === 'canceled' || tour.status === 'Cancelled';
+        
+        if (!isCancelled && tour.actions && tour.actions.length > 0) {
+          tour.actions.forEach(action => {
+            if (action === 'pay') {
+              actionButtons += `<button class="btn btn-primary btn-sm me-2" onclick="redirectToPayment('${tour.bookingId}')">Pay Now</button>`;
+            } else if (action === 'cancel') {
+              actionButtons += `<button class="btn btn-danger btn-sm me-2" onclick="cancelBooking('${tour.bookingId}')">Cancel</button>`;
+            } else if (action === 'view_details') {
+              actionButtons += `<button class="btn btn-info btn-sm me-2" onclick="viewDetails('${tour.bookingId}')">View Details</button>`;
+            }
+          });
+        } else if (!isCancelled) {
+          // Show default cancel button for non-cancelled bookings if no specific actions
+          actionButtons += `<button class="btn btn-outline-danger btn-sm me-2" onclick="cancelBooking('${tour.bookingId}')">Cancel Booking</button>`;
+        }
+        
+        // Add confirmation status from backend progress data
+        tour.hotelConfirmed = tour.progress?.hotelConfirmed || false;
+        tour.agentConfirmed = tour.progress?.agentConfirmed || false;
+        tour.transportConfirmed = tour.progress?.transportConfirmed || false;
+        
+        const tourCard = `
+          <div class="dashboard-tour-card${isCancelled ? ' border-danger opacity-75' : ''}">
+            ${isCancelled ? '<div class="alert alert-danger py-2 mb-2 small fw-bold"><i class="bi bi-x-circle me-1"></i>This booking was cancelled by the agent.</div>' : ''}
+            <div class="dashboard-tour-header">
+              <h5><i class="fa fa-map-marker-alt ${isCancelled ? 'text-danger' : 'text-success'} me-2"></i> ${tour.tourName || 'Tour Package'}</h5>
+              <span class="dashboard-badge ${getStatusClass(tour.status)}">${generateSmartStatusMessage(tour)}</span>
+            </div>
+            <div class="dashboard-tour-info mt-3">
+              <p><strong>Booking ID:</strong> ${tour.bookingId}</p>
+              <p><strong>Places:</strong> ${tour.touristPlaces ? tour.touristPlaces.join(', ') : 'N/A'}</p>
+              <p><strong>Check-in:</strong> ${checkInDate} | <strong>Check-out:</strong> ${checkOutDate}</p>
+              <p><strong>Travelers:</strong> ${tour.travelers} people</p>
+              <p><strong>Total Amount:</strong> ₹${tour.totalAmount}</p>
+              <p><strong>Payment Status:</strong> <span class="badge ${tour.paymentStatus === 'completed' ? 'bg-success' : 'bg-warning'}">${tour.paymentStatus}</span></p>
+              <div class="mt-2">
+                <p><strong>Status:</strong> 
+                  Hotel: <span class="badge ${tour.hotelConfirmed ? 'bg-success' : 'bg-warning'}">${tour.hotelConfirmed ? 'Confirmed' : 'Pending'}</span>
+                  Agent: <span class="badge ${tour.agentConfirmed ? 'bg-success' : 'bg-warning'}">${tour.agentConfirmed ? 'Confirmed' : 'Pending'}</span>
+                  Transport: <span class="badge ${tour.transportConfirmed ? 'bg-success' : 'bg-warning'}">${tour.transportConfirmed ? 'Confirmed' : 'Pending'}</span>
+                </p>
+              </div>
+            </div>
+            ${generateServiceSections(tour)}
+            ${generatePaymentSection(tour)}
+          </div>
+        `;
+        toursSection.insertAdjacentHTML("beforeend", tourCard);
+      });
+    } else {
+      toursSection.insertAdjacentHTML("beforeend", "<div class='alert alert-info'>No bookings found. <a href='book.html' class='btn btn-primary'>Book Your First Tour</a></div>");
+    }
+  } catch (error) {
+    console.error("Error loading profile:", error);
+    const errorMessage = error.message || 'Unknown error occurred';
+    
+    // Show appropriate error message
+    if (errorMessage.includes('authentication') || errorMessage.includes('login')) {
+      document.querySelector("#profile").innerHTML = `
+        <div class='alert alert-warning'>
+          <h5>Authentication Required</h5>
+          <p>${errorMessage}</p>
+          <a href='sign in.html' class='btn btn-primary'>Login Now</a>
+        </div>
+      `;
+    } else {
+      document.querySelector("#profile").innerHTML = `
+        <div class='alert alert-danger'>
+          <h5>Error Loading Profile</h5>
+          <p>${errorMessage}</p>
+          <button class='btn btn-outline-primary' onclick='location.reload()'>Try Again</button>
+        </div>
+      `;
+    }
+  }
+});
+
+// 🔧 Helper function to check if we have meaningful hotel data
+function hasHotelData(tour) {
+  if (!tour.hotel) return false;
+  
+  // Check if we have at least one meaningful piece of hotel information
+  const hasName = tour.hotel.name && tour.hotel.name !== 'TBD' && tour.hotel.name !== 'N/A' && tour.hotel.name.trim() !== '';
+  const hasAddress = tour.hotel.address && tour.hotel.address !== 'TBD' && tour.hotel.address !== 'N/A' && tour.hotel.address.trim() !== '';
+  const hasCheckIn = tour.hotel.checkIn && tour.hotel.checkIn !== 'TBD' && tour.hotel.checkIn !== 'N/A';
+  const hasCheckOut = tour.hotel.checkOut && tour.hotel.checkOut !== 'TBD' && tour.hotel.checkOut !== 'N/A';
+  const hasContact = tour.hotel.contact && tour.hotel.contact !== 'TBD' && tour.hotel.contact !== 'N/A' && tour.hotel.contact.trim() !== '';
+  
+  return hasName || hasAddress || hasCheckIn || hasCheckOut || hasContact;
+}
+
+// 🔧 Helper function to check if we have meaningful agent data
+function hasAgentData(tour) {
+  if (!tour.agent) return false;
+  
+  // Check if we have at least one meaningful piece of agent information
+  const hasName = tour.agent.name && tour.agent.name !== 'TBD' && tour.agent.name !== 'N/A' && tour.agent.name.trim() !== '';
+  const hasExperience = tour.agent.experience && tour.agent.experience !== 'TBD' && tour.agent.experience !== 'N/A' && tour.agent.experience.trim() !== '';
+  const hasLocation = tour.agent.location && tour.agent.location !== 'TBD' && tour.agent.location !== 'N/A' && tour.agent.location.trim() !== '';
+  const hasLanguages = tour.agent.languages && tour.agent.languages !== 'TBD' && tour.agent.languages !== 'N/A' && tour.agent.languages.trim() !== '';
+  const hasContact = tour.agent.contact && tour.agent.contact !== 'TBD' && tour.agent.contact !== 'N/A' && tour.agent.contact.trim() !== '';
+  
+  return hasName || hasExperience || hasLocation || hasLanguages || hasContact;
+}
+
+// 🔧 Helper function to check if we have meaningful transport data (ENHANCED)
+function hasTransportData(tour) {
+  if (!tour.transport) return false;
+  
+  // Check if transport manager has assigned any details
+  const hasVehicleType = tour.transport.vehicleType && tour.transport.vehicleType !== 'TBD' && tour.transport.vehicleType !== 'N/A' && tour.transport.vehicleType.trim() !== '';
+  const hasVehicleName = tour.transport.vehicleName && tour.transport.vehicleName !== 'TBD' && tour.transport.vehicleName !== 'N/A' && tour.transport.vehicleName.trim() !== '';
+  const hasVehicleNumber = tour.transport.vehicleNumber && tour.transport.vehicleNumber !== 'TBD' && tour.transport.vehicleNumber !== 'N/A' && tour.transport.vehicleNumber.trim() !== '';
+  const hasDriverName = tour.transport.driverName && tour.transport.driverName !== 'TBD' && tour.transport.driverName !== 'N/A' && tour.transport.driverName.trim() !== '';
+  const hasDriverPhone = tour.transport.driverPhone && tour.transport.driverPhone !== 'TBD' && tour.transport.driverPhone !== 'N/A' && tour.transport.driverPhone.trim() !== '';
+  const hasFeatures = tour.transport.features && tour.transport.features !== 'TBD' && tour.transport.features !== 'N/A' && tour.transport.features.trim() !== '';
+  const hasPricing = tour.transport.pricePerKm && tour.transport.pricePerKm !== 'TBD' && tour.transport.pricePerKm !== 'N/A' && tour.transport.pricePerKm.trim() !== '';
+  const hasPickupLocation = tour.transport.pickupLocation && tour.transport.pickupLocation !== 'TBD' && tour.transport.pickupLocation !== 'N/A' && tour.transport.pickupLocation.trim() !== '';
+  
+  // Also check if transport is confirmed or if booking requires transport
+  const isTransportConfirmed = tour.transportConfirmed === true;
+  const isTransportRequested = tour.tourist && tour.tourist.totalTravellers > 0; // Assume transport is needed for all bookings
+  
+  // Show section if transport is assigned OR if transport is requested (to show pending status)
+  return hasVehicleType || hasVehicleName || hasVehicleNumber || hasDriverName || hasDriverPhone || hasFeatures || hasPricing || hasPickupLocation || isTransportConfirmed || isTransportRequested;
+}
+
+// 🔧 Function to generate Hotel section (NEW UI FORMAT - only if data exists)
+function generateHotelSection(tour) {
+  if (!hasHotelData(tour)) {
+    return ''; // Return empty string - don't show section
+  }
+  
+  const checkInDate = tour.hotel?.checkIn ? new Date(tour.hotel.checkIn).toLocaleDateString() : '-';
+  const checkOutDate = tour.hotel?.checkOut ? new Date(tour.hotel.checkOut).toLocaleDateString() : '-';
+  const hotelConfirmed = isServiceConfirmed(tour.hotel, 'hotel', tour);
+  
+  return `
+    <!-- Hotel -->
+    <div class="dashboard-subdetails d-flex justify-content-between align-items-start">
+      <div>
+        <h6><i class="fa fa-hotel me-2"></i> Hotel Details</h6>
+        ${tour.hotel.name && tour.hotel.name !== 'TBD' && tour.hotel.name !== 'N/A' ? `<p><strong>Hotel:</strong> ${tour.hotel.name}</p>` : ''}
+        ${tour.hotel.address && tour.hotel.address !== 'TBD' && tour.hotel.address !== 'N/A' ? `<p><strong>Address:</strong> ${tour.hotel.address}</p>` : ''}
+        ${(tour.hotel.checkIn || tour.hotel.checkOut) ? `<p><strong>Room:</strong> ${tour.hotel.roomType || 'Standard Room'}</p>` : ''}
+        ${tour.hotel.contact && tour.hotel.contact !== 'TBD' && tour.hotel.contact !== 'N/A' ? `<p><strong>Contact:</strong> ${tour.hotel.contact}</p>` : ''}
+      </div>
+      <div class="status-box text-end">
+        <p><strong>Confirmation:</strong> <span class="text-${tour.hotelConfirmed ? 'success' : 'warning'}">${tour.hotelConfirmed ? 'Confirmed' : 'Pending'}</span></p>
+        <p><strong>Payment:</strong> <span class="text-${tour.hotel.paymentStatus === 'completed' || tour.hotel.paymentStatus === 'paid' ? 'success' : 'warning'}">${tour.hotel.paymentStatus === 'completed' || tour.hotel.paymentStatus === 'paid' ? 'Paid' : 'Pending'}</span></p>
+      </div>
+    </div>
+  `;
+}
+
+// 🔧 Function to generate Agent section (NEW UI FORMAT - only if data exists)
+function generateAgentSection(tour) {
+  if (!hasAgentData(tour)) {
+    return ''; // Return empty string - don't show section
+  }
+  
+  const agentConfirmed = isServiceConfirmed(tour.agent, 'agent', tour);
+  
+  return `
+    <!-- Guide -->
+    <div class="dashboard-subdetails d-flex justify-content-between align-items-start">
+      <div>
+        <h6><i class="fa fa-user-tie me-2"></i> Guide Details</h6>
+        ${tour.agent.name && tour.agent.name !== 'TBD' && tour.agent.name !== 'N/A' ? `<p><strong>Name:</strong> ${tour.agent.name}${tour.agent.agentId ? ` (${tour.agent.agentId})` : ''}</p>` : ''}
+        ${tour.agent.contact && tour.agent.contact !== 'TBD' && tour.agent.contact !== 'N/A' ? `<p><strong>Contact:</strong> ${tour.agent.contact}</p>` : ''}
+        ${tour.agent.experience && tour.agent.experience !== 'TBD' && tour.agent.experience !== 'N/A' ? `<p><strong>Experience:</strong> ${tour.agent.experience}</p>` : ''}
+        ${tour.agent.languages && tour.agent.languages !== 'TBD' && tour.agent.languages !== 'N/A' ? `<p><strong>Languages:</strong> ${tour.agent.languages}</p>` : ''}
+      </div>
+      <div class="status-box text-end">
+        <p><strong>Confirmation:</strong> <span class="text-${tour.agentConfirmed ? 'success' : 'warning'}">${tour.agentConfirmed ? 'Confirmed' : 'Pending'}</span></p>
+        <p><strong>Payment:</strong> <span class="text-${tour.agent.paymentStatus === 'completed' || tour.agent.paymentStatus === 'paid' ? 'success' : 'warning'}">${tour.agent.paymentStatus === 'completed' || tour.agent.paymentStatus === 'paid' ? 'Paid' : 'Pending'}</span></p>
+      </div>
+    </div>
+  `;
+}
+
+// 🚐 Function to generate Transport section (ENHANCED - show actual transport details from manager)
+function generateTransportSection(tour) {
+  if (!hasTransportData(tour)) {
+    return ''; // Return empty string - don't show section
+  }
+  
+  const transportConfirmed = tour.transportConfirmed === true;
+  
+  // Build transport info from assigned details
+  let transportInfo = '';
+  
+  if (tour.transport.vehicleType && tour.transport.vehicleType !== 'TBD') {
+    transportInfo += `<p><strong>Vehicle Type:</strong> ${tour.transport.vehicleType}</p>`;
+  }
+  
+  if (tour.transport.vehicleName && tour.transport.vehicleName !== 'TBD') {
+    transportInfo += `<p><strong>Vehicle:</strong> ${tour.transport.vehicleName}`;
+    if (tour.transport.vehicleNumber && tour.transport.vehicleNumber !== 'TBD') {
+      transportInfo += ` (${tour.transport.vehicleNumber})`;
+    }
+    transportInfo += `</p>`;
+  }
+  
+  if (tour.transport.driverName && tour.transport.driverName !== 'TBD') {
+    transportInfo += `<p><strong>Driver:</strong> ${tour.transport.driverName}</p>`;
+  }
+  
+  if (tour.transport.driverPhone && tour.transport.driverPhone !== 'TBD') {
+    transportInfo += `<p><strong>Driver Contact:</strong> ${tour.transport.driverPhone}</p>`;
+  }
+  
+  if (tour.transport.features && tour.transport.features !== 'TBD') {
+    transportInfo += `<p><strong>Features:</strong> ${tour.transport.features}</p>`;
+  }
+  
+  if (tour.transport.pricePerKm && tour.transport.pricePerKm !== 'TBD') {
+    transportInfo += `<p><strong>Rate:</strong> ${tour.transport.pricePerKm}</p>`;
+  }
+  
+  if (tour.transport.pickupLocation && tour.transport.pickupLocation !== 'TBD') {
+    transportInfo += `<p><strong>Pickup Location:</strong> ${tour.transport.pickupLocation}</p>`;
+  }
+  
+  return `
+    <!-- Transportation -->
+    <div class="dashboard-subdetails d-flex justify-content-between align-items-start">
+      <div>
+        <h6><i class="fa fa-car me-2"></i> Transportation Details</h6>
+        ${transportInfo || '<p class="text-muted">Transport details will be assigned by transport manager</p>'}
+      </div>
+      <div class="status-box text-end">
+        <p><strong>Confirmation:</strong> <span class="text-${transportConfirmed ? 'success' : 'warning'}">${transportConfirmed ? 'Confirmed' : 'Pending'}</span></p>
+        <p><strong>Payment:</strong> <span class="text-${tour.transport?.paymentStatus === 'completed' || tour.transport?.paymentStatus === 'paid' ? 'success' : 'warning'}">${tour.transport?.paymentStatus === 'completed' || tour.transport?.paymentStatus === 'paid' ? 'Paid' : 'Pending'}</span></p>
+      </div>
+    </div>
+  `;
+}
+
+// 🎆 Master function to generate all service sections with intelligent display
+function generateServiceSections(tour) {
+  const hotelSection = generateHotelSection(tour);
+  const agentSection = generateAgentSection(tour);
+  const transportSection = generateTransportSection(tour);
+  
+  // 🔍 Debugging information
+  const hasHotel = hasHotelData(tour);
+  const hasAgent = hasAgentData(tour);
+  const hasTransport = hasTransportData(tour);
+  
+  console.log(`📊 Service sections for booking ${tour.bookingId}:`, {
+    hotel: hasHotel ? '✅ Showing' : '❌ Hidden (no data)',
+    agent: hasAgent ? '✅ Showing' : '❌ Hidden (no data)',
+    transport: hasTransport ? '✅ Showing' : '❌ Hidden (no data)',
+    hotelData: tour.hotel,
+    agentData: tour.agent,
+    transportData: tour.transport
+  });
+  
+  // Check if we have at least one service section with data
+  const hasAnyServiceData = hotelSection !== '' || agentSection !== '' || transportSection !== '';
+  
+  if (!hasAnyServiceData) {
+    // No service data available - show informative message
+    console.log(`ℹ️ No service data found for booking ${tour.bookingId} - showing placeholder message`);
+    return `
+      <div class="dashboard-subdetails text-center py-4" style="background-color: #f8f9fa; border: 1px dashed #dee2e6; border-radius: 8px;">
+        <i class="fa fa-info-circle text-muted mb-2" style="font-size: 2em;"></i>
+        <h6 class="text-muted">Service Details Pending</h6>
+        <p class="text-muted mb-0">Hotel, Agent, and Transport details will appear here once they are confirmed for your booking.</p>
+        <small class="text-muted d-block mt-2">
+          <i class="fa fa-clock me-1"></i>This is normal for new bookings - details will be added as your tour is processed.
+        </small>
+      </div>
+    `;
+  }
+  
+  // Return all available sections
+  console.log(`✨ Displaying ${[hasHotel && 'Hotel', hasAgent && 'Agent', hasTransport && 'Transport'].filter(Boolean).join(', ')} sections for booking ${tour.bookingId}`);
+  return hotelSection + agentSection + transportSection;
+}
+
+// 🎯 Generate smart status message based on actual selected/confirmed services
+function generateSmartStatusMessage(tour) {
+  // First, check the main booking status
+  if (tour.status === 'cancelled' || tour.status === 'canceled') {
+    return 'Cancelled';
+  }
+  
+  if (tour.status === 'payment_complete') {
+    return 'Confirmed & Paid';
+  }
+  
+  // Check which services are actually part of this booking
+  const hasHotel = hasHotelData(tour);
+  const hasAgent = hasAgentData(tour);
+  const hasTransport = hasTransportData(tour);
+  
+  // If no services data available, return status based on booking fields
+  if (!hasHotel && !hasAgent && !hasTransport) {
+    // Use the status from the booking directly
+    switch (tour.status) {
+      case 'pending':
+        return 'Pending Confirmation';
+      case 'agent_confirmed':
+        return 'Agent Confirmed';
+      case 'hotel_confirmed':
+        return 'Hotel Confirmed';
+      case 'confirmed':
+        return 'Confirmed';
+      default:
+        return tour.status || 'Pending Setup';
+    }
+  }
+  
+  // FIXED: Use actual confirmation status from booking data
+  const hotelConfirmed = tour.hotelConfirmed === true;
+  const agentConfirmed = tour.agentConfirmed === true;
+  const transportConfirmed = tour.transportConfirmed === true;
+  
+  // Generate list of selected services
+  const selectedServices = [];
+  if (hasHotel) selectedServices.push('Hotel');
+  if (hasAgent) selectedServices.push('Agent');
+  if (hasTransport) selectedServices.push('Transport');
+  
+  // Generate confirmed services list
+  const confirmedServices = [];
+  if (hotelConfirmed) confirmedServices.push('Hotel');
+  if (agentConfirmed) confirmedServices.push('Agent');
+  if (transportConfirmed) confirmedServices.push('Transport');
+  
+  // Generate pending services list (selected but not confirmed)
+  const pendingServices = selectedServices.filter(service => 
+    !confirmedServices.includes(service)
+  );
+  
+  console.log(`📋 Status for ${tour.bookingId}:`, {
+    mainStatus: tour.status,
+    selected: selectedServices,
+    confirmed: confirmedServices,
+    pending: pendingServices,
+    hotelConfirmed: tour.hotelConfirmed,
+    agentConfirmed: tour.agentConfirmed
+  });
+  
+  // Build dynamic status message
+  if (confirmedServices.length === selectedServices.length && selectedServices.length > 0) {
+    // All selected services are confirmed
+    if (tour.paymentStatus === 'completed') {
+      return 'Confirmed & Paid';
+    } else {
+      return `${confirmedServices.join(' + ')} Confirmed`;
+    }
+  } else if (confirmedServices.length > 0) {
+    // Some services confirmed, some pending
+    const confirmedText = confirmedServices.join(' + ');
+    const pendingText = pendingServices.join(' + ');
+    return `${confirmedText} Confirmed - Awaiting ${pendingText}`;
+  } else if (selectedServices.length > 0) {
+    // No services confirmed yet
+    const pendingText = selectedServices.join(' + ');
+    return `Awaiting ${pendingText} Confirmation`;
+  } else {
+    // No services selected, return main booking status
+    switch (tour.status) {
+      case 'pending':
+        return 'Pending Confirmation';
+      case 'agent_confirmed':
+        return 'Agent Confirmed';
+      case 'hotel_confirmed':
+        return 'Hotel Confirmed';
+      case 'confirmed':
+        return 'Confirmed';
+      default:
+        return tour.status || 'Pending Setup';
+    }
+  }
+}
+
+// 🔍 Helper function to check if a service is confirmed
+function isServiceConfirmed(serviceData, serviceType, tour) {
+  if (!serviceData) return false;
+  
+  // FIXED: Check actual confirmation status from booking data first
+  switch (serviceType) {
+    case 'hotel':
+      // Check explicit hotel confirmation status from booking
+      if (tour && typeof tour.hotelConfirmed === 'boolean') {
+        return tour.hotelConfirmed;
+      }
+      // Fallback: Check service confirmation status
+      return serviceData.confirmationStatus === 'confirmed' || serviceData.confirmed === true;
+             
+    case 'agent':
+      // Check explicit agent confirmation status from booking
+      if (tour && typeof tour.agentConfirmed === 'boolean') {
+        return tour.agentConfirmed;
+      }
+      // Fallback: Check service confirmation status
+      return serviceData.confirmationStatus === 'confirmed' || serviceData.confirmed === true;
+             
+    case 'transport':
+      // Check explicit transport confirmation status from booking
+      if (tour && typeof tour.transportConfirmed === 'boolean') {
+        return tour.transportConfirmed;
+      }
+      // Fallback: Check service confirmation status
+      return serviceData.confirmationStatus === 'confirmed' || serviceData.confirmed === true;
+             
+    default:
+      return false;
+  }
+}
+
+// 💳 Generate dynamic payment section with smart cost calculation
+function generatePaymentSection(tour) {
+  // Check which services are selected and confirmed
+  const hasHotel = hasHotelData(tour);
+  const hasAgent = hasAgentData(tour);
+  const hasTransport = hasTransportData(tour);
+  
+  // Use actual confirmation status from booking data
+  const hotelConfirmed = hasHotel && (tour.hotelConfirmed === true);
+  const agentConfirmed = hasAgent && (tour.agentConfirmed === true);
+  const transportConfirmed = hasTransport && (tour.transportConfirmed === true);
+  
+  // Calculate dynamic pricing based on confirmed services
+  const pricingBreakdown = calculateDynamicPricing(tour, {
+    hotelConfirmed,
+    agentConfirmed, 
+    transportConfirmed,
+    hasHotel,
+    hasAgent,
+    hasTransport
+  });
+  
+  // Check if all selected services are confirmed (payment ready)
+  const selectedServices = [hasHotel, hasAgent, hasTransport].filter(Boolean).length;
+  const confirmedServices = [hotelConfirmed, agentConfirmed, transportConfirmed].filter(Boolean).length;
+  const allServicesConfirmed = selectedServices > 0 && selectedServices === confirmedServices;
+  
+  // Check if already paid
+  const isPaid = tour.paymentStatus === 'completed' || tour.paymentStatus === 'paid';
+  
+  console.log(`💰 Payment status for ${tour.bookingId}:`, {
+    selectedServices,
+    confirmedServices,
+    allServicesConfirmed,
+    isPaid,
+    pricing: pricingBreakdown
+  });
+  
+  // Build action buttons section
+  let actionButtons = '';
+  
+  // Check if booking is cancelled
+  const isCancelled = tour.status === 'cancelled' || tour.status === 'canceled' || tour.status === 'Cancelled';
+  
+  // Don't show action buttons for cancelled bookings
+  if (!isCancelled) {
+    // Add existing action buttons (if any)
+    if (tour.actions && tour.actions.length > 0) {
+      tour.actions.forEach(action => {
+        if (action === 'cancel') {
+          actionButtons += `<button class="btn btn-outline-danger btn-sm me-2" onclick="cancelBooking('${tour.bookingId}')">Cancel Booking</button>`;
+        } else if (action === 'view_details') {
+          actionButtons += `<button class="btn btn-outline-info btn-sm me-2" onclick="viewDetails('${tour.bookingId}')">View Details</button>`;
+        }
+      });
+    } else {
+      // Default cancel button for all non-cancelled bookings
+      actionButtons += `<button class="btn btn-outline-danger btn-sm me-2" onclick="cancelBooking('${tour.bookingId}')">Cancel Booking</button>`;
+    }
+  }
+  
+  // Add dynamic payment button logic
+  if (isPaid) {
+    // Already paid - show receipt/invoice button
+    actionButtons += `<button class="btn btn-success btn-sm me-2" onclick="viewReceipt('${tour.bookingId}')">
+      <i class="fas fa-receipt me-1"></i>View Receipt
+    </button>`;
+  } else if (allServicesConfirmed) {
+    // All services confirmed - show pay now button
+    actionButtons += `<button class="btn btn-primary btn-sm me-2" onclick="proceedToPayment('${tour.bookingId}', ${pricingBreakdown.finalTotal})">
+      <i class="fas fa-credit-card me-1"></i>Pay Now (₹${pricingBreakdown.finalTotal})
+    </button>`;
+  } else if (confirmedServices > 0) {
+    // Some services confirmed - show partial amount info
+    actionButtons += `<button class="btn btn-outline-secondary btn-sm me-2" disabled>
+      <i class="fas fa-clock me-1"></i>Waiting for Confirmations
+    </button>`;
+  }
+  
+  // Generate pricing breakdown section
+  const pricingSection = generatePricingBreakdown(pricingBreakdown, {
+    hasHotel, hasAgent, hasTransport,
+    hotelConfirmed, agentConfirmed, transportConfirmed,
+    isPaid, allServicesConfirmed
+  });
+  
+  return `
+    <div class="dashboard-payment-section mt-4">
+      ${pricingSection}
+      <div class="dashboard-actions mt-3 text-end">
+        ${actionButtons}
+      </div>
+    </div>
+  `;
+}
+
+// 📊 Calculate dynamic pricing based on confirmed services
+function calculateDynamicPricing(tour, confirmationStatus) {
+  const { hotelConfirmed, agentConfirmed, transportConfirmed } = confirmationStatus;
+  
+  // Extract base costs (you can adjust these based on your data structure)
+  const baseCosts = {
+    hotel: extractServiceCost(tour.hotel, 'hotel') || 5000,
+    agent: extractServiceCost(tour.agent, 'agent') || 3000, 
+    transport: extractServiceCost(tour.transport, 'transport') || 2000
+  };
+  
+  // Calculate costs based on confirmation status
+  let breakdown = {
+    hotelCost: hotelConfirmed ? baseCosts.hotel : 0,
+    agentCost: agentConfirmed ? baseCosts.agent : 0,
+    transportCost: transportConfirmed ? baseCosts.transport : 0,
+    originalTotal: tour.totalAmount || (baseCosts.hotel + baseCosts.agent + baseCosts.transport),
+    baseCosts: baseCosts
+  };
+  
+  breakdown.confirmedTotal = breakdown.hotelCost + breakdown.agentCost + breakdown.transportCost;
+  breakdown.finalTotal = breakdown.confirmedTotal;
+  
+  // Add taxes or fees if needed
+  const taxRate = 0.18; // 18% GST
+  breakdown.tax = Math.round(breakdown.finalTotal * taxRate);
+  breakdown.finalTotal = breakdown.finalTotal + breakdown.tax;
+  
+  return breakdown;
+}
+
+// 💰 Extract cost from service data
+function extractServiceCost(serviceData, serviceType) {
+  if (!serviceData) return 0;
+  
+  // Try to find cost in various possible fields
+  const costFields = ['cost', 'price', 'amount', 'total', 'fee'];
+  
+  for (const field of costFields) {
+    if (serviceData[field] && !isNaN(serviceData[field])) {
+      return Number(serviceData[field]);
+    }
+  }
+  
+  // Fallback to service-specific cost extraction
+  switch (serviceType) {
+    case 'hotel':
+      if (serviceData.pricePerNight && serviceData.nights) {
+        return Number(serviceData.pricePerNight) * Number(serviceData.nights);
+      }
+      return 5000; // Default hotel cost
+      
+    case 'agent':
+      if (serviceData.dailyRate && serviceData.days) {
+        return Number(serviceData.dailyRate) * Number(serviceData.days);
+      }
+      return 3000; // Default agent cost
+      
+    case 'transport':
+      if (serviceData.fareAmount) {
+        return Number(serviceData.fareAmount);
+      }
+      return 2000; // Default transport cost
+      
+    default:
+      return 0;
+  }
+}
+
+// 📦 Generate pricing breakdown display
+function generatePricingBreakdown(pricing, status) {
+  const { hasHotel, hasAgent, hasTransport, hotelConfirmed, agentConfirmed, transportConfirmed, isPaid, allServicesConfirmed } = status;
+  
+  let breakdownHtml = '<div class="pricing-breakdown border rounded p-3 mb-3" style="background-color: #f8f9fa;">';
+  breakdownHtml += '<h6 class="mb-3"><i class="fas fa-calculator me-2"></i>Cost Breakdown</h6>';
+  
+  // Service-wise breakdown
+  if (hasHotel) {
+    const hotelStatus = hotelConfirmed ? 'confirmed' : 'pending';
+    const hotelCost = hotelConfirmed ? pricing.hotelCost : 0;
+    breakdownHtml += `
+      <div class="d-flex justify-content-between align-items-center mb-2">
+        <span>
+          <i class="fas fa-hotel me-2"></i>Hotel 
+          <small class="text-${hotelConfirmed ? 'success' : 'warning'}">(${hotelStatus})</small>
+        </span>
+        <span class="${hotelConfirmed ? 'text-dark' : 'text-muted'}">₹${hotelCost.toLocaleString()}</span>
+      </div>
+    `;
+  }
+  
+  if (hasAgent) {
+    const agentStatus = agentConfirmed ? 'confirmed' : 'pending';
+    const agentCost = agentConfirmed ? pricing.agentCost : 0;
+    breakdownHtml += `
+      <div class="d-flex justify-content-between align-items-center mb-2">
+        <span>
+          <i class="fas fa-user-tie me-2"></i>Agent 
+          <small class="text-${agentConfirmed ? 'success' : 'warning'}">(${agentStatus})</small>
+        </span>
+        <span class="${agentConfirmed ? 'text-dark' : 'text-muted'}">₹${agentCost.toLocaleString()}</span>
+      </div>
+    `;
+  }
+  
+  if (hasTransport) {
+    const transportStatus = transportConfirmed ? 'confirmed' : 'pending';
+    const transportCost = transportConfirmed ? pricing.transportCost : 0;
+    breakdownHtml += `
+      <div class="d-flex justify-content-between align-items-center mb-2">
+        <span>
+          <i class="fas fa-car me-2"></i>Transport 
+          <small class="text-${transportConfirmed ? 'success' : 'warning'}">(${transportStatus})</small>
+        </span>
+        <span class="${transportConfirmed ? 'text-dark' : 'text-muted'}">₹${transportCost.toLocaleString()}</span>
+      </div>
+    `;
+  }
+  
+  // Subtotal and tax
+  if (pricing.confirmedTotal > 0) {
+    breakdownHtml += '<hr class="my-2">';
+    breakdownHtml += `
+      <div class="d-flex justify-content-between align-items-center mb-1">
+        <span><strong>Confirmed Services Total:</strong></span>
+        <span><strong>₹${pricing.confirmedTotal.toLocaleString()}</strong></span>
+      </div>
+      <div class="d-flex justify-content-between align-items-center mb-1">
+        <span><small>GST (18%):</small></span>
+        <span><small>₹${pricing.tax.toLocaleString()}</small></span>
+      </div>
+      <hr class="my-2">
+      <div class="d-flex justify-content-between align-items-center">
+        <span><strong class="text-primary">Final Amount:</strong></span>
+        <span><strong class="text-primary h5 mb-0">₹${pricing.finalTotal.toLocaleString()}</strong></span>
+      </div>
+    `;
+    
+    if (!allServicesConfirmed && (hasHotel || hasAgent || hasTransport)) {
+      breakdownHtml += `
+        <div class="alert alert-info mt-2 mb-0 py-2">
+          <small><i class="fas fa-info-circle me-2"></i>Amount will adjust as services get confirmed</small>
+        </div>
+      `;
+    }
+    
+    if (isPaid) {
+      breakdownHtml += `
+        <div class="alert alert-success mt-2 mb-0 py-2">
+          <small><i class="fas fa-check-circle me-2"></i>Payment completed - ₹${pricing.finalTotal.toLocaleString()}</small>
+        </div>
+      `;
+    }
+  } else {
+    breakdownHtml += `
+      <div class="text-center text-muted py-3">
+        <i class="fas fa-hourglass-half me-2"></i>
+        <small>Costs will appear as services get confirmed</small>
+      </div>
+    `;
+  }
+  
+  breakdownHtml += '</div>';
+  
+  return breakdownHtml;
+}
+
+// Helper function to get status badge class (updated for new status types)
+function getStatusClass(status) {
+  // Handle cancelled status first
+  if (status === 'Cancelled' || status === 'cancelled' || status === 'canceled') {
+    return 'danger';
+  }
+  
+  // Handle dynamic status messages
+  if (status.includes('Confirmed & Paid')) return 'success';
+  if (status.includes('Confirmed - Awaiting')) return 'warning';
+  if (status.includes('Confirmed')) return 'info';
+  if (status.includes('Awaiting')) return 'warning';
+  
+  // Handle original status types
+  switch (status) {
+    case 'Upcoming':
+    case 'Confirmed - Payment Pending':
+      return 'warning';
+    case 'Completed':
+      return 'success';
+    case 'Cancelled':
+    case 'cancelled':
+    case 'canceled':
+      return 'danger';
+    case 'Pending Confirmation':
+    case 'Pending Setup':
+    case 'Agent Confirmed':
+    case 'Hotel Confirmed':
+      return 'secondary';
+    default:
+      return 'primary';
+  }
+}
+
+// 💳 NEW: Smart payment function with dynamic amount
+function proceedToPayment(bookingId, finalAmount) {
+  console.log(`💳 Proceeding to payment for booking ${bookingId} with amount ₹${finalAmount}`);
+  
+  // Store payment details in localStorage for payment page
+  localStorage.setItem('paymentBookingId', bookingId);
+  localStorage.setItem('paymentAmount', finalAmount);
+  localStorage.setItem('paymentTimestamp', new Date().toISOString());
+  
+  // Show confirmation before redirect
+  if (confirm(`Proceed to payment of ₹${finalAmount.toLocaleString()} for booking ${bookingId}?`)) {
+    // Redirect to payment page with parameters
+    window.location.href = `payment.html?bookingId=${bookingId}&amount=${finalAmount}`;
+  }
+}
+
+// 📧 View receipt function
+function viewReceipt(bookingId) {
+  console.log(`📧 Viewing receipt for booking ${bookingId}`);
+  
+  // You can redirect to a receipt page or show modal
+  window.location.href = `receipt.html?bookingId=${bookingId}`;
+}
+
+// 💳 LEGACY: Original payment redirect function (keeping for compatibility)
+function redirectToPayment(bookingId) {
+  // Store booking ID in localStorage for payment page
+  localStorage.setItem('paymentBookingId', bookingId);
+  // Redirect to payment gateway page
+  window.location.href = 'payment-gateway.html?bookingId=' + bookingId;
+}
+
+// Function to cancel booking
+function cancelBooking(bookingId) {
+  if (confirm('Are you sure you want to cancel this booking?')) {
+    // Show loading state
+    const cancelButton = document.querySelector(`button[onclick="cancelBooking('${bookingId}')"]`);
+    if (cancelButton) {
+      cancelButton.disabled = true;
+      cancelButton.textContent = 'Cancelling...';
+    }
+    
+    fetch(`http://localhost:8000/api/bookingformsdata/${bookingId}/cancel`, {
+      method: 'PUT',
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('authToken') || localStorage.getItem('token')}`,
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(response => {
+      console.log('Cancel response status:', response.status);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then(data => {
+      console.log('Cancel response data:', data);
+      if (data.success) {
+        alert('Booking cancelled successfully!');
+        console.log('Booking cancelled successfully');
+        location.reload(); // Reload to show updated status
+      } else {
+        throw new Error(data.message || 'Failed to cancel booking');
+      }
+    })
+    .catch(error => {
+      console.error('Error cancelling booking:', error);
+      alert('Failed to cancel booking: ' + error.message);
+      
+      // Reset button state
+      if (cancelButton) {
+        cancelButton.disabled = false;
+        cancelButton.textContent = 'Cancel';
+      }
+    });
+  }
+}
+
+// Function to view booking details
+function viewDetails(bookingId) {
+  // You can redirect to a detailed view page or show modal
+  window.location.href = 'booking-details.html?bookingId=' + bookingId;
+}
+
+// Function to logout
+function logout() {
+  // Clear all authentication data
+  localStorage.removeItem('token');
+  localStorage.removeItem('authToken');
+  localStorage.removeItem('user');
+  localStorage.removeItem('userRole');
+  localStorage.removeItem('userEmail');
+  localStorage.removeItem('userId');
+  localStorage.removeItem('paymentBookingId');
+  
+  console.log('Logged out successfully!');
+  window.location.href = 'sign in.html';
+}
+</script>
+
+</body>
+
+</html>

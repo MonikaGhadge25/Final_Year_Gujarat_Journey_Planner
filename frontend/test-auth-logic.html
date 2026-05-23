@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authentication Logic Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .test-section { margin: 20px 0; padding: 15px; border: 1px solid #ddd; }
+        button { margin: 5px; padding: 10px 15px; cursor: pointer; }
+        .logout { background-color: #dc3545; color: white; }
+        .login { background-color: #007bff; color: white; }
+        .status { padding: 10px; margin: 10px 0; border-radius: 4px; }
+        .logged-in { background-color: #d4edda; color: #155724; }
+        .logged-out { background-color: #f8d7da; color: #721c24; }
+        nav ul { list-style: none; padding: 0; }
+        nav li { display: inline-block; margin: 0 10px; }
+        nav a { text-decoration: none; padding: 5px 10px; background: #f8f9fa; border: 1px solid #dee2e6; }
+    </style>
+</head>
+<body>
+    <h1>Authentication Logic Test</h1>
+    
+    <div class="test-section">
+        <h3>Current Status</h3>
+        <div id="auth-status" class="status"></div>
+        <button onclick="simulateLogin()" class="login">Simulate Login</button>
+        <button onclick="simulateLogout()" class="logout">Simulate Logout</button>
+    </div>
+
+    <div class="test-section">
+        <h3>Test Navigation (Similar to your pages)</h3>
+        <nav id="test-nav">
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="places.html">Places</a></li>
+                <li><a href="book.html">Book</a></li>
+                <li><a href="about-us.html">About</a></li>
+                <li><a href="sign in.html">Sign In</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="test-section">
+        <h3>Test Results</h3>
+        <div id="test-results"></div>
+    </div>
+
+    <script src="assets/js/auth-utils.js"></script>
+    <script>
+        function updateStatus() {
+            const isLoggedIn = AuthUtils.isLoggedIn();
+            const user = AuthUtils.getCurrentUser();
+            const statusDiv = document.getElementById('auth-status');
+            
+            if (isLoggedIn) {
+                statusDiv.innerHTML = `✅ User is logged in${user ? ` as ${user.fullName}` : ''}`;
+                statusDiv.className = 'status logged-in';
+            } else {
+                statusDiv.innerHTML = '❌ User is not logged in';
+                statusDiv.className = 'status logged-out';
+            }
+
+            // Update test results
+            const resultsDiv = document.getElementById('test-results');
+            const signInLink = document.querySelector('#test-nav a[href="sign in.html"]');
+            const profileLink = document.querySelector('#test-nav a[href="profile.html"]');
+            
+            let results = '<h4>Navigation Test Results:</h4>';
+            results += `<p>Sign In Link Text: "${signInLink ? signInLink.textContent : 'Not found'}"</p>`;
+            results += `<p>Sign In Link Href: "${signInLink ? signInLink.href : 'Not found'}"</p>`;
+            
+            if (profileLink) {
+                results += `<p>Profile Link Found: "${profileLink.textContent}" (${profileLink.href})</p>`;
+            }
+            
+            const logoutLink = document.querySelector('[data-auth-logout]');
+            if (logoutLink) {
+                results += `<p>Logout Link Found: "${logoutLink.textContent}"</p>`;
+            }
+            
+            resultsDiv.innerHTML = results;
+        }
+
+        function simulateLogin() {
+            // Simulate login by setting localStorage
+            const mockToken = 'test-token-' + Date.now();
+            const mockUser = {
+                id: 'test-user-123',
+                fullName: 'Test User',
+                email: 'test@example.com',
+                role: 'client'
+            };
+            
+            localStorage.setItem('authToken', mockToken);
+            localStorage.setItem('user', JSON.stringify(mockUser));
+            
+            // Update auth status
+            AuthUtils.updateHeaderNavigation();
+            updateStatus();
+        }
+
+        function simulateLogout() {
+            AuthUtils.logout();
+            updateStatus();
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            updateStatus();
+            AuthUtils.updateHeaderNavigation();
+            
+            // Re-update status after AuthUtils processes navigation
+            setTimeout(updateStatus, 100);
+        });
+
+        // Update status when auth utils modifies navigation
+        const observer = new MutationObserver(updateStatus);
+        observer.observe(document.getElementById('test-nav'), { 
+            childList: true, 
+            subtree: true, 
+            attributes: true,
+            attributeFilter: ['href', 'textContent'] 
+        });
+    </script>
+</body>
+</html>

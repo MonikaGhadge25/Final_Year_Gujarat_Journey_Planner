@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>GJP - Packages</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Raleway:wght@300;400;600;700&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link href="assets/css/main.css" rel="stylesheet">
+
+  <style>
+    /* ── Package Cards ── */
+    .pkg-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 28px;
+      padding: 40px 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .pkg-card {
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.10);
+      background: #fff;
+      transition: transform .25s, box-shadow .25s;
+      display: flex;
+      flex-direction: column;
+    }
+    .pkg-card:hover { transform: translateY(-6px); box-shadow: 0 12px 36px rgba(0,0,0,0.15); }
+    .pkg-card-img {
+      width: 100%;
+      height: 210px;
+      object-fit: cover;
+      background: #e9ecef;
+    }
+    .pkg-card-img-placeholder {
+      width: 100%;
+      height: 210px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+      background: linear-gradient(135deg,#1bbd36 0%,#0d9e2b 100%);
+      color: #fff;
+    }
+    .pkg-card-body { padding: 20px; flex: 1; display: flex; flex-direction: column; }
+    .pkg-card-title { font-size: 1.15rem; font-weight: 700; margin-bottom: 8px; color: #222; }
+    .pkg-card-meta { font-size: .88rem; color: #555; margin-bottom: 10px; line-height: 1.7; }
+    .pkg-card-meta span { margin-right: 6px; }
+    .pkg-card-price { font-size: 1rem; font-weight: 600; color: #1bbd36; margin-bottom: 14px; }
+    .pkg-card-desc { font-size: .85rem; color: #666; flex: 1; margin-bottom: 14px; }
+    .pkg-book-btn {
+      background: #1bbd36; color: #fff; border: none; border-radius: 8px;
+      padding: 10px 22px; font-weight: 600; cursor: pointer;
+      transition: background .2s; width: 100%;
+    }
+    .pkg-book-btn:hover { background: #179e2d; }
+    .pkg-category-badge {
+      display: inline-block; background: #e8f5e9; color: #1bbd36;
+      font-size: .75rem; font-weight: 600; padding: 3px 10px; border-radius: 20px;
+      margin-bottom: 10px;
+    }
+
+    /* ── Booking Modal ── */
+    .modal-header { background: #1bbd36; color: #fff; }
+    .modal-header .btn-close { filter: brightness(0) invert(1); }
+    .pkg-summary-box {
+      background: #f0faf1; border: 1px solid #c3e6cb;
+      border-radius: 10px; padding: 14px 18px; margin-bottom: 20px;
+    }
+    .pkg-summary-box h6 { color: #1bbd36; font-weight: 700; margin-bottom: 8px; }
+    .pkg-summary-box p  { margin: 0; font-size: .9rem; line-height: 1.8; }
+    .form-label { font-weight: 600; font-size: .88rem; }
+    .required-star { color: red; }
+    #bookingAlert { display: none; }
+
+    /* ── States ── */
+    .loading-state, .error-state, .empty-state {
+      text-align: center; padding: 60px 20px;
+    }
+    .spinner-ring {
+      width: 48px; height: 48px; border: 5px solid #e9ecef;
+      border-top-color: #1bbd36; border-radius: 50%;
+      animation: spin .8s linear infinite; margin: 0 auto 16px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
+</head>
+
+<body class="about-page">
+
+  <!-- ── Header ── -->
+  <header id="header" class="header d-flex align-items-center sticky-top">
+    <div class="container position-relative d-flex align-items-center">
+      <a href="home.html" class="logo d-flex align-items-center me-auto">
+        <h1 class="sitename">Gujarat Journey Planner</h1><span></span>
+      </a>
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="home.html">Home</a></li>
+          <li><a href="places.html">Places</a></li>
+          <li class="dropdown"><a href="services.html"><span>Services</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="hotel.html">Hotels</a></li>
+              <li><a href="transport.html">Transport</a></li>
+              <li><a href="agent.html">Guide</a></li>
+            </ul>
+          </li>
+          <li><a href="packages.html" class="active">Packages</a></li>
+          <li><a href="book.html">Book</a></li>
+          <li><a href="about-us.html">About</a></li>
+          <li><a href="sign in.html">Sign In</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ── Page Title ── -->
+  <div class="page-title accent-background">
+    <div class="container d-lg-flex justify-content-between align-items-center">
+      <h1 class="mb-2 mb-lg-0">Tour Packages</h1>
+      <nav class="breadcrumbs"><ol>
+        <li><a href="home.html">Home</a></li>
+        <li class="current">Packages</li>
+      </ol></nav>
+    </div>
+  </div>
+
+  <main>
+    <div class="container section-title mt-5" data-aos="fade-up">
+      <h2>Tour Packages</h2>
+      <p>Choose a ready-made tour package and book in one step</p>
+    </div>
+
+    <!-- Loading -->
+    <div id="loadingState" class="loading-state">
+      <div class="spinner-ring"></div>
+      <p class="text-muted">Loading tour packages...</p>
+    </div>
+
+    <!-- Error -->
+    <div id="errorState" class="error-state" style="display:none">
+      <div class="alert alert-warning d-inline-block">
+        <h5>⚠️ Could not load packages</h5>
+        <p>Please check if the backend is running and try again.</p>
+        <button onclick="loadPackages()" class="btn btn-primary btn-sm">🔄 Retry</button>
+      </div>
+    </div>
+
+    <!-- Package Grid -->
+    <div id="pkgGrid" class="pkg-grid" style="display:none"></div>
+  </main>
+
+  <!-- ═══════════ BOOKING MODAL ═══════════ -->
+  <div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h5 class="modal-title" id="bookingModalLabel">
+            <i class="bi bi-calendar-check me-2"></i>Book Tour Package
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+
+        <div class="modal-body">
+          <!-- Alert -->
+          <div id="bookingAlert" class="alert alert-danger mb-3"></div>
+
+          <!-- Package Summary -->
+          <div class="pkg-summary-box" id="pkgSummaryBox">
+            <h6><i class="bi bi-bag-check me-1"></i> Selected Package</h6>
+            <p id="pkgSummaryText">—</p>
+          </div>
+
+          <!-- Form -->
+          <form id="bookingForm" novalidate>
+            <input type="hidden" id="f_packageId">
+            <input type="hidden" id="f_packageName">
+            <input type="hidden" id="f_hotelName">
+            <input type="hidden" id="f_agentName">
+            <input type="hidden" id="f_placeName">
+            <input type="hidden" id="f_district">
+
+            <h6 class="text-muted mb-3 mt-2"><i class="bi bi-person me-1"></i> Your Details</h6>
+            <div class="row g-3 mb-3">
+              <div class="col-md-6">
+                <label class="form-label">Full Name <span class="required-star">*</span></label>
+                <input type="text" class="form-control" id="f_fullName" placeholder="Your full name" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Phone <span class="required-star">*</span></label>
+                <input type="tel" class="form-control" id="f_phone" placeholder="10-digit mobile" required>
+              </div>
+              <div class="col-12">
+                <label class="form-label">Address <span class="required-star">*</span></label>
+                <input type="text" class="form-control" id="f_address" placeholder="Your address" required>
+              </div>
+            </div>
+
+            <h6 class="text-muted mb-3"><i class="bi bi-people me-1"></i> Tourist Details</h6>
+            <div class="row g-3 mb-3">
+              <div class="col-md-6">
+                <label class="form-label">Tourist Name <span class="required-star">*</span></label>
+                <input type="text" class="form-control" id="f_touristName" placeholder="Lead tourist name" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Email <span class="required-star">*</span></label>
+                <input type="email" class="form-control" id="f_email" placeholder="email@example.com" required>
+              </div>
+              <div class="col-md-4">
+                <label class="form-label">Date of Birth <span class="required-star">*</span></label>
+                <input type="date" class="form-control" id="f_dob" required>
+              </div>
+              <div class="col-md-4">
+                <label class="form-label">Gender <span class="required-star">*</span></label>
+                <select class="form-select" id="f_gender" required>
+                  <option value="">Select gender</option>
+                  <option>Male</option>
+                  <option>Female</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="col-md-4">
+                <label class="form-label">Total Travellers <span class="required-star">*</span></label>
+                <input type="number" class="form-control" id="f_travellers" min="1" max="20" value="1" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Tourist Phone <span class="required-star">*</span></label>
+                <input type="tel" class="form-control" id="f_touristPhone" placeholder="10-digit mobile" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Tourist Address <span class="required-star">*</span></label>
+                <input type="text" class="form-control" id="f_touristAddress" placeholder="Tourist address" required>
+              </div>
+            </div>
+
+            <h6 class="text-muted mb-3"><i class="bi bi-calendar3 me-1"></i> Travel Dates</h6>
+            <div class="row g-3 mb-3">
+              <div class="col-md-6">
+                <label class="form-label">Check-In Date <span class="required-star">*</span></label>
+                <input type="date" class="form-control" id="f_checkIn" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Check-Out Date <span class="required-star">*</span></label>
+                <input type="date" class="form-control" id="f_checkOut" required>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Special Requests <span class="text-muted fw-normal">(optional)</span></label>
+              <textarea class="form-control" id="f_special" rows="2" placeholder="Any dietary needs, accessibility requirements, etc."></textarea>
+            </div>
+          </form>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-success px-4" id="submitBookingBtn" onclick="submitBooking()">
+            <i class="bi bi-check-circle me-1"></i> Confirm Booking
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Success Modal ── -->
+  <div class="modal fade" id="successModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content text-center p-4">
+        <div style="font-size:56px">🎉</div>
+        <h4 class="mt-3 fw-bold">Booking Confirmed!</h4>
+        <p class="text-muted" id="successMsg"></p>
+        <p class="text-muted small">Your booking ID: <strong id="successBookingId"></strong></p>
+        <button class="btn btn-success mt-2" data-bs-dismiss="modal" onclick="window.location.href='profile.html'">
+          View My Bookings
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Footer ── -->
+  <footer id="footer" class="footer dark-background">
+    <div class="container footer-top">
+      <div class="row gy-4">
+        <div class="col-lg-4 col-md-6 footer-about">
+          <a href="home.html" class="logo d-flex align-items-center">
+            <span class="sitename">Gujarat Journey Planner</span>
+          </a>
+          <div class="footer-contact pt-3">
+            <p class="mt-3"><strong>Address:</strong> Gujarat, India</p>
+            <p><strong>Email:</strong> gujaratjourneyplanner.gmail.com</p>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>Useful Links</h4>
+          <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="places.html">Tourist Places</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="book.html">Book a Tour</a></li>
+            <li><a href="sign in.html">Sign In</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>Our Services</h4>
+          <ul>
+            <li><a href="hotel.html">Hotel Booking</a></li>
+            <li><a href="agent.html">Guide Booking</a></li>
+            <li><a href="transport.html">Transport Booking</a></li>
+            <li><a href="packages.html">Tour Packages</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="container copyright text-center mt-4">
+      <p>© 2025 <strong class="px-1 sitename">Gujarat Journey Planner</strong></p>
+    </div>
+  </footer>
+
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">
+    <i class="bi bi-arrow-up-short"></i>
+  </a>
+  <div id="preloader"></div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script src="assets/js/api-config.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/auth-utils.js"></script>
+
+  <script>
+  // ─── Config ────────────────────────────────────────────────────────────────
+  const API_BASE = 'http://localhost:8000/api';
+
+  // ─── Package category icons ─────────────────────────────────────────────────
+  const CATEGORY_ICONS = {
+    'Festival': '🎆',
+    'Wildlife': '🦁',
+    'Heritage': '🏛️',
+    'Beach':    '🏖️',
+    'Temple':   '🕌',
+    'Adventure':'🏕️',
+    'default':  '🌄'
+  };
+
+  // ─── Load packages from backend ────────────────────────────────────────────
+  async function loadPackages() {
+    document.getElementById('loadingState').style.display = 'block';
+    document.getElementById('errorState').style.display   = 'none';
+    document.getElementById('pkgGrid').style.display      = 'none';
+
+    try {
+      const res  = await fetch(`${API_BASE}/packages`);
+      const data = await res.json();
+
+      if (!res.ok || !data.success) throw new Error(data.message || 'Failed to load');
+
+      renderPackages(data.packages);
+    } catch (err) {
+      console.error('loadPackages error:', err);
+      document.getElementById('loadingState').style.display = 'none';
+      document.getElementById('errorState').style.display   = 'block';
+    }
+  }
+
+  // ─── Render package cards ───────────────────────────────────────────────────
+  function renderPackages(packages) {
+    const grid = document.getElementById('pkgGrid');
+
+    if (!packages.length) {
+      grid.innerHTML = '<div class="empty-state"><p class="text-muted">No packages available at the moment.</p></div>';
+    } else {
+      grid.innerHTML = packages.map(pkg => {
+        const icon = CATEGORY_ICONS[pkg.category] || CATEGORY_ICONS.default;
+        const stars = '★'.repeat(Math.min(Math.round(pkg.place?.rating || 4), 5));
+
+        return `
+        <div class="pkg-card" data-aos="fade-up">
+          <div class="pkg-card-img-placeholder">${icon}</div>
+          <div class="pkg-card-body">
+            <span class="pkg-category-badge">${pkg.category || 'Tour'}</span>
+            <h3 class="pkg-card-title">${pkg.name}</h3>
+            <p class="pkg-card-meta">
+              <span>📍 ${pkg.place?.district || 'Gujarat'}</span>
+              <span>🏨 ${pkg.hotel?.name || '—'}</span><br>
+              <span>🧑‍💼 ${pkg.agent?.name || '—'}</span>
+              <span class="text-warning ms-1">${stars}</span>
+            </p>
+            <p class="pkg-card-price">${pkg.place?.price || 'Contact for price'}</p>
+            <p class="pkg-card-desc">${pkg.description || ''}</p>
+            <button class="pkg-book-btn" onclick="openBookingModal('${pkg._id}')">
+              🎆 Book Now
+            </button>
+          </div>
+        </div>`;
+      }).join('');
+    }
+
+    document.getElementById('loadingState').style.display = 'none';
+    document.getElementById('pkgGrid').style.display = 'grid';
+
+    // Reinit AOS for new elements
+    if (window.AOS) AOS.refresh();
+  }
+
+  // ─── Open booking modal ─────────────────────────────────────────────────────
+  async function openBookingModal(packageId) {
+    // Check login
+    const token = localStorage.getItem('authToken') || localStorage.getItem('token');
+    if (!token) {
+      localStorage.setItem('redirectAfterLogin', window.location.href);
+      alert('Please sign in first to book a tour package.');
+      window.location.href = 'sign in.html';
+      return;
+    }
+
+    try {
+      // Fetch fresh package data
+      const res  = await fetch(`${API_BASE}/packages/${packageId}`);
+      const data = await res.json();
+      if (!data.success) throw new Error('Package not found');
+
+      const pkg = data.package;
+
+      // Fill hidden fields
+      document.getElementById('f_packageId').value   = pkg._id;
+      document.getElementById('f_packageName').value = pkg.name;
+      document.getElementById('f_hotelName').value   = pkg.hotel?.name   || '';
+      document.getElementById('f_agentName').value   = pkg.agent?.name   || '';
+      document.getElementById('f_placeName').value   = pkg.place?.name   || '';
+      document.getElementById('f_district').value    = pkg.place?.district || '';
+
+      // Fill summary box
+      document.getElementById('pkgSummaryText').innerHTML = `
+        <strong>${pkg.name}</strong><br>
+        📍 ${pkg.place?.name || '—'} (${pkg.place?.district || '—'})<br>
+        🏨 Hotel: ${pkg.hotel?.name || '—'}<br>
+        🧑‍💼 Guide: ${pkg.agent?.name || '—'} &nbsp; Fee: ${pkg.agent?.fees || '—'}<br>
+        💰 Price: ${pkg.place?.price || '—'}
+      `;
+
+      // Pre-fill user fields from localStorage if logged in
+      const userStr = localStorage.getItem('user');
+      if (userStr) {
+        try {
+          const user = JSON.parse(userStr);
+          if (user.fullName)  document.getElementById('f_fullName').value    = user.fullName;
+          if (user.email)     document.getElementById('f_email').value       = user.email;
+          if (user.phone)     document.getElementById('f_phone').value       = user.phone;
+          if (user.fullName)  document.getElementById('f_touristName').value = user.fullName;
+          if (user.phone)     document.getElementById('f_touristPhone').value = user.phone;
+        } catch(e) {}
+      }
+
+      // Set min dates
+      const today = new Date().toISOString().split('T')[0];
+      document.getElementById('f_checkIn').min  = today;
+      document.getElementById('f_checkOut').min = today;
+
+      // Clear alert and reset submit button
+      const alert = document.getElementById('bookingAlert');
+      alert.style.display = 'none';
+      document.getElementById('submitBookingBtn').disabled = false;
+      document.getElementById('submitBookingBtn').innerHTML =
+        '<i class="bi bi-check-circle me-1"></i> Confirm Booking';
+
+      // Show modal
+      new bootstrap.Modal(document.getElementById('bookingModal')).show();
+
+    } catch (err) {
+      alert('Could not load package details. Please try again.');
+      console.error(err);
+    }
+  }
+
+  // ─── Submit booking ─────────────────────────────────────────────────────────
+  async function submitBooking() {
+    const alertEl = document.getElementById('bookingAlert');
+    alertEl.style.display = 'none';
+
+    // Validate
+    const fields = {
+      fullName:      document.getElementById('f_fullName').value.trim(),
+      phone:         document.getElementById('f_phone').value.trim(),
+      address:       document.getElementById('f_address').value.trim(),
+      touristName:   document.getElementById('f_touristName').value.trim(),
+      email:         document.getElementById('f_email').value.trim(),
+      dob:           document.getElementById('f_dob').value,
+      gender:        document.getElementById('f_gender').value,
+      travellers:    parseInt(document.getElementById('f_travellers').value) || 0,
+      touristPhone:  document.getElementById('f_touristPhone').value.trim(),
+      touristAddress:document.getElementById('f_touristAddress').value.trim(),
+      checkIn:       document.getElementById('f_checkIn').value,
+      checkOut:      document.getElementById('f_checkOut').value,
+    };
+
+    // Required field check
+    const required = ['fullName','phone','address','touristName','email','dob','gender','touristPhone','touristAddress','checkIn','checkOut'];
+    for (const key of required) {
+      if (!fields[key]) {
+        alertEl.textContent = 'Please fill in all required fields.';
+        alertEl.style.display = 'block';
+        return;
+      }
+    }
+    if (fields.travellers < 1) {
+      alertEl.textContent = 'Number of travellers must be at least 1.';
+      alertEl.style.display = 'block';
+      return;
+    }
+    if (fields.checkOut <= fields.checkIn) {
+      alertEl.textContent = 'Check-out date must be after check-in date.';
+      alertEl.style.display = 'block';
+      return;
+    }
+
+    // Build payload matching bookingformsdataModel
+    const payload = {
+      user: {
+        fullName: fields.fullName,
+        phone:    fields.phone,
+        address:  fields.address
+      },
+      tourist: {
+        totalTravellers: fields.travellers,
+        name:    fields.touristName,
+        dob:     fields.dob,
+        gender:  fields.gender,
+        phone:   fields.touristPhone,
+        email:   fields.email,
+        address: fields.touristAddress
+      },
+      touristPlaces: [document.getElementById('f_placeName').value || document.getElementById('f_district').value],
+      hotel: {
+        name:     document.getElementById('f_hotelName').value,
+        fromDate: fields.checkIn,
+        toDate:   fields.checkOut,
+        address:  document.getElementById('f_district').value
+      },
+      agent: {
+        name:     document.getElementById('f_agentName').value,
+        location: document.getElementById('f_district').value
+      },
+      tourName:       document.getElementById('f_packageName').value,
+      specialRequests: document.getElementById('f_special').value.trim(),
+      payment: {
+        totalAmount: 5000 + (fields.travellers * 2000),
+        status: 'pending'
+      }
+    };
+
+    // Get auth token
+    const token = localStorage.getItem('authToken') || localStorage.getItem('token') || '';
+
+    // Disable button
+    const btn = document.getElementById('submitBookingBtn');
+    btn.disabled = true;
+    btn.innerHTML = '<span class="spinner-border spinner-border-sm me-1"></span> Submitting...';
+
+    try {
+      const endpoint = token
+        ? `${API_BASE}/bookingformsdata`
+        : `${API_BASE}/bookingformsdata/public`;
+
+      const res = await fetch(endpoint, {
+        method:  'POST',
+        headers: {
+          'Content-Type':  'application/json',
+          ...(token ? { 'Authorization': `Bearer ${token}` } : {})
+        },
+        body: JSON.stringify(payload)
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) throw new Error(data.message || 'Booking failed');
+
+      // Close booking modal
+      bootstrap.Modal.getInstance(document.getElementById('bookingModal')).hide();
+
+      // Show success modal
+      document.getElementById('successMsg').textContent =
+        `Your "${payload.tourName}" tour has been booked successfully! Our team will contact you within 24 hours.`;
+      document.getElementById('successBookingId').textContent =
+        data.booking?.bookingId || data.bookingId || '—';
+
+      new bootstrap.Modal(document.getElementById('successModal')).show();
+
+    } catch (err) {
+      alertEl.textContent = err.message || 'Booking failed. Please try again.';
+      alertEl.style.display = 'block';
+      btn.disabled = false;
+      btn.innerHTML = '<i class="bi bi-check-circle me-1"></i> Confirm Booking';
+    }
+  }
+
+  // ─── Init ───────────────────────────────────────────────────────────────────
+  document.addEventListener('DOMContentLoaded', () => {
+    if (window.AOS) AOS.init();
+    loadPackages();
+  });
+
+  window.loadPackages    = loadPackages;
+  window.openBookingModal = openBookingModal;
+  window.submitBooking   = submitBooking;
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,75 @@
+[{
+  "_id": {
+    "$oid": "68b9a14ff375b4a2e558cf33"
+  },
+  "name": "Sedan",
+  "seating": 4,
+  "ac": "AC",
+  "fare_per_km": 15,
+  "minimum_fare": 100,
+  "type": "Budget",
+  "extras": [
+    "Music",
+    "GPS"
+  ]
+},
+{
+  "_id": {
+    "$oid": "68b9a1cdf375b4a2e558cf34"
+  },
+  "name": "SUV",
+  "seating": 6,
+  "ac": "AC",
+  "fare_per_km": 20,
+  "minimum_fare": 150,
+  "type": "Premium",
+  "extras": [
+    "WiFi",
+    "Luggage Space"
+  ]
+},
+{
+  "_id": {
+    "$oid": "68b9a1ecf375b4a2e558cf35"
+  },
+  "name": "Hatchback",
+  "seating": 4,
+  "ac": "Non-AC",
+  "fare_per_km": 12,
+  "minimum_fare": 80,
+  "type": "Budget",
+  "extras": [
+    "Compact",
+    "Fuel Efficient"
+  ]
+},
+{
+  "_id": {
+    "$oid": "68b9a206f375b4a2e558cf36"
+  },
+  "name": "7-Seater",
+  "seating": 7,
+  "ac": "AC",
+  "fare_per_km": 25,
+  "minimum_fare": 200,
+  "type": "Premium",
+  "extras": [
+    "Family Friendly",
+    "Luggage Space"
+  ]
+},
+{
+  "_id": {
+    "$oid": "68b9a220f375b4a2e558cf37"
+  },
+  "name": "12-Seater",
+  "seating": 12,
+  "ac": "AC",
+  "fare_per_km": 35,
+  "minimum_fare": 300,
+  "type": "Premium",
+  "extras": [
+    "Tour Packages",
+    "Comfortable Seats"
+  ]
+}]

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agent API Debug</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .rating-stars {
+            color: #ffc107;
+            font-size: 18px;
+            direction: ltr;
+            display: inline-block;
+        }
+        .rating-empty {
+            color: #ddd;
+        }
+        .star-container {
+            direction: ltr;
+            text-align: left;
+            display: inline-flex;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+<div class="container mt-5">
+    <h2>Agent API Debug Tool</h2>
+    <div class="row">
+        <div class="col-md-6">
+            <button class="btn btn-primary" onclick="fetchAgents()">Fetch Agents</button>
+            <button class="btn btn-secondary" onclick="clearResults()">Clear</button>
+        </div>
+    </div>
+    
+    <div class="mt-4">
+        <h4>API Response:</h4>
+        <pre id="rawResponse" style="background: #f8f9fa; padding: 15px; border-radius: 5px; max-height: 400px; overflow-y: auto;"></pre>
+    </div>
+    
+    <div class="mt-4">
+        <h4>Agent Cards with Ratings:</h4>
+        <div id="agentCards" class="row"></div>
+    </div>
+</div>
+
+<script>
+function generateStarRating(rating) {
+    const fullStars = Math.floor(rating);
+    const hasHalfStar = rating % 1 >= 0.5;
+    const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+    
+    let starsArray = [];
+    
+    // Add full stars first (left side)
+    for (let i = 0; i < fullStars; i++) {
+        starsArray.push('⭐');
+    }
+    
+    // Add half star if needed (middle) 
+    if (hasHalfStar) {
+        starsArray.push('⭐');
+    }
+    
+    // Add empty stars last (right side)
+    for (let i = 0; i < emptyStars; i++) {
+        starsArray.push('☆');
+    }
+    
+    // Join with proper direction
+    return `<span class="star-container">${starsArray.join('')}</span>`;
+}
+
+async function fetchAgents() {
+    try {
+        const response = await fetch('http://localhost:8000/api/agents/search?page=1&limit=10');
+        const data = await response.json();
+        
+        // Display raw response
+        document.getElementById('rawResponse').textContent = JSON.stringify(data, null, 2);
+        
+        // Display agent cards
+        const cardsContainer = document.getElementById('agentCards');
+        cardsContainer.innerHTML = '';
+        
+        if (data.agents && data.agents.length > 0) {
+            data.agents.forEach((agent, index) => {
+                const rating = parseFloat(agent.rating) || 0;
+                const stars = generateStarRating(rating);
+                
+                const card = document.createElement('div');
+                card.className = 'col-md-4 mb-3';
+                card.innerHTML = `
+                    <div class="card">
+                        <div class="card-body">
+                            <h6 class="card-title">${agent.name || 'Unknown Agent'}</h6>
+                            <p class="card-text">
+                                <strong>Raw Rating:</strong> ${agent.rating}<br>
+                                <strong>Parsed Rating:</strong> ${rating}<br>
+                                <strong>Stars:</strong> <span class="rating-stars">${stars}</span> (${rating.toFixed(1)})
+                            </p>
+                            <small class="text-muted">
+                                Experience: ${agent.experience || 'N/A'} | 
+                                Location: ${agent.district || agent.location || 'N/A'}
+                            </small>
+                        </div>
+                    </div>
+                `;
+                cardsContainer.appendChild(card);
+            });
+        } else {
+            cardsContainer.innerHTML = '<div class="col-12"><div class="alert alert-warning">No agents found</div></div>';
+        }
+        
+    } catch (error) {
+        console.error('Error fetching agents:', error);
+        document.getElementById('rawResponse').textContent = 'Error: ' + error.message;
+    }
+}
+
+function clearResults() {
+    document.getElementById('rawResponse').textContent = '';
+    document.getElementById('agentCards').innerHTML = '';
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Hotel Detail</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-5">
+    <h2>Hotel Detail Page Test</h2>
+    
+    <div class="row mb-4">
+        <div class="col-md-8">
+            <div class="alert alert-info">
+                <strong>Instructions:</strong> This page tests if the hotel detail overlay works correctly.
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-4">
+            <h4>Test Hotel Card</h4>
+            <div class="card">
+                <img src="https://via.placeholder.com/300x200?text=Sample+Hotel" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">Sample Hotel</h5>
+                    <p class="card-text">
+                        <strong>Rating:</strong> ★★★★☆<br>
+                        <strong>Location:</strong> Ahmedabad<br>
+                        <strong>Price:</strong> ₹2500 / night
+                    </p>
+                    <button class="btn btn-primary btn-sm" onclick="testOverlay('sample-hotel-id')">View Details</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-8">
+            <h4>Test Results</h4>
+            <div id="testResults" class="alert alert-secondary">
+                Click "View Details" to test the overlay functionality.
+            </div>
+            
+            <h5>Available Pages:</h5>
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <a href="hoteldetail.html?id=test123" target="_blank">hoteldetail.html?id=test123</a>
+                    <span class="badge bg-secondary ms-2">Test URL 1</span>
+                </li>
+                <li class="list-group-item">
+                    <a href="hoteldetail.html?hotelId=test123" target="_blank">hoteldetail.html?hotelId=test123</a>
+                    <span class="badge bg-secondary ms-2">Test URL 2</span>
+                </li>
+                <li class="list-group-item">
+                    <a href="hotel-detail.html?id=test123" target="_blank">hotel-detail.html?id=test123</a>
+                    <span class="badge bg-warning ms-2">Alternative</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Overlay (copied from bookinghotels.html) -->
+<div id="overlayContainer" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); z-index:9999; justify-content:center; align-items:center;">
+    <div style="position:relative; width:90%; height:90%; max-width:1200px;">
+        <button onclick="closeOverlay()" style="position:absolute; top:10px; right:10px; color:#fff; background:#198754; border:none; padding:8px 12px; cursor:pointer; z-index:10000;">Back</button>
+        <iframe id="hotelIframe" style="width:100%; height:100%; border:none; border-radius:8px; background:#fff;"></iframe>
+    </div>
+</div>
+
+<script>
+function testOverlay(hotelId) {
+    document.getElementById('testResults').innerHTML = `
+        <div class="spinner-border spinner-border-sm me-2"></div>
+        Testing overlay with hotel ID: ${hotelId}
+    `;
+    
+    const iframe = document.getElementById("hotelIframe");
+    const overlay = document.getElementById("overlayContainer");
+    
+    if (!iframe || !overlay) {
+        document.getElementById('testResults').innerHTML = `
+            <div class="alert alert-danger">
+                <strong>Error:</strong> Overlay elements not found.<br>
+                Iframe: ${!!iframe}, Overlay: ${!!overlay}
+            </div>
+        `;
+        return;
+    }
+    
+    // Test URL
+    const testUrl = `hoteldetail.html?id=${encodeURIComponent(hotelId)}`;
+    
+    iframe.onload = () => {
+        document.getElementById('testResults').innerHTML = `
+            <div class="alert alert-success">
+                <strong>✅ Success!</strong> Hotel detail page loaded successfully.<br>
+                URL: ${testUrl}
+            </div>
+        `;
+    };
+    
+    iframe.onerror = () => {
+        document.getElementById('testResults').innerHTML = `
+            <div class="alert alert-danger">
+                <strong>❌ Error!</strong> Failed to load hotel detail page.<br>
+                URL: ${testUrl}<br>
+                The hoteldetail.html file may not exist or may have errors.
+            </div>
+        `;
+    };
+    
+    // Set a timeout in case the page doesn't exist
+    setTimeout(() => {
+        if (document.getElementById('testResults').innerHTML.includes('Testing overlay')) {
+            document.getElementById('testResults').innerHTML = `
+                <div class="alert alert-warning">
+                    <strong>⚠️ Timeout!</strong> Hotel detail page took too long to load.<br>
+                    URL: ${testUrl}<br>
+                    The page may not exist or has loading issues.
+                </div>
+            `;
+        }
+    }, 5000);
+    
+    iframe.src = testUrl;
+    overlay.style.display = "flex";
+}
+
+function closeOverlay() {
+    const overlay = document.getElementById("overlayContainer");
+    const iframe = document.getElementById("hotelIframe");
+    
+    if (overlay) overlay.style.display = "none";
+    if (iframe) {
+        iframe.src = "";
+        iframe.onload = null;
+        iframe.onerror = null;
+    }
+    
+    document.getElementById('testResults').innerHTML = 'Overlay closed. Click "View Details" to test again.';
+}
+</script>
+
+</body>
+</html>

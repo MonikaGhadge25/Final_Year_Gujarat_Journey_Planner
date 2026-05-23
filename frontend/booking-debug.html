@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Debug Tool</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .debug-section {
+            background: #f5f5f5;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        .booking-item {
+            background: white;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border-left: 4px solid #007bff;
+        }
+        pre {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .status-pending { border-left-color: #ffc107; }
+        .status-agent_accepted { border-left-color: #17a2b8; }
+        .status-hotel_accepted { border-left-color: #28a745; }
+        .status-confirmed { border-left-color: #28a745; }
+        .status-cancelled { border-left-color: #dc3545; }
+    </style>
+</head>
+<body>
+    <h1>Booking Debug Tool</h1>
+    <p>This tool helps debug booking requests and dashboard integration.</p>
+
+    <div class="debug-section">
+        <h2>Authentication Status</h2>
+        <div id="authStatus">Checking...</div>
+        <button onclick="checkAuth()">Check Auth</button>
+    </div>
+
+    <div class="debug-section">
+        <h2>Booking Data Fetch</h2>
+        <button onclick="fetchBookings()">Fetch All Bookings</button>
+        <button onclick="fetchByAgent()">Filter by Agent</button>
+        <button onclick="fetchByHotel()">Filter by Hotel</button>
+        <div id="bookingResults"></div>
+    </div>
+
+    <div class="debug-section">
+        <h2>Booking Structure Analysis</h2>
+        <div id="structureAnalysis"></div>
+    </div>
+
+    <div class="debug-section">
+        <h2>Dashboard Integration Test</h2>
+        <button onclick="testAgentDashboard()">Test Agent Dashboard</button>
+        <button onclick="testHotelDashboard()">Test Hotel Dashboard</button>
+        <div id="dashboardResults"></div>
+    </div>
+
+    <script>
+        let allBookings = [];
+        let currentUser = null;
+
+        // Check authentication status
+        function checkAuth() {
+            const authToken = localStorage.getItem('authToken') || localStorage.getItem('token');
+            const user = localStorage.getItem('user');
+            
+            let authInfo = '<strong>Authentication Status:</strong><br>';
+            authInfo += `Token: ${authToken ? 'Present' : 'Missing'}<br>`;
+            
+            if (user) {
+                try {
+                    currentUser = JSON.parse(user);
+                    authInfo += `User: ${currentUser.fullName || currentUser.name} (${currentUser.role || 'No role'})<br>`;
+                    authInfo += `User ID: ${currentUser.id || 'No ID'}<br>`;
+                } catch (e) {
+                    authInfo += 'User data: Invalid JSON<br>';
+                }
+            } else {
+                authInfo += 'User data: Not found<br>';
+            }
+
+            document.getElementById('authStatus').innerHTML = authInfo;
+        }
+
+        // Fetch all bookings
+        async function fetchBookings() {
+            const resultsDiv = document.getElementById('bookingResults');
+            resultsDiv.innerHTML = '<p>Fetching bookings...</p>';
+
+            try {
+                const authToken = localStorage.getItem('authToken') || localStorage.getItem('token');
+                
+                if (!authToken) {
+                    resultsDiv.innerHTML = '<p style="color: red;">No authentication token found!</p>';
+                    return;
+                }
+
+                const response = await fetch('http://localhost:8000/api/bookingformsdata', {
+                    headers: {
+                        'Authorization': `Bearer ${authToken}`
+                    }
+                });
+
+                const data = await response.json();
+                console.log('Raw booking response:', data);
+
+                // Handle different response formats
+                if (Array.isArray(data)) {
+                    allBookings = data;
+                } else if (data.bookings && Array.isArray(data.bookings)) {
+                    allBookings = data.bookings;
+                } else if (data.data && Array.isArray(data.data)) {
+                    allBookings = data.data;
+                } else {
+                    allBookings = [];
+                }
+
+                displayBookings(allBookings, 'All Bookings');
+                analyzeStructure();
+
+            } catch (error) {
+                console.error('Error fetching bookings:', error);
+                resultsDiv.innerHTML = `<p style="color: red;">Error: ${error.message}</p>`;
+            }
+        }
+
+        // Filter bookings by agent
+        function fetchByAgent() {
+            if (!currentUser) {
+                console.log('Please check authentication first');
+                return;
+            }
+
+            const agentBookings = allBookings.filter(booking => {
+                return (
+                    (booking.agent && booking.agent.name === currentUser.fullName) ||
+                    (booking.selectedAgent && booking.selectedAgent.name === currentUser.fullName)
+                );
+            });
+
+            displayBookings(agentBookings, `Agent Bookings for ${currentUser.fullName}`);
+        }
+
+        // Filter bookings by hotel
+        function fetchByHotel() {
+            if (!currentUser) {
+                console.log('Please check authentication first');
+                return;
+            }
+
+            const hotelBookings = allBookings.filter(booking => {
+                return (
+                    (booking.hotel && booking.hotel.name === currentUser.fullName) ||
+                    (booking.selectedHotel && booking.selectedHotel.name === currentUser.fullName) ||
+                    // Include pending bookings with no hotel assigned
+                    (!booking.hotel?.name && !booking.selectedHotel?.name && booking.status === 'pending')
+                );
+            });
+
+            displayBookings(hotelBookings, `Hotel Bookings for ${currentUser.fullName}`);
+        }
+
+        // Display bookings
+        function displayBookings(bookings, title) {
+            const resultsDiv = document.getElementById('bookingResults');
+            
+            let html = `<h3>${title} (${bookings.length} found)</h3>`;
+            
+            if (bookings.length === 0) {
+                html += '<p>No bookings found.</p>';
+            } else {
+                bookings.forEach((booking, index) => {
+                    const statusClass = `status-${(booking.status || 'pending').replace(/\s+/g, '_')}`;
+                    html += `
+                        <div class="booking-item ${statusClass}">
+                            <strong>Booking ID:</strong> ${booking._id}<br>
+                            <strong>Status:</strong> ${booking.status || 'pending'}<br>
+                            <strong>Customer:</strong> ${booking.user?.fullName || booking.tourist?.name || 'Unknown'}<br>
+                            <strong>Hotel:</strong> ${booking.hotel?.name || booking.selectedHotel?.name || 'Not assigned'}<br>
+                            <strong>Agent:</strong> ${booking.agent?.name || booking.selectedAgent?.name || 'Not assigned'}<br>
+                            <strong>Total Amount:</strong> ₹${booking.totalAmount || 0}<br>
+                            <strong>Created:</strong> ${booking.createdAt ? new Date(booking.createdAt).toLocaleDateString() : 'Unknown'}<br>
+                            <button onclick="showBookingDetails(${index})">Show Full Details</button>
+                        </div>
+                    `;
+                });
+            }
+            
+            resultsDiv.innerHTML = html;
+        }
+
+        // Show detailed booking structure
+        function showBookingDetails(index) {
+            const booking = allBookings[index];
+            const popup = window.open('', '_blank', 'width=800,height=600,scrollbars=yes');
+            popup.document.write(`
+                <html>
+                    <head>
+                        <title>Booking Details</title>
+                        <style>body { font-family: Arial, sans-serif; padding: 20px; }</style>
+                    </head>
+                    <body>
+                        <h1>Booking Details</h1>
+                        <pre>${JSON.stringify(booking, null, 2)}</pre>
+                    </body>
+                </html>
+            `);
+        }
+
+        // Analyze booking structure
+        function analyzeStructure() {
+            const analysisDiv = document.getElementById('structureAnalysis');
+            
+            if (allBookings.length === 0) {
+                analysisDiv.innerHTML = '<p>No bookings to analyze. Fetch bookings first.</p>';
+                return;
+            }
+
+            const sample = allBookings[0];
+            const fields = Object.keys(sample);
+            
+            let analysis = '<h3>Booking Field Analysis</h3>';
+            analysis += `<p>Total bookings: ${allBookings.length}</p>`;
+            analysis += '<p><strong>Sample booking structure:</strong></p>';
+            analysis += '<ul>';
+            
+            fields.forEach(field => {
+                const value = sample[field];
+                const type = typeof value;
+                const isObject = type === 'object' && value !== null;
+                
+                analysis += `<li><strong>${field}</strong>: ${type}`;
+                if (isObject && !Array.isArray(value)) {
+                    const subFields = Object.keys(value);
+                    analysis += ` (${subFields.join(', ')})`;
+                }
+                analysis += '</li>';
+            });
+            
+            analysis += '</ul>';
+            
+            // Status distribution
+            const statusCounts = {};
+            allBookings.forEach(booking => {
+                const status = booking.status || 'pending';
+                statusCounts[status] = (statusCounts[status] || 0) + 1;
+            });
+            
+            analysis += '<p><strong>Status Distribution:</strong></p>';
+            analysis += '<ul>';
+            Object.entries(statusCounts).forEach(([status, count]) => {
+                analysis += `<li>${status}: ${count}</li>`;
+            });
+            analysis += '</ul>';
+            
+            analysisDiv.innerHTML = analysis;
+        }
+
+        // Test agent dashboard integration
+        function testAgentDashboard() {
+            const resultsDiv = document.getElementById('dashboardResults');
+            resultsDiv.innerHTML = '<h3>Agent Dashboard Test</h3>';
+            
+            if (!currentUser) {
+                resultsDiv.innerHTML += '<p style="color: red;">Please check authentication first</p>';
+                return;
+            }
+            
+            // Simulate agent dashboard logic
+            const agentBookings = allBookings.filter(booking => {
+                const agentMatch = (
+                    (booking.agent && booking.agent.name === currentUser.fullName) ||
+                    (booking.selectedAgent && booking.selectedAgent.name === currentUser.fullName)
+                );
+                console.log(`Booking ${booking._id}: Agent match = ${agentMatch}`);
+                return agentMatch;
+            });
+            
+            let html = `<p>Found ${agentBookings.length} bookings for agent "${currentUser.fullName}"</p>`;
+            
+            if (agentBookings.length > 0) {
+                html += '<table border="1" style="width:100%; border-collapse: collapse;">';
+                html += '<tr><th>Customer</th><th>From Date</th><th>To Date</th><th>Status</th></tr>';
+                
+                agentBookings.forEach(booking => {
+                    const fromDate = booking.hotel?.fromDate || booking.hotel?.checkIn || 'N/A';
+                    const toDate = booking.hotel?.toDate || booking.hotel?.checkOut || 'N/A';
+                    const userName = booking.user?.fullName || booking.tourist?.name || 'Unknown';
+                    
+                    html += `<tr>
+                        <td>${userName}</td>
+                        <td>${fromDate !== 'N/A' ? new Date(fromDate).toLocaleDateString() : 'N/A'}</td>
+                        <td>${toDate !== 'N/A' ? new Date(toDate).toLocaleDateString() : 'N/A'}</td>
+                        <td>${booking.status || 'pending'}</td>
+                    </tr>`;
+                });
+                
+                html += '</table>';
+            }
+            
+            resultsDiv.innerHTML += html;
+        }
+
+        // Test hotel dashboard integration
+        function testHotelDashboard() {
+            const resultsDiv = document.getElementById('dashboardResults');
+            resultsDiv.innerHTML = '<h3>Hotel Dashboard Test</h3>';
+            
+            if (!currentUser) {
+                resultsDiv.innerHTML += '<p style="color: red;">Please check authentication first</p>';
+                return;
+            }
+            
+            // Simulate hotel dashboard logic
+            const hotelBookings = allBookings.filter(booking => {
+                const hotelMatch = (
+                    (booking.hotel && booking.hotel.name === currentUser.fullName) ||
+                    (booking.selectedHotel && booking.selectedHotel.name === currentUser.fullName) ||
+                    (!booking.hotel?.name && !booking.selectedHotel?.name && booking.status === 'pending')
+                );
+                console.log(`Booking ${booking._id}: Hotel match = ${hotelMatch}`);
+                return hotelMatch;
+            });
+            
+            let html = `<p>Found ${hotelBookings.length} bookings for hotel "${currentUser.fullName}"</p>`;
+            
+            // Stats
+            const stats = {
+                total: hotelBookings.length,
+                pending: hotelBookings.filter(b => b.status === 'pending' || !b.status).length,
+                confirmed: hotelBookings.filter(b => b.status === 'hotel_accepted' || b.status === 'confirmed').length,
+                revenue: hotelBookings.reduce((total, b) => total + (b.totalAmount || 0), 0)
+            };
+            
+            html += `<p><strong>Stats:</strong> Total: ${stats.total}, Pending: ${stats.pending}, Confirmed: ${stats.confirmed}, Revenue: ₹${stats.revenue}</p>`;
+            
+            if (hotelBookings.length > 0) {
+                html += '<table border="1" style="width:100%; border-collapse: collapse;">';
+                html += '<tr><th>Booking ID</th><th>Customer</th><th>Check-in</th><th>Check-out</th><th>Amount</th><th>Status</th></tr>';
+                
+                hotelBookings.forEach(booking => {
+                    const checkIn = booking.hotel?.fromDate || booking.hotel?.checkIn || 'N/A';
+                    const checkOut = booking.hotel?.toDate || booking.hotel?.checkOut || 'N/A';
+                    const customerName = booking.user?.fullName || booking.tourist?.name || 'Unknown';
+                    
+                    html += `<tr>
+                        <td>${booking._id.substring(0, 8)}...</td>
+                        <td>${customerName}</td>
+                        <td>${checkIn !== 'N/A' ? new Date(checkIn).toLocaleDateString() : 'N/A'}</td>
+                        <td>${checkOut !== 'N/A' ? new Date(checkOut).toLocaleDateString() : 'N/A'}</td>
+                        <td>₹${booking.totalAmount || 0}</td>
+                        <td>${booking.status || 'pending'}</td>
+                    </tr>`;
+                });
+                
+                html += '</table>';
+            }
+            
+            resultsDiv.innerHTML += html;
+        }
+
+        // Initialize
+        window.addEventListener('load', () => {
+            checkAuth();
+        });
+    </script>
+</body>
+</html>

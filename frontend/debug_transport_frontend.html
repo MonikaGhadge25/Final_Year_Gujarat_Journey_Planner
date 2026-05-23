@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Transport Data Debug</title>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; }
+.section { margin: 20px 0; padding: 15px; border: 1px solid #ccc; border-radius: 5px; }
+.success { background: #d4edda; border-color: #c3e6cb; }
+.error { background: #f8d7da; border-color: #f5c6cb; }
+.info { background: #d1ecf1; border-color: #bee5eb; }
+pre { background: #f8f9fa; padding: 10px; border-radius: 3px; overflow: auto; max-height: 300px; }
+button { padding: 10px 20px; margin: 5px; border: none; border-radius: 4px; cursor: pointer; }
+.btn-primary { background: #007bff; color: white; }
+.btn-success { background: #28a745; color: white; }
+</style>
+</head>
+<body>
+
+<h1>🔧 Transport API Debug Tool</h1>
+<p>This tool helps debug issues with the transport dashboard data loading.</p>
+
+<div class="section">
+  <h3>🌐 API Connection Test</h3>
+  <button class="btn-primary" onclick="testAPIConnection()">Test API Connection</button>
+  <div id="connectionResult"></div>
+</div>
+
+<div class="section">
+  <h3>📦 Raw API Response</h3>
+  <button class="btn-primary" onclick="fetchRawData()">Fetch Raw Data</button>
+  <div id="rawDataResult"></div>
+</div>
+
+<div class="section">
+  <h3>🔄 Data Transformation</h3>
+  <button class="btn-primary" onclick="testDataTransformation()">Test Data Processing</button>
+  <div id="transformResult"></div>
+</div>
+
+<div class="section">
+  <h3>📊 Dashboard Simulation</h3>
+  <button class="btn-success" onclick="simulateDashboard()">Simulate Dashboard Load</button>
+  <div id="dashboardResult"></div>
+</div>
+
+<script>
+const API_BASE_URL = 'http://localhost:8000/api';
+let rawTransportData = [];
+
+// Test basic API connectivity
+async function testAPIConnection() {
+  const resultDiv = document.getElementById('connectionResult');
+  resultDiv.innerHTML = '<p>⏳ Testing API connection...</p>';
+  
+  try {
+    const response = await fetch(`${API_BASE_URL}/transport`);
+    
+    if (!response.ok) {
+      const errorText = await response.text();
+      resultDiv.innerHTML = `
+        <div class="error">
+          <h4>❌ API Connection Failed</h4>
+          <p><strong>Status:</strong> ${response.status} ${response.statusText}</p>
+          <p><strong>Error:</strong> ${errorText}</p>
+        </div>
+      `;
+      return;
+    }
+    
+    const contentType = response.headers.get('content-type');
+    const dataSize = response.headers.get('content-length') || 'Unknown';
+    
+    resultDiv.innerHTML = `
+      <div class="success">
+        <h4>✅ API Connection Successful</h4>
+        <p><strong>Status:</strong> ${response.status} ${response.statusText}</p>
+        <p><strong>Content-Type:</strong> ${contentType}</p>
+        <p><strong>Response Size:</strong> ${dataSize} bytes</p>
+      </div>
+    `;
+    
+  } catch (error) {
+    resultDiv.innerHTML = `
+      <div class="error">
+        <h4>❌ Connection Error</h4>
+        <p><strong>Error:</strong> ${error.message}</p>
+        <p>Make sure the backend server is running on port 5000</p>
+      </div>
+    `;
+  }
+}
+
+// Fetch and display raw API data
+async function fetchRawData() {
+  const resultDiv = document.getElementById('rawDataResult');
+  resultDiv.innerHTML = '<p>⏳ Fetching raw transport data...</p>';
+  
+  try {
+    const response = await fetch(`${API_BASE_URL}/transport`);
+    
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+    }
+    
+    const data = await response.json();
+    rawTransportData = data; // Store for later use
+    
+    resultDiv.innerHTML = `
+      <div class="success">
+        <h4>✅ Data Fetched Successfully</h4>
+        <p><strong>Data Type:</strong> ${typeof data}</p>
+        <p><strong>Is Array:</strong> ${Array.isArray(data)}</p>
+        <p><strong>Length:</strong> ${Array.isArray(data) ? data.length : 'N/A'}</p>
+        ${Array.isArray(data) && data.length > 0 ? `
+          <p><strong>Sample Object Keys:</strong> ${Object.keys(data[0]).join(', ')}</p>
+          <h5>First Item Preview:</h5>
+          <pre>${JSON.stringify(data[0], null, 2)}</pre>
+        ` : ''}
+        <h5>Full Response (first 1000 chars):</h5>
+        <pre>${JSON.stringify(data, null, 2).substring(0, 1000)}${JSON.stringify(data).length > 1000 ? '...' : ''}</pre>
+      </div>
+    `;
+    
+  } catch (error) {
+    resultDiv.innerHTML = `
+      <div class="error">
+        <h4>❌ Failed to Fetch Data</h4>
+        <p><strong>Error:</strong> ${error.message}</p>
+      </div>
+    `;
+  }
+}
+
+// Test the data transformation logic from the dashboard
+async function testDataTransformation() {
+  const resultDiv = document.getElementById('transformResult');
+  
+  if (!rawTransportData || !Array.isArray(rawTransportData) || rawTransportData.length === 0) {
+    resultDiv.innerHTML = `
+      <div class="error">
+        <p>❌ No raw data available. Please fetch raw data first.</p>
+      </div>
+    `;
+    return;
+  }
+  
+  resultDiv.innerHTML = '<p>⏳ Processing data transformation...</p>';
+  
+  try {
+    // This is the exact logic from the dashboard
+    const cars = rawTransportData.map(transport => ({
+      carName: transport.carName,
+      type: transport.type || `${transport.seating_capacity}-Seater`,
+      fuel: transport.fuel,
+      ac: transport.ac,
+      price: transport.price,
+      location: transport.location,
+      seating_capacity: transport.seating_capacity,
+      car_type: transport.car_type,
+      drivers: transport.drivers || []
+    }));
+    
+    console.log('🔄 Transformed cars:', cars);
+    
+    // Calculate summary statistics
+    const carTypes = ["3-Seater","4-Seater","5-Seater","6-Seater","7-Seater","Van","Ecco","Tempo"];
+    const summary = {};
+    
+    carTypes.forEach(type => {
+      const typeCars = cars.filter(c => c.type === type);
+      const totalDrivers = typeCars.reduce((sum, c) => sum + c.drivers.length, 0);
+      const freeDrivers = typeCars.reduce((sum, c) => {
+        return sum + c.drivers.filter(d => d.bookedDates && d.bookedDates.length === 0).length;
+      }, 0);
+      const bookedDrivers = totalDrivers - freeDrivers;
+      
+      summary[type] = {
+        vehicles: typeCars.length,
+        totalDrivers,
+        freeDrivers,
+        bookedDrivers
+      };
+    });
+    
+    resultDiv.innerHTML = `
+      <div class="success">
+        <h4>✅ Data Transformation Successful</h4>
+        <p><strong>Original Items:</strong> ${rawTransportData.length}</p>
+        <p><strong>Transformed Items:</strong> ${cars.length}</p>
+        <h5>Car Type Summary:</h5>
+        <pre>${JSON.stringify(summary, null, 2)}</pre>
+        <h5>Sample Transformed Object:</h5>
+        <pre>${JSON.stringify(cars[0], null, 2)}</pre>
+      </div>
+    `;
+    
+  } catch (error) {
+    resultDiv.innerHTML = `
+      <div class="error">
+        <h4>❌ Data Transformation Failed</h4>
+        <p><strong>Error:</strong> ${error.message}</p>
+        <p><strong>Stack:</strong></p>
+        <pre>${error.stack}</pre>
+      </div>
+    `;
+  }
+}
+
+// Simulate the full dashboard loading process
+async function simulateDashboard() {
+  const resultDiv = document.getElementById('dashboardResult');
+  resultDiv.innerHTML = '<p>⏳ Simulating full dashboard load...</p>';
+  
+  try {
+    console.log('🔄 Loading transport data from API...');
+    console.log('🌐 API URL:', `${API_BASE_URL}/transport`);
+    
+    const response = await fetch(`${API_BASE_URL}/transport`);
+    console.log('📡 Response status:', response.status, response.statusText);
+    
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error('❌ API Error Response:', errorText);
+      throw new Error(`HTTP error! status: ${response.status} - ${errorText}`);
+    }
+    
+    const rawData = await response.json();
+    console.log('📦 Raw transport data from API:', rawData);
+    
+    // Transform the data to match our expected format
+    if (Array.isArray(rawData) && rawData.length > 0) {
+      const cars = rawData.map(transport => ({
+        carName: transport.carName,
+        type: transport.type || `${transport.seating_capacity}-Seater`,
+        fuel: transport.fuel,
+        ac: transport.ac,
+        price: transport.price,
+        location: transport.location,
+        seating_capacity: transport.seating_capacity,
+        car_type: transport.car_type,
+        drivers: transport.drivers || []
+      }));
+      
+      console.log('✅ Transport data loaded and transformed:', cars.length, 'vehicles');
+      console.log('🚗 Cars data:', cars);
+      
+      // Simulate dashboard creation
+      const carTypes = ["3-Seater","4-Seater","5-Seater","6-Seater","7-Seater","Van","Ecco","Tempo"];
+      let dashboardHTML = '<h4>✅ Dashboard Simulation Success</h4>';
+      
+      // Create summary cards simulation
+      carTypes.forEach(type => {
+        const typeCars = cars.filter(c => c.type === type);
+        const total = typeCars.reduce((sum, c) => sum + c.drivers.length, 0);
+        const free = typeCars.reduce((sum, c) => {
+          return sum + c.drivers.filter(d => !d.bookedDates || d.bookedDates.length === 0).length;
+        }, 0);
+        const booked = total - free;
+        
+        if (total > 0) {
+          dashboardHTML += `
+            <div style="border: 1px solid #ddd; padding: 10px; margin: 5px; display: inline-block; border-radius: 4px;">
+              <strong>${type}</strong><br>
+              Total: ${total}, Free: ${free}, Booked: ${booked}
+            </div>
+          `;
+        }
+      });
+      
+      dashboardHTML += `
+        <h5>Vehicle Details Sample (First 5):</h5>
+        <table border="1" style="border-collapse: collapse; width: 100%; margin-top: 10px;">
+          <tr>
+            <th>Car Name</th><th>Type</th><th>Fuel</th><th>AC</th><th>Price</th><th>Location</th><th>Drivers</th>
+          </tr>
+      `;
+      
+      cars.slice(0, 5).forEach(car => {
+        dashboardHTML += `
+          <tr>
+            <td>${car.carName}</td>
+            <td>${car.type}</td>
+            <td>${car.fuel}</td>
+            <td>${car.ac ? 'AC' : 'Non-AC'}</td>
+            <td>${car.price}</td>
+            <td>${car.location}</td>
+            <td>${car.drivers.length}</td>
+          </tr>
+        `;
+      });
+      
+      dashboardHTML += '</table>';
+      
+      resultDiv.innerHTML = `<div class="success">${dashboardHTML}</div>`;
+      
+    } else {
+      console.log('⚠️ No transport data found in API response');
+      throw new Error('No transport data available');
+    }
+    
+  } catch (error) {
+    console.error('❌ Error in dashboard simulation:', error);
+    console.error('🔍 Full error details:', error.stack);
+    
+    resultDiv.innerHTML = `
+      <div class="error">
+        <h4>❌ Dashboard Simulation Failed</h4>
+        <p><strong>Error:</strong> ${error.message}</p>
+        <p>This indicates the same error that would occur in the actual dashboard.</p>
+        <h5>Debug Information:</h5>
+        <pre>${error.stack}</pre>
+      </div>
+    `;
+  }
+}
+
+// Auto-run connection test on page load
+window.addEventListener('load', () => {
+  console.log('🔧 Transport Debug Tool loaded');
+  setTimeout(testAPIConnection, 500);
+});
+</script>
+
+</body>
+</html>

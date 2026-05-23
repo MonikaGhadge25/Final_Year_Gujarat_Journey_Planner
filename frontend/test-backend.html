@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Backend Test</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    .result { margin: 10px 0; padding: 10px; border-radius: 4px; }
+    .success { background-color: #d4edda; color: #155724; }
+    .error { background-color: #f8d7da; color: #721c24; }
+  </style>
+</head>
+<body>
+  <h1>Backend Connectivity Test</h1>
+  <button onclick="testBackend()">Test Backend</button>
+  <div id="results"></div>
+
+  <script>
+    async function testBackend() {
+      const results = document.getElementById('results');
+      results.innerHTML = '<p>Testing...</p>';
+
+      const tests = [
+        { name: 'Server Health', url: 'http://localhost:8000/health' },
+        { name: 'API Root', url: 'http://localhost:8000/' },
+        { name: 'Hotels API', url: 'http://localhost:8000/api/hotels/search?limit=1' }
+      ];
+
+      for (const test of tests) {
+        const resultDiv = document.createElement('div');
+        resultDiv.className = 'result';
+        
+        try {
+          const response = await fetch(test.url);
+          if (response.ok) {
+            const data = await response.json();
+            resultDiv.className += ' success';
+            resultDiv.innerHTML = `<strong>${test.name}:</strong> ✅ Success (${response.status})<br><small>${JSON.stringify(data).substring(0, 200)}...</small>`;
+          } else {
+            throw new Error(`HTTP ${response.status}`);
+          }
+        } catch (error) {
+          resultDiv.className += ' error';
+          resultDiv.innerHTML = `<strong>${test.name}:</strong> ❌ Failed - ${error.message}`;
+        }
+        
+        results.appendChild(resultDiv);
+      }
+    }
+  </script>
+</body>
+</html>

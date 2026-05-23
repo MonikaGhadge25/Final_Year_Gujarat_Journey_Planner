@@ -1,0 +1,32 @@
+# Environment variables - NEVER commit these
+backend/.env
+.env
+*.env
+
+# Dependencies
+backend/node_modules/
+node_modules/
+
+# Backup files
+backend/.env.backup
+backend/config/config.js.backup
+backend/server.js.backup
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# VS Code
+.vscode/
+
+# Sensitive data files - agent passwords in plain text
+gujarat_tour_travel.agent_info_12-10.json
+
+# Logs
+*.log
+npm-debug.log*
+backend/logs/
+
+# Build / temp files
+dist/
+.tmp/

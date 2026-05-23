@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Auth Test</title>
+</head>
+<body>
+    <script>
+        // Check localStorage for authentication data
+        const authToken = localStorage.getItem('authToken');
+        const token = localStorage.getItem('token');
+        const user = localStorage.getItem('user');
+        
+        console.log('Auth Status Check:');
+        console.log('authToken:', authToken);
+        console.log('token:', token);
+        console.log('user:', user);
+        
+        if (authToken || token) {
+            document.body.innerHTML = '<h2>✅ User is logged in</h2>';
+        } else {
+            document.body.innerHTML = '<h2>❌ User is not logged in</h2>';
+        }
+    </script>
+</body>
+</html>

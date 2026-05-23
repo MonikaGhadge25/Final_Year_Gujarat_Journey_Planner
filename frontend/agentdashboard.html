@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agent Dashboard — Gujarat Tour & Travel</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root { --primary:#0077b6; --sidebar-width:260px; }
+    body  { background:#f0f4f8; font-family:'Segoe UI',sans-serif; }
+
+    /* ── Sidebar ── */
+    .sidebar {
+      position:fixed; top:0; left:0; height:100vh;
+      width:var(--sidebar-width); background:linear-gradient(160deg,#023e8a,#0077b6);
+      color:#fff; z-index:1000; display:flex; flex-direction:column; padding:0;
+      box-shadow:4px 0 12px rgba(0,0,0,.15);
+    }
+    .sidebar-brand {
+      padding:24px 20px 20px; border-bottom:1px solid rgba(255,255,255,.15);
+      font-size:18px; font-weight:700; letter-spacing:.5px;
+    }
+    .sidebar-brand small { display:block; font-size:12px; font-weight:400; opacity:.7; margin-top:4px; }
+    .sidebar nav { flex:1; padding:16px 0; overflow-y:auto; }
+    .sidebar .nav-link {
+      color:rgba(255,255,255,.8); padding:12px 20px; border-radius:0;
+      transition:all .2s; font-size:14px; display:flex; align-items:center; gap:10px;
+    }
+    .sidebar .nav-link:hover, .sidebar .nav-link.active {
+      background:rgba(255,255,255,.15); color:#fff; padding-left:28px;
+    }
+    .sidebar .nav-link i { width:18px; text-align:center; }
+    .sidebar-footer { padding:16px 20px; border-top:1px solid rgba(255,255,255,.15); }
+
+    /* ── Main ── */
+    .main-content { margin-left:var(--sidebar-width); min-height:100vh; }
+    .topbar {
+      background:#fff; padding:14px 28px; border-bottom:1px solid #e2e8f0;
+      display:flex; justify-content:space-between; align-items:center;
+      box-shadow:0 1px 4px rgba(0,0,0,.06);
+    }
+    .content-wrapper { padding:28px; }
+
+    /* ── Sections ── */
+    .content-section { display:none; }
+    .content-section.active { display:block; }
+
+    /* ── Cards ── */
+    .stat-card { border-radius:12px; border:none; box-shadow:0 2px 10px rgba(0,0,0,.06); }
+    .stat-card .icon { width:48px; height:48px; border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:20px; }
+
+    /* ── Profile avatar ── */
+    .profile-avatar {
+      width:80px; height:80px; border-radius:50%;
+      background:linear-gradient(135deg,#0077b6,#023e8a);
+      display:flex; align-items:center; justify-content:center;
+      font-size:32px; color:#fff; font-weight:700; flex-shrink:0;
+    }
+
+    /* ── Table ── */
+    .table th { background:#f8fafc; font-size:13px; text-transform:uppercase; letter-spacing:.5px; }
+    .table td { vertical-align:middle; }
+    .badge { font-weight:500; }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════ SIDEBAR ════════════════════════════════ -->
+<aside class="sidebar">
+  <div class="sidebar-brand">
+    <i class="fas fa-map-marked-alt me-2"></i>Agent Portal
+    <small>Gujarat Tour & Travel</small>
+  </div>
+  <nav>
+    <a class="nav-link active" onclick="showSection('dashboard')">
+      <i class="fas fa-tachometer-alt"></i> Dashboard
+    </a>
+    <a class="nav-link" onclick="showSection('profile')">
+      <i class="fas fa-user-circle"></i> My Profile
+    </a>
+    <a class="nav-link" onclick="showSection('requests')">
+      <i class="fas fa-inbox"></i> Booking Requests
+      <span id="requestsCount" class="badge bg-warning text-dark ms-auto">0</span>
+    </a>
+    <a class="nav-link" onclick="showSection('history')">
+      <i class="fas fa-history"></i> Booking History
+    </a>
+  </nav>
+  <div class="sidebar-footer">
+    <button class="btn btn-sm btn-outline-light w-100" onclick="logout()">
+      <i class="fas fa-sign-out-alt me-2"></i>Logout
+    </button>
+  </div>
+</aside>
+
+<!-- ══════════════════════════════ MAIN ═══════════════════════════════════ -->
+<div class="main-content">
+
+  <!-- Top bar -->
+  <div class="topbar">
+    <div>
+      <h5 class="mb-0 fw-bold text-dark">Welcome, <span id="userWelcome">Agent</span></h5>
+      <small class="text-muted">Gujarat Tour & Travel — Agent Dashboard</small>
+    </div>
+    <div class="d-flex align-items-center gap-2">
+      <span class="badge bg-success px-3 py-2"><i class="fas fa-circle me-1" style="font-size:8px"></i>Online</span>
+    </div>
+  </div>
+
+  <div class="content-wrapper">
+
+    <!-- ══════════ DASHBOARD SECTION ══════════ -->
+    <div id="dashboard-section" class="content-section active">
+      <h4 class="fw-bold mb-4">Dashboard Overview</h4>
+
+      <!-- Stat cards -->
+      <div class="row g-3 mb-4">
+        <div class="col-6 col-lg-3">
+          <div class="card stat-card p-3">
+            <div class="d-flex align-items-center gap-3">
+              <div class="icon bg-primary bg-opacity-10 text-primary"><i class="fas fa-calendar-check"></i></div>
+              <div>
+                <div class="h4 mb-0 fw-bold" id="statTotal">—</div>
+                <small class="text-muted">Total Bookings</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-lg-3">
+          <div class="card stat-card p-3">
+            <div class="d-flex align-items-center gap-3">
+              <div class="icon bg-warning bg-opacity-10 text-warning"><i class="fas fa-clock"></i></div>
+              <div>
+                <div class="h4 mb-0 fw-bold" id="statPending">—</div>
+                <small class="text-muted">Pending Requests</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-lg-3">
+          <div class="card stat-card p-3">
+            <div class="d-flex align-items-center gap-3">
+              <div class="icon bg-success bg-opacity-10 text-success"><i class="fas fa-check-circle"></i></div>
+              <div>
+                <div class="h4 mb-0 fw-bold" id="statConfirmed">—</div>
+                <small class="text-muted">Confirmed</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-lg-3">
+          <div class="card stat-card p-3">
+            <div class="d-flex align-items-center gap-3">
+              <div class="icon bg-info bg-opacity-10 text-info"><i class="fas fa-rupee-sign"></i></div>
+              <div>
+                <div class="h4 mb-0 fw-bold" id="statEarnings">—</div>
+                <small class="text-muted">Earnings</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Agent info card + Recent requests -->
+      <div class="row g-3">
+        <div class="col-lg-4">
+          <div class="card border-0 shadow-sm h-100">
+            <div class="card-body">
+              <div class="d-flex align-items-center gap-3 mb-3">
+                <div class="profile-avatar" id="avatarInitial">A</div>
+                <div>
+                  <h6 class="mb-0 fw-bold" id="dashAgentName">—</h6>
+                  <small class="text-muted" id="dashDistrict">—</small>
+                </div>
+              </div>
+              <hr>
+              <div class="row g-2 small">
+                <div class="col-6 text-muted">Experience</div>  <div class="col-6 fw-semibold" id="dashExperience">—</div>
+                <div class="col-6 text-muted">Fees</div>        <div class="col-6 fw-semibold" id="dashFees">—</div>
+                <div class="col-6 text-muted">Rating</div>      <div class="col-6 fw-semibold" id="dashRating">—</div>
+                <div class="col-6 text-muted">Mobile</div>      <div class="col-6 fw-semibold" id="dashMobile">—</div>
+                <div class="col-6 text-muted">Gender</div>      <div class="col-6 fw-semibold" id="dashGender">—</div>
+                <div class="col-6 text-muted">Languages</div>   <div class="col-6 fw-semibold" id="dashLanguages">—</div>
+              </div>
+              <button class="btn btn-sm btn-outline-primary mt-3 w-100" onclick="showSection('profile')">
+                <i class="fas fa-edit me-1"></i>Edit Profile
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-8">
+          <div class="card border-0 shadow-sm h-100">
+            <div class="card-header bg-white border-0 pb-0 d-flex justify-content-between align-items-center">
+              <h6 class="fw-bold mb-0">Recent Booking Requests</h6>
+              <button class="btn btn-sm btn-link text-primary" onclick="showSection('requests')">View All →</button>
+            </div>
+            <div class="card-body" id="recentBookings">
+              <p class="text-muted">Loading...</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- /dashboard-section -->
+
+    <!-- ══════════ PROFILE SECTION ══════════ -->
+    <div id="profile-section" class="content-section">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h4 class="fw-bold mb-0">My Profile</h4>
+      </div>
+      <div class="card border-0 shadow-sm">
+        <div class="card-body p-4">
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label fw-semibold">Full Name <span class="text-danger">*</span></label>
+              <input type="text" id="profileName" class="form-control">
+            </div>
+            <div class="col-md-6">
+              <label class="form-label fw-semibold">District <span class="text-danger">*</span></label>
+              <input type="text" id="profileDistrict" class="form-control">
+            </div>
+            <div class="col-md-4">
+              <label class="form-label fw-semibold">Experience (years)</label>
+              <input type="number" id="profileExperience" class="form-control" min="0">
+            </div>
+            <div class="col-md-4">
+              <label class="form-label fw-semibold">Age</label>
+              <input type="number" id="profileAge" class="form-control" min="18">
+            </div>
+            <div class="col-md-4">
+              <label class="form-label fw-semibold">Fees (₹)</label>
+              <div class="input-group">
+                <span class="input-group-text">₹</span>
+                <input type="text" id="profileFees" class="form-control" placeholder="e.g. 500">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label fw-semibold">Mobile</label>
+              <input type="text" id="profileMobile" class="form-control" maxlength="10">
+            </div>
+            <div class="col-md-4">
+              <label class="form-label fw-semibold">Gender</label>
+              <select id="profileGender" class="form-select">
+                <option value="">Select</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label fw-semibold">Email (read-only)</label>
+              <input type="email" id="profileEmail" class="form-control bg-light" readonly>
+            </div>
+            <div class="col-12">
+              <label class="form-label fw-semibold">Languages (comma-separated)</label>
+              <input type="text" id="profileLanguages" class="form-control" placeholder="e.g. Hindi, Gujarati, English">
+            </div>
+            <div class="col-12 text-end mt-2">
+              <button id="saveProfileBtn" class="btn btn-primary px-5" onclick="saveProfile()">
+                <i class="fas fa-save me-2"></i>Save Changes
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- /profile-section -->
+
+    <!-- ══════════ BOOKING REQUESTS SECTION ══════════ -->
+    <div id="requests-section" class="content-section">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h4 class="fw-bold mb-0">Booking Requests</h4>
+        <button class="btn btn-outline-primary btn-sm" onclick="loadBookingRequests()">
+          <i class="fas fa-sync me-1"></i>Refresh
+        </button>
+      </div>
+      <div class="card border-0 shadow-sm">
+        <div class="card-body p-0">
+          <div class="table-responsive">
+            <table class="table mb-0">
+              <thead>
+                <tr>
+                  <th>Booking ID</th>
+                  <th>Customer</th>
+                  <th>Tour</th>
+                  <th>Start Date</th>
+                  <th>End Date</th>
+                  <th>Travelers</th>
+                  <th>Amount</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="bookingRequestsTable">
+                <tr><td colspan="8" class="text-center text-muted py-4">Loading...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div><!-- /requests-section -->
+
+    <!-- ══════════ BOOKING HISTORY SECTION ══════════ -->
+    <div id="history-section" class="content-section">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h4 class="fw-bold mb-0">Booking History</h4>
+        <button class="btn btn-outline-primary btn-sm" onclick="loadBookingHistory()">
+          <i class="fas fa-sync me-1"></i>Refresh
+        </button>
+      </div>
+      <div class="card border-0 shadow-sm">
+        <div class="card-body p-0">
+          <div class="table-responsive">
+            <table class="table mb-0">
+              <thead>
+                <tr>
+                  <th>Booking ID</th>
+                  <th>Customer</th>
+                  <th>Tour</th>
+                  <th>Start</th>
+                  <th>End</th>
+                  <th>Travelers</th>
+                  <th>Amount</th>
+                  <th>Status</th>
+                  <th>Processed At</th>
+                </tr>
+              </thead>
+              <tbody id="bookingHistoryTable">
+                <tr><td colspan="9" class="text-center text-muted py-4">Loading...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div><!-- /history-section -->
+
+  </div><!-- /content-wrapper -->
+</div><!-- /main-content -->
+
+<!-- ══════════ BOOKING DETAILS MODAL ══════════ -->
+<div class="modal fade" id="bookingDetailsModal" tabindex="-1">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title fw-bold"><i class="fas fa-file-alt me-2"></i>Booking Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body" id="bookingDetailsContent">
+        <p class="text-muted text-center py-4">Loading...</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-danger"  id="rejectBookingBtn"><i class="fas fa-times me-2"></i>Reject</button>
+        <button type="button" class="btn btn-success" id="acceptBookingBtn"><i class="fas fa-check me-2"></i>Accept</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Scripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/agentdashboard.js"></script>
+<script>
+  // Update avatar initial whenever agent name changes
+  document.addEventListener('DOMContentLoaded', () => {
+    const obs = new MutationObserver(() => {
+      const name = document.getElementById('dashAgentName')?.textContent || '';
+      const init = document.getElementById('avatarInitial');
+      if (init && name && name !== '—') init.textContent = name.charAt(0).toUpperCase();
+    });
+    const el = document.getElementById('dashAgentName');
+    if (el) obs.observe(el, { childList: true, characterData: true, subtree: true });
+  });
+</script>
+</body>
+</html>

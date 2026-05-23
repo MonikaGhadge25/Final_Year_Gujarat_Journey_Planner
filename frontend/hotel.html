@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>GJP - Hotel</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+</head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" rel="stylesheet">
+  <link href="assets/css/main.css" rel="stylesheet">
+</head>
+<body class="blog-page">
+  <header id="header" class="header d-flex align-items-center sticky-top">
+    <div class="container position-relative d-flex align-items-center">
+      <a href="home.html" class="logo d-flex align-items-center me-auto">
+        <h1 class="sitename">Gujarat Journey Planner</h1>
+      </a>
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="home.html">Home</a></li>
+          <li><a href="places.html">Places</a></li>
+          <li class="dropdown"><a href="services.html"><span>Services</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="hotel.html" class="active">Hotels</a></li>
+              <li><a href="transport.html">Transport</a></li>
+              <li><a href="agent.html">Guide</a></li>
+            </ul>
+          </li>
+          <li><a href="packages.html">Packages</a></li>
+          <li><a href="book.html">Book</a></li>
+          <li><a href="about-us.html">About</a></li>
+          <li><a href="sign in.html">Sign In</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+    </div>
+  </header>
+  <main class="main">
+    <div class="page-title accent-background">
+      <div class="container d-lg-flex justify-content-between align-items-center">
+        <h1 class="mb-2 mb-lg-0">Hotels</h1>
+        <nav class="breadcrumbs">
+          <ol>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="book.html">Book</a></li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+
+    <div id="title" class="container section-title" data-aos="fade-up">
+      <h2>Hotels</h2>
+    </div>
+
+    <section class="hotel-search-section">
+      <div class="hotel-search-container">
+        <h2 class="hotel-search-title">Find Your Ideal Hotel</h2>
+        <form class="hotel-search-form">
+          <!-- Select Filters -->
+          <select class="hotel-select" name="location">
+            <option value="">District</option>
+            <option value="ahmedabad">Ahmedabad</option>
+            <option value="amreli">Amreli</option>
+            <option value="anand">Anand</option>
+            <option value="aravalli">Aravalli</option>
+            <option value="banaskantha">Banaskantha</option>
+            <option value="bharuch">Bharuch</option>
+            <option value="bhavnagar">Bhavnagar</option>
+            <option value="botad">Botad</option>
+            <option value="chhotaudepur">Chhotaudepur</option>
+            <option value="dahod">Dahod</option>
+            <option value="dang">Dang</option>
+            <option value="devbhumi dwarka">Devbhumi Dwarka</option>
+            <option value="gandhinagar">Gandhinagar</option>
+            <option value="gir somnath">Gir Somnath</option>
+            <option value="jamnagar">Jamnagar</option>
+            <option value="junagadh">Junagadh</option>
+            <option value="kheda">Kheda</option>
+            <option value="kutch">Kutch</option>
+            <option value="mahisagar">Mahisagar</option>
+            <option value="mehsana">Mehsana</option>
+            <option value="morbi">Morbi</option>
+            <option value="narmada">Narmada</option>
+            <option value="navsari">Navsari</option>
+            <option value="panchmahal">Panchmahal</option>
+            <option value="patan">Patan</option>
+            <option value="porbandar">Porbandar</option>
+            <option value="rajkot">Rajkot</option>
+            <option value="sabarkantha">Sabarkantha</option>
+            <option value="surat">Surat</option>
+            <option value="surendranagar">Surendranagar</option>
+            <option value="tapi">Tapi</option>
+            <option value="vadodara">Vadodara</option>
+            <option value="valsad">Valsad</option>
+          </select>
+
+          <select class="hotel-select" name="category">
+            <option value="">Room Type</option>
+            <option value="Single">Single</option>
+            <option value="Double">Double</option>
+            <option value="Suite">Suite</option>
+            <option value="Deluxe">Deluxe</option>
+          </select>
+
+          <select class="hotel-select" name="rating">
+            <option value="">Rating</option>
+            <option value="3">★★★ &amp; above</option>
+            <option value="4">★★★★ &amp; above</option>
+            <option value="5">★★★★★ only</option>
+          </select>
+
+          <!-- <select class="hotel-select" name="priceRange">
+            <option value="">Price Range</option>
+            <option value="under1000">Under ₹1000</option>
+            <option value="1000-3000">₹1000 - ₹3000</option>
+            <option value="3000-5000">₹3000 - ₹5000</option>
+            <option value="5000plus">₹5000+</option>
+          </select> -->
+
+          <select class="hotel-select" name="priceRange">
+          <option value="">Price Range</option>
+          <option value="under2000">Under ₹2000</option>
+          <option value="2000-5000">₹2000 - ₹5000</option>
+          <option value="5000-10000">₹5000 - ₹10000</option>
+          <option value="10000plus">₹10000+</option>
+        </select>
+
+          <button type="submit" class="hotel-search-button">Search</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="hotel-grid-section">
+      <div id="hotelGallery" class="hotel-gallery"></div>
+    </section>
+  </main>
+
+  <template id="hotelCardTemplate">
+    <div class="hotel-card">
+      <div class="hotel-card-img">
+        <img class="hotel-img" src="" alt="Hotel Image" />
+      </div>
+      <div class="hotel-card-body">
+        <h3 class="hotel-card-title"></h3>
+        <p class="hotel-card-desc"></p>
+        <button class="hotel-card-btn">View</button>
+      </div>
+    </div>
+  </template>
+
+  <footer id="footer" class="footer dark-background">
+
+    <div class="container footer-top"home>
+      <div class="row gy-4">
+        <div class="col-lg-4 col-md-6 footer-about">
+          <a href="home.html" class="logo d-flex align-items-center">
+            <span id="foot-site-name" class="sitename">Gujarat Journey Planner</span>
+          </a>
+          <div class="footer-contact pt-3">
+            <!-- <p>A108 Adam Street</p>
+            <p>New York, NY 535022</p> -->
+            <p class="mt-3"><strong>Address:</strong> <span>Gujarat, India</span></p>
+            <p><strong>Email:</strong> <span>gujaratjourneyplanner.gmail.com</span></p>
+          </div>
+          <!-- <div class="social-links d-flex mt-4">
+            <a href=""><i class="bi bi-twitter-x"></i></a>
+            <a href=""><i class="bi bi-facebook"></i></a>
+            <a href=""><i class="bi bi-instagram"></i></a>
+            <a href=""><i class="bi bi-linkedin"></i></a>
+          </div> -->
+        </div>
+
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>Useful Links</h4>
+          <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="places.html"> Tourist Places</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="book.html">Book a Tour</a></li>
+            <li><a href="sign in.html">Sign In</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>Our Services</h4>
+          <ul>
+            <li><a href="hotel.html">Hotel Booking</a></li>
+            <li><a href="agent.html">Guide Booking</a></li>
+            <li><a href="transport.html">Transport Booking</a></li>
+            <li><a href="packages.html">Custom Tour Packages</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-4 col-md-12 footer-user-review">
+  <h4>Give Us a Rating</h4>
+  <form action="forms/review.php" method="post" class="review-form">
+    <input type="text" name="name" placeholder="Your Name" required>
+
+    <div class="star-rating">
+      <input type="radio" id="star5" name="rating" value="5"><label for="star5" title="5 stars">★</label>
+      <input type="radio" id="star4" name="rating" value="4"><label for="star4" title="4 stars">★</label>
+      <input type="radio" id="star3" name="rating" value="3"><label for="star3" title="3 stars">★</label>
+      <input type="radio" id="star2" name="rating" value="2"><label for="star2" title="2 stars">★</label>
+      <input type="radio" id="star1" name="rating" value="1"><label for="star1" title="1 star">★</label>
+    </div>
+
+    <textarea name="review" placeholder="Write your review..." required></textarea>
+
+    <input type="submit" value="Submit Review">
+  </form>
+</div>
+
+      </div>
+    </div>
+
+    <div class="container copyright text-center mt-4">
+      <p>© <span>2025</span> <strong class="px-1 sitename">Gujarat Journey Planner</strong> <span></span></p>
+      <div class="credits">
+        Designed & Develped as a <a href="">B.Tech Project</a> for <a href="">Academic Purpose
+      </div>
+    </div>
+
+  </footer>
+
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <div id="preloader"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/isotope-layout@3.0.6/dist/isotope.pkgd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/waypoints@4.0.1/lib/noframework.waypoints.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="assets/js/api-config.js"></script>
+  <script src="assets/js/main.js"></script>
+  <!-- Authentication Utils -->
+  <script src="assets/js/auth-utils.js"></script>
+
+  <script>
+    const gallery = document.getElementById('hotelGallery');
+    const form = document.querySelector('.hotel-search-form');
+    const template = document.getElementById('hotelCardTemplate');
+    let currentPage = 1;
+    const limit = 6;
+    let loading = false;
+    let totalPages = 1;
+    let filters = {};
+
+    function createHotelCard(hotel) {
+      if (!template || !template.content) {
+        console.error('Hotel card template not found!');
+        return;
+      }
+      
+      const clone = template.content.cloneNode(true);
+      
+      // // Handle new base64 image format
+      // let imageUrl = 'https://via.placeholder.com/400x250?text=No+Image';
+      // if (hotel.image && hotel.image.base64) {
+      //   imageUrl = `data:image/jpeg;base64,${hotel.image.base64}`;
+      // } else if (hotel.imageUrl) {
+      //   imageUrl = hotel.imageUrl;
+      // }
+
+      // Handle image format - improved handling for hotel dashboard images
+      let imageUrl = 'https://via.placeholder.com/400x250?text=Hotel+Image&bg=f8f9fa&color=6c757d';
+      let hasImage = false;
+      
+      console.log('Processing hotel image for:', hotel.hotel_details?.hotel_name);
+      
+      if (hotel.image) {
+        console.log('Image data type:', typeof hotel.image);
+        
+        // Check if backend returned a data URL (already processed)
+        if (typeof hotel.image === 'string' && hotel.image.startsWith('data:image/')) {
+          imageUrl = hotel.image;
+          hasImage = true;
+          console.log('✅ Using data URL image');
+        } 
+        // Handle direct base64 format from hotel dashboard
+        else if (hotel.image.base64 && hotel.image.base64.length > 0) {
+          imageUrl = `data:image/jpeg;base64,${hotel.image.base64}`;
+          hasImage = true;
+          console.log('✅ Converting base64 to data URL, length:', hotel.image.base64.length);
+        }
+        // Handle MongoDB $binary format
+        else if (hotel.image.$binary && hotel.image.$binary.base64) {
+          const base64Data = hotel.image.$binary.base64;
+          imageUrl = `data:image/jpeg;base64,${base64Data}`;
+          hasImage = true;
+          console.log('✅ Converting $binary.base64 to data URL, length:', base64Data.length);
+        } 
+        // Handle regular URL or path
+        else if (typeof hotel.image === 'string' && hotel.image.startsWith('http')) {
+          imageUrl = hotel.image;
+          hasImage = true;
+          console.log('✅ Using HTTP image URL');
+        }
+        else {
+          console.warn('⚠️ Unknown or empty image format for hotel:', hotel.hotel_details?.hotel_name);
+          console.warn('Image data:', hotel.image);
+        }
+      } else if (hotel.imageUrl) {
+        imageUrl = hotel.imageUrl;
+        hasImage = true;
+        console.log('✅ Using imageUrl property');
+      } else {
+        console.log('ℹ️ No image data found for hotel:', hotel.hotel_details?.hotel_name);
+      }
+      
+      console.log('Final image URL for', hotel.hotel_details?.hotel_name + ':', hasImage ? 'Custom image' : 'Placeholder');
+
+      // Extract hotel details from new JSON structure
+      const hotelName = hotel.hotel_details?.hotel_name || hotel.name || 'Hotel';
+
+      const imgElement = clone.querySelector('.hotel-img');
+      imgElement.src = imageUrl;
+      imgElement.alt = hotelName;
+      
+      // Add comprehensive error handling for image loading
+      imgElement.onerror = function() {
+        console.error('❌ Failed to load image for hotel:', hotelName);
+        console.error('Failed URL:', imageUrl.substring(0, 100) + '...');
+        console.error('URL length:', imageUrl.length);
+        this.src = 'https://via.placeholder.com/400x250?text=Image+Not+Available&color=666&bg=f0f0f0';
+        this.style.backgroundColor = '#f0f0f0';
+        this.style.border = '2px dashed #ccc';
+      };
+      
+      imgElement.onload = function() {
+        console.log('✅ Image loaded successfully for hotel:', hotelName);
+        this.style.border = '2px solid #000'; // Restore normal border
+      };
+      
+      // Add immediate validation
+      if (!imageUrl.startsWith('data:') && !imageUrl.startsWith('http')) {
+        console.warn('⚠️ Suspicious image URL for', hotelName, ':', imageUrl.substring(0, 50));
+      }
+      
+      clone.querySelector('.hotel-card-title').textContent = hotelName;
+      const intro = hotel.hotel_details?.description || hotel.hotel_details?.intro || hotel.intro || 'Experience comfort and luxury at this beautiful hotel.';
+      clone.querySelector('.hotel-card-desc').textContent = intro;
+      
+      clone.querySelector('.hotel-card-btn').addEventListener('click', () => {
+        window.location.href = `hoteldetail.html?id=${hotel._id}`;
+      });
+
+      gallery.appendChild(clone);
+    }
+
+    async function loadHotels(reset = false) {
+      if (loading || (currentPage > totalPages && !reset)) return;
+      loading = true;
+
+      if (reset) {
+        gallery.innerHTML = '<div style="text-align:center;padding:40px;font-size:18px;color:#666;">🏨 Loading hotels...</div>';
+        currentPage = 1;
+      }
+
+      const query = new URLSearchParams({ ...filters, page: currentPage, limit });
+      try {
+        const res = await fetch(`http://localhost:8000/api/hotels/search?${query.toString()}`);
+        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+        const data = await res.json();
+        console.log('API Response received:', data);
+        console.log('Number of hotels:', data.hotels?.length || 0);
+
+        totalPages = data.totalPages;
+        if (reset) gallery.innerHTML = '';
+        if (!data.hotels.length && reset) {
+          gallery.innerHTML = '<div style="text-align:center;padding:40px;font-size:18px;color:#666;">🔍 No hotels found. Try different filters or check back later.</div>';
+          return;
+        }
+
+        console.log('Processing hotels...');
+        data.hotels.forEach((hotel, index) => {
+          console.log(`Creating card for hotel ${index + 1}:`, hotel.hotel_details?.hotel_name);
+          createHotelCard(hotel);
+        });
+        currentPage++;
+      } catch (err) {
+        console.error('Failed to load hotels:', err);
+        if (reset) {
+          gallery.innerHTML = '<div style="text-align:center;padding:40px;font-size:18px;color:#d32f2f;">⚠️ Failed to load hotels. Please check your connection and try again.</div>';
+        }
+      } finally {
+        loading = false;
+      }
+    }
+
+    window.addEventListener('scroll', () => {
+      if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 300) {
+        loadHotels();
+      }
+    });
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const formData = new FormData(form);
+      filters = {};
+      for (let [key, val] of formData.entries()) {
+        if (val.trim()) filters[key] = val.trim();
+      }
+      loadHotels(true);
+    });
+
+    loadHotels();
+  </script>
+</body>
+</html>

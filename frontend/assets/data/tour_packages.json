@@ -1,0 +1,75 @@
+[{
+  "_id": {
+    "$oid": "68ebe9596c59fa605bc9e14b"
+  },
+  "Rann of Kutch Festival Tour": {
+    "places": {
+      "name": "Great Rann of Kutch",
+      "location": {
+        "district": "Kutch",
+        "pincode": 370001
+      },
+      "category": "Festival",
+      "price": "₹500–₹2000 (festival & tours)",
+      "rating": 5
+    },
+    "hotels": {
+      "hotel_name": "Hotel Rann of Kachchh"
+    },
+    "agents": {
+      "name": "Vishva Parmar",
+      "fees": "₹500",
+      "rating": 4
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "68ebf7df6c59fa605bc9e14d"
+  },
+  "Gir Lion Safari Adventure": {
+    "places": {
+      "name": "Gir National Park",
+      "location": {
+        "district": "Amreli",
+        "pincode": 365460
+      },
+      "category": "Wildlife",
+      "price": "₹500–₹1500",
+      "rating": 5
+    },
+    "hotels": {
+      "hotel_name": "Hotel Neptune"
+    },
+    "agents": {
+      "name": "Prathvi Sharma",
+      "fees": "₹500",
+      "rating": 4.4
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "68ebf7f96c59fa605bc9e14e"
+  },
+  "Statue of Unity & Heritage Tour": {
+    "places": {
+      "name": "Statue of Unity",
+      "location": {
+        "district": "Narmada",
+        "pincode": 393155
+      },
+      "category": "Heritage",
+      "price": "₹150–₹450 (entry ticket)",
+      "rating": 5
+    },
+    "hotels": {
+      "hotel_name": "Sarasutha Hotel and Pool"
+    },
+    "agents": {
+      "name": "Chirag Sharma",
+      "fees": "₹400",
+      "rating": 4.4
+    }
+  }
+}]

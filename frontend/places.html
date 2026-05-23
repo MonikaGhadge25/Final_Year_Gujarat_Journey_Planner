@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>GJP - Places</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+</head>
+
+<body class="services-page">
+
+  <header id="header" class="header d-flex align-items-center sticky-top">
+    <div class="container position-relative d-flex align-items-center">
+      <a href="home.html" class="logo d-flex align-items-center me-auto">
+        <h1 class="sitename">Gujarat Journey Planner</h1>
+      </a>
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="home.html">Home</a></li>
+          <li><a href="places.html" class="active">Places</a></li>
+          <li class="dropdown"><a href="services.html"><span>Services</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="hotel.html">Hotels</a></li>
+              <li><a href="transport.html">Transport</a></li>
+              <li><a href="agent.html">Guide</a></li>
+            </ul>
+          </li>
+          <li><a href="packages.html">Packages</a></li>
+          <li><a href="book.html">Book</a></li>
+          <li><a href="about-us.html">About</a></li>
+          <li><a href="sign in.html">Sign In</a></li>
+          <!-- <li><a href="profile.html">Profile</a></li> -->
+
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="page-title accent-background">
+      <div class="container d-lg-flex justify-content-between align-items-center">
+        <h1 class="mb-2 mb-lg-0">Tourist Places</h1>
+        <nav class="breadcrumbs">
+          <ol>
+            <li><a href="home.html">Home</a></li>
+            <li class="current">Places</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </main>
+
+  <div id="title" class="container section-title" data-aos="fade-up">
+    <h2>Tourist Places</h2>
+  </div>
+
+  <!-- Search Bar -->
+  <section class="tour-search-section">
+    <div class="tour-search-container">
+      <h2 class="tour-search-title">Find Your Perfect Destination</h2>
+      <form class="tour-search-form">
+        <select class="tour-select" name="destinationType">
+          <option value="">Destination Type</option>
+          <option value="religious">Religious</option>
+          <option value="heritage">Heritage</option>
+          <option value="nature">Nature</option>
+          <option value="science">Science</option>
+          <option value="beach">Beach</option>
+          <option value="amusement">Amusement</option>
+        </select>
+        
+        <select class="tour-select" name="location">
+          <option value="">District</option>
+          <option value="ahmedabad">Ahmedabad</option>
+          <option value="amreli">Amreli</option>
+          <option value="anand">Anand</option>
+          <option value="aravalli">Aravalli</option>
+          <option value="banaskantha">Banaskantha</option>
+          <option value="bharuch">Bharuch</option>
+          <option value="bhavnagar">Bhavnagar</option>
+          <option value="botad">Botad</option>
+          <option value="chhotaudepur">Chhotaudepur</option>
+          <option value="dahod">Dahod</option>
+          <option value="dang">Dang</option>
+          <option value="devbhumi dwarka">Devbhumi Dwarka</option>
+          <option value="gandhinagar">Gandhinagar</option>
+          <option value="gir somnath">Gir Somnath</option>
+          <option value="jamnagar">Jamnagar</option>
+          <option value="junagadh">Junagadh</option>
+          <option value="kheda">Kheda</option>
+          <option value="kutch">Kutch</option>
+          <option value="mahisagar">Mahisagar</option>
+          <option value="mehsana">Mehsana</option>
+          <option value="morbi">Morbi</option>
+          <option value="narmada">Narmada</option>
+          <option value="navsari">Navsari</option>
+          <option value="panchmahal">Panchmahal</option>
+          <option value="patan">Patan</option>
+          <option value="porbandar">Porbandar</option>
+          <option value="rajkot">Rajkot</option>
+          <option value="sabarkantha">Sabarkantha</option>
+          <option value="surat">Surat</option>
+          <option value="surendranagar">Surendranagar</option>
+          <option value="tapi">Tapi</option>
+          <option value="vadodara">Vadodara</option>
+          <option value="valsad">Valsad</option>
+        </select>
+
+        <select class="tour-select" name="visitorType">
+          <option value="">Visitor Type</option>
+          <option value="kids">Kids</option>
+          <option value="teens">Teens</option>
+          <option value="adults">Adults</option>
+          <option value="seniors">Seniors</option>
+          <option value="all">All</option>
+        </select>
+
+        <select class="tour-select" name="bestSeason">
+          <option value="">Best Season</option>
+          <option value="winter">Winter</option>
+          <option value="summer">Summer</option>
+          <option value="monsoon">Monsoon</option>
+          <option value="all">All</option>
+        </select>
+
+        <button type="submit" class="tour-search-button">Search</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Places Section -->
+  <div id="body" class="gallery"></div>
+
+  <!-- Template for place card -->
+  <template id="place-card-template">
+    <div class="place_card">
+      <figure class="card">
+        <img src="" class="card-image" alt="" />
+        <figcaption class="caption">
+          <h2 class="card-title"></h2>
+          <p class="card-description"></p>
+          <button class="view-more-btn">View More</button>
+        </figcaption>
+      </figure>
+      <div class="place_name"></div>
+    </div>
+  </template>
+
+  <!-- Overlay -->
+  <div id="overlayContainer" style="display: none; position: fixed; top: 0; left: 0; 
+    width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.85); 
+    z-index: 9999; justify-content: center; align-items: center;">
+    <div style="position: relative; width: 90%; height: 90%; max-width: 1200px;">
+      <button onclick="closeOverlay()" style="position: absolute; top: 10px; right: 10px; 
+        color: rgba(34, 139, 34, 0.85); border: none; padding: 8px 12px; cursor: pointer; z-index: 10000;">Back</button>
+      <iframe id="placeIframe" style="width: 100%; height: 100%; border: none; border-radius: 8px; background: #fff;"></iframe>
+    </div>
+  </div>
+
+    <footer id="footer" class="footer dark-background">
+
+    <div class="container footer-top"home>
+      <div class="row gy-4">
+        <div class="col-lg-4 col-md-6 footer-about">
+          <a href="home.html" class="logo d-flex align-items-center">
+            <span id="foot-site-name" class="sitename">Gujarat Journey Planner</span>
+          </a>
+          <div class="footer-contact pt-3">
+            <!-- <p>A108 Adam Street</p>
+            <p>New York, NY 535022</p> -->
+            <p class="mt-3"><strong>Address:</strong> <span>Gujarat, India</span></p>
+            <p><strong>Email:</strong> <span>gujaratjourneyplanner.gmail.com</span></p>
+          </div>
+          <!-- <div class="social-links d-flex mt-4">
+            <a href=""><i class="bi bi-twitter-x"></i></a>
+            <a href=""><i class="bi bi-facebook"></i></a>
+            <a href=""><i class="bi bi-instagram"></i></a>
+            <a href=""><i class="bi bi-linkedin"></i></a>
+          </div> -->
+        </div>
+
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>Useful Links</h4>
+          <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="places.html"> Tourist Places</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="book.html">Book a Tour</a></li>
+            <li><a href="sign in.html">Sign In</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>Our Services</h4>
+          <ul>
+            <li><a href="hotel.html">Hotel Booking</a></li>
+            <li><a href="agent.html">Guide Booking</a></li>
+            <li><a href="transport.html">Transport Booking</a></li>
+            <li><a href="packages.html">Custom Tour Packages</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-4 col-md-12 footer-user-review">
+  <h4>Give Us a Rating</h4>
+  <form action="forms/review.php" method="post" class="review-form">
+    <input type="text" name="name" placeholder="Your Name" required>
+
+    <div class="star-rating">
+      <input type="radio" id="star5" name="rating" value="5"><label for="star5" title="5 stars">★</label>
+      <input type="radio" id="star4" name="rating" value="4"><label for="star4" title="4 stars">★</label>
+      <input type="radio" id="star3" name="rating" value="3"><label for="star3" title="3 stars">★</label>
+      <input type="radio" id="star2" name="rating" value="2"><label for="star2" title="2 stars">★</label>
+      <input type="radio" id="star1" name="rating" value="1"><label for="star1" title="1 star">★</label>
+    </div>
+
+    <textarea name="review" placeholder="Write your review..." required></textarea>
+
+    <input type="submit" value="Submit Review">
+  </form>
+</div>
+
+      </div>
+    </div>
+
+    <div class="container copyright text-center mt-4">
+      <p>© <span>2025</span> <strong class="px-1 sitename">Gujarat Journey Planner</strong> <span></span></p>
+      <div class="credits">
+        Designed & Develped as a <a href="">B.Tech Project</a> for <a href="">Academic Purpose
+      </div>
+    </div>
+
+  </footer>
+<!-- End Footer  -->
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">
+    <i class="bi bi-arrow-up-short"></i>
+  </a>
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/isotope-layout@3.0.6/dist/isotope.pkgd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/waypoints@4.0.1/lib/noframework.waypoints.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="assets/js/api-config.js"></script>
+  <script src="assets/js/main.js"></script>
+  <!-- Authentication Utils -->
+  <script src="assets/js/auth-utils.js"></script>
+
+  <!-- Places Script -->
+  <script>
+    let currentPage = 1;
+    const limit = 8;
+    let loading = false;
+    let totalPages = 1;
+    let filters = {};
+
+    const gallery = document.getElementById('body');
+    const form = document.querySelector('.tour-search-form');
+
+    function createPlaceCard(place) {
+      const template = document.getElementById('place-card-template');
+      const clone = template.content.cloneNode(true);
+
+      const img = clone.querySelector('.card-image');
+      const title = clone.querySelector('.card-title');
+      const description = clone.querySelector('.card-description');
+      const button = clone.querySelector('.view-more-btn');
+      const nameDiv = clone.querySelector('.place_name');
+
+      img.src = place.imageUrl || 'https://via.placeholder.com/400x250?text=No+Image';
+      img.alt = place.name;
+      img.onerror = () => {
+        img.src = 'https://via.placeholder.com/400x250?text=Image+Error';
+      };
+
+      title.textContent = place.name;
+      description.textContent = place.intro || 'Explore Gujarat';
+      nameDiv.textContent = place.name;
+      button.onclick = () => openOverlay(place.name);
+
+      return clone;
+    }
+
+    async function loadPlaces(reset = false) {
+      if (loading || (currentPage > totalPages && !reset)) return;
+      loading = true;
+
+      if (reset) {
+        gallery.innerHTML = '<div style="text-align: center; padding: 20px;">Loading places...</div>';
+        currentPage = 1;
+      }
+
+      const query = new URLSearchParams({ ...filters, page: currentPage, limit });
+
+      try {
+        const res = await fetch(`http://localhost:8000/api/places/search?${query}`);
+        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+
+        const data = await res.json();
+        totalPages = data.totalPages;
+
+        if (reset) gallery.innerHTML = '';
+
+        if (data.places?.length) {
+          data.places.forEach(place => {
+            const card = createPlaceCard(place);
+            gallery.appendChild(card);
+          });
+          currentPage++;
+        } else if (reset) {
+          gallery.innerHTML = '<div style="text-align: center; padding: 20px;">No places found.</div>';
+        }
+      } catch (err) {
+        if (reset) {
+          gallery.innerHTML = '<div style="text-align: center; color: red; padding: 20px;">Failed to load places.</div>';
+        }
+        console.error(err);
+      } finally {
+        loading = false;
+      }
+    }
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const formData = new FormData(form);
+      filters = {};
+      for (let [key, value] of formData.entries()) {
+        if (value.trim()) filters[key] = value.trim();
+      }
+      loadPlaces(true);
+    });
+
+    window.addEventListener('scroll', () => {
+      if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 300) {
+        loadPlaces();
+      }
+    });
+
+    function openOverlay(placeName) {
+      const iframe = document.getElementById("placeIframe");
+      const overlay = document.getElementById("overlayContainer");
+      iframe.src = `single-page.html?place=${encodeURIComponent(placeName)}`;
+      overlay.style.display = "flex";
+    }
+
+    function closeOverlay() {
+      const overlay = document.getElementById("overlayContainer");
+      const iframe = document.getElementById("placeIframe");
+      overlay.style.display = "none";
+      iframe.src = "";
+    }
+
+    loadPlaces();
+  </script>
+
+</body>
+</html>

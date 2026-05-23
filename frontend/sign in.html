@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>GJP - Sign In</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Raleway&family=Nunito&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+
+  <style>
+    .gender-group {
+      margin: 10px 0;
+    }
+
+    .gender-group label {
+      margin-right: 10px;
+      font-weight: normal;
+    }
+
+    /* Login Error Box Style */
+    #loginError {
+      display: none;
+      background: #ffdddd;
+      color: #b30000;
+      padding: 10px;
+      border-left: 4px solid #b30000;
+      margin-bottom: 10px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+
+<body class="blog-page">
+
+  <header id="header" class="header d-flex align-items-center sticky-top">
+    <div class="container position-relative d-flex align-items-center">
+      <a href="home.html" class="logo d-flex align-items-center me-auto">
+        <h1 class="sitename">Gujarat Journey Planner</h1><span></span>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="home.html">Home</a></li>
+          <li><a href="places.html">Places</a></li>
+          <li class="dropdown"><a href="services.html"><span>Services</span> <i
+                class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="hotel.html">Hotels</a></li>
+              <li><a href="transport.html">Transport</a></li>
+              <li><a href="agent.html">Local Agent</a></li>
+            </ul>
+          </li>
+          <li><a href="packages.html">Packages</a></li>
+          <li><a href="book.html">Book</a></li>
+          <li><a href="about-us.html">About</a></li>
+          <li><a href="sign in.html" class="active">Sign In</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="page-title accent-background">
+      <div class="container d-lg-flex justify-content-between align-items-center">
+        <h1 class="mb-2 mb-lg-0">Sign In</h1>
+        <nav class="breadcrumbs">
+          <ol>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="sign in.html">Sign In</a></li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+
+    <div id="title" class="container section-title" data-aos="fade-up">
+      <h2>Sign In</h2>
+    </div>
+  </main>
+
+  <!-- ======= Sign In / Sign Up Section ======= -->
+  <section id="reg_login">
+    <input type="checkbox" id="rl-toggle" hidden>
+    <div class="container">
+
+      <!-- Sign In Panel -->
+      <div class="user signinBx">
+        <div class="imgBx">
+          <img src="assets/img/sign-guj.png" alt="Sign in illustration">
+        </div>
+        <div class="formBx">
+          <form id="loginForm">
+            <h2>Log In</h2>
+
+            <!-- ERROR MESSAGE BOX -->
+            <div id="loginError"></div>
+
+            <input type="email" id="loginEmail" placeholder="Email" required>
+            <input type="password" id="loginPassword" placeholder="Password" required>
+            <input type="submit" value="Login">
+            <p class="signup">
+              Don’t have an account? <label for="rl-toggle">Sign Up</label>
+            </p>
+          </form>
+        </div>
+      </div>
+
+      <!-- Sign Up Panel -->
+      <div class="user signupBx">
+        <div class="imgBx">
+          <img src="assets/img/sign-guj.png" alt="Sign Up Image">
+        </div>
+        <div class="formBx">
+          <form id="registerForm">
+            <h2>Create an Account</h2>
+            <div id="registerError" style="display:none;background:#ffdddd;color:#b30000;padding:10px;border-left:4px solid #b30000;margin-bottom:10px;border-radius:5px;font-size:13px;"></div>
+            <input type="text" id="regFullname" placeholder="Full Name" required>
+            <input type="email" id="regEmail" placeholder="Email Address" required>
+            <input type="tel" id="regPhone" placeholder="Phone Number (10 digits)" pattern="[0-9]{10}" maxlength="10" required>
+            <input type="date" id="regDOB" required>
+
+            <div class="gender-group">
+              <label>Gender:</label>
+              <label><input type="radio" name="gender" value="Male" required> Male</label>
+              <label><input type="radio" name="gender" value="Female"> Female</label>
+              <label><input type="radio" name="gender" value="Other"> Other</label>
+            </div>
+
+            <input type="password" id="regPassword" placeholder="Create Password" required>
+            <input type="password" id="regConfirmPassword" placeholder="Confirm Password" required>
+            <input type="submit" value="Sign Up">
+            <p class="signup">
+              Already have an account? <label for="rl-toggle">Log in</label>
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Section -->
+
+  <footer id="footer" class="footer dark-background">
+    <div class="container footer-top">
+      <div class="row gy-4">
+        <div class="col-lg-4 col-md-6 footer-about">
+          <a href="home.html" class="logo d-flex align-items-center">
+            <span id="foot-site-name" class="sitename">Gujarat Journey Planner</span>
+          </a>
+          <div class="footer-contact pt-3">
+            <p class="mt-3"><strong>Address:</strong> <span>Gujarat, India</span></p>
+            <p><strong>Email:</strong> <span>gujaratjourneyplanner.gmail.com</span></p>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>Useful Links</h4>
+          <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="places.html"> Tourist Places</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="book.html">Book a Tour</a></li>
+            <li><a href="sign in.html">Sign In</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>Our Services</h4>
+          <ul>
+            <li><a href="hotel.html">Hotel Booking</a></li>
+            <li><a href="agent.html">Guide Booking</a></li>
+            <li><a href="transport.html">Transport Booking</a></li>
+            <li><a href="packages.html">Custom Tour Packages</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-4 col-md-12 footer-user-review">
+          <h4>Give Us a Rating</h4>
+          <form action="forms/review.php" method="post" class="review-form">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <div class="star-rating">
+              <input type="radio" id="star5" name="rating" value="5"><label for="star5" title="5 stars">★</label>
+              <input type="radio" id="star4" name="rating" value="4"><label for="star4" title="4 stars">★</label>
+              <input type="radio" id="star3" name="rating" value="3"><label for="star3" title="3 stars">★</label>
+              <input type="radio" id="star2" name="rating" value="2"><label for="star2" title="2 stars">★</label>
+              <input type="radio" id="star1" name="rating" value="1"><label for="star1" title="1 star">★</label>
+            </div>
+            <textarea name="review" placeholder="Write your review..." required></textarea>
+            <input type="submit" value="Submit Review">
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="container copyright text-center mt-4">
+      <p>© <span>2025</span> <strong class="px-1 sitename">Gujarat Journey Planner</strong></p>
+      <div class="credits">
+        Designed & Develped as a <a href="">B.Tech Project</a> for <a href="">Academic Purpose</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+  <div id="preloader"></div>
+
+  <!-- Vendor JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/isotope-layout@3.0.6/dist/isotope.pkgd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/waypoints@4.0.1/lib/noframework.waypoints.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <!-- Main JS -->
+  <script src="assets/js/api-config.js"></script>
+  <script src="assets/js/main.js"></script>
+
+  <!-- Login Script with inline error -->
+  <script>
+    // ─────────────────────────────────────────────────────────────────────────────
+// REPLACE your existing loginForm submit handler in "sign in.html" with this:
+// ─────────────────────────────────────────────────────────────────────────────
+
+document.getElementById('loginForm').addEventListener('submit', async function (e) {
+  e.preventDefault();
+  const email    = document.getElementById('loginEmail').value.trim();
+  const password = document.getElementById('loginPassword').value.trim();
+  const errorBox = document.getElementById('loginError');
+  errorBox.style.display = 'none';
+
+  // ── Hardcoded transport bypass (keep as-is) ───────────────────────────────
+  if (email === 'transport123@gmail.com' && password === 'transport') {
+    localStorage.setItem('authToken', 'transport_manager_token');
+    localStorage.setItem('userRole', 'transport');
+    localStorage.setItem('userEmail', email);
+    window.location.href = 'transportdashboard.html';
+    return;
+  }
+
+  try {
+    // ── Step 1: Try hotel login first (hotel_details.email + hotel_details.password) ──
+    const hotelRes = await fetch('http://localhost:8000/api/hotelauth/login', {
+      method:  'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body:    JSON.stringify({ email, password })
+    });
+
+    const hotelData = await hotelRes.json();
+
+    if (hotelRes.ok && hotelData.success) {
+      // ✅ Hotel manager login — save hotel-specific token and info ONLY
+      // Do NOT set authToken here — that key is for regular users (client/admin/guide)
+      // Setting authToken with hotel token causes profile.html to load hotel data incorrectly
+      localStorage.setItem('hotelToken', hotelData.token);
+      localStorage.setItem('hotelInfo',  JSON.stringify(hotelData.hotel));
+      localStorage.setItem('userRole',   'hotel');
+      localStorage.setItem('userEmail',  hotelData.hotel.email);
+
+      // Clear any leftover regular-user keys to avoid conflicts
+      localStorage.removeItem('authToken');
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
+      localStorage.removeItem('userId');
+
+      window.location.href = 'hoteldashboard.html';
+      return;
+    }
+
+    // ── Step 2: Regular user login (admin, guide, agent, client, transport) ──
+    const userRes  = await fetch('http://localhost:8000/api/auth/login', {
+      method:  'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body:    JSON.stringify({ email, password })
+    });
+
+    const userData = await userRes.json();
+
+    if (!userRes.ok) {
+      errorBox.style.display = 'block';
+      errorBox.textContent   = userData.message || 'Invalid email or password';
+      return;
+    }
+
+    // ✅ Regular user — save token + full user object (needed by admin & other dashboards)
+    localStorage.setItem('authToken',  userData.token);
+    localStorage.setItem('token',      userData.token);
+    localStorage.setItem('user',       JSON.stringify(userData.user));
+    localStorage.setItem('userRole',   userData.user.role);
+    localStorage.setItem('userEmail',  userData.user.email || '');
+    localStorage.setItem('userId',     userData.user._id  || userData.user.id || '');
+    // Save agent_id so agentdashboard can load profile immediately
+    if (userData.user.agent_id) localStorage.setItem('agentId', userData.user.agent_id);
+
+    // Redirect based on role
+    const role = userData.user.role;
+    if      (role === 'hotel')     window.location.href = 'hoteldashboard.html';
+    else if (role === 'admin')     window.location.href = 'admindashboard.html';
+    else if (role === 'guide')     window.location.href = 'agentdashboard.html';
+    else if (role === 'agent')     window.location.href = 'agentdashboard.html';
+    else if (role === 'transport') window.location.href = 'transportdashboard.html';
+    else                           window.location.href = 'profile.html'; // client
+
+  } catch (err) {
+    errorBox.style.display = 'block';
+    errorBox.textContent   = 'Unable to connect to server. Please try again.';
+    console.error('Login error:', err);
+  }
+});
+
+
+
+document.getElementById('registerForm').addEventListener('submit', async function (e) {
+  e.preventDefault();
+
+  const fullName        = document.getElementById('regFullname').value.trim();
+  const email           = document.getElementById('regEmail').value.trim();
+  const phone           = document.getElementById('regPhone').value.trim();
+  const dob             = document.getElementById('regDOB').value;
+  const gender          = document.querySelector('input[name="gender"]:checked')?.value;
+  const password        = document.getElementById('regPassword').value;
+  const confirmPassword = document.getElementById('regConfirmPassword').value;
+  const errorBox        = document.getElementById('registerError');
+
+  errorBox.style.display = 'none';
+
+  if (password !== confirmPassword) {
+    errorBox.style.display = 'block';
+    errorBox.textContent = 'Passwords do not match.';
+    return;
+  }
+  if (!gender) {
+    errorBox.style.display = 'block';
+    errorBox.textContent = 'Please select a gender.';
+    return;
+  }
+
+  try {
+    const res = await fetch('http://localhost:8000/api/auth/register', {
+      method:  'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body:    JSON.stringify({ fullName, email, password, dob, gender, phone, role: 'client' })
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      errorBox.style.display = 'block';
+      errorBox.textContent   = data.message || 'Registration failed.';
+      return;
+    }
+
+    alert('Account created successfully! Please log in.');
+    document.getElementById('rl-toggle').checked = false;
+
+  } catch (err) {
+    errorBox.style.display = 'block';
+    errorBox.textContent   = 'Unable to connect to server. Please try again.';
+    console.error('Register error:', err);
+  }
+});
+
+  </script>
+
+  <!-- Authentication Utils -->
+  <script src="assets/js/auth-utils.js"></script>
+</body>
+</html>

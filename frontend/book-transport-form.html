@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>GJP - Book</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+
+  <style>
+    /* Custom message box styling */
+    .message-box {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+      text-align: center;
+      max-width: 300px;
+      visibility: hidden;
+      opacity: 0;
+      transition: visibility 0s, opacity 0.3s ease-in-out;
+    }
+    .message-box.show {
+      visibility: visible;
+      opacity: 1;
+    }
+    .message-box .close-btn {
+      margin-top: 10px;
+      padding: 8px 16px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body class="blog-page">
+
+  <header id="header" class="header d-flex align-items-center sticky-top">
+    <div class="container position-relative d-flex align-items-center">
+
+      <a href="home.html" class="logo d-flex align-items-center me-auto">
+        <h1 class="sitename">Gujarat Journey Planner</h1><span></span>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="home.html">Home</a></li>
+          <li><a href="places.html">Places</a></li>
+          <li class="dropdown"><a href="services.html"><span>Services</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="hotel.html">Hotels</a></li>
+              <li><a href="transport.html">Transport</a></li>
+              <li><a href="agent.html">Guide</a></li>
+            </ul>
+          </li>
+          <li><a href="packages.html">Packages</a></li>
+          <li><a href="book.html" class="active">Book</a></li>
+          <li><a href="about-us.html">About</a></li>
+          <li><a href="sign in.html">Sign In</a></li>
+          <!-- <li><a href="profile.html">profile</a></li> -->
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- Page Title -->
+    <div class="page-title accent-background">
+      <div class="container d-lg-flex justify-content-between align-items-center">
+        <h1 class="mb-2 mb-lg-0">Book</h1>
+        <nav class="breadcrumbs">
+          <ol>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="sign in.html">Sign In</a></li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+    <!-- End Page Title -->
+
+      <div id="title" class="container section-title" data-aos="fade-up">
+        <h2>Book</h2>
+      </div>
+
+  </main>
+<!--  -->
+<!-- 🌟 Transport Booking Section -->
+<section class="transport-booking-section">
+  <h2 class="transport-form-title">Transport Booking Form</h2>
+  <form class="transport-booking-form">
+
+    <!-- TRANSPORT DETAILS -->
+    <fieldset>
+      <legend>Transport Details</legend>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Transport Type</label>
+          <input type="text" id="transport-type-select" required readonly placeholder="Selected transport type will appear here">
+        </div>
+        <div class="form-group">
+          <label>Total Travelers</label>
+          <input type="number" id="total-travelers-input" min="1" placeholder="Enter number of travelers" required>
+        </div>
+      </div>
+    </fieldset>
+
+    <!-- TRAVEL DETAILS -->
+    <fieldset>
+      <legend>Travel Details</legend>
+      <div class="form-row">
+        <div class="form-group">
+          <label>From Location</label>
+          <input type="text" id="from-location-input" placeholder="Enter starting location" required>
+        </div>
+        <div class="form-group">
+          <label>To Location</label>
+          <input type="text" id="to-location-input" placeholder="Enter destination" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>From Date</label>
+          <input type="date" id="from-date-input" required>
+        </div>
+        <div class="form-group">
+          <label>To Date</label>
+          <input type="date" id="to-date-input" required>
+        </div>
+      </div>
+    </fieldset>
+
+    <a href="#" class="transport-submit-btn" id="transport-submit-btn">Submit Booking</a>
+  </form>
+</section>
+
+<!-- Custom Message Box HTML -->
+<div id="messageBox" class="message-box">
+  <p id="messageText"></p>
+  <button class="close-btn" onclick="document.getElementById('messageBox').classList.remove('show');">OK</button>
+</div>
+
+<!--  -->
+    <footer id="footer" class="footer dark-background">
+
+    <div class="container footer-top"home>
+      <div class="row gy-4">
+        <div class="col-lg-4 col-md-6 footer-about">
+          <a href="home.html" class="logo d-flex align-items-center">
+            <span id="foot-site-name" class="sitename">Gujarat Journey Planner</span>
+          </a>
+          <div class="footer-contact pt-3">
+            <!-- <p>A108 Adam Street</p>
+            <p>New York, NY 535022</p> -->
+            <p class="mt-3"><strong>Address:</strong> <span>Gujarat, India</span></p>
+            <p><strong>Email:</strong> <span>gujaratjourneyplanner.gmail.com</span></p>
+          </div>
+          <!-- <div class="social-links d-flex mt-4">
+            <a href=""><i class="bi bi-twitter-x"></i></a>
+            <a href=""><i class="bi bi-facebook"></i></a>
+            <a href=""><i class="bi bi-instagram"></i></a>
+            <a href=""><i class="bi bi-linkedin"></i></a>
+          </div> -->
+        </div>
+
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>Useful Links</h4>
+          <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="places.html"> Tourist Places</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="book.html">Book a Tour</a></li>
+            <li><a href="sign in.html">Sign In</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>Our Services</h4>
+          <ul>
+            <li><a href="hotel.html">Hotel Booking</a></li>
+            <li><a href="agent.html">Guide Booking</a></li>
+            <li><a href="transport.html">Transport Booking</a></li>
+            <li><a href="packages.html">Custom Tour Packages</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-4 col-md-12 footer-user-review">
+  <h4>Give Us a Rating</h4>
+  <form action="forms/review.php" method="post" class="review-form">
+    <input type="text" name="name" placeholder="Your Name" required>
+
+    <div class="star-rating">
+      <input type="radio" id="star5" name="rating" value="5"><label for="star5" title="5 stars">★</label>
+      <input type="radio" id="star4" name="rating" value="4"><label for="star4" title="4 stars">★</label>
+      <input type="radio" id="star3" name="rating" value="3"><label for="star3" title="3 stars">★</label>
+      <input type="radio" id="star2" name="rating" value="2"><label for="star2" title="2 stars">★</label>
+      <input type="radio" id="star1" name="rating" value="1"><label for="star1" title="1 star">★</label>
+    </div>
+
+    <textarea name="review" placeholder="Write your review..." required></textarea>
+
+    <input type="submit" value="Submit Review">
+  </form>
+</div>
+
+      </div>
+    </div>
+
+    <div class="container copyright text-center mt-4">
+      <p>© <span>2025</span> <strong class="px-1 sitename">Gujarat Journey Planner</strong> <span></span></p>
+      <div class="credits">
+        Designed & Develped as a <a href="">B.Tech Project</a> for <a href="">Academic Purpose
+      </div>
+    </div>
+
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/isotope-layout@3.0.6/dist/isotope.pkgd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/waypoints@4.0.1/lib/noframework.waypoints.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <!-- Auth Utils JS -->
+  <script src="assets/js/auth-utils.js"></script>
+
+  <!-- Main JS File -->
+  <script src="assets/js/api-config.js"></script>
+  <script src="assets/js/main.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        
+        // Auto-populate transport type from localStorage or package data
+        function loadSelectedTransport() {
+            // First check if coming from a tour package booking
+            const packageData = localStorage.getItem('selectedTourPackage');
+            const isPackageFlow = localStorage.getItem('packageBookingFlow') === 'true';
+            
+            if (packageData && isPackageFlow) {
+                try {
+                    const tourPackage = JSON.parse(packageData);
+                    console.log('🎆 Auto-filling transport form from tour package:', tourPackage.packageName);
+                    
+                    // Auto-fill transport details from package location
+                    const transportInput = document.getElementById('transport-type-select');
+                    const fromLocationInput = document.getElementById('from-location-input');
+                    const toLocationInput = document.getElementById('to-location-input');
+                    const totalTravelersInput = document.getElementById('total-travelers-input');
+                    
+                    // Set default transport type based on typical needs (can be customized)
+                    const defaultTransportType = '4-Seater';
+                    if (transportInput) {
+                        transportInput.value = defaultTransportType;
+                        transportInput.dispatchEvent(new Event('change'));
+                    }
+                    
+                    // Auto-fill locations based on package
+                    if (fromLocationInput) {
+                        fromLocationInput.value = tourPackage.places?.location?.district || 'Ahmedabad';
+                    }
+                    if (toLocationInput) {
+                        toLocationInput.value = tourPackage.places?.name || 'Tourist Destination';
+                    }
+                    if (totalTravelersInput) {
+                        totalTravelersInput.value = '2'; // Default for packages
+                    }
+                    
+                    // Show package notification
+                    const messageText = document.getElementById('messageText');
+                    const messageBox = document.getElementById('messageBox');
+                    if (messageText && messageBox) {
+                        messageText.textContent = `🎆 Transport auto-filled from tour package: "${tourPackage.packageName}"\nFrom: ${tourPackage.places?.location?.district || 'Ahmedabad'}\nTo: ${tourPackage.places?.name || 'Tourist Destination'}`;
+                        messageBox.classList.add('show');
+                    }
+                    
+                    console.log('✅ Transport details auto-filled from package');
+                    return;
+                } catch (e) {
+                    console.error('Failed to parse tour package data:', e);
+                }
+            }
+            
+            // Fallback to regular transport selection
+            const selectedTransport = localStorage.getItem('selectedTransport');
+            if (selectedTransport) {
+                try {
+                    const transportData = JSON.parse(selectedTransport);
+                    const transportInput = document.getElementById('transport-type-select');
+                    if (transportInput && transportData.type) {
+                        // Set the value directly
+                        transportInput.value = transportData.type;
+                        
+                        console.log('Auto-populated transport type:', transportData.type);
+                        
+                        // Trigger change event to update traveler limits
+                        transportInput.dispatchEvent(new Event('change'));
+                    }
+                } catch (e) {
+                    console.error('Error loading transport selection:', e);
+                }
+            } else {
+                console.log('No transport selection found in localStorage');
+                // Show message if no transport was selected
+                const transportInput = document.getElementById('transport-type-select');
+                if (transportInput) {
+                    transportInput.placeholder = 'Please go back and select a transport type';
+                    console.log('No transport selection found - user should select transport first');
+                }
+            }
+        }
+        // Function to get tomorrow's date in YYYY-MM-DD format
+        function getTomorrowDate() {
+            const today = new Date();
+            today.setDate(today.getDate() + 2);
+            const year = today.getFullYear();
+            const month = String(today.getMonth() + 1).padStart(2, '0');
+            const day = String(today.getDate()).padStart(2, '0');
+            return `${year}-${month}-${day}`;
+        }
+
+        const fromDateInput = document.getElementById('from-date-input');
+        const toDateInput = document.getElementById('to-date-input');
+        const transportTypeSelect = document.getElementById('transport-type-select');
+        const totalTravelersInput = document.getElementById('total-travelers-input');
+        const submitBtn = document.getElementById('transport-submit-btn');
+        const messageBox = document.getElementById('messageBox');
+        const messageText = document.getElementById('messageText');
+        
+        // Load selected transport on page load
+        loadSelectedTransport();
+
+        // --- Date Feature ---
+        if (fromDateInput) {
+            fromDateInput.min = getTomorrowDate();
+        }
+
+        if (fromDateInput && toDateInput) {
+            fromDateInput.addEventListener('change', () => {
+                toDateInput.min = fromDateInput.value;
+                if (toDateInput.value && toDateInput.value < fromDateInput.value) {
+                    toDateInput.value = '';
+                }
+            });
+        }
+
+        // --- Transport Type and Traveler Limit ---
+        if (transportTypeSelect) {
+            transportTypeSelect.addEventListener('change', (event) => {
+                const selectedType = event.target.value;
+                
+                // Set traveler limits based on transport type
+                switch(selectedType) {
+                    case '3-Seater':
+                        totalTravelersInput.max = 3;
+                        break;
+                    case '4-Seater':
+                        totalTravelersInput.max = 4;
+                        break;
+                    case '5-Seater':
+                        totalTravelersInput.max = 5;
+                        break;
+                    case '6-Seater':
+                        totalTravelersInput.max = 6;
+                        break;
+                    case '7-Seater':
+                        totalTravelersInput.max = 7;
+                        break;
+                    case 'Van':
+                        totalTravelersInput.max = 10;
+                        break;
+                    case 'Ecco':
+                        totalTravelersInput.max = 8;
+                        break;
+                    case 'Tempo':
+                        totalTravelersInput.max = 12;
+                        break;
+                    default:
+                        totalTravelersInput.removeAttribute('max');
+                }
+                
+                console.log('Transport type changed to:', selectedType, 'Max travelers:', totalTravelersInput.max);
+            });
+        }
+
+        // --- Storing Data on Submission ---
+        if (submitBtn) {
+            submitBtn.addEventListener('click', (event) => {
+                event.preventDefault();
+
+                // Get transport type value (no need to enable/disable for input field)
+                const transportType = transportTypeSelect.value;
+                const totalTravelers = totalTravelersInput.value;
+                const fromLocation = document.getElementById('from-location-input').value;
+                const toLocation = document.getElementById('to-location-input').value;
+                const fromDate = fromDateInput.value;
+                const toDate = toDateInput.value;
+
+                if (!transportType || !totalTravelers || !fromLocation || !toLocation || !fromDate || !toDate) {
+                    messageText.textContent = "Please fill in all required fields.";
+                    messageBox.classList.add('show');
+                    return;
+                }
+
+                const bookingDetails = {
+                    transportType: transportType,
+                    totalTravelers: totalTravelers,
+                    fromLocation: fromLocation,
+                    toLocation: toLocation,
+                    fromDate: fromDate,
+                    toDate: toDate
+                };
+                
+                // Save transport booking details for book-form.html
+                localStorage.setItem('transportBookingDetails', JSON.stringify(bookingDetails));
+                
+                // Navigate to the next page
+                window.location.href = "booking-service.html";
+            });
+        }
+    });
+  </script>
+
+</body>
+
+</html>

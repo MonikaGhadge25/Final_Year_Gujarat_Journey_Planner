@@ -1,0 +1,714 @@
+[{
+  "_id": {
+    "$oid": "68ca36cddc04d5c53d276df0"
+  },
+  "car_name": "Maruti Suzuki",
+  "car_model": "Swift",
+  "car_type": "Hatchback",
+  "seating_capacity": 3,
+  "fuel_type": "Petrol",
+  "ac_non_ac": "AC",
+  "price_value (per km)": 11,
+  "location": "Ahmedabad",
+  "driver_name": "Amit Patel",
+  "phone_number": "9876500101",
+  "email_id": "amit.swift@gmail.com",
+  "car_no": "GJ01HB1001"
+},
+{
+  "_id": {
+    "$oid": "68ca3703dc04d5c53d276df1"
+  },
+  "car_name": "Hyundai",
+  "car_model": "i20",
+  "car_type": "Hatchback",
+  "seating_capacity": 3,
+  "fuel_type": "Diesel",
+  "ac_non_ac": "AC",
+  "price_value (per km)": 11,
+  "location": "Surat",
+  "driver_name": "Bhavin Shah",
+  "phone_number": "9876500102",
+  "email_id": "bhavin.i20@gmail.com",
+  "car_no": "GJ05HB1002"
+},
+{
+  "_id": {
+    "$oid": "68ca3723dc04d5c53d276df2"
+  },
+  "car_name": "Tata",
+  "car_model": "Altroz",
+  "car_type": "Hatchback",
+  "seating_capacity": 3,
+  "fuel_type": "Petrol",
+  "ac_non_ac": "Non-AC",
+  "price_value (per km)": 11,
+  "location": "Vadodara",
+  "driver_name": "Chetan Joshi",
+  "phone_number": "9876500103",
+  "email_id": "chetan.altroz@gmail.com",
+  "car_no": "GJ06HB1003"
+},
+{
+  "_id": {
+    "$oid": "68ca373edc04d5c53d276df3"
+  },
+  "car_name": "Honda",
+  "car_model": "Jazz",
+  "car_type": "Hatchback",
+  "seating_capacity": 3,
+  "fuel_type": "Petrol",
+  "ac_non_ac": "AC",
+  "price_value (per km)": 11,
+  "location": "Rajkot",
+  "driver_name": "Deepak Mehta",
+  "phone_number": "9876500104",
+  "email_id": "deepak.jazz@gmail.com",
+  "car_no": "GJ10HB1004"
+},
+{
+  "_id": {
+    "$oid": "68ca374fdc04d5c53d276df4"
+  },
+  "car_name": "Volkswagen",
+  "car_model": "Polo",
+  "car_type": "Hatchback",
+  "seating_capacity": 3,
+  "fuel_type": "Diesel",
+  "ac_non_ac": "AC",
+  "price_value (per km)": 11,
+  "location": "Bhavnagar",
+  "driver_name": "Faisal Desai",
+  "phone_number": "9876500105",
+  "email_id": "faisal.polo@gmail.com",
+  "car_no": "GJ04HB1005"
+},
+{
+  "_id": {
+    "$oid": "68ca375cdc04d5c53d276df5"
+  },
+  "car_name": "Ford",
+  "car_model": "Figo",
+  "car_type": "Hatchback",
+  "seating_capacity": 3,
+  "fuel_type": "Petrol",
+  "ac_non_ac": "Non-AC",
+  "price_value (per km)": 11,
+  "location": "Jamnagar",
+  "driver_name": "Gaurav Parmar",
+  "phone_number": "9876500106",
+  "email_id": "gaurav.figo@gmail.com",
+  "car_no": "GJ09HB1006"
+},
+{
+  "_id": {
+    "$oid": "68ca3769dc04d5c53d276df6"
+  },
+  "car_name": "Renault",
+  "car_model": "Kwid",
+  "car_type": "Hatchback",
+  "seating_capacity": 3,
+  "fuel_type": "Petrol",
+  "ac_non_ac": "AC",
+  "price_value (per km)": 11,
+  "location": "Gandhinagar",
+  "driver_name": "Harsh Trivedi",
+  "phone_number": "9876500107",
+  "email_id": "harsh.kwid@gmail.com",
+  "car_no": "GJ18HB1007"
+},
+{
+  "_id": {
+    "$oid": "68ca377adc04d5c53d276df7"
+  },
+  "car_name": "Honda",
+  "car_model": "City",
+  "car_type": "Sedan",
+  "seating_capacity": 4,
+  "fuel_type": "Petrol",
+  "ac_non_ac": "AC",
+  "price_value (per km)": 13,
+  "location": "Ahmedabad",
+  "driver_name": "Ishan Patel",
+  "phone_number": "9876500201",
+  "email_id": "ishan.city@gmail.com",
+  "car_no": "GJ01SD2001"
+},
+{
+  "_id": {
+    "$oid": "68ca3788dc04d5c53d276df8"
+  },
+  "car_name": "Hyundai",
+  "car_model": "Verna",
+  "car_type": "Sedan",
+  "seating_capacity": 4,
+  "fuel_type": "Diesel",
+  "ac_non_ac": "AC",
+  "price_value (per km)": 13,
+  "location": "Surat",
+  "driver_name": "Jatin Shah",
+  "phone_number": "9876500202",
+  "email_id": "jatin.verna@gmail.com",
+  "car_no": "GJ05SD2002"
+},
+{
+  "_id": {
+    "$oid": "68ca379bdc04d5c53d276df9"
+  },
+  "car_name": "Toyota",
+  "car_model": "Etios",
+  "car_type": "Sedan",
+  "seating_capacity": 3,
+  "fuel_type": "Diesel",
+  "ac_non_ac": "AC",
+  "price_value (per km)": 13,
+  "location": "Vadodara",
+  "driver_name": "Kailash Joshi",
+  "phone_number": "9876500203",
+  "email_id": "kailash.etios@gmail.com",
+  "car_no": "GJ06SD2003"
+},
+{
+  "_id": {
+    "$oid": "68ca37a7dc04d5c53d276dfa"
+  },
+  "car_name": "Maruti Suzuki",
+  "car_model": "Ciaz",
+  "car_type": "Sedan",
+  "seating_capacity": 4,
+  "fuel_type": "Petrol",
+  "ac_non_ac": "AC",
+  "price_value (per km)": 13,
+  "location": "Rajkot",
+  "driver_name": "Lokesh Mehta",
+  "phone_number": "9876500204",
+  "email_id": "lokesh.ciaz@gmail.com",
+  "car_no": "GJ10SD2004"
+},
+{
+  "_id": {
+    "$oid": "68ca37b3dc04d5c53d276dfb"
+  },
+  "car_name": "Skoda",
+  "car_model": "Rapid",
+  "car_type": "Sedan",
+  "seating_capacity": 3,
+  "fuel_type": "Petrol",
+  "ac_non_ac": "Non-AC",
+  "price_value (per km)": 13,
+  "location": "Bhavnagar",
+  "driver_name": "Milan Desai",
+  "phone_number": "9876500205",
+  "email_id": "milan.rapid@gmail.com",
+  "car_no": "GJ04SD2005"
+},
+{
+  "_id": {
+    "$oid": "68ca37c0dc04d5c53d276dfc"
+  },
+  "car_name": "Volkswagen",
+  "car_model": "Vento",
+  "car_type": "Sedan",
+  "seating_capacity": 4,
+  "fuel_type": "Diesel",
+  "ac_non_ac": "AC",
+  "price_value (per km)": 13,
+  "location": "Jamnagar",
+  "driver_name": "Nikhil Parmar",
+  "phone_number": "9876500206",
+  "email_id": "nikhil.vento@gmail.com",
+  "car_no": "GJ09SD2006"
+},
+{
+  "_id": {
+    "$oid": "68ca37d3dc04d5c53d276dfd"
+  },
+  "car_name": "Nissan",
+  "car_model": "Sunny",
+  "car_type": "Sedan",
+  "seating_capacity": 4,
+  "fuel_type": "Petrol",
+  "ac_non_ac": "AC",
+  "price_value (per km)": 13,
+  "location": "Gandhinagar",
+  "driver_name": "Om Trivedi",
+  "phone_number": "9876500207",
+  "email_id": "om.sunny@gmail.com",
+  "car_no": "GJ18SD2007"
+},
+{
+  "_id": {
+    "$oid": "68ca37dfdc04d5c53d276dfe"
+  },
+  "car_name": "Maruti Suzuki",
+  "car_model": "Eeco",
+  "car_type": "Van",
+  "seating_capacity": 5,
+  "fuel_type": "Petrol",
+  "ac_non_ac": "Non-AC",
+  "price_value (per km)": 15,
+  "location": "Ahmedabad",
+  "driver_name": "Parth Patel",
+  "phone_number": "9876500301",
+  "email_id": "parth.eeco@gmail.com",
+  "car_no": "GJ01VN3001"
+},
+{
+  "_id": {
+    "$oid": "68ca37ecdc04d5c53d276dff"
+  },
+  "car_name": "Tata",
+  "car_model": "Winger",
+  "car_type": "Van",
+  "seating_capacity": 6,
+  "fuel_type": "Diesel",
+  "ac_non_ac": "AC",
+  "price_value (per km)": 15,
+  "location": "Surat",
+  "driver_name": "Qasim Shah",
+  "phone_number": "9876500302",
+  "email_id": "qasim.winger@gmail.com",
+  "car_no": "GJ05VN3002"
+},
+{
+  "_id": {
+    "$oid": "68ca37f9dc04d5c53d276e00"
+  },
+  "car_name": "Toyota",
+  "car_model": "Hiace",
+  "car_type": "Van",
+  "seating_capacity": 7,
+  "fuel_type": "Diesel",
+  "ac_non_ac": "AC",
+  "price_value (per km)": 15,
+  "location": "Vadodara",
+  "driver_name": "Rajat Joshi",
+  "phone_number": "9876500303",
+  "email_id": "rajat.hiace@gmail.com",
+  "car_no": "GJ06VN3003"
+},
+{
+  "_id": {
+    "$oid": "68ca3806dc04d5c53d276e01"
+  },
+  "car_name": "Mahindra",
+  "car_model": "Supro Van",
+  "car_type": "Van",
+  "seating_capacity": 6,
+  "fuel_type": "Diesel",
+  "ac_non_ac": "AC",
+  "price_value (per km)": 15,
+  "location": "Rajkot",
+  "driver_name": "Sahil Mehta",
+  "phone_number": "9876500304",
+  "email_id": "sahil.supro@gmail.com",
+  "car_no": "GJ10VN3004"
+},
+{
+  "_id": {
+    "$oid": "68ca3812dc04d5c53d276e02"
+  },
+  "car_name": "Force",
+  "car_model": "Traveller Mini",
+  "car_type": "Van",
+  "seating_capacity": 7,
+  "fuel_type": "Diesel",
+  "ac_non_ac": "AC",
+  "price_value (per km)": 15,
+  "location": "Bhavnagar",
+  "driver_name": "Tapan Desai",
+  "phone_number": "9876500305",
+  "email_id": "tapan.traveller@gmail.com",
+  "car_no": "GJ04VN3005"
+},
+{
+  "_id": {
+    "$oid": "68ca381edc04d5c53d276e03"
+  },
+  "car_name": "Nissan",
+  "car_model": "NV350",
+  "car_type": "Van",
+  "seating_capacity": 5,
+  "fuel_type": "Petrol",
+  "ac_non_ac": "AC",
+  "price_value (per km)": 15,
+  "location": "Jamnagar",
+  "driver_name": "Umesh Parmar",
+  "phone_number": "9876500306",
+  "email_id": "umesh.nv350@gmail.com",
+  "car_no": "GJ09VN3006"
+},
+{
+  "_id": {
+    "$oid": "68ca382adc04d5c53d276e04"
+  },
+  "car_name": "Kia",
+  "car_model": "Carnival (Van Edition)",
+  "car_type": "Van",
+  "seating_capacity": 6,
+  "fuel_type": "Diesel",
+  "ac_non_ac": "AC",
+  "price_value (per km)": 15,
+  "location": "Gandhinagar",
+  "driver_name": "Vikram Trivedi",
+  "phone_number": "9876500307",
+  "email_id": "vikram.carnival@gmail.com",
+  "car_no": "GJ18VN3007"
+},
+{
+  "_id": {
+    "$oid": "68ca3838dc04d5c53d276e05"
+  },
+  "car_name": "Toyota",
+  "car_model": "Fortuner",
+  "car_type": "SUV",
+  "seating_capacity": 7,
+  "fuel_type": "Diesel",
+  "ac_non_ac": "AC",
+  "price_value (per km)": 17,
+  "location": "Ahmedabad",
+  "driver_name": "Varun Patel",
+  "phone_number": "9876500401",
+  "email_id": "varun.fortuner@gmail.com",
+  "car_no": "GJ01SU4001"
+},
+{
+  "_id": {
+    "$oid": "68ca3845dc04d5c53d276e06"
+  },
+  "car_name": "Mahindra",
+  "car_model": "XUV700",
+  "car_type": "SUV",
+  "seating_capacity": 7,
+  "fuel_type": "Diesel",
+  "ac_non_ac": "AC",
+  "price_value (per km)": 17,
+  "location": "Surat",
+  "driver_name": "Yash Shah",
+  "phone_number": "9876500402",
+  "email_id": "yash.xuv700@gmail.com",
+  "car_no": "GJ05SU4002"
+},
+{
+  "_id": {
+    "$oid": "68ca3852dc04d5c53d276e07"
+  },
+  "car_name": "Hyundai",
+  "car_model": "Creta",
+  "car_type": "SUV",
+  "seating_capacity": 5,
+  "fuel_type": "Petrol",
+  "ac_non_ac": "AC",
+  "price_value (per km)": 17,
+  "location": "Vadodara",
+  "driver_name": "Zubin Joshi",
+  "phone_number": "9876500403",
+  "email_id": "zubin.creta@gmail.com",
+  "car_no": "GJ06SU4003"
+},
+{
+  "_id": {
+    "$oid": "68ca3bdd947a9f1dc536bd55"
+  },
+  "car_name": "Tata",
+  "car_model": "Harrier",
+  "car_type": "SUV",
+  "seating_capacity": 5,
+  "fuel_type": "Diesel",
+  "ac_non_ac": "AC",
+  "price_value (per km)": 17,
+  "location": "Rajkot",
+  "driver_name": "Amit Mehta",
+  "phone_number": "9876500404",
+  "email_id": "amit.harrier@gmail.com",
+  "car_no": "GJ10SU4004"
+},
+{
+  "_id": {
+    "$oid": "68ca3beb947a9f1dc536bd56"
+  },
+  "car_name": "Jeep",
+  "car_model": "Compass",
+  "car_type": "SUV",
+  "seating_capacity": 5,
+  "fuel_type": "Petrol",
+  "ac_non_ac": "AC",
+  "price_value (per km)": 17,
+  "location": "Bhavnagar",
+  "driver_name": "Bharat Desai",
+  "phone_number": "9876500405",
+  "email_id": "bharat.compass@gmail.com",
+  "car_no": "GJ04SU4005"
+},
+{
+  "_id": {
+    "$oid": "68ca3bf8947a9f1dc536bd57"
+  },
+  "car_name": "Mahindra",
+  "car_model": "Scorpio-N",
+  "car_type": "SUV",
+  "seating_capacity": 7,
+  "fuel_type": "Diesel",
+  "ac_non_ac": "AC",
+  "price_value (per km)": 17,
+  "location": "Jamnagar",
+  "driver_name": "Chirag Parmar",
+  "phone_number": "9876500406",
+  "email_id": "chirag.scorpio@gmail.com",
+  "car_no": "GJ09SU4006"
+},
+{
+  "_id": {
+    "$oid": "68ca3c03947a9f1dc536bd58"
+  },
+  "car_name": "Kia",
+  "car_model": "Seltos",
+  "car_type": "SUV",
+  "seating_capacity": 5,
+  "fuel_type": "Petrol",
+  "ac_non_ac": "AC",
+  "price_value (per km)": 17,
+  "location": "Gandhinagar",
+  "driver_name": "Darshan Trivedi",
+  "phone_number": "9876500407",
+  "email_id": "darshan.seltos@gmail.com",
+  "car_no": "GJ18SU4007"
+},
+{
+  "_id": {
+    "$oid": "68ca3c10947a9f1dc536bd59"
+  },
+  "car_name": "Mercedes-Benz",
+  "car_model": "E-Class",
+  "car_type": "Luxury",
+  "seating_capacity": 4,
+  "fuel_type": "Diesel",
+  "ac_non_ac": "AC",
+  "price_value (per km)": 22,
+  "location": "Ahmedabad",
+  "driver_name": "Eshan Patel",
+  "phone_number": "9876500501",
+  "email_id": "eshan.eclass@gmail.com",
+  "car_no": "GJ01LX5001"
+},
+{
+  "_id": {
+    "$oid": "68ca3c1c947a9f1dc536bd5a"
+  },
+  "car_name": "BMW",
+  "car_model": "5 Series",
+  "car_type": "Luxury",
+  "seating_capacity": 4,
+  "fuel_type": "Petrol",
+  "ac_non_ac": "AC",
+  "price_value (per km)": 22,
+  "location": "Surat",
+  "driver_name": "Firoz Shah",
+  "phone_number": "9876500502",
+  "email_id": "firoz.5series@gmail.com",
+  "car_no": "GJ05LX5002"
+},
+{
+  "_id": {
+    "$oid": "68ca3c27947a9f1dc536bd5b"
+  },
+  "car_name": "Audi",
+  "car_model": "A6",
+  "car_type": "Luxury",
+  "seating_capacity": 4,
+  "fuel_type": "Petrol",
+  "ac_non_ac": "AC",
+  "price_value (per km)": 22,
+  "location": "Vadodara",
+  "driver_name": "Gautam Joshi",
+  "phone_number": "9876500503",
+  "email_id": "gautam.a6@gmail.com",
+  "car_no": "GJ06LX5003"
+},
+{
+  "_id": {
+    "$oid": "68ca3c34947a9f1dc536bd5c"
+  },
+  "car_name": "Jaguar",
+  "car_model": "XF",
+  "car_type": "Luxury",
+  "seating_capacity": 3,
+  "fuel_type": "Diesel",
+  "ac_non_ac": "AC",
+  "price_value (per km)": 22,
+  "location": "Rajkot",
+  "driver_name": "Harsh Mehta",
+  "phone_number": "9876500504",
+  "email_id": "harsh.jaguar@gmail.com",
+  "car_no": "GJ10LX5004"
+},
+{
+  "_id": {
+    "$oid": "68ca3c41947a9f1dc536bd5d"
+  },
+  "car_name": "Lexus",
+  "car_model": "ES 300h",
+  "car_type": "Luxury",
+  "seating_capacity": 4,
+  "fuel_type": "Petrol",
+  "ac_non_ac": "AC",
+  "price_value (per km)": 22,
+  "location": "Bhavnagar",
+  "driver_name": "Ishwar Desai",
+  "phone_number": "9876500505",
+  "email_id": "ishwar.lexus@gmail.com",
+  "car_no": "GJ04LX5005"
+},
+{
+  "_id": {
+    "$oid": "68ca3c4d947a9f1dc536bd5e"
+  },
+  "car_name": "Volvo",
+  "car_model": "S90",
+  "car_type": "Luxury",
+  "seating_capacity": 4,
+  "fuel_type": "Diesel",
+  "ac_non_ac": "AC",
+  "price_value (per km)": 22,
+  "location": "Jamnagar",
+  "driver_name": "Jignesh Parmar",
+  "phone_number": "9876500506",
+  "email_id": "jignesh.s90@gmail.com",
+  "car_no": "GJ09LX5006"
+},
+{
+  "_id": {
+    "$oid": "68ca3c60947a9f1dc536bd5f"
+  },
+  "car_name": "Tesla",
+  "car_model": "Model S",
+  "car_type": "Luxury",
+  "seating_capacity": 4,
+  "fuel_type": "EV",
+  "ac_non_ac": "AC",
+  "price_value (per km)": 22,
+  "location": "Gandhinagar",
+  "driver_name": "Ketan Trivedi",
+  "phone_number": "9876500507",
+  "email_id": "ketan.tesla@gmail.com",
+  "car_no": "GJ18LX5007"
+},
+{
+  "_id": {
+    "$oid": "68ca3c6d947a9f1dc536bd60"
+  },
+  "car_name": "Force",
+  "car_model": "Traveller 3050",
+  "car_type": "Tempo",
+  "seating_capacity": 12,
+  "fuel_type": "Diesel",
+  "ac_non_ac": "AC",
+  "price_value (per km)": 28,
+  "location": "Ahmedabad",
+  "driver_name": "Lalit Patel",
+  "phone_number": "9876500601",
+  "email_id": "lalit.traveller@gmail.com",
+  "car_no": "GJ01TP6001"
+},
+{
+  "_id": {
+    "$oid": "68ca3c7a947a9f1dc536bd61"
+  },
+  "car_name": "Tata",
+  "car_model": "Winger Tempo",
+  "car_type": "Tempo",
+  "seating_capacity": 10,
+  "fuel_type": "Diesel",
+  "ac_non_ac": "AC",
+  "price_value (per km)": 28,
+  "location": "Surat",
+  "driver_name": "Manoj Shah",
+  "phone_number": "9876500602",
+  "email_id": "manoj.winger@gmail.com",
+  "car_no": "GJ05TP6002"
+},
+{
+  "_id": {
+    "$oid": "68ca3c85947a9f1dc536bd62"
+  },
+  "car_name": "Mahindra",
+  "car_model": "Supro Maxi Van",
+  "car_type": "Tempo",
+  "seating_capacity": 11,
+  "fuel_type": "Diesel",
+  "ac_non_ac": "AC",
+  "price_value (per km)": 28,
+  "location": "Vadodara",
+  "driver_name": "Nilesh Joshi",
+  "phone_number": "9876500603",
+  "email_id": "nilesh.supro@gmail.com",
+  "car_no": "GJ06TP6003"
+},
+{
+  "_id": {
+    "$oid": "68ca3c91947a9f1dc536bd63"
+  },
+  "car_name": "Eicher",
+  "car_model": "Skyline Pro",
+  "car_type": "Tempo",
+  "seating_capacity": 20,
+  "fuel_type": "Diesel",
+  "ac_non_ac": "AC",
+  "price_value (per km)": 28,
+  "location": "Rajkot",
+  "driver_name": "Om Mehta",
+  "phone_number": "9876500604",
+  "email_id": "om.skyline@gmail.com",
+  "car_no": "GJ10TP6004"
+},
+{
+  "_id": {
+    "$oid": "68ca3c9d947a9f1dc536bd64"
+  },
+  "car_name": "Ashok Leyland",
+  "car_model": "MitR",
+  "car_type": "Tempo",
+  "seating_capacity": 16,
+  "fuel_type": "Diesel",
+  "ac_non_ac": "AC",
+  "price_value (per km)": 28,
+  "location": "Bhavnagar",
+  "driver_name": "Pranav Desai",
+  "phone_number": "9876500605",
+  "email_id": "pranav.mitr@gmail.com",
+  "car_no": "GJ04TP6005"
+},
+{
+  "_id": {
+    "$oid": "68ca3ca9947a9f1dc536bd65"
+  },
+  "car_name": "Isuzu",
+  "car_model": "SML Supreme",
+  "car_type": "Tempo",
+  "seating_capacity": 18,
+  "fuel_type": "Diesel",
+  "ac_non_ac": "AC",
+  "price_value (per km)": 28,
+  "location": "Jamnagar",
+  "driver_name": "Ritesh Parmar",
+  "phone_number": "9876500606",
+  "email_id": "ritesh.sml@gmail.com",
+  "car_no": "GJ09TP6006"
+},
+{
+  "_id": {
+    "$oid": "68ca3cb6947a9f1dc536bd66"
+  },
+  "car_name": "Piaggio",
+  "car_model": "Tempo Traveller XL",
+  "car_type": "Tempo",
+  "seating_capacity": 15,
+  "fuel_type": "Diesel",
+  "ac_non_ac": "AC",
+  "price_value (per km)": 28,
+  "location": "Gandhinagar",
+  "driver_name": "Suresh Trivedi",
+  "phone_number": "9876500607",
+  "email_id": "suresh.piaggio@gmail.com",
+  "car_no": "GJ18TP6007"
+}]

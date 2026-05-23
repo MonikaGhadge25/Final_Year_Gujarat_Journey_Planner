@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel API Debug</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-5">
+    <h2>Hotel API Debug Tool</h2>
+    
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <button class="btn btn-primary" onclick="testHotelSearchAPI()">Test Hotel Search API</button>
+            <button class="btn btn-info" onclick="testHotelListAPI()">Test Hotel List API</button>
+            <button class="btn btn-secondary" onclick="clearResults()">Clear</button>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-6">
+            <h4>API Response:</h4>
+            <pre id="apiResponse" style="background: #f8f9fa; padding: 15px; border-radius: 5px; max-height: 400px; overflow-y: auto; font-size: 12px;"></pre>
+        </div>
+        <div class="col-md-6">
+            <h4>Status Info:</h4>
+            <div id="statusInfo" class="alert alert-info">Click a button to test API endpoints</div>
+        </div>
+    </div>
+    
+    <div class="mt-4">
+        <h4>Hotel Cards Preview:</h4>
+        <div id="hotelPreview" class="row"></div>
+    </div>
+</div>
+
+<script>
+async function testHotelSearchAPI() {
+    const urls = [
+        'http://localhost:8000/api/hotels/search',
+        'http://localhost:8000/api/hotels/search?page=1&limit=6',
+        'http://localhost:8000/api/hotels',
+        'http://localhost:8000/api/hotel/search'
+    ];
+    
+    for (const url of urls) {
+        document.getElementById('statusInfo').innerHTML = `<div class="spinner-border spinner-border-sm me-2"></div>Testing: ${url}`;
+        
+        try {
+            const response = await fetch(url);
+            const status = response.status;
+            const statusText = response.statusText;
+            
+            if (response.ok) {
+                const data = await response.json();
+                document.getElementById('apiResponse').textContent = JSON.stringify(data, null, 2);
+                document.getElementById('statusInfo').innerHTML = `
+                    <div class="alert alert-success">
+                        <strong>✅ Success!</strong><br>
+                        URL: ${url}<br>
+                        Status: ${status} ${statusText}<br>
+                        Hotels found: ${data.hotels ? data.hotels.length : 'N/A'}
+                    </div>
+                `;
+                
+                // Generate preview cards
+                generateHotelPreview(data);
+                return; // Stop on first successful API
+            } else {
+                document.getElementById('apiResponse').textContent = `Error: ${status} ${statusText}`;
+            }
+        } catch (error) {
+            console.error(`Failed to fetch ${url}:`, error);
+            document.getElementById('apiResponse').textContent = `Network Error: ${error.message}`;
+        }
+    }
+    
+    document.getElementById('statusInfo').innerHTML = `
+        <div class="alert alert-danger">
+            <strong>❌ All API endpoints failed!</strong><br>
+            Tried: ${urls.join(', ')}<br>
+            Check if your backend server is running on port 5000.
+        </div>
+    `;
+}
+
+async function testHotelListAPI() {
+    document.getElementById('statusInfo').innerHTML = `<div class="spinner-border spinner-border-sm me-2"></div>Testing hotel list endpoints...`;
+    
+    const urls = [
+        'http://localhost:8000/api/hotels',
+        'http://localhost:8000/api/hotel',
+        'http://localhost:8000/hotels',
+        'http://localhost:8000/api/hotels/all'
+    ];
+    
+    for (const url of urls) {
+        try {
+            const response = await fetch(url);
+            if (response.ok) {
+                const data = await response.json();
+                document.getElementById('apiResponse').textContent = JSON.stringify(data, null, 2);
+                document.getElementById('statusInfo').innerHTML = `
+                    <div class="alert alert-success">
+                        <strong>✅ Found working endpoint!</strong><br>
+                        URL: ${url}<br>
+                        Status: ${response.status}<br>
+                        Data type: ${Array.isArray(data) ? 'Array' : 'Object'}<br>
+                        Hotels: ${Array.isArray(data) ? data.length : (data.hotels ? data.hotels.length : 'Unknown')}
+                    </div>
+                `;
+                generateHotelPreview(data);
+                return;
+            }
+        } catch (error) {
+            console.error(`Failed ${url}:`, error);
+        }
+    }
+    
+    document.getElementById('statusInfo').innerHTML = `
+        <div class="alert alert-warning">
+            <strong>⚠️ No working hotel endpoints found</strong><br>
+            Check your backend routes and server status.
+        </div>
+    `;
+}
+
+function generateHotelPreview(data) {
+    const container = document.getElementById('hotelPreview');
+    container.innerHTML = '';
+    
+    let hotels = [];
+    
+    // Handle different data structures
+    if (Array.isArray(data)) {
+        hotels = data;
+    } else if (data.hotels && Array.isArray(data.hotels)) {
+        hotels = data.hotels;
+    } else if (data.data && Array.isArray(data.data)) {
+        hotels = data.data;
+    } else {
+        container.innerHTML = '<div class="col-12"><div class="alert alert-warning">No hotels array found in response</div></div>';
+        return;
+    }
+    
+    if (hotels.length === 0) {
+        container.innerHTML = '<div class="col-12"><div class="alert alert-info">No hotels in response</div></div>';
+        return;
+    }
+    
+    hotels.slice(0, 3).forEach((hotel, index) => {
+        const rating = hotel.rating ? '★'.repeat(Math.min(hotel.rating, 5)) : '★★★';
+        const price = hotel.price || hotel.pricePerNight || hotel.cost || 'N/A';
+        const location = hotel.location?.district || hotel.district || hotel.address || hotel.city || 'Gujarat';
+        
+        const card = document.createElement('div');
+        card.className = 'col-md-4 mb-3';
+        card.innerHTML = `
+            <div class="card h-100">
+                <img src="${hotel.imageUrl || 'https://via.placeholder.com/300x200?text=Hotel+Image'}" 
+                     class="card-img-top" style="height: 150px; object-fit: cover;" 
+                     onerror="this.src='https://via.placeholder.com/300x200?text=No+Image'">
+                <div class="card-body">
+                    <h6 class="card-title">${hotel.name || 'Unknown Hotel'}</h6>
+                    <p class="card-text">
+                        <small>
+                            <strong>Rating:</strong> ${rating}<br>
+                            <strong>Location:</strong> ${location}<br>
+                            <strong>Price:</strong> ₹${price}/night<br>
+                            <strong>ID:</strong> ${hotel._id || hotel.id || 'N/A'}
+                        </small>
+                    </p>
+                </div>
+            </div>
+        `;
+        container.appendChild(card);
+    });
+    
+    if (hotels.length > 3) {
+        const moreInfo = document.createElement('div');
+        moreInfo.className = 'col-12';
+        moreInfo.innerHTML = `<div class="alert alert-info">And ${hotels.length - 3} more hotels...</div>`;
+        container.appendChild(moreInfo);
+    }
+}
+
+function clearResults() {
+    document.getElementById('apiResponse').textContent = '';
+    document.getElementById('statusInfo').innerHTML = 'Click a button to test API endpoints';
+    document.getElementById('hotelPreview').innerHTML = '';
+}
+
+// Test connection on page load
+document.addEventListener('DOMContentLoaded', () => {
+    testHotelSearchAPI();
+});
+</script>
+
+</body>
+</html>

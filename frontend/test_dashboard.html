@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test Agent Dashboard</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    .container { max-width: 600px; margin: 0 auto; }
+    .login-section, .dashboard-section { 
+      background: #f9f9f9; 
+      padding: 20px; 
+      margin: 20px 0; 
+      border-radius: 8px; 
+    }
+    .hidden { display: none; }
+    input, button { padding: 10px; margin: 5px; }
+    .data-table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+    .data-table th, .data-table td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+    .data-table th { background: #f2f2f2; }
+    .status { padding: 10px; margin: 10px 0; border-radius: 4px; }
+    .success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+    .error { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Test Agent Dashboard</h1>
+    
+    <!-- Login Section -->
+    <div id="loginSection" class="login-section">
+      <h2>Login to Test</h2>
+      <div>
+        <input type="email" id="emailInput" placeholder="Email" value="priya@travelpro.com">
+        <input type="password" id="passwordInput" placeholder="Password" value="password123">
+        <button onclick="testLogin()">Login</button>
+      </div>
+      <div id="loginStatus"></div>
+    </div>
+    
+    <!-- Dashboard Section -->
+    <div id="dashboardSection" class="dashboard-section hidden">
+      <h2>Agent Dashboard Data</h2>
+      <button onclick="fetchAgentData()">Fetch Agent Data</button>
+      <div id="dataStatus"></div>
+      
+      <table class="data-table">
+        <tr><th>Name</th><td id="agentName">-</td></tr>
+        <tr><th>Gender</th><td id="agentGender">-</td></tr>
+        <tr><th>District</th><td id="agentDistrict">-</td></tr>
+        <tr><th>Address</th><td id="agentAddress">-</td></tr>
+        <tr><th>Phone Number</th><td id="agentPhone">-</td></tr>
+        <tr><th>Email</th><td id="agentEmail">-</td></tr>
+        <tr><th>Experience</th><td id="agentExperience">-</td></tr>
+        <tr><th>Languages Known</th><td id="agentLanguages">-</td></tr>
+        <tr><th>Rating</th><td id="agentRating">-</td></tr>
+        <tr><th>Fees</th><td id="agentFees">-</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    let authToken = null;
+    let userId = null;
+
+    // Test login function
+    async function testLogin() {
+      const email = document.getElementById('emailInput').value;
+      const password = document.getElementById('passwordInput').value;
+      const statusDiv = document.getElementById('loginStatus');
+      
+      try {
+        statusDiv.innerHTML = '<div class="status">Logging in...</div>';
+        
+        const response = await fetch('http://localhost:8000/api/auth/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ email, password })
+        });
+        
+        const data = await response.json();
+        
+        if (response.ok) {
+          authToken = data.token;
+          // Decode JWT to get userId (basic decoding)
+          const tokenParts = authToken.split('.');
+          const payload = JSON.parse(atob(tokenParts[1]));
+          userId = payload.id;
+          
+          statusDiv.innerHTML = '<div class="status success">Login successful! Token obtained.</div>';
+          document.getElementById('loginSection').classList.add('hidden');
+          document.getElementById('dashboardSection').classList.remove('hidden');
+        } else {
+          statusDiv.innerHTML = `<div class="status error">Login failed: ${data.message || 'Unknown error'}</div>`;
+        }
+      } catch (error) {
+        statusDiv.innerHTML = `<div class="status error">Error: ${error.message}</div>`;
+      }
+    }
+
+    // Test fetch agent data function
+    async function fetchAgentData() {
+      if (!authToken || !userId) {
+        document.getElementById('dataStatus').innerHTML = '<div class="status error">Please login first</div>';
+        return;
+      }
+      
+      const statusDiv = document.getElementById('dataStatus');
+      
+      try {
+        statusDiv.innerHTML = '<div class="status">Fetching agent data...</div>';
+        
+        const response = await fetch(`http://localhost:8000/api/agentdashboard/${userId}`, {
+          headers: { 
+            'Authorization': `Bearer ${authToken}` 
+          }
+        });
+        
+        const guide = await response.json();
+        
+        if (response.ok) {
+          statusDiv.innerHTML = '<div class="status success">Data fetched successfully!</div>';
+          
+          // Handle the response structure that wraps data in a 'data' object (same as in our fix)
+          const agentData = guide.success ? guide.data : guide;
+          
+          document.getElementById('agentName').textContent = agentData.name || '-';
+          document.getElementById('agentGender').textContent = agentData.gender || '-';
+          document.getElementById('agentDistrict').textContent = agentData.district || '-';
+          document.getElementById('agentAddress').textContent = agentData.address || '-';
+          document.getElementById('agentPhone').textContent = agentData.mobile_no || '-';
+          document.getElementById('agentEmail').textContent = agentData.email || '-';
+          document.getElementById('agentExperience').textContent = agentData.experience ? agentData.experience + ' Years' : '-';
+          document.getElementById('agentLanguages').textContent = agentData.language?.join(', ') || '-';
+          document.getElementById('agentRating').textContent = agentData.rating ? '⭐'.repeat(agentData.rating) : '-';
+          document.getElementById('agentFees').textContent = agentData.fees ? `₹${agentData.fees} / day` : '-';
+        } else {
+          statusDiv.innerHTML = `<div class="status error">Error fetching data: ${guide.message || 'Unknown error'}</div>`;
+        }
+      } catch (error) {
+        statusDiv.innerHTML = `<div class="status error">Error: ${error.message}</div>`;
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>GJP - Book</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+
+</head>
+
+<body class="blog-page">
+
+  <header id="header" class="header d-flex align-items-center sticky-top">
+    <div class="container position-relative d-flex align-items-center">
+
+      <a href="home.html" class="logo d-flex align-items-center me-auto">
+        <h1 class="sitename">Gujarat Journey Planner</h1><span></span>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="home.html">Home</a></li>
+          <li><a href="places.html">Places</a></li>
+          <li class="dropdown"><a href="services.html"><span>Services</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="hotel.html">Hotels</a></li>
+              <li><a href="transport.html">Transport</a></li>
+              <li><a href="agent.html">Guide</a></li>
+            </ul>
+          </li>
+          <li><a href="packages.html">Packages</a></li>
+          <li><a href="book.html" class="active">Book</a></li>
+          <li><a href="about-us.html">About</a></li>
+          <li><a href="sign in.html">Sign In</a></li>
+          <!-- <li><a href="profile.html">profile</a></li> -->
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- Page Title -->
+    <div class="page-title accent-background">
+      <div class="container d-lg-flex justify-content-between align-items-center">
+        <h1 class="mb-2 mb-lg-0">Book</h1>
+        <nav class="breadcrumbs">
+          <ol>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="book.html">Book</a></li>
+            <li class="current">Hotel Booking</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+    <!-- End Page Title -->
+
+      <div id="title" class="container section-title" data-aos="fade-up">
+        <h2>Book</h2>
+      </div>
+
+  </main>
+<!--  -->
+  <section class="booking-form-section">
+  <h2 class="form-title">Hotel Booking Form</h2>
+  <form class="tour-booking-form">
+
+    <!-- HOTEL DETAILS -->
+    <fieldset id="hotel-details-fieldset">
+      <legend>Hotel Details</legend>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Hotel Name</label>
+          <input type="text" id="hotel-name-input" value="" readonly>
+        </div>
+        <div class="form-group">
+          <label>Address</label>
+          <input type="text" id="hotel-address-input" value="" readonly>
+        </div>
+      </div>
+    </fieldset>
+
+    <!-- BOOKING DETAILS -->
+    <fieldset>
+      <legend>Booking Details</legend>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Total Rooms</label>
+          <input type="number" id="total-rooms-input" min="1" value="1" required>
+        </div>
+        <div class="form-group">
+          <label>Room Type</label>
+          <select id="room-type-select" required>
+            <option value="">Select hotel first</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Facility</label>
+          <input type="text" id="hotel-facilities-input" value="" readonly>
+        </div>
+        <div class="form-group">
+          <label>Hotel Price (₹)</label>
+          <input type="number" id="hotel-price-input" min="0" placeholder="Select room type" readonly>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>From Date</label>
+          <input type="date" id="from-date-input" required>
+        </div>
+        <div class="form-group">
+          <label>To Date</label>
+          <input type="date" id="to-date-input" required>
+        </div>
+      </div>
+    </fieldset>
+
+    <!-- GUEST DETAILS
+    <fieldset>
+      <legend>Guest Details</legend>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Full Name</label>
+          <input type="text" placeholder="Enter your name" required>
+        </div>
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="tel" placeholder="e.g. 9876543210" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group full-width">
+          <label>Email Address</label>
+          <input type="email" placeholder="you@example.com" required>
+        </div>
+      </div>
+    </fieldset> -->
+    <a href="booking-service.html" class="submit-btn" id="submit-booking-btn">Submit Booking</a>
+    
+  </form>
+</section>
+
+<!--  -->
+    <footer id="footer" class="footer dark-background">
+
+    <div class="container footer-top"home>
+      <div class="row gy-4">
+        <div class="col-lg-4 col-md-6 footer-about">
+          <a href="home.html" class="logo d-flex align-items-center">
+            <span id="foot-site-name" class="sitename">Gujarat Journey Planner</span>
+          </a>
+          <div class="footer-contact pt-3">
+            <!-- <p>A108 Adam Street</p>
+            <p>New York, NY 535022</p> -->
+            <p class="mt-3"><strong>Address:</strong> <span>Gujarat, India</span></p>
+            <p><strong>Email:</strong> <span>gujaratjourneyplanner.gmail.com</span></p>
+          </div>
+          <!-- <div class="social-links d-flex mt-4">
+            <a href=""><i class="bi bi-twitter-x"></i></a>
+            <a href=""><i class="bi bi-facebook"></i></a>
+            <a href=""><i class="bi bi-instagram"></i></a>
+            <a href=""><i class="bi bi-linkedin"></i></a>
+          </div> -->
+        </div>
+
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>Useful Links</h4>
+          <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="places.html"> Tourist Places</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="book.html">Book a Tour</a></li>
+            <li><a href="sign in.html">Sign In</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>Our Services</h4>
+          <ul>
+            <li><a href="hotel.html">Hotel Booking</a></li>
+            <li><a href="agent.html">Guide Booking</a></li>
+            <li><a href="transport.html">Transport Booking</a></li>
+            <li><a href="packages.html">Custom Tour Packages</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-4 col-md-12 footer-user-review">
+  <h4>Give Us a Rating</h4>
+  <form action="forms/review.php" method="post" class="review-form">
+    <input type="text" name="name" placeholder="Your Name" required>
+
+    <div class="star-rating">
+      <input type="radio" id="star5" name="rating" value="5"><label for="star5" title="5 stars">★</label>
+      <input type="radio" id="star4" name="rating" value="4"><label for="star4" title="4 stars">★</label>
+      <input type="radio" id="star3" name="rating" value="3"><label for="star3" title="3 stars">★</label>
+      <input type="radio" id="star2" name="rating" value="2"><label for="star2" title="2 stars">★</label>
+      <input type="radio" id="star1" name="rating" value="1"><label for="star1" title="1 star">★</label>
+    </div>
+
+    <textarea name="review" placeholder="Write your review..." required></textarea>
+
+    <input type="submit" value="Submit Review">
+  </form>
+</div>
+
+      </div>
+    </div>
+
+    <div class="container copyright text-center mt-4">
+      <p>© <span>2025</span> <strong class="px-1 sitename">Gujarat Journey Planner</strong> <span></span></p>
+      <div class="credits">
+        Designed & Develped as a <a href="">B.Tech Project</a> for <a href="">Academic Purpose
+      </div>
+    </div>
+
+  </footer>
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/isotope-layout@3.0.6/dist/isotope.pkgd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/waypoints@4.0.1/lib/noframework.waypoints.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <!-- Auth Utils JS -->
+  <script src="assets/js/auth-utils.js"></script>
+
+  <!-- Main JS File -->
+  <script src="assets/js/api-config.js"></script>
+  <script src="assets/js/main.js"></script>
+
+<script>
+    let selectedHotel = null;
+
+    document.addEventListener("DOMContentLoaded", () => {
+        loadSelectedHotel();
+        setupEventListeners();
+        setupDateConstraints();
+    });
+
+    // Load selected hotel from previous page
+    async function loadSelectedHotel() {
+        try {
+            // First check if coming from a tour package booking
+            const packageData = localStorage.getItem('selectedTourPackage');
+            const isPackageFlow = localStorage.getItem('packageBookingFlow') === 'true';
+            
+            if (packageData && isPackageFlow) {
+                try {
+                    const tourPackage = JSON.parse(packageData);
+                    console.log('🎆 Auto-filling hotel form from tour package:', tourPackage.packageName);
+                    
+                    // Create mock hotel data from package
+                    const hotelInfo = tourPackage.hotels;
+                    if (hotelInfo) {
+                        selectedHotel = {
+                            hotel_details: {
+                                hotel_name: hotelInfo.hotel_name,
+                                location: {
+                                    district: tourPackage.places?.location?.district || 'Gujarat'
+                                },
+                                facilities: 'WiFi, AC, Room Service, Restaurant, Parking'
+                            },
+                            room_types: [
+                                { room_type: 'Standard Room', price_per_night: 2500 },
+                                { room_type: 'Deluxe Room', price_per_night: 3500 },
+                                { room_type: 'Suite', price_per_night: 5000 }
+                            ]
+                        };
+                        
+                        populateHotelDetails(selectedHotel);
+                        populateRoomTypes(selectedHotel);
+                        
+                        // Show package notification
+                        alert(`🎆 Hotel auto-filled from tour package: "${tourPackage.packageName}"\nHotel: ${hotelInfo.hotel_name}`);
+                        
+                        console.log('✅ Hotel details auto-filled from package');
+                        return;
+                    }
+                } catch (e) {
+                    console.error('Failed to parse tour package data:', e);
+                }
+            }
+            
+            // Fallback to regular hotel selection process
+            // Try to get hotel ID from URL parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            let hotelId = urlParams.get('hotelId') || urlParams.get('id');
+            
+            // If no URL parameter, try localStorage
+            if (!hotelId) {
+                const storedHotelData = localStorage.getItem('selectedHotel');
+                if (storedHotelData) {
+                    const hotelData = JSON.parse(storedHotelData);
+                    hotelId = hotelData._id || hotelData.id;
+                }
+            }
+            
+            if (hotelId) {
+                // Fetch specific hotel details by ID
+                const response = await fetch(`http://localhost:8000/api/hotels/${hotelId}`);
+                if (!response.ok) throw new Error('Hotel not found');
+                selectedHotel = await response.json();
+                
+                populateHotelDetails(selectedHotel);
+                populateRoomTypes(selectedHotel);
+            } else {
+                throw new Error('No hotel selected');
+            }
+        } catch (error) {
+            console.error('Error loading selected hotel:', error);
+            document.getElementById('hotel-name-input').value = 'Error: No hotel selected';
+            document.getElementById('hotel-address-input').value = 'Please go back and select a hotel';
+        }
+    }
+
+    // Setup event listeners
+    function setupEventListeners() {
+        const roomTypeSelect = document.getElementById('room-type-select');
+        const totalRoomsInput = document.getElementById('total-rooms-input');
+
+        // Room type selection change
+        roomTypeSelect.addEventListener('change', function() {
+            const roomType = this.value;
+            if (roomType && selectedHotel) {
+                updateTotalPrice();
+            } else {
+                clearPrice();
+            }
+        });
+        
+        // Total rooms change
+        totalRoomsInput.addEventListener('input', function() {
+            const roomType = roomTypeSelect.value;
+            if (roomType && selectedHotel) {
+                updateTotalPrice();
+            }
+        });
+    }
+
+    // Populate hotel details
+    function populateHotelDetails(hotel) {
+        const hotelNameInput = document.getElementById('hotel-name-input');
+        const hotelAddressInput = document.getElementById('hotel-address-input');
+        const hotelFacilitiesInput = document.getElementById('hotel-facilities-input');
+
+        const hotelName = hotel.hotel_details?.hotel_name || hotel.name || '';
+        const location = hotel.hotel_details?.location?.district || hotel.location?.district || '';
+        const facilities = hotel.hotel_details?.facilities || hotel.facilities || 
+                          hotel.hotel_details?.amenities || hotel.amenities || 'WiFi, AC, Room Service';
+
+        hotelNameInput.value = hotelName;
+        hotelAddressInput.value = location;
+        hotelFacilitiesInput.value = Array.isArray(facilities) ? facilities.join(', ') : facilities;
+    }
+
+    // Populate room types dropdown
+    function populateRoomTypes(hotel) {
+        const roomTypeSelect = document.getElementById('room-type-select');
+        roomTypeSelect.innerHTML = '<option value="">Select room type...</option>';
+
+        if (hotel.room_types && hotel.room_types.length > 0) {
+            hotel.room_types.forEach(room => {
+                const roomType = room.room_type || room.type || 'Standard Room';
+                const option = document.createElement('option');
+                option.value = roomType;
+                option.textContent = roomType;
+                option.dataset.price = room.price_per_night || room.price || '0';
+                roomTypeSelect.appendChild(option);
+            });
+        } else {
+            roomTypeSelect.innerHTML = '<option value="">No room types available</option>';
+        }
+    }
+
+    // Update total price based on selected room type and number of rooms
+    function updateTotalPrice() {
+        const priceInput = document.getElementById('hotel-price-input');
+        const roomTypeSelect = document.getElementById('room-type-select');
+        const totalRoomsInput = document.getElementById('total-rooms-input');
+        
+        const roomType = roomTypeSelect.value;
+        const totalRooms = parseInt(totalRoomsInput.value) || 1;
+        
+        const selectedOption = roomTypeSelect.querySelector(`option[value="${roomType}"]`);
+        if (selectedOption && selectedOption.dataset.price) {
+            const priceStr = selectedOption.dataset.price;
+            const pricePerRoom = parseFloat(priceStr.replace(/[^\d]/g, '')) || 0;
+            const totalPrice = pricePerRoom * totalRooms;
+            priceInput.value = totalPrice;
+            
+            // Update placeholder to show calculation
+            priceInput.placeholder = `₹${pricePerRoom} × ${totalRooms} rooms`;
+        }
+    }
+
+    // Clear hotel details
+    function clearHotelDetails() {
+        document.getElementById('hotel-name-input').value = '';
+        document.getElementById('hotel-address-input').value = '';
+        document.getElementById('hotel-facilities-input').value = '';
+    }
+
+    // Clear room types
+    function clearRoomTypes() {
+        document.getElementById('room-type-select').innerHTML = '<option value="">Select hotel first</option>';
+        clearPrice();
+    }
+
+    // Clear price
+    function clearPrice() {
+        const priceInput = document.getElementById('hotel-price-input');
+        priceInput.value = '';
+        priceInput.placeholder = 'Select room type';
+    }
+
+    // Setup date constraints
+    function setupDateConstraints() {
+        const fromDateInput = document.getElementById('from-date-input');
+        const toDateInput = document.getElementById('to-date-input');
+
+        // Function to get tomorrow's date in YYYY-MM-DD format
+        function getTomorrowDate() {
+            const today = new Date();
+            today.setDate(today.getDate() + 1); // Changed from +3 to +1 for tomorrow
+            const year = today.getFullYear();
+            const month = String(today.getMonth() + 1).padStart(2, '0');
+            const day = String(today.getDate()).padStart(2, '0');
+            return `${year}-${month}-${day}`;
+        }
+
+        // Set the min date for the 'From Date' input to tomorrow's date
+        if (fromDateInput) {
+            fromDateInput.min = getTomorrowDate();
+        }
+
+        // Add a listener to the 'From Date' input to update the 'To Date' min attribute
+        if (fromDateInput && toDateInput) {
+            fromDateInput.addEventListener('change', () => {
+                toDateInput.min = fromDateInput.value;
+                // If 'To Date' is already set to an earlier date, clear it
+                if (toDateInput.value && toDateInput.value < fromDateInput.value) {
+                    toDateInput.value = '';
+                }
+            });
+        }
+    }
+
+    // Comprehensive validation function
+    function validateBookingDetails() {
+        const errors = [];
+        
+        // Check if hotel is selected
+        if (!selectedHotel) {
+            errors.push("❌ No hotel selected. Please go back and select a hotel.");
+        }
+        
+        // Check hotel details are populated
+        const hotelName = document.getElementById('hotel-name-input').value.trim();
+        if (!hotelName || hotelName.includes('Error') || hotelName.includes('No hotel')) {
+            errors.push("❌ Hotel details are not properly loaded.");
+        }
+        
+        // Check room type selection
+        const roomType = document.getElementById('room-type-select').value;
+        if (!roomType) {
+            errors.push("❌ Please select a room type.");
+        }
+        
+        // Check total rooms
+        const totalRooms = parseInt(document.getElementById('total-rooms-input').value);
+        if (!totalRooms || totalRooms < 1) {
+            errors.push("❌ Please specify the number of rooms (minimum 1).");
+        }
+        
+        // Check dates
+        const fromDate = document.getElementById('from-date-input').value;
+        const toDate = document.getElementById('to-date-input').value;
+        
+        if (!fromDate) {
+            errors.push("❌ Please select a check-in date.");
+        }
+        
+        if (!toDate) {
+            errors.push("❌ Please select a check-out date.");
+        }
+        
+        // Validate date logic if both dates are provided
+        if (fromDate && toDate) {
+            const checkIn = new Date(fromDate);
+            const checkOut = new Date(toDate);
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            
+            if (checkIn < today) {
+                errors.push("❌ Check-in date cannot be in the past.");
+            }
+            
+            if (checkOut <= checkIn) {
+                errors.push("❌ Check-out date must be after check-in date.");
+            }
+            
+            // Check minimum stay (at least 1 night)
+            const timeDiff = checkOut.getTime() - checkIn.getTime();
+            const daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
+            if (daysDiff < 1) {
+                errors.push("❌ Minimum stay is 1 night.");
+            }
+        }
+        
+        // Check price is calculated
+        const price = document.getElementById('hotel-price-input').value;
+        if (!price || price <= 0) {
+            errors.push("❌ Price calculation failed. Please reselect room type.");
+        }
+        
+        return errors;
+    }
+    
+    // Show validation errors
+    function showValidationErrors(errors) {
+        const errorMessage = errors.join('\n');
+        console.error(`Please complete all booking details:\n\n${errorMessage}`);
+    }
+    
+    // Handle form submission
+    const submitBtn = document.getElementById('submit-booking-btn');
+    if (submitBtn) {
+        submitBtn.addEventListener('click', (event) => {
+            event.preventDefault(); // Prevent default link behavior
+            
+            // Validate all booking details
+            const validationErrors = validateBookingDetails();
+            
+            if (validationErrors.length > 0) {
+                // Show errors and prevent submission
+                showValidationErrors(validationErrors);
+                return false;
+            }
+            
+            // If all validations pass, prepare and store booking data
+            try {
+                const bookingData = {
+                    // Hotel details
+                    hotelId: selectedHotel._id || selectedHotel.id,
+                    hotelName: document.getElementById('hotel-name-input').value,
+                    hotelAddress: document.getElementById('hotel-address-input').value,
+                    hotelFacilities: document.getElementById('hotel-facilities-input').value,
+                    
+                    // Booking details
+                    roomType: document.getElementById('room-type-select').value,
+                    totalRooms: parseInt(document.getElementById('total-rooms-input').value),
+                    fromDate: document.getElementById('from-date-input').value,
+                    toDate: document.getElementById('to-date-input').value,
+                    totalPrice: parseFloat(document.getElementById('hotel-price-input').value),
+                    
+                    // Calculate number of nights
+                    numberOfNights: Math.ceil((new Date(document.getElementById('to-date-input').value).getTime() - 
+                                             new Date(document.getElementById('from-date-input').value).getTime()) / (1000 * 3600 * 24)),
+                    
+                    // Timestamp
+                    bookingTimestamp: new Date().toISOString()
+                };
+                
+                // Store booking data in localStorage
+                localStorage.setItem('hotelBookingDetails', JSON.stringify(bookingData));
+                localStorage.setItem('bookingDates', JSON.stringify({
+                    fromDate: bookingData.fromDate,
+                    toDate: bookingData.toDate
+                }));
+                
+                console.log('✅ Hotel booking data saved:', bookingData);
+                
+                // Show success message
+                console.log(`✅ Booking details validated successfully!\n\nHotel: ${bookingData.hotelName}\nRoom Type: ${bookingData.roomType}\nRooms: ${bookingData.totalRooms}\nDates: ${bookingData.fromDate} to ${bookingData.toDate}\nNights: ${bookingData.numberOfNights}\nTotal Price: ₹${bookingData.totalPrice}`);
+                
+                // Proceed to next step
+                window.location.href = 'booking-service.html';
+                
+            } catch (error) {
+                console.error('Error processing booking data:', error);
+                console.error('❌ An error occurred while processing your booking. Please try again.');
+            }
+        });
+    }
+</script>
+
+</body>
+
+</html>

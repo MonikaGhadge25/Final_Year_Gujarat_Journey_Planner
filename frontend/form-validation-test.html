@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation Test - Gujarat Journey Planner</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: #1bbd36;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        input:focus {
+            outline: none;
+            border-color: #1bbd36;
+        }
+        
+        .form-text {
+            font-size: 14px;
+            color: #6c757d;
+            margin-top: 5px;
+            display: block;
+        }
+        
+        .validation-demo {
+            background-color: #e8f5e8;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            border: 1px solid #1bbd36;
+        }
+        
+        .test-btn {
+            background-color: #1bbd36;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px 10px 10px 0;
+            transition: background-color 0.3s ease;
+        }
+        
+        .test-btn:hover {
+            background-color: #16a02b;
+        }
+        
+        .test-btn.secondary {
+            background-color: #6c757d;
+        }
+        
+        .test-btn.secondary:hover {
+            background-color: #545b62;
+        }
+        
+        .demo-section {
+            margin: 30px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #fafafa;
+        }
+        
+        .demo-section h3 {
+            color: #1bbd36;
+            margin-top: 0;
+        }
+        
+        .feature-list {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        
+        .feature-list ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        
+        .feature-list li {
+            margin-bottom: 8px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📋 Form Validation Test</h1>
+        
+        <div class="validation-demo">
+            <strong>✅ Validation Features Added to book-form.html:</strong>
+            <div class="feature-list">
+                <ul>
+                    <li><strong>Phone Number Validation:</strong> Must be exactly 10 digits</li>
+                    <li><strong>Date of Birth Validation:</strong> Cannot select future dates</li>
+                    <li><strong>Real-time Feedback:</strong> Visual indicators while typing</li>
+                    <li><strong>Form Submission Check:</strong> Validates before saving data</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="demo-section">
+            <h3>📱 Phone Number Validation Demo</h3>
+            <div class="form-group">
+                <label for="testPhone">Phone Number (User Details)</label>
+                <input type="tel" id="testPhone" placeholder="e.g. 9876543210" pattern="[0-9]{10}" maxlength="10" title="Phone number must be exactly 10 digits">
+                <small class="form-text">Enter exactly 10 digits (no spaces or special characters)</small>
+            </div>
+            
+            <div class="form-group">
+                <label for="testPhone2">Phone Number (Tourist Details)</label>
+                <input type="tel" id="testPhone2" placeholder="e.g. 9876543210" pattern="[0-9]{10}" maxlength="10" title="Phone number must be exactly 10 digits">
+                <small class="form-text">Enter exactly 10 digits (no spaces or special characters)</small>
+            </div>
+            
+            <button class="test-btn" onclick="fillValidPhone()">✅ Fill Valid Phone (9876543210)</button>
+            <button class="test-btn secondary" onclick="fillInvalidPhone()">❌ Try Invalid Phone (123)</button>
+        </div>
+        
+        <div class="demo-section">
+            <h3>📅 Date of Birth Validation Demo</h3>
+            <div class="form-group">
+                <label for="testDOB">Date of Birth</label>
+                <input type="date" id="testDOB">
+                <small class="form-text">You cannot select future dates</small>
+            </div>
+            
+            <button class="test-btn" onclick="fillValidDate()">✅ Set Valid Date (1990-01-01)</button>
+            <button class="test-btn secondary" onclick="fillFutureDate()">❌ Try Future Date (Tomorrow)</button>
+        </div>
+        
+        <div class="demo-section">
+            <h3>🚀 Test the Full Form</h3>
+            <p><strong>Go to:</strong> <code>book-form.html</code> to test the complete booking form with these validations.</p>
+            <button class="test-btn" onclick="goToBookingForm()">Open Booking Form</button>
+        </div>
+        
+        <div class="demo-section">
+            <h3>🔧 How It Works</h3>
+            <div class="feature-list">
+                <strong>Phone Number Validation:</strong>
+                <ul>
+                    <li>Automatically removes non-digit characters as you type</li>
+                    <li>Limits input to exactly 10 digits</li>
+                    <li>Green border when valid (10 digits)</li>
+                    <li>Yellow border when incomplete (less than 10 digits)</li>
+                    <li>Red border when form is submitted with invalid data</li>
+                </ul>
+                
+                <strong>Date of Birth Validation:</strong>
+                <ul>
+                    <li>Sets maximum date to today automatically</li>
+                    <li>Prevents selection of future dates</li>
+                    <li>Shows error message if future date is attempted</li>
+                    <li>Visual feedback with color-coded borders</li>
+                </ul>
+                
+                <strong>Form Submission:</strong>
+                <ul>
+                    <li>Validates all fields before submitting</li>
+                    <li>Shows clear error messages</li>
+                    <li>Scrolls to first error field</li>
+                    <li>Prevents submission until all validations pass</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Set max date for DOB to today
+        document.addEventListener('DOMContentLoaded', function() {
+            const dobInput = document.getElementById('testDOB');
+            if (dobInput) {
+                const today = new Date().toISOString().split('T')[0];
+                dobInput.setAttribute('max', today);
+            }
+            
+            // Phone number validation for demo
+            const phoneInputs = document.querySelectorAll('input[type="tel"]');
+            phoneInputs.forEach(input => {
+                input.addEventListener('input', function(e) {
+                    // Remove any non-digit characters
+                    let value = e.target.value.replace(/\D/g, '');
+                    
+                    // Limit to 10 digits
+                    if (value.length > 10) {
+                        value = value.slice(0, 10);
+                    }
+                    
+                    e.target.value = value;
+                    
+                    // Visual feedback
+                    if (value.length === 10) {
+                        e.target.style.borderColor = '#28a745'; // Green for valid
+                        e.target.style.backgroundColor = '#f8fff9';
+                    } else if (value.length > 0) {
+                        e.target.style.borderColor = '#ffc107'; // Yellow for incomplete
+                        e.target.style.backgroundColor = '#fffbf0';
+                    } else {
+                        e.target.style.borderColor = '#ddd'; // Reset
+                        e.target.style.backgroundColor = 'white';
+                    }
+                });
+            });
+        });
+        
+        function fillValidPhone() {
+            document.getElementById('testPhone').value = '9876543210';
+            document.getElementById('testPhone').dispatchEvent(new Event('input', { bubbles: true }));
+            document.getElementById('testPhone2').value = '9876543210';
+            document.getElementById('testPhone2').dispatchEvent(new Event('input', { bubbles: true }));
+        }
+        
+        function fillInvalidPhone() {
+            document.getElementById('testPhone').value = '123';
+            document.getElementById('testPhone').dispatchEvent(new Event('input', { bubbles: true }));
+            document.getElementById('testPhone2').value = '123';
+            document.getElementById('testPhone2').dispatchEvent(new Event('input', { bubbles: true }));
+        }
+        
+        function fillValidDate() {
+            document.getElementById('testDOB').value = '1990-01-01';
+            document.getElementById('testDOB').style.borderColor = '#28a745';
+            document.getElementById('testDOB').style.backgroundColor = '#f8fff9';
+        }
+        
+        function fillFutureDate() {
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            const futureDate = tomorrow.toISOString().split('T')[0];
+            
+            // This will show that future dates can't be selected
+            document.getElementById('testDOB').value = futureDate;
+            document.getElementById('testDOB').style.borderColor = '#dc3545';
+            document.getElementById('testDOB').style.backgroundColor = '#fff5f5';
+            
+            setTimeout(() => {
+                console.log('❌ Future dates cannot be selected! The date picker is restricted to today and earlier dates.');
+            }, 100);
+        }
+        
+        function goToBookingForm() {
+            window.open('book-form.html', '_blank');
+        }
+    </script>
+</body>
+</html>

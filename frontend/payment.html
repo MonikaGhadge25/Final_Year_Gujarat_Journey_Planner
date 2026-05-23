@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>GJP - Book</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+
+</head>
+
+<body class="blog-page">
+
+  <header id="header" class="header d-flex align-items-center sticky-top">
+    <div class="container position-relative d-flex align-items-center">
+
+      <a href="home.html" class="logo d-flex align-items-center me-auto">
+        <h1 class="sitename">Gujarat Journey Planner</h1><span></span>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="home.html" >Home</a></li>
+          <li><a href="places.html">Places</a></li>
+          <li class="dropdown"><a href="services.html"><span>Services</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="hotel.html">Hotels</a></li>
+              <li class="dropdown"><a href="transport.html"><span>Transport</span> </i></a>
+              </li>
+              <li class="dropdown"><a href="agent.html"><span>Local Agent</span> </i></a>
+              </li>
+            </ul>
+          </li>
+          <li><a href="book.html" class="active">Book</a></li>
+          <li><a href="profile.html">Profile</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- Page Title -->
+    <div class="page-title accent-background">
+      <div class="container d-lg-flex justify-content-between align-items-center">
+        <h1 class="mb-2 mb-lg-0">Book</h1>
+        <nav class="breadcrumbs">
+          <ol>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="sign in.html">Sign In</a></li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+    <!-- End Page Title -->
+
+      <div id="title" class="container section-title" data-aos="fade-up">
+        <h2>Book</h2>
+      </div>
+
+  </main>
+
+<section class="booking-form-section">
+  <h2 class="form-title">Tour Payment Form</h2>
+  <form class="tour-booking-form">
+
+    <!-- User Details -->
+    <fieldset>
+      <legend>User Details</legend>
+      <div class="form-row">
+        <div class="form-group full-width">
+          <label>Name</label>
+          <input id="userName" type="text" placeholder="User name" required readonly>
+        </div>
+        <div class="form-group full-width">
+          <label>Email</label>
+          <input id="userEmail" type="email" placeholder="User email" required readonly>
+        </div>
+      </div>
+    </fieldset>
+
+    <!-- Tourist Place Details -->
+    <fieldset>
+      <legend>Tourist Place Details</legend>
+      <div class="form-row">
+        <div class="form-group full-width">
+          <label>Tourist Places</label>
+          <input id="placeNames" type="text" placeholder="Tourist places" required readonly>
+        </div>
+        <div class="form-group full-width">
+          <label>Primary Location</label>
+          <input id="placeLocation" type="text" placeholder="Location" required readonly>
+        </div>
+      </div>
+    </fieldset>
+
+    <!-- Hotel Payment -->
+    <fieldset>
+      <legend>Hotel Payment</legend>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Hotel Name</label>
+          <input id="hotelName" type="text" placeholder="Hotel name" required readonly>
+        </div>
+        <div class="form-group">
+          <label>Location</label>
+          <input id="hotelLocation" type="text" placeholder="Hotel location" required readonly>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Date From</label>
+          <input id="hotelFrom" type="date" required readonly>
+        </div>
+        <div class="form-group">
+          <label>Date To</label>
+          <input id="hotelTo" type="date" required readonly>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group full-width">
+          <label>Fees</label>
+          <input id="hotelFees" type="number" placeholder="Hotel fees" required readonly>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Mode of Payment</label>
+          <select id="hotelPaymentMode" disabled required>
+            <option value="">Select</option>
+            <option>Credit Card</option>
+            <option>Debit Card</option>
+            <option>UPI</option>
+            <option>Bank Transfer</option>
+            <option>Cash</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Upload Proof of Payment</label>
+          <input id="hotelProof" type="file" accept="image/*,.pdf" disabled required>
+        </div>
+      </div>
+    </fieldset>
+
+    <!-- Agent Payment -->
+    <fieldset>
+      <legend>Agent Payment</legend>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Agent Name</label>
+          <input id="agentName" type="text" placeholder="Agent name" required readonly>
+        </div>
+        <div class="form-group">
+          <label>Location</label>
+          <input id="agentLocation" type="text" placeholder="Agent location" required readonly>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Date From</label>
+          <input id="agentFrom" type="date" required readonly>
+        </div>
+        <div class="form-group">
+          <label>Date To</label>
+          <input id="agentTo" type="date" required readonly>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group full-width">
+          <label>Fees</label>
+          <input id="agentFees" type="number" placeholder="Agent fees" required readonly>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Mode of Payment</label>
+          <select id="agentPaymentMode" disabled required>
+            <option value="">Select</option>
+            <option>Credit Card</option>
+            <option>Debit Card</option>
+            <option>UPI</option>
+            <option>Bank Transfer</option>
+            <option>Cash</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Upload Proof of Payment</label>
+          <input id="agentProof" type="file" accept="image/*,.pdf" disabled required>
+        </div>
+      </div>
+    </fieldset>
+
+    <!-- Final Submit -->
+    <button type="submit" class="submit-btn">Submit Payment</button>
+
+  </form>
+</section>
+
+  <footer id="footer" class="footer dark-background">
+
+    <div class="container footer-top">
+      <div class="row gy-4">
+        <div class="col-lg-4 col-md-6 footer-about">
+          <a href="home.html" class="logo d-flex align-items-center">
+            <span class="sitename">Company</span>
+          </a>
+          <div class="footer-contact pt-3">
+            <p>A108 Adam Street</p>
+            <p>New York, NY 535022</p>
+            <p class="mt-3"><strong>Phone:</strong> <span>+1 5589 55488 55</span></p>
+            <p><strong>Email:</strong> <span>info@example.com</span></p>
+          </div>
+          <div class="social-links d-flex mt-4">
+            <a href=""><i class="bi bi-twitter-x"></i></a>
+            <a href=""><i class="bi bi-facebook"></i></a>
+            <a href=""><i class="bi bi-instagram"></i></a>
+            <a href=""><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>Useful Links</h4>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About us</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Terms of service</a></li>
+            <li><a href="#">Privacy policy</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>Our Services</h4>
+          <ul>
+            <li><a href="#">Web Design</a></li>
+            <li><a href="#">Web Development</a></li>
+            <li><a href="#">Product Management</a></li>
+            <li><a href="#">Marketing</a></li>
+            <li><a href="#">Graphic Design</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-4 col-md-12 footer-newsletter">
+          <h4>Our Newsletter</h4>
+          <p>Subscribe to our newsletter and receive the latest news about our products and services!</p>
+          <form action="forms/newsletter.php" method="post" class="php-email-form">
+            <div class="newsletter-form"><input type="email" name="email"><input type="submit" value="Subscribe"></div>
+            <div class="loading">Loading</div>
+            <div class="error-message"></div>
+            <div class="sent-message">Your subscription request has been sent. Thank you!</div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="container copyright text-center mt-4">
+      <p>© <span>Copyright</span> <strong class="px-1 sitename">Company</strong> <span>All Rights Reserved</span></p>
+      <div class="credits">
+        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> Distributed by <a href=“https://themewagon.com>ThemeWagon
+      </div>
+    </div>
+
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/isotope-layout@3.0.6/dist/isotope.pkgd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/waypoints@4.0.1/lib/noframework.waypoints.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <!-- Main JS File -->
+  <script src="assets/js/api-config.js"></script>
+  <script src="assets/js/main.js"></script>
+  <!-- Authentication Utils -->
+  <script src="assets/js/auth-utils.js"></script>
+  <script>
+    // Initialize auth with mandatory login for payment page
+    document.addEventListener('DOMContentLoaded', () => {
+      try { if (window.AuthUtils) AuthUtils.init({ requireLogin: true }); } catch (e) { console.warn('Auth init skipped:', e.message); }
+    });
+
+    // Populate payment form with booking details and lock fields
+    document.addEventListener('DOMContentLoaded', async () => {
+      const params = new URLSearchParams(window.location.search);
+      const bookingId = params.get('bookingId') || localStorage.getItem('paymentBookingId');
+      const forcedAmount = params.get('amount') || localStorage.getItem('paymentAmount');
+      const API_BASE = 'http://localhost:8000/api';
+
+      if (!bookingId) {
+        alert('Missing booking reference. Returning to profile.');
+        window.location.href = 'profile.html';
+        return;
+      }
+
+      try {
+        const resp = await fetch(`${API_BASE}/bookingformsdata`);
+        if (!resp.ok) throw new Error(`Failed to load booking data (${resp.status})`);
+        const list = await resp.json();
+
+        // bookingformsdata returns one of:
+        // - Array of bookings
+        // - { success, bookings }
+        // - { success, data }
+        const bookings = Array.isArray(list)
+          ? list
+          : (Array.isArray(list.bookings)
+              ? list.bookings
+              : (Array.isArray(list.data) ? list.data : []));
+
+        const booking = bookings.find(b => (b.bookingId === bookingId) || (String(b._id) === String(bookingId)));
+        if (!booking) throw new Error('Booking not found');
+
+        const safe = (v, def='') => (v === null || v === undefined ? def : v);
+        const fmtDate = (d) => {
+          if (!d) return '';
+          const dt = new Date(d);
+          const yyyy = dt.getFullYear();
+          const mm = String(dt.getMonth()+1).padStart(2,'0');
+          const dd = String(dt.getDate()).padStart(2,'0');
+          return `${yyyy}-${mm}-${dd}`;
+        };
+
+        document.getElementById('userName').value = safe(booking.user?.fullName || booking.tourist?.name, '');
+        document.getElementById('userEmail').value = safe(booking.tourist?.email, '');
+
+        const places = Array.isArray(booking.touristPlaces) ? booking.touristPlaces.join(', ') : '';
+        document.getElementById('placeNames').value = places;
+        document.getElementById('placeLocation').value = safe(booking.hotel?.address || booking.user?.address, '');
+
+        document.getElementById('hotelName').value = safe(booking.hotel?.name, '');
+        document.getElementById('hotelLocation').value = safe(booking.hotel?.address, '');
+        document.getElementById('hotelFrom').value = fmtDate(booking.hotel?.fromDate);
+        document.getElementById('hotelTo').value = fmtDate(booking.hotel?.toDate);
+
+        document.getElementById('agentName').value = safe(booking.agent?.name, '');
+        document.getElementById('agentLocation').value = safe(booking.agent?.location, '');
+        document.getElementById('agentFrom').value = fmtDate(booking.hotel?.fromDate);
+        document.getElementById('agentTo').value = fmtDate(booking.hotel?.toDate);
+
+        const totalAmount = Number(booking.payment?.totalAmount) || Number(forcedAmount) || 0;
+        let hotelFee = 0, agentFee = 0;
+        if (booking.hotel && booking.agent) { hotelFee = Math.round(totalAmount * 0.5); agentFee = totalAmount - hotelFee; }
+        else if (booking.hotel) { hotelFee = totalAmount; }
+        else if (booking.agent) { agentFee = totalAmount; }
+        document.getElementById('hotelFees').value = hotelFee || '';
+        document.getElementById('agentFees').value = agentFee || '';
+
+        [
+          'userName','userEmail','placeNames','placeLocation',
+          'hotelName','hotelLocation','hotelFrom','hotelTo','hotelFees',
+          'agentName','agentLocation','agentFrom','agentTo','agentFees'
+        ].forEach(id => { const el = document.getElementById(id); if (el) { el.readOnly = true; el.addEventListener('keydown', e => e.preventDefault()); }});
+        ['hotelPaymentMode','hotelProof','agentPaymentMode','agentProof'].forEach(id => { const el = document.getElementById(id); if (el) el.disabled = true; });
+
+        const form = document.querySelector('.tour-booking-form');
+        form.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const token = localStorage.getItem('authToken') || localStorage.getItem('token');
+          try {
+            const res = await fetch(`${API_BASE}/bookingformsdata/payment/${encodeURIComponent(bookingId)}`, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json', ...(token ? { 'Authorization': `Bearer ${token}` } : {}) },
+              body: JSON.stringify({ amount: totalAmount, method: 'online', meta: { source: 'payment.html' } })
+            });
+            if (!res.ok) { const txt = await res.text(); console.error('Payment error:', txt); alert(`Payment failed: ${res.status}`); return; }
+            alert('Payment submitted successfully');
+            window.location.href = 'profile.html';
+          } catch (err) { console.error('Payment submit error:', err); alert('Payment error. See console for details.'); }
+        });
+
+      } catch (err) {
+        console.error('Failed to prepare payment form:', err);
+        alert('Unable to load booking for payment');
+        window.location.href = 'profile.html';
+      }
+    });
+  </script>
+
+</body>
+
+</html>
