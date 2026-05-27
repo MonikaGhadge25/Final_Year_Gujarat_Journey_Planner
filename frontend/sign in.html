@@ -247,14 +247,8 @@ document.getElementById('loginForm').addEventListener('submit', async function (
   const errorBox = document.getElementById('loginError');
   errorBox.style.display = 'none';
 
-  // ── Hardcoded transport bypass (keep as-is) ───────────────────────────────
-  if (email === 'transport123@gmail.com' && password === 'transport') {
-    localStorage.setItem('authToken', 'transport_manager_token');
-    localStorage.setItem('userRole', 'transport');
-    localStorage.setItem('userEmail', email);
-    window.location.href = 'transportdashboard.html';
-    return;
-  }
+  // ── Transport login is handled by the normal /api/auth/login flow below ─────
+  // (transport@gjt.com / Transport@123 returns role:'transport' → redirects here)
 
   try {
     // ── Step 1: Try hotel login first (hotel_details.email + hotel_details.password) ──
